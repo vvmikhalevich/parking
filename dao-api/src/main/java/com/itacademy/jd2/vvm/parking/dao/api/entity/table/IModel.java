@@ -1,0 +1,21 @@
+package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
+
+import java.util.Set;
+
+public interface IModel extends IBaseEntity {
+	String getName();
+
+	void setName(String name);
+
+	IBrand getBrand();
+
+	void setBrand(IBrand brand);
+
+	IModelInfo getModelInfo();
+
+	void setModelInfo(IModelInfo model);
+
+	// Set<IEngine> getEngines();
+
+	// void setEngines(Set<IEngine> engines);
+}
