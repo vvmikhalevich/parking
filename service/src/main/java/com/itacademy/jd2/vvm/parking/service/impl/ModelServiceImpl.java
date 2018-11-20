@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.itacademy.jd2.vvm.parking.dao.api.IModelDao;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModelInfo;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
 
@@ -66,27 +65,6 @@ public class ModelServiceImpl implements IModelService {
 	public List<IModel> getAll() {
 		final List<IModel> all = dao.selectAll();
 		return all;
-	}
-
-	@Override
-	public void save(final IModel model, final IModelInfo info) {
-		final Date modifiedDate = new Date();
-		model.setUpdated(modifiedDate);
-		info.setUpdated(modifiedDate);
-
-		if (model.getId() == null) {
-			model.setCreated(modifiedDate);
-			dao.insert(model);
-
-			info.setId(model.getId());
-			info.setCreated(modifiedDate);
-			info.setModel(model);
-
-			model.setModelInfo(info);
-		} else {
-			dao.update(model);
-
-		}
 	}
 
 	@Override

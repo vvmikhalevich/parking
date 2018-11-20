@@ -11,11 +11,4 @@ public interface IModel extends IBaseEntity {
 
 	void setBrand(IBrand brand);
 
-	IModelInfo getModelInfo();
-
-	void setModelInfo(IModelInfo model);
-
-	// Set<IEngine> getEngines();
-
-	// void setEngines(Set<IEngine> engines);
 }

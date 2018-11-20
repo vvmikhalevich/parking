@@ -11,7 +11,6 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModelInfo;
 
 public class ModelServiceTest extends AbstractTest {
 

@@ -3,7 +3,6 @@ package com.itacademy.jd2.vvm.parking.service;
 import java.util.List;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModelInfo;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
 
 public interface IModelService {
@@ -23,8 +22,6 @@ public interface IModelService {
 	// IModelInfo createInfoEntity();
 
 	// IModel getFullInfo(final Integer id);
-
-	void save(IModel entity, IModelInfo infoEntity);
 
 	long getCount(ModelFilter filter);
 
