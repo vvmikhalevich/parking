@@ -36,16 +36,15 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	@Override
 	public void insert(final ICar entity) {
-		executeStatement(new PreparedStatementAction<ICar>(
-				String.format("insert into %s (vin, sold, sold_date, model_id, created, updated) values(?,?,?,?,?,?)",
-						getTableName()),
-				true) {
+		executeStatement(new PreparedStatementAction<ICar>(String.format(
+				"insert into %s (model_id, number, user_account_id, foto_id, created, updated) values(?,?,?,?,?,?)",
+				getTableName()), true) {
 			@Override
 			public ICar doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setString(1, entity.getVin());
-				pStmt.setBoolean(2, entity.getSold());
-				pStmt.setObject(3, entity.getSoldDate(), Types.TIMESTAMP);
-				pStmt.setInt(4, entity.getModel().getId());
+				pStmt.setInt(1, entity.getModel().getId());
+				pStmt.setString(2, entity.getNumber());
+				pStmt.setInt(3, entity.getUserAccountId());
+				pStmt.setInt(4, entity.getFotoId());
 				pStmt.setObject(5, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(6, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -65,16 +64,14 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	@Override
 	public void update(final ICar entity) {
-		executeStatement(new PreparedStatementAction<ICar>(String
-				.format("update %s set vin=?, updated=?, sold=?, sold_date=?, model_id=? where id=?", getTableName())) {
+		executeStatement(new PreparedStatementAction<ICar>(String.format(
+				"update %s set model_id=?, number=?, user_account_id=?, foto_id=? where id=?", getTableName())) {
 			@Override
 			public ICar doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setString(1, entity.getVin());
-				pStmt.setObject(2, entity.getUpdated(), Types.TIMESTAMP);
-				pStmt.setBoolean(3, entity.getSold());
-				pStmt.setObject(4, entity.getSoldDate(), Types.TIMESTAMP);
-				pStmt.setInt(5, entity.getModel().getId());
-				pStmt.setInt(6, entity.getId());
+				pStmt.setInt(1, entity.getModel().getId());
+				pStmt.setString(2, entity.getNumber());
+				pStmt.setInt(3, entity.getUserAccountId());
+				pStmt.setInt(4, entity.getFotoId());
 
 				pStmt.executeUpdate();
 				return entity;
@@ -86,9 +83,9 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 	protected ICar parseRow(final ResultSet resultSet) throws SQLException {
 		final ICar entity = createEntity();
 		entity.setId((Integer) resultSet.getObject("id"));
-		entity.setSold(resultSet.getBoolean("sold"));
-		entity.setVin(resultSet.getString("vin"));
-		entity.setSoldDate(resultSet.getTimestamp("sold_date"));
+		entity.setNumber(resultSet.getString("number"));
+		entity.setUserAccountId(resultSet.getInt("user_account_id"));
+		entity.setFotoId(resultSet.getInt("foto_id"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 

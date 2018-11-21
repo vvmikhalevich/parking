@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itacademy.jd2.vvm.parking.service.impl.BrandServiceImpl;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.BrandFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.IBrandDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 import com.itacademy.jd2.vvm.parking.service.IBrandService;
@@ -68,4 +69,26 @@ public class BrandServiceImpl implements IBrandService {
 		return all;
 	}
 
+	@Override
+	public List<IBrand> find(BrandFilter filter) {
+		return dao.find(filter);
+	}
+
+	@Override
+	public long getCount(BrandFilter filter) {
+		return dao.getCount(filter);
+	}
+
+	@Override
+	public void save(IBrand... entities) {
+		Date modified = new Date();
+		for (IBrand iBrand : entities) {
+
+			iBrand.setUpdated(modified);
+			iBrand.setCreated(modified);
+
+		}
+
+		dao.save(entities);
+	}
 }

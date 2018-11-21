@@ -4,19 +4,19 @@ import java.util.Date;
 
 public interface ICar extends IBaseEntity {
 
-    void setSoldDate(Date soldDate);
+	void setModel(IModel model);
 
-    Date getSoldDate();
+	IModel getModel();
 
-    void setSold(Boolean sold);
+	void setNumber(String number);
 
-    Boolean getSold();
+	String getNumber();
 
-    void setModel(IModel model);
+	void setUserAccountId(Integer sold);
 
-    IModel getModel();
+	Integer getUserAccountId();
 
-    void setVin(String vin);
+	void setFotoId(Integer sold);
 
-    String getVin();
+	Integer getFotoId();
 }

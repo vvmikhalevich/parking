@@ -10,9 +10,6 @@
 	<import resource="dao-context.xml" />
 
 
-	<context:property-placeholder
-		location="classpath:jdbc-test.properties" />
-
 
 	<context:component-scan
 		base-package="com.itacademy.jd2.vvm.parking.service.impl" />

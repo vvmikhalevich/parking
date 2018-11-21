@@ -81,4 +81,55 @@ public class BrandDaoImpl extends AbstractDaoImpl<IBrand, Integer> implements IB
 		return entity;
 	}
 
+	@Override
+	public void save(IBrand... entities) {
+		try (Connection c = getConnection()) {
+			c.setAutoCommit(false);
+			try {
+
+				for (IBrand entity : entities) {
+					PreparedStatement pStmt = c.prepareStatement(
+							String.format("insert into %s (name, created, updated) values(?,?,?)", getTableName()),
+							Statement.RETURN_GENERATED_KEYS);
+
+					pStmt.setString(1, entity.getName());
+					pStmt.setObject(2, entity.getCreated(), Types.TIMESTAMP);
+					pStmt.setObject(3, entity.getUpdated(), Types.TIMESTAMP);
+
+					pStmt.executeUpdate();
+
+					final ResultSet rs = pStmt.getGeneratedKeys();
+					rs.next();
+					final int id = rs.getInt("id");
+
+					rs.close();
+					pStmt.close();
+					entity.setId(id);
+				}
+
+				// the same should be done in 'update' DAO method
+				c.commit();
+			} catch (final Exception e) {
+				c.rollback();
+				throw new RuntimeException(e);
+			}
+
+		} catch (final SQLException e) {
+			throw new SQLExecutionException(e);
+		}
+	}
+
+	@Override
+	public List<IBrand> find(final BrandFilter filter) {
+		final StringBuilder sqlTile = new StringBuilder("");
+		appendSort(filter, sqlTile);
+		appendPaging(filter, sqlTile);
+		return executeFindQuery(sqlTile.toString());
+	}
+
+	@Override
+	public long getCount(final BrandFilter filter) {
+		return executeCountQuery("");
+	}
+
 }

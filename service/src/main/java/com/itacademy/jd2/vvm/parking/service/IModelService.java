@@ -26,4 +26,5 @@ public interface IModelService {
 	long getCount(ModelFilter filter);
 
 	List<IModel> find(ModelFilter filter);
+
 }

@@ -12,7 +12,7 @@ import com.itacademy.jd2.vvm.parking.service.IBrandService;
 
 import com.itacademy.jd2.vvm.parking.service.IModelService;
 
-@SpringJUnitConfig(locations = "classpath:service-context.xml")
+@SpringJUnitConfig(locations = "classpath:service-context-test.xml")
 public abstract class AbstractTest {
 	@Autowired
 	protected IBrandService brandService;
