@@ -6,7 +6,7 @@
 
 	<definition name="DefaultTemplate"
 		template="/WEB-INF/views/main-template.jsp">
-		<put-attribute name="title" value="Джылли и Ко" />
+		<put-attribute name="title" value="Парковка" />
 		<put-attribute name="header"
 			value="/WEB-INF/views/header.jsp" />
 		<put-attribute name="body" value="" />
@@ -22,6 +22,21 @@
 	<definition name="brand.list" extends="DefaultTemplate">
 		<put-attribute name="body"
 			value="/WEB-INF/views/brand/list.jsp" />
+	</definition>
+
+	<definition name="brand.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/brand/form.jsp" />
+	</definition>
+
+	<definition name="model.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/model/list.jsp" />
+	</definition>
+
+	<definition name="model.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/model/form.jsp" />
 	</definition>
 
 </tiles-definitions>
