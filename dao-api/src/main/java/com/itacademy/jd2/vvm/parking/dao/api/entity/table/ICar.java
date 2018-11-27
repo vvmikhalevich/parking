@@ -1,7 +1,5 @@
 package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
-import java.util.Date;
-
 public interface ICar extends IBaseEntity {
 
 	void setModel(IModel model);
@@ -12,11 +10,12 @@ public interface ICar extends IBaseEntity {
 
 	String getNumber();
 
-	void setUserAccountId(Integer sold);
+	void setUserAccount(IUserAccount userAccount);
 
-	Integer getUserAccountId();
+	IUserAccount getUserAccount();
 
-	void setFotoId(Integer sold);
+	void setFotoId(Integer id);
 
 	Integer getFotoId();
+
 }

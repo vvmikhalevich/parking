@@ -1,0 +1,32 @@
+22:16:38.147 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @411ms
+22:16:38.206 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
+22:16:38.391 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
+22:16:38.432 [main] INFO  /parking - Initializing Spring root WebApplicationContext
+22:16:38.432 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+22:16:38.499 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Sun Nov 25 22:16:38 MSK 2018]; root of context hierarchy
+22:16:38.525 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
+22:16:38.589 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
+22:16:38.604 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
+22:16:38.844 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 412 ms
+22:16:38.894 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
+22:16:38.894 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
+22:16:38.897 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
+22:16:38.897 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+22:16:39.173 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
+22:16:39.173 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
+22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
+22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
+22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
+22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
+22:16:39.175 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
+22:16:39.176 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
+22:16:39.200 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
+22:16:39.287 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
+22:16:39.319 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
+22:16:39.355 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+22:16:39.366 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+22:16:39.436 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
+22:16:39.464 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 570 ms
+22:16:39.464 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@4461c7e3{/parking,file:/D:/Java/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+22:16:39.478 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@591e58fa{HTTP/1.1}{0.0.0.0:8081}
+22:16:39.478 [main] INFO  org.eclipse.jetty.server.Server - Started @1748ms

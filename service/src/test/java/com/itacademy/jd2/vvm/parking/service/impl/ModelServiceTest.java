@@ -2,14 +2,14 @@ package com.itacademy.jd2.vvm.parking.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 
 public class ModelServiceTest extends AbstractTest {
@@ -73,4 +73,5 @@ public class ModelServiceTest extends AbstractTest {
 	 * assertTrue(infoEntityFromDb.getCreated().equals(infoEntityFromDb.getUpdated()
 	 * )); }
 	 */
+
 }
