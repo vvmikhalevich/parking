@@ -10,6 +10,8 @@ public class ModelDTO {
 
 	private Integer brandId;
 
+	private String brandName;
+
 	private Date created;
 
 	private Date updated;
@@ -52,6 +54,14 @@ public class ModelDTO {
 
 	public void setBrandId(Integer brandId) {
 		this.brandId = brandId;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
 	}
 
 }
