@@ -138,4 +138,8 @@
 
 	</dependencies>
 
+	<build>
+		<finalName>parking</finalName>
+	</build>
+
 </project>

@@ -1,76 +1,83 @@
-22:16:38.147 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @411ms
-22:16:38.206 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-22:16:38.391 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-22:16:38.432 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-22:16:38.432 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-22:16:38.499 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Sun Nov 25 22:16:38 MSK 2018]; root of context hierarchy
-22:16:38.525 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-22:16:38.589 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-22:16:38.604 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-22:16:38.844 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 412 ms
-22:16:38.894 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-22:16:38.894 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-22:16:38.897 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
-22:16:38.897 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-22:16:39.173 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-22:16:39.173 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-22:16:39.174 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-22:16:39.175 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-22:16:39.176 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-22:16:39.200 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-22:16:39.287 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
-22:16:39.319 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Nov 25 22:16:38 MSK 2018]; parent: Root WebApplicationContext
-22:16:39.355 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-22:16:39.366 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-22:16:39.436 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-22:16:39.464 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 570 ms
-22:16:39.464 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@4461c7e3{/parking,file:/D:/Java/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-22:16:39.478 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@591e58fa{HTTP/1.1}{0.0.0.0:8081}
-22:16:39.478 [main] INFO  org.eclipse.jetty.server.Server - Started @1748ms
-19:45:27.625 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @3477ms
-19:45:27.929 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-19:45:31.187 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-19:45:31.339 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-19:45:31.340 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-19:45:31.626 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Nov 28 19:45:31 MSK 2018]; root of context hierarchy
-19:45:31.717 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-19:45:32.055 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
-19:45:32.526 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
-19:45:32.666 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
-19:45:32.715 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
-19:45:32.726 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-19:45:32.788 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-19:45:34.167 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
-19:45:34.213 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
-19:45:34.543 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3203 ms
-19:45:35.349 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-19:45:35.350 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-19:45:35.358 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 19:45:35 MSK 2018]; parent: Root WebApplicationContext
-19:45:35.360 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-19:45:36.700 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-19:45:36.702 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-19:45:36.702 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-19:45:36.703 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-19:45:36.704 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-19:45:36.706 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-19:45:36.708 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-19:45:36.709 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
-19:45:36.710 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-19:45:36.824 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-19:45:37.664 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 19:45:35 MSK 2018]; parent: Root WebApplicationContext
-19:45:37.888 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 19:45:35 MSK 2018]; parent: Root WebApplicationContext
-19:45:38.126 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-19:45:38.201 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-19:45:38.444 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-19:45:38.570 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 3220 ms
-19:45:38.571 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-19:45:38.775 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
-19:45:38.776 [main] INFO  org.eclipse.jetty.server.Server - Started @14656ms
-19:54:21.053 [qtp1018298342-13] WARN  org.eclipse.jetty.servlet.ServletHandler - 
-org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/main-template.jsp'.
+20:24:17.673 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @1589ms
+20:24:17.986 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
+20:24:20.175 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
+20:24:20.300 [main] INFO  /parking - Initializing Spring root WebApplicationContext
+20:24:20.301 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+20:24:20.482 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Fri Nov 30 20:24:20 MSK 2018]; root of context hierarchy
+20:24:20.556 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
+20:24:20.734 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
+20:24:21.011 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
+20:24:21.066 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
+20:24:21.109 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
+20:24:21.116 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
+20:24:21.154 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
+20:24:23.083 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@5d5f10b2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74c79fa2, org.springframework.security.web.header.HeaderWriterFilter@1e0f9063, org.springframework.security.web.authentication.logout.LogoutFilter@53bd8fca, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7642df8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e30646a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5cde6747, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63a270c9, org.springframework.security.web.session.SessionManagementFilter@37c7595, org.springframework.security.web.access.ExceptionTranslationFilter@3ed242a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1199fe66]
+20:24:23.125 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
+20:24:23.733 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3432 ms
+20:24:23.972 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
+20:24:23.973 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
+20:24:23.984 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:24:23 MSK 2018]; parent: Root WebApplicationContext
+20:24:23.987 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+20:24:25.184 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
+20:24:25.187 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
+20:24:25.188 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
+20:24:25.189 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
+20:24:25.190 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
+20:24:25.191 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
+20:24:25.194 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
+20:24:25.195 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
+20:24:25.198 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
+20:24:25.251 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
+20:24:25.755 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:24:23 MSK 2018]; parent: Root WebApplicationContext
+20:24:25.825 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:24:23 MSK 2018]; parent: Root WebApplicationContext
+20:24:25.989 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+20:24:26.020 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+20:24:26.220 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
+20:24:26.328 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 2355 ms
+20:24:26.329 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@214b199c{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+20:24:26.370 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@5328a9c1{HTTP/1.1}{0.0.0.0:8081}
+20:24:26.371 [main] INFO  org.eclipse.jetty.server.Server - Started @10306ms
+20:28:25.086 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @1124ms
+20:28:25.244 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
+20:28:27.252 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
+20:28:27.358 [main] INFO  /parking - Initializing Spring root WebApplicationContext
+20:28:27.359 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
+20:28:27.514 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Fri Nov 30 20:28:27 MSK 2018]; root of context hierarchy
+20:28:27.573 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
+20:28:27.753 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
+20:28:28.002 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
+20:28:28.051 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
+20:28:28.089 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
+20:28:28.098 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
+20:28:28.137 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
+20:28:29.236 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
+20:28:29.277 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
+20:28:29.528 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2168 ms
+20:28:29.702 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
+20:28:29.703 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
+20:28:29.712 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:28:29 MSK 2018]; parent: Root WebApplicationContext
+20:28:29.714 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+20:28:30.495 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
+20:28:30.499 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
+20:28:30.501 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
+20:28:30.502 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
+20:28:30.504 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
+20:28:30.508 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
+20:28:30.511 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
+20:28:30.513 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
+20:28:30.515 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
+20:28:30.596 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
+20:28:31.256 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:28:29 MSK 2018]; parent: Root WebApplicationContext
+20:28:31.349 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri Nov 30 20:28:29 MSK 2018]; parent: Root WebApplicationContext
+20:28:31.473 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+20:28:31.512 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+20:28:31.691 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
+20:28:31.803 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 2099 ms
+20:28:31.804 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+20:28:31.845 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
+20:28:31.846 [main] INFO  org.eclipse.jetty.server.Server - Started @7896ms
+20:28:56.084 [qtp1018298342-18] WARN  org.eclipse.jetty.servlet.ServletHandler - 
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.lang.NullPointerException
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:986) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
 	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:870) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[javax.servlet-api-3.1.0.jar:3.1.0]
@@ -126,538 +133,20 @@ org.springframework.web.util.NestedServletException: Request processing failed; 
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.15.v20160210.jar:9.2.15.v20160210]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.15.v20160210.jar:9.2.15.v20160210]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
-Caused by: org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/main-template.jsp'.
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+Caused by: java.lang.NullPointerException
+	at com.itacademy.jd2.vvm.parking.web.converter.BrandToDTOConverter.apply(BrandToDTOConverter.java:16) ~[classes/:?]
+	at com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(BrandController.java:106) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:871) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:777) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
 	... 54 more
-Caused by: java.io.IOException: ServletException including path '/WEB-INF/views/main-template.jsp'.
-	at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:61) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:267) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-Caused by: java.io.IOException: JSPException including path '/WEB-INF/views/model/list.jsp'.
-	at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:61) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.jsp.JspRequest.doInclude(JspRequest.java:125) ~[tiles-request-jsp-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractViewRequest.dispatch(AbstractViewRequest.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.ChainedDelegateRenderer.render(ChainedDelegateRenderer.java:68) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.renderAttribute(InsertAttributeModel.java:188) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.execute(InsertAttributeModel.java:132) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.jsp.taglib.InsertAttributeTag.doTag(InsertAttributeTag.java:299) ~[tiles-jsp-3.0.8.jar:3.0.8]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspx_meth_tiles_005finsertAttribute_005f2(main_002dtemplate_jsp.java:314) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspService(main_002dtemplate_jsp.java:110) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:191) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:72) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:265) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-Caused by: javax.el.PropertyNotFoundException: Property 'brand' not found on type com.itacademy.jd2.vvm.parking.web.dto.ModelDTO
-	at javax.el.BeanELResolver$BeanProperties.get(BeanELResolver.java:245) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver$BeanProperties.access$300(BeanELResolver.java:222) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver.property(BeanELResolver.java:332) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver.getValue(BeanELResolver.java:95) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.CompositeELResolver.getValue(CompositeELResolver.java:66) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at org.apache.el.parser.AstValue.getValue(AstValue.java:123) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.parser.AstDynamicExpression.getValue(AstDynamicExpression.java:42) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.parser.AstCompositeExpression.getValue(AstCompositeExpression.java:48) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:182) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate(PageContextImpl.java:897) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspx_meth_c_005fout_005f2(list_jsp.java:247) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspx_meth_c_005fforEach_005f0(list_jsp.java:132) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspService(list_jsp.java:78) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.include(Dispatcher.java:115) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:924) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.doInclude(PageContextImpl.java:656) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.include(PageContextImpl.java:650) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.tiles.request.jsp.JspRequest.doInclude(JspRequest.java:123) ~[tiles-request-jsp-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractViewRequest.dispatch(AbstractViewRequest.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.ChainedDelegateRenderer.render(ChainedDelegateRenderer.java:68) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.renderAttribute(InsertAttributeModel.java:188) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.execute(InsertAttributeModel.java:132) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.jsp.taglib.InsertAttributeTag.doTag(InsertAttributeTag.java:299) ~[tiles-jsp-3.0.8.jar:3.0.8]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspx_meth_tiles_005finsertAttribute_005f2(main_002dtemplate_jsp.java:314) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspService(main_002dtemplate_jsp.java:110) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:191) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:72) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:265) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-19:58:30.440 [qtp1018298342-19] WARN  org.eclipse.jetty.servlet.ServletHandler - 
-org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/main-template.jsp'.
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:986) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:870) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:855) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270) ~[spring-web-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577) [jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:544) [jetty-io-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
-Caused by: org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/main-template.jsp'.
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-Caused by: java.io.IOException: ServletException including path '/WEB-INF/views/main-template.jsp'.
-	at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:61) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:267) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-Caused by: java.io.IOException: JSPException including path '/WEB-INF/views/model/list.jsp'.
-	at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:61) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.jsp.JspRequest.doInclude(JspRequest.java:125) ~[tiles-request-jsp-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractViewRequest.dispatch(AbstractViewRequest.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.ChainedDelegateRenderer.render(ChainedDelegateRenderer.java:68) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.renderAttribute(InsertAttributeModel.java:188) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.execute(InsertAttributeModel.java:132) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.jsp.taglib.InsertAttributeTag.doTag(InsertAttributeTag.java:299) ~[tiles-jsp-3.0.8.jar:3.0.8]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspx_meth_tiles_005finsertAttribute_005f2(main_002dtemplate_jsp.java:314) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspService(main_002dtemplate_jsp.java:110) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:191) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:72) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:265) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-Caused by: javax.el.PropertyNotFoundException: Property 'brandName' not found on type com.itacademy.jd2.vvm.parking.web.dto.ModelDTO
-	at javax.el.BeanELResolver$BeanProperties.get(BeanELResolver.java:245) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver$BeanProperties.access$300(BeanELResolver.java:222) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver.property(BeanELResolver.java:332) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.BeanELResolver.getValue(BeanELResolver.java:95) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at javax.el.CompositeELResolver.getValue(CompositeELResolver.java:66) ~[apache-el-8.0.9.M3.jar:8.0.9]
-	at org.apache.el.parser.AstValue.getValue(AstValue.java:123) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.parser.AstDynamicExpression.getValue(AstDynamicExpression.java:42) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.parser.AstCompositeExpression.getValue(AstCompositeExpression.java:48) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:182) ~[jasper-el-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate(PageContextImpl.java:897) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspx_meth_c_005fout_005f2(list_jsp.java:247) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspx_meth_c_005fforEach_005f0(list_jsp.java:132) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.model.list_jsp._jspService(list_jsp.java:78) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.include(Dispatcher.java:115) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.jasper.runtime.JspRuntimeLibrary.include(JspRuntimeLibrary.java:924) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.doInclude(PageContextImpl.java:656) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.jasper.runtime.PageContextImpl.include(PageContextImpl.java:650) ~[jasper-6.0.53.jar:6.0.53]
-	at org.apache.tiles.request.jsp.JspRequest.doInclude(JspRequest.java:123) ~[tiles-request-jsp-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractViewRequest.dispatch(AbstractViewRequest.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.ChainedDelegateRenderer.render(ChainedDelegateRenderer.java:68) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.renderAttribute(InsertAttributeModel.java:188) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.template.InsertAttributeModel.execute(InsertAttributeModel.java:132) ~[tiles-template-3.0.8.jar:3.0.8]
-	at org.apache.tiles.jsp.taglib.InsertAttributeTag.doTag(InsertAttributeTag.java:299) ~[tiles-jsp-3.0.8.jar:3.0.8]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspx_meth_tiles_005finsertAttribute_005f2(main_002dtemplate_jsp.java:314) ~[?:?]
-	at org.apache.jsp.WEB_002dINF.views.main_002dtemplate_jsp._jspService(main_002dtemplate_jsp.java:110) ~[?:?]
-	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) ~[jasper-6.0.53.jar:6.0.53]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:388) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:321) ~[jasper-6.0.53.jar:2.3]
-	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:267) ~[jasper-6.0.53.jar:2.3]
-	at org.eclipse.jetty.jsp.JettyJspServlet.service(JettyJspServlet.java:107) ~[apache-jsp-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) ~[javax.servlet-api-3.1.0.jar:3.1.0]
-	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:812) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:587) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:595) ~[jetty-security-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) ~[jetty-servlet-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:191) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.eclipse.jetty.server.Dispatcher.forward(Dispatcher.java:72) ~[jetty-server-9.2.15.v20160210.jar:9.2.15.v20160210]
-	at org.apache.tiles.request.servlet.ServletRequest.forward(ServletRequest.java:265) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.servlet.ServletRequest.doForward(ServletRequest.java:228) ~[tiles-request-servlet-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.AbstractClientRequest.dispatch(AbstractClientRequest.java:57) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.request.render.DispatchRenderer.render(DispatchRenderer.java:47) ~[tiles-request-api-1.0.7.jar:1.0.7]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:259) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:397) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:238) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:221) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.apache.tiles.renderer.DefinitionRenderer.render(DefinitionRenderer.java:59) ~[tiles-core-3.0.8.jar:3.0.8]
-	at org.springframework.web.servlet.view.tiles3.TilesView.renderMergedOutputModel(TilesView.java:146) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:312) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978) ~[spring-webmvc-5.0.0.RELEASE.jar:5.0.0.RELEASE]
-	... 54 more
-20:01:40.579 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @943ms
-20:01:40.737 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-20:01:42.765 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-20:01:42.871 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-20:01:42.872 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-20:01:43.053 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Nov 28 20:01:43 MSK 2018]; root of context hierarchy
-20:01:43.145 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-20:01:43.321 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
-20:01:43.566 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
-20:01:43.622 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
-20:01:43.662 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
-20:01:43.672 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-20:01:43.722 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-20:01:44.819 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
-20:01:44.842 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
-20:01:45.067 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2194 ms
-20:01:45.194 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-20:01:45.195 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-20:01:45.205 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:01:45 MSK 2018]; parent: Root WebApplicationContext
-20:01:45.208 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-20:01:45.950 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-20:01:45.954 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-20:01:45.955 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-20:01:45.956 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-20:01:45.958 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-20:01:45.962 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-20:01:45.965 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-20:01:45.967 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
-20:01:45.970 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-20:01:46.058 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-20:01:46.730 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:01:45 MSK 2018]; parent: Root WebApplicationContext
-20:01:46.827 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:01:45 MSK 2018]; parent: Root WebApplicationContext
-20:01:46.960 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-20:01:46.991 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-20:01:47.145 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-20:01:47.274 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 2079 ms
-20:01:47.275 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-20:01:47.319 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
-20:01:47.320 [main] INFO  org.eclipse.jetty.server.Server - Started @7694ms
-20:06:41.054 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @950ms
-20:06:41.214 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-20:06:43.193 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-20:06:43.305 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-20:06:43.306 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-20:06:43.478 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Nov 28 20:06:43 MSK 2018]; root of context hierarchy
-20:06:43.547 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-20:06:43.727 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
-20:06:43.992 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
-20:06:44.040 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
-20:06:44.077 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
-20:06:44.088 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-20:06:44.130 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-20:06:45.205 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
-20:06:45.236 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
-20:06:45.424 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2118 ms
-20:06:45.555 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-20:06:45.555 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-20:06:45.563 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:06:45 MSK 2018]; parent: Root WebApplicationContext
-20:06:45.565 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-20:06:46.332 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-20:06:46.335 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-20:06:46.336 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-20:06:46.338 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-20:06:46.339 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-20:06:46.340 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-20:06:46.344 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-20:06:46.346 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
-20:06:46.349 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-20:06:46.442 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-20:06:47.276 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:06:45 MSK 2018]; parent: Root WebApplicationContext
-20:06:47.385 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:06:45 MSK 2018]; parent: Root WebApplicationContext
-20:06:47.500 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-20:06:47.536 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-20:06:47.794 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-20:06:47.920 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 2365 ms
-20:06:47.920 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-20:06:47.980 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
-20:06:47.981 [main] INFO  org.eclipse.jetty.server.Server - Started @7889ms
-20:15:58.360 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @1196ms
-20:15:58.515 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-20:16:01.125 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-20:16:01.289 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-20:16:01.291 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-20:16:01.531 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Nov 28 20:16:01 MSK 2018]; root of context hierarchy
-20:16:01.641 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-20:16:01.851 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
-20:16:02.076 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
-20:16:02.127 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
-20:16:02.173 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
-20:16:02.181 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-20:16:02.209 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-20:16:03.352 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
-20:16:03.402 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
-20:16:03.612 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2321 ms
-20:16:03.741 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-20:16:03.741 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-20:16:03.747 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:16:03 MSK 2018]; parent: Root WebApplicationContext
-20:16:03.749 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-20:16:04.469 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-20:16:04.476 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-20:16:04.478 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-20:16:04.479 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-20:16:04.488 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-20:16:04.489 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-20:16:04.493 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-20:16:04.498 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
-20:16:04.504 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-20:16:04.610 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-20:16:05.534 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:16:03 MSK 2018]; parent: Root WebApplicationContext
-20:16:05.634 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:16:03 MSK 2018]; parent: Root WebApplicationContext
-20:16:05.754 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-20:16:05.794 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-20:16:06.050 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-20:16:06.152 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 2411 ms
-20:16:06.152 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-20:16:06.194 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
-20:16:06.194 [main] INFO  org.eclipse.jetty.server.Server - Started @9047ms
-20:37:00.015 [main] INFO  org.eclipse.jetty.util.log - Logging initialized @980ms
-20:37:00.176 [main] INFO  org.eclipse.jetty.server.Server - jetty-9.2.15.v20160210
-20:37:02.254 [main] INFO  /parking - No Spring WebApplicationInitializer types detected on classpath
-20:37:02.358 [main] INFO  /parking - Initializing Spring root WebApplicationContext
-20:37:02.359 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization started
-20:37:02.518 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Nov 28 20:37:02 MSK 2018]; root of context hierarchy
-20:37:02.590 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [webapp-context.xml]
-20:37:02.742 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [security-context.xml]
-20:37:02.969 [main] INFO  org.springframework.security.config.SecurityNamespaceHandler - Spring Security 'config' module version is 5.0.0.RELEASE
-20:37:03.019 [main] INFO  org.springframework.security.config.http.FilterInvocationSecurityMetadataSourceParser - Creating access control expression attribute '!isAnonymous()' for /model**
-20:37:03.058 [main] INFO  org.springframework.security.config.http.HttpSecurityBeanDefinitionParser - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1200, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 1700, Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 1800, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2300, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2400]
-20:37:03.068 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [service-context.xml]
-20:37:03.110 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [dao-context.xml]
-20:37:04.050 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@35f26e72, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d6764b2, org.springframework.security.web.header.HeaderWriterFilter@67304a40, org.springframework.security.web.authentication.logout.LogoutFilter@49c6c24f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fe1b4fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79351f41, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c32386d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6399551e, org.springframework.security.web.session.SessionManagementFilter@13d73fa, org.springframework.security.web.access.ExceptionTranslationFilter@5023bb8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d5f10b2]
-20:37:04.071 [main] INFO  org.springframework.security.config.http.DefaultFilterChainValidator - Checking whether login URL '/login' is accessible with your configuration
-20:37:04.250 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1891 ms
-20:37:04.353 [main] INFO  /parking - Initializing Spring FrameworkServlet 'dispatcher'
-20:37:04.353 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
-20:37:04.359 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:37:04 MSK 2018]; parent: Root WebApplicationContext
-20:37:04.361 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
-20:37:04.925 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.index(javax.servlet.http.HttpServletRequest,java.lang.Integer,java.lang.String)
-20:37:04.928 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/delete],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.delete(java.lang.Integer)
-20:37:04.929 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand],methods=[POST]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.BrandController.save(com.itacademy.jd2.vvm.parking.web.dto.BrandDTO,org.springframework.validation.BindingResult)
-20:37:04.930 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.showForm()
-20:37:04.931 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.viewDetails(java.lang.Integer)
-20:37:04.932 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/brand/{id}/edit],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.BrandController.edit(java.lang.Integer)
-20:37:04.934 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/],methods=[GET]}" onto public java.lang.String com.itacademy.jd2.vvm.parking.web.controller.DefaultController.index()
-20:37:04.936 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.LoginController.login(java.lang.String,java.lang.String)
-20:37:04.938 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/model],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.itacademy.jd2.vvm.parking.web.controller.ModelController.index(javax.servlet.http.HttpServletRequest)
-20:37:05.024 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.0.1.Final
-20:37:05.609 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:37:04 MSK 2018]; parent: Root WebApplicationContext
-20:37:05.722 [main] INFO  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcher-servlet': startup date [Wed Nov 28 20:37:04 MSK 2018]; parent: Root WebApplicationContext
-20:37:05.847 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-20:37:05.950 [main] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-20:37:06.126 [main] INFO  org.apache.tiles.access.TilesAccess - Publishing TilesContext for context: org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext
-20:37:06.224 [main] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 1871 ms
-20:37:06.225 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@3ec300f1{/parking,file:/D:/vmikhalevich/G-JD2-10-17_vmikhalevich/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
-20:37:06.260 [main] INFO  org.eclipse.jetty.server.ServerConnector - Started ServerConnector@29182679{HTTP/1.1}{0.0.0.0:8081}
-20:37:06.261 [main] INFO  org.eclipse.jetty.server.Server - Started @7237ms
