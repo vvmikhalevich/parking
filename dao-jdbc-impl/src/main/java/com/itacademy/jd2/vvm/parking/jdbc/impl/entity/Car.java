@@ -1,6 +1,7 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
@@ -12,7 +13,7 @@ public class Car extends BaseEntity implements ICar {
 
 	private IUserAccount userAccount;
 
-	private Integer fotoId;
+	private IFoto foto;
 
 	@Override
 	public IModel getModel() {
@@ -45,13 +46,13 @@ public class Car extends BaseEntity implements ICar {
 	}
 
 	@Override
-	public Integer getFotoId() {
-		return fotoId;
+	public IFoto getFoto() {
+		return foto;
 	}
 
 	@Override
-	public void setFotoId(Integer fotoId) {
-		this.fotoId = fotoId;
+	public void setFoto(IFoto foto) {
+		this.foto = foto;
 	}
 
 }

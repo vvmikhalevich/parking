@@ -129,6 +129,13 @@ public class ModelDaoImpl extends AbstractDaoImpl<IModel, Integer> implements IM
 	}
 
 	@Override
+	public IModel getFullInfo(final Integer id) {
+		final IModel model = get(id);
+
+		return model;
+	}
+
+	@Override
 	protected String getTableName() {
 		return "model";
 	}

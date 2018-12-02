@@ -1,8 +1,6 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class UserAccount extends BaseEntity implements IUserAccount {
@@ -54,13 +52,13 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	}
 
 	@Override
-	public void setMail(String mail) {
+	public void setEmail(String mail) {
 		this.mail = mail;
 
 	}
 
 	@Override
-	public String getMail() {
+	public String getEmail() {
 
 		return mail;
 	}

@@ -13,6 +13,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.ICarDao;
 import com.itacademy.jd2.vvm.parking.dao.api.IModelDao;
 import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Brand;
@@ -26,12 +27,15 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	private IModelDao modelDao;
 	private IUserAccountDao userAccountDao;
+	private IFoto foto;
 
 	@Autowired
-	public CarDaoImpl(IModelDao modelDao, IUserAccountDao userAccountDao) {
+	public CarDaoImpl(IModelDao modelDao, IUserAccountDao userAccountDao, IFoto foto) {
 		super();
 		this.modelDao = modelDao;
 		this.userAccountDao = userAccountDao;
+		this.foto = foto;
+
 	}
 
 	@Override
@@ -49,7 +53,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 				pStmt.setInt(1, entity.getModel().getId());
 				pStmt.setString(2, entity.getNumber());
 				pStmt.setInt(3, entity.getUserAccount().getId());
-				pStmt.setInt(4, entity.getFotoId());
+				pStmt.setInt(4, entity.getFoto().getId());
 				pStmt.setObject(5, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(6, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -76,7 +80,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 				pStmt.setInt(1, entity.getModel().getId());
 				pStmt.setString(2, entity.getNumber());
 				pStmt.setInt(3, entity.getUserAccount().getId());
-				pStmt.setInt(4, entity.getFotoId());
+				pStmt.setInt(4, entity.getFoto().getId());
 
 				pStmt.executeUpdate();
 				return entity;
@@ -90,7 +94,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		entity.setId((Integer) resultSet.getObject("id"));
 		entity.setNumber(resultSet.getString("number"));
 		// entity.setUserAccount(resultSet.getInt("user_account_id"));
-		entity.setFotoId(resultSet.getInt("foto_id"));
+		// entity.setFoto(resultSet.getInt("foto_id"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 
@@ -130,6 +134,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		if (car.getModel() != null) {
 			car.setModel(modelDao.get(car.getModel().getId()));
 		}
+		// add!!!
 
 		return car;
 	}

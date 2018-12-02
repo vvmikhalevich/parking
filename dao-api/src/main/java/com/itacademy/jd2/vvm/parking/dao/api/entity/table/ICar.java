@@ -2,20 +2,20 @@ package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
 public interface ICar extends IBaseEntity {
 
-	void setModel(IModel model);
-
 	IModel getModel();
 
-	void setNumber(String number);
+	void setModel(IModel model);
 
 	String getNumber();
 
-	void setUserAccount(IUserAccount userAccount);
+	void setNumber(String number);
 
 	IUserAccount getUserAccount();
 
-	void setFotoId(Integer id);
+	void setUserAccount(IUserAccount userAccount);
 
-	Integer getFotoId();
+	IFoto getFoto();
+
+	void setFoto(IFoto foto);
 
 }

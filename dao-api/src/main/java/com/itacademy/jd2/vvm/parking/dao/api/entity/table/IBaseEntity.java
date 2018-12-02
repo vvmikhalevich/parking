@@ -3,16 +3,17 @@ package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 import java.util.Date;
 
 public interface IBaseEntity {
-    Integer getId();
 
-    void setId(Integer id);
+	Integer getId();
 
-    Date getCreated();
+	void setId(Integer id);
 
-    void setCreated(Date created);
+	Date getCreated();
 
-    Date getUpdated();
+	void setCreated(Date created);
 
-    void setUpdated(Date updated);
+	Date getUpdated();
+
+	void setUpdated(Date updated);
 
 }

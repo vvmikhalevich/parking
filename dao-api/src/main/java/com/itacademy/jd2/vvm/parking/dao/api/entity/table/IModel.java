@@ -1,8 +1,7 @@
 package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
-import java.util.Set;
-
 public interface IModel extends IBaseEntity {
+	
 	String getName();
 
 	void setName(String name);

@@ -41,7 +41,7 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 				pStmt.setString(1, entity.getFirstName());
 				pStmt.setString(2, entity.getLastName());
 				pStmt.setString(3, entity.getRole().name());
-				pStmt.setString(4, entity.getMail());
+				pStmt.setString(4, entity.getEmail());
 				pStmt.setString(5, entity.getPassword());
 				pStmt.setObject(6, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(7, entity.getUpdated(), Types.TIMESTAMP);
@@ -69,7 +69,7 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 				pStmt.setString(1, entity.getFirstName());
 				pStmt.setString(2, entity.getLastName());
 				pStmt.setString(3, entity.getRole().name());
-				pStmt.setString(4, entity.getMail());
+				pStmt.setString(4, entity.getEmail());
 				pStmt.setString(5, entity.getPassword());
 
 				pStmt.executeUpdate();
@@ -85,7 +85,7 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 		entity.setFirstName(resultSet.getString("first_name"));
 		entity.setLastName(resultSet.getString("last_name"));
 		entity.setRole(RoleType.valueOf(resultSet.getString("role")));
-		entity.setMail(resultSet.getString("email"));
+		entity.setEmail(resultSet.getString("email"));
 		entity.setPassword(resultSet.getString("password"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
