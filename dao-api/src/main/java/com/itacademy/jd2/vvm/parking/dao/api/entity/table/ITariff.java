@@ -6,7 +6,7 @@ public interface ITariff extends IBaseEntity {
 
 	void setName(String name);
 
-	String getPrice();
+	Integer getPrice();
 
 	void setPrice(Integer price);
 
