@@ -24,9 +24,9 @@
 						value="${model.updated}" /></td>
 				<td class="right"><a class="btn-floating"
 					href="${pagesModel}/${model.id}"><i class="material-icons">info</i></a>
-					<a class="btn-floating" href="${pagesBrand}/${model.id}/edit"><i
+					<a class="btn-floating" href="${pagesModel}/${model.id}/edit"><i
 						class="material-icons">edit</i></a> <a class="btn-floating red"
-					href="${pagesBrand}/${model.id}/delete"><i
+					href="${pagesModel}/${model.id}/delete"><i
 						class="material-icons">delete</i></a></td>
 			</tr>
 		</c:forEach>

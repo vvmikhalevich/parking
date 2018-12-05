@@ -21,7 +21,7 @@ public interface IModelService {
 
 	// IModelInfo createInfoEntity();
 
-	// IModel getFullInfo(final Integer id);
+	IModel getFullInfo(final Integer id);
 
 	long getCount(ModelFilter filter);
 

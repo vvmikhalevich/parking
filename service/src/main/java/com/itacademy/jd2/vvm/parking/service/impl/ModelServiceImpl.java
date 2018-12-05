@@ -77,4 +77,10 @@ public class ModelServiceImpl implements IModelService {
 		return dao.find(filter);
 	}
 
+	@Override
+	public IModel getFullInfo(Integer id) {
+		final IModel entity = dao.getFullInfo(id);
+		return entity;
+	}
+
 }

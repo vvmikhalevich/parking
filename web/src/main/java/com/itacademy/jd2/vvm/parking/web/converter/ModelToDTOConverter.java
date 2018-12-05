@@ -13,21 +13,19 @@ public class ModelToDTOConverter implements Function<IModel, ModelDTO> {
 
 	@Override
 	public ModelDTO apply(final IModel entity) {
-		final ModelDTO dto = new ModelDTO();
-		dto.setId(entity.getId());
-		dto.setName(entity.getName());
-		// dto.setBrandId(entity.getBrand().getId());
-		// dto.setBrandName(entity.getBrand().getName());
-		dto.setCreated(entity.getCreated());
-		dto.setUpdated(entity.getUpdated());
+		final ModelDTO modelDto = new ModelDTO();
+		modelDto.setId(entity.getId());
+		modelDto.setName(entity.getName());
+		modelDto.setCreated(entity.getCreated());
+		modelDto.setUpdated(entity.getUpdated());
 		final IBrand brand = entity.getBrand();
 		if (brand != null) {
-			dto.setBrandId(brand.getId());
-			dto.setBrandName(brand.getName());
+			modelDto.setBrandId(brand.getId());
+			modelDto.setBrandName(brand.getName());
 
 		}
 
-		return dto;
+		return modelDto;
 	}
 
 }

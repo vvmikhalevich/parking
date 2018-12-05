@@ -16,16 +16,25 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="input-field col s12">
+				<form:select path="brandId" disabled="${readonly}">
+					<form:options items="${brandsChoices}" />
+				</form:select>
+				<form:errors path="brandId" cssClass="red-text" />
+				<label for="brandId">brand</label>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="col s6"></div>
 			<div class="col s3">
 				<c:if test="${!readonly}">
-					<button class="btn waves-effect waves-light right" type="submit">сохранить</button>
+					<button class="btn waves-effect waves-light right" type="submit">сохранить</button>
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesBrand}">к
+				<a class="btn waves-effect waves-light right" href="${pagesModel}">к
 					списку<i class="material-icons right"></i>
 				</a>
 			</div>

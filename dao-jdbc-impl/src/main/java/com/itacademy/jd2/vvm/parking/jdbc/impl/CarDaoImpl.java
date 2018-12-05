@@ -27,15 +27,12 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	private IModelDao modelDao;
 	private IUserAccountDao userAccountDao;
-	private IFoto foto;
-
+	
 	@Autowired
-	public CarDaoImpl(IModelDao modelDao, IUserAccountDao userAccountDao, IFoto foto) {
+	public CarDaoImpl(IModelDao modelDao, IUserAccountDao userAccountDao) {
 		super();
 		this.modelDao = modelDao;
 		this.userAccountDao = userAccountDao;
-		this.foto = foto;
-
 	}
 
 	@Override
