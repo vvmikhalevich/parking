@@ -9,17 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.itacademy.jd2.vvm.parking.dao.api.ICarDao;
-import com.itacademy.jd2.vvm.parking.dao.api.IModelDao;
 import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Car;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Model;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
@@ -63,7 +56,8 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 	@Override
 	public void update(final IUserAccount entity) {
 		executeStatement(new PreparedStatementAction<IUserAccount>(String.format(
-				"update %s set first_name=?, last_name=?, role=?, email=?, password=?  where id=?", getTableName())) {
+				"update %s set first_name=?, last_name=?, role=?, email=?, password=?, updated=?  where id=?",
+				getTableName())) {
 			@Override
 			public IUserAccount doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getFirstName());
@@ -71,6 +65,7 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 				pStmt.setString(3, entity.getRole().name());
 				pStmt.setString(4, entity.getEmail());
 				pStmt.setString(5, entity.getPassword());
+				pStmt.setObject(6, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
 				return entity;
