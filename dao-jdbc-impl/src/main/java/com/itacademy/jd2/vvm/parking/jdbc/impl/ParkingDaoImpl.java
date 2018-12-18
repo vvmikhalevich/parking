@@ -9,13 +9,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IParkingDao;
-import com.itacademy.jd2.vvm.parking.dao.api.ITariffDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Parking;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Tariff;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
 @Repository
