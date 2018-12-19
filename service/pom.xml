@@ -15,7 +15,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.itacademy.jd2.vvm.parking</groupId>
-			<artifactId>dao-jdbc-impl</artifactId>
+			<artifactId>dao-orm-impl</artifactId>
 		</dependency>
 
 		<dependency>
