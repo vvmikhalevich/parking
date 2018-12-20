@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
-import org.springframework.stereotype.Indexed;
-
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 

@@ -2,7 +2,6 @@ package com.itacademy.jd2.vvm.parking.dao.orm.impl.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 
