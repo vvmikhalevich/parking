@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
-
 import com.itacademy.jd2.vvm.parking.service.IBrandService;
-
 import com.itacademy.jd2.vvm.parking.service.IModelService;
 
 @SpringJUnitConfig(locations = "classpath:service-context-test.xml")

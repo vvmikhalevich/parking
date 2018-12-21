@@ -28,6 +28,7 @@ public interface IBrandService {
 
 	long getCount(BrandFilter filter);
 
+	@Transactional
 	void save(IBrand... entity);
 
 }
