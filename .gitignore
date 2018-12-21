@@ -19,3 +19,7 @@ dao-jdbc-impl/.classpath
 *.name
 service/.gitignore
 web/.gitignore
+dao-api/.settings/
+dao-orm-impl/.settings/
+service/.settings/
+web/.settings/
