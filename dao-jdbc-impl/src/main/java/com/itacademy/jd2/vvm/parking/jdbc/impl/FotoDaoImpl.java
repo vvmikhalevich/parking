@@ -4,10 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IFotoDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.FotoFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Foto;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
@@ -74,5 +77,13 @@ public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFot
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 		return entity;
 	}
+
+	@Override
+	public List<IFoto> find(FotoFilter filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

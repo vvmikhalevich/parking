@@ -40,7 +40,7 @@ CREATE TABLE "car" (
 
 CREATE TABLE "foto" (
 	"id" serial NOT NULL,
-	"link" character varying NOT NULL,
+	"foto" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT foto_pk PRIMARY KEY ("id")
@@ -153,7 +153,7 @@ CREATE TABLE "place" (
 CREATE TABLE "event" (
 	"id" serial NOT NULL,
 	"car_id" int NOT NULL,
-	"palace_id" int NOT NULL,
+	"place_id" int NOT NULL,
 	"time_start" TIMESTAMP NOT NULL,
 	"time_end" TIMESTAMP NOT NULL,
 	"created" TIMESTAMP NOT NULL,
@@ -189,4 +189,5 @@ ALTER TABLE "place" ADD CONSTRAINT "place_fk0" FOREIGN KEY ("parking_id") REFERE
 ALTER TABLE "place" ADD CONSTRAINT "place_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 
 ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
-ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("palace_id") REFERENCES "place"("id");
+ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+
