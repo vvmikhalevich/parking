@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 
 public interface IUserAccountService {

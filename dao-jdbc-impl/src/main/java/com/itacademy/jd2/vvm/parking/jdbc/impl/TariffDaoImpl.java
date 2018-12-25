@@ -96,7 +96,6 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 		return executeCountQuery("");
 	}
 
-	@Override
 	public ITariff getFullInfo(Integer id) {
 		final ITariff tariff = get(id);
 

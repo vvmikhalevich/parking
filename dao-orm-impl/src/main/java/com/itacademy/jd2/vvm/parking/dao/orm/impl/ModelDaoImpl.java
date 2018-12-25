@@ -84,20 +84,6 @@ public class ModelDaoImpl extends AbstractDaoImpl<IModel, Integer> implements IM
 		return resultList;
 	}
 
-	@Override
-	public long getCount(final ModelFilter filter) {
-		final EntityManager em = getEntityManager();
-		final CriteriaBuilder cb = em.getCriteriaBuilder();
-
-		final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-		final Root<Model> from = cq.from(Model.class);
-
-		cq.select(cb.count(from));
-
-		final TypedQuery<Long> q = em.createQuery(cq);
-		return q.getSingleResult();
-	}
-
 	private Path<?> getSortPath(final Root<Model> from, final String sortColumn) {
 		switch (sortColumn) {
 		case "name":
@@ -114,4 +100,19 @@ public class ModelDaoImpl extends AbstractDaoImpl<IModel, Integer> implements IM
 			throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
 		}
 	}
+
+	@Override
+	public long getCount(final ModelFilter filter) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		final Root<Model> from = cq.from(Model.class);
+
+		cq.select(cb.count(from));
+
+		final TypedQuery<Long> q = em.createQuery(cq);
+		return q.getSingleResult();
+	}
+
 }

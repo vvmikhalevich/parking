@@ -11,6 +11,6 @@ public interface ITariffDao extends IDao<ITariff, Integer> {
 
 	long getCount(TariffFilter filter);
 
-	ITariff getFullInfo(Integer id);
+	// ITariff getFullInfo(Integer id);
 
 }

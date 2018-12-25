@@ -13,7 +13,7 @@ CREATE TABLE "brand" (
 CREATE TABLE "model" (
 	"id" serial NOT NULL,
 	"name" character varying NOT NULL,
-	"brand_id" int NOT NULL,
+	"brand_id" integer NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT model_pk PRIMARY KEY ("id")
@@ -25,10 +25,10 @@ CREATE TABLE "model" (
 
 CREATE TABLE "car" (
 	"id" serial NOT NULL,
-	"model_id" int NOT NULL,
+	"model_id" integer NOT NULL,
 	"number" character varying NOT NULL,
-	"user_account_id" int NOT NULL,
-	"foto_id" int NOT NULL,
+	"user_account_id" integer NOT NULL,
+	"foto_id" integer NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT car_pk PRIMARY KEY ("id")
@@ -40,7 +40,7 @@ CREATE TABLE "car" (
 
 CREATE TABLE "foto" (
 	"id" serial NOT NULL,
-	"foto" character varying NOT NULL,
+	"link" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT foto_pk PRIMARY KEY ("id")
@@ -54,7 +54,7 @@ CREATE TABLE "user_account" (
 	"id" serial NOT NULL,
 	"first_name" character varying NOT NULL,
 	"last_name" character varying NOT NULL,
-	"role" int NOT NULL,
+	"role" character varying NOT NULL,
 	"email" character varying NOT NULL,
 	"password" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
@@ -68,9 +68,9 @@ CREATE TABLE "user_account" (
 
 CREATE TABLE "client" (
 	"id" serial NOT NULL,
-	"user_account_id" int NOT NULL,
-	"car_id" int NOT NULL,
-	"tariff_id" int NOT NULL,
+	"user_account_id" integer NOT NULL,
+	"car_id" integer NOT NULL,
+	"tariff_id" integer NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT client_pk PRIMARY KEY ("id")
@@ -96,7 +96,7 @@ CREATE TABLE "tariff" (
 
 CREATE TABLE "transaction" (
 	"id" serial NOT NULL,
-	"client_id" int NOT NULL,
+	"client_id" integer NOT NULL,
 	"value" DECIMAL NOT NULL,
 	"description" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
@@ -110,8 +110,8 @@ CREATE TABLE "transaction" (
 
 CREATE TABLE "place_owner" (
 	"id" serial NOT NULL,
-	"user_account_id" int NOT NULL,
-	"place_id" int NOT NULL,
+	"user_account_id" integer NOT NULL,
+	"place_id" integer NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT place_owner_pk PRIMARY KEY ("id")
@@ -138,8 +138,8 @@ CREATE TABLE "parking" (
 CREATE TABLE "place" (
 	"id" serial NOT NULL,
 	"name" character varying NOT NULL,
-	"parking_id" int NOT NULL,
-	"car_id" int NOT NULL,
+	"parking_id" integer NOT NULL,
+	"car_id" integer NOT NULL,
 	"status" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
@@ -152,8 +152,8 @@ CREATE TABLE "place" (
 
 CREATE TABLE "event" (
 	"id" serial NOT NULL,
-	"car_id" int NOT NULL,
-	"place_id" int NOT NULL,
+	"car_id" integer NOT NULL,
+	"place_id" integer NOT NULL,
 	"time_start" TIMESTAMP NOT NULL,
 	"time_end" TIMESTAMP NOT NULL,
 	"created" TIMESTAMP NOT NULL,
@@ -190,4 +190,3 @@ ALTER TABLE "place" ADD CONSTRAINT "place_fk1" FOREIGN KEY ("car_id") REFERENCES
 
 ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
-
