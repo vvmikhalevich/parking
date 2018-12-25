@@ -18,7 +18,6 @@ import com.itacademy.jd2.vvm.parking.dao.api.filter.ClientFilter;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Model;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
