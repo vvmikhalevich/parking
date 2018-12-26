@@ -19,7 +19,7 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	private RoleType role;
 
 	@Column
-	private String mail;
+	private String email;
 
 	@Column
 	private String password;
@@ -61,15 +61,15 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	}
 
 	@Override
-	public void setEmail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
 
 	}
 
 	@Override
 	public String getEmail() {
 
-		return mail;
+		return email;
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.SingularAttribute;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
@@ -49,10 +48,11 @@ public class BrandDaoImpl extends AbstractDaoImpl<IBrand, Integer> implements IB
 		final Root<Brand> from = cq.from(Brand.class);// select from brand
 		cq.select(from); // select what? select *
 
-		if (filter.getSortColumn() != null) {
-			final SingularAttribute<? super Brand, ?> sortProperty = toMetamodelFormat(filter.getSortColumn());
-			final Path<?> expression = from.get(sortProperty); // build path to
-																// sort
+		final String sortColumn = filter.getSortColumn();
+		if (sortColumn != null) {
+
+			final Path<?> expression = getSortPath(from, sortColumn); // build path to
+			// sort
 			// property
 			cq.orderBy(new OrderImpl(expression, filter.getSortOrder())); // order
 																			// by
@@ -66,16 +66,17 @@ public class BrandDaoImpl extends AbstractDaoImpl<IBrand, Integer> implements IB
 
 	}
 
-	private SingularAttribute<? super Brand, ?> toMetamodelFormat(final String sortColumn) {
+	private Path<?> getSortPath(final Root<Brand> from, final String sortColumn) {
 		switch (sortColumn) {
-		case "created":
-			return Brand_.created;
-		case "updated":
-			return Brand_.updated;
 		case "id":
-			return Brand_.id;
+			return from.get(Brand_.id);
 		case "name":
-			return Brand_.name;
+			return from.get(Brand_.name);
+		case "created":
+			return from.get(Brand_.created);
+		case "updated":
+			return from.get(Brand_.updated);
+
 		default:
 			throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
 		}

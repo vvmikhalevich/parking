@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.SingularAttribute;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
@@ -41,15 +40,10 @@ public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFot
 		final Root<Foto> from = cq.from(Foto.class);
 		cq.select(from); // select what? select *
 
-		if (filter.getSortColumn() != null) {
-			final SingularAttribute<? super Foto, ?> sortProperty = toMetamodelFormat(filter.getSortColumn());
-			final Path<?> expression = from.get(sortProperty); // build path to
-																// sort
-			// property
-			cq.orderBy(new OrderImpl(expression, filter.getSortOrder())); // order
-																			// by
-			// column_name
-			// order
+		final String sortColumn = filter.getSortColumn();
+		if (sortColumn != null) {
+			final Path<?> expression = getSortPath(from, sortColumn);
+			cq.orderBy(new OrderImpl(expression, filter.getSortOrder()));
 		}
 
 		final TypedQuery<IFoto> q = em.createQuery(cq);
@@ -58,16 +52,17 @@ public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFot
 
 	}
 
-	private SingularAttribute<? super Foto, ?> toMetamodelFormat(final String sortColumn) {
+	private Path<?> getSortPath(final Root<Foto> from, final String sortColumn) {
 		switch (sortColumn) {
-		case "created":
-			return Foto_.created;
-		case "updated":
-			return Foto_.updated;
 		case "id":
-			return Foto_.id;
+			return from.get(Foto_.id);
 		case "link":
-			return Foto_.link;
+			return from.get(Foto_.link);
+		case "created":
+			return from.get(Foto_.created);
+		case "updated":
+			return from.get(Foto_.updated);
+
 		default:
 			throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
 		}
