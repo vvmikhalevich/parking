@@ -10,19 +10,14 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="security-context.xml" />
-	<context:property-placeholder
-		location="classpath:jdbc.properties" ignore-unresolvable="false" />
 
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
-	</bean>
 
+
+	<jee:jndi-lookup id="dataSource"
+		jndi-name="jdbc/project-datasource" />
+	<import resource="service-context.xml" />
 
 	<context:component-scan
 		base-package="com.itacademy.jd2.vvm.parking.web.converter" />
-	<import resource="service-context.xml" />
+	<import resource="security-context.xml" />
 </beans>
