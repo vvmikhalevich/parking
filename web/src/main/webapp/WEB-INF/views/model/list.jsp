@@ -7,7 +7,7 @@
 		<tr>
 			<th>id</th>
 			<th>name</th>
-			<th>brand_id</th>
+			<th>brand(brand_id)</th>
 			<th>created</th>
 			<th>updated</th>
 			<th></th>
@@ -16,7 +16,8 @@
 			<tr>
 				<td><c:out value="${model.id}" /></td>
 				<td><c:out value="${model.name}" /></td>
-				<td><c:out value="${model.brandName}=${model.brandId}" /></td>
+				<td><c:out
+						value="${model.brandName}(brand_id=${model.brandId})" /></td>
 				<%-- brand_id!!!!!!--%>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${model.created}" /></td>

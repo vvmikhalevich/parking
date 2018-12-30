@@ -59,7 +59,7 @@ public class ModelController extends AbstractController {
 		final Map<String, Object> hashMap = new HashMap<>();
 		final IModel newEntity = modelService.createEntity();
 		hashMap.put("formModel", toDtoConverter.apply(newEntity));
-		// loadCommonFormModels(hashMap);
+		loadCommonFormModels(hashMap);
 		return new ModelAndView("model.edit", hashMap);
 	}
 
