@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
@@ -18,6 +19,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.filter.ClientFilter;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Model_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
@@ -42,6 +44,8 @@ public class ClientDaoImpl extends AbstractDaoImpl<IClient, Integer> implements 
 
 		final Root<Client> from = cq.from(Client.class);
 		cq.select(from); // select what? select *
+
+		from.fetch(Client_.car, JoinType.LEFT).fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
@@ -97,8 +101,26 @@ public class ClientDaoImpl extends AbstractDaoImpl<IClient, Integer> implements 
 
 	@Override
 	public IClient getFullInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<IClient> cq = cb.createQuery(IClient.class); // define returning result
+		final Root<Client> from = cq.from(Client.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Client_.car, JoinType.LEFT).fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
+
+		from.fetch(Client_.userAccount, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Client_.id), id)); // where id=?
+
+		final TypedQuery<IClient> q = em.createQuery(cq);
+
+		return getSingleResult(q);
 	}
 
 }

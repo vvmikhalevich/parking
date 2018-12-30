@@ -48,7 +48,8 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		// define what will be added to result set
 		cq.select(from); // select * from car
 
-		from.fetch(Car_.model, JoinType.LEFT);
+		from.fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
+		from.fetch(Car_.userAccount, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {
@@ -97,8 +98,26 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	@Override
 	public ICar getFullInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<ICar> cq = cb.createQuery(ICar.class); // define returning result
+		final Root<Car> from = cq.from(Car.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
+		from.fetch(Car_.foto, JoinType.LEFT);
+		from.fetch(Car_.userAccount, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Car_.id), id)); // where id=?
+
+		final TypedQuery<ICar> q = em.createQuery(cq);
+
+		return getSingleResult(q);
 	}
 
 }

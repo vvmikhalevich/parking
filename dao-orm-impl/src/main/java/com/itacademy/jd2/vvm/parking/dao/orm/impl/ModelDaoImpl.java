@@ -66,10 +66,10 @@ public class ModelDaoImpl extends AbstractDaoImpl<IModel, Integer> implements IM
 
 		// define what will be added to result set
 		cq.select(from); // select * from model
-
+		from.fetch(Model_.brand, JoinType.LEFT);
 		if (filter.getFetchBrand()) {
 			// select m, b from model m left join brand b ...
-			from.fetch(Model_.brand, JoinType.LEFT);
+			// from.fetch(Model_.brand, JoinType.LEFT);
 		}
 
 		final String sortColumn = filter.getSortColumn();

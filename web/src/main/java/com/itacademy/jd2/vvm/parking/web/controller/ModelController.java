@@ -17,14 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itacademy.jd2.vvm.parking.service.IBrandService;
-import com.itacademy.jd2.vvm.parking.web.controller.AbstractController;
-import com.itacademy.jd2.vvm.parking.web.converter.ModelFromDTOConverter;
-
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
+import com.itacademy.jd2.vvm.parking.service.IBrandService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
+import com.itacademy.jd2.vvm.parking.web.converter.ModelFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.ModelToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.ModelDTO;
 
@@ -61,7 +59,7 @@ public class ModelController extends AbstractController {
 		final Map<String, Object> hashMap = new HashMap<>();
 		final IModel newEntity = modelService.createEntity();
 		hashMap.put("formModel", toDtoConverter.apply(newEntity));
-
+		// loadCommonFormModels(hashMap);
 		return new ModelAndView("model.edit", hashMap);
 	}
 

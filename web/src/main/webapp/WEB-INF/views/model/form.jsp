@@ -1,6 +1,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<h4 class="header">Edit model</h4>
+<h4 class="header">
+	<c:choose>
+		<c:when test="${empty formModel.id }">Create model</c:when>
+		<c:otherwise>Edit model</c:otherwise>
+	</c:choose>
+</h4>
 <div class="row">
 	<form:form class="col s12" method="POST" action="${pagesModel}"
 		modelAttribute="formModel">

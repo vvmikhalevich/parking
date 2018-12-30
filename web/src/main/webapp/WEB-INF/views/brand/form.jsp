@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h4 class="header">
 	<c:choose>
-		<c:when test="${empty formModel.id }">Craete brand</c:when>
+		<c:when test="${empty formModel.id }">Create brand</c:when>
 		<c:otherwise>Edit brand</c:otherwise>
 	</c:choose>
 </h4>
