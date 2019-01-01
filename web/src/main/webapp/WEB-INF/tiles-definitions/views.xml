@@ -44,5 +44,24 @@
 			value="/WEB-INF/views/login.jsp" />
 	</definition>
 
+	<definition name="car.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/list.jsp" />
+	</definition>
+
+	<definition name="car.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/form.jsp" />
+	</definition>
+
+	<definition name="tariff.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/tariff/list.jsp" />
+	</definition>
+
+	<definition name="tariff.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/tariff/form.jsp" />
+	</definition>
 
 </tiles-definitions>

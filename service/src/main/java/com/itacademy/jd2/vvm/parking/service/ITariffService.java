@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
 
 public interface ITariffService {
@@ -25,5 +26,7 @@ public interface ITariffService {
 	ITariff createEntity();
 
 	List<ITariff> find(TariffFilter filter);
+
+	long getCount(TariffFilter filter);
 
 }

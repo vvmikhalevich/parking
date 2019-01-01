@@ -73,4 +73,9 @@ public class TariffServiceImpl implements ITariffService {
 		return dao.find(filter);
 	}
 
+	@Override
+	public long getCount(TariffFilter filter) {
+		return dao.getCount(filter);
+	}
+
 }
