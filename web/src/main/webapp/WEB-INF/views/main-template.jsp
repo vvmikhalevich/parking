@@ -3,8 +3,9 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request" />
 <c:set var="pagesBrand" value="${contextPath}/brand" scope="request" />
 <c:set var="pagesModel" value="${contextPath}/model" scope="request" />
-<c:set var="pagesEngine" value="${contextPath}/engine" scope="request" />
 <c:set var="pagesCar" value="${contextPath}/car" scope="request" />
+<c:set var="pagesClient" value="${contextPath}/client" scope="request" />
+<c:set var="pagesTariff" value="${contextPath}/tariff" scope="request" />
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">

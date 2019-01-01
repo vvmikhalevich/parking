@@ -23,3 +23,5 @@ dao-api/.settings/
 dao-orm-impl/.settings/
 service/.settings/
 web/.settings/
+*.gz
+*.log
