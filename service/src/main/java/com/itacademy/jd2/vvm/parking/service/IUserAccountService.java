@@ -28,4 +28,6 @@ public interface IUserAccountService {
 
 	List<IUserAccount> find(UserAccountFilter filter);
 
+	IUserAccount findByLogin(String username);
+
 }

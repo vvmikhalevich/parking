@@ -65,9 +65,9 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 		switch (sortColumn) {
 		case "id":
 			return from.get(UserAccount_.id);
-		case "first_name":
+		case "firstName":
 			return from.get(UserAccount_.firstName);
-		case "last_name":
+		case "lastName":
 			return from.get(UserAccount_.lastName);
 		case "role":
 			return from.get(UserAccount_.role);
@@ -97,6 +97,23 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 
 		final TypedQuery<Long> q = em.createQuery(cq);
 		return q.getSingleResult();
+	}
+
+	@Override
+	public IUserAccount findByLogin(String username) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<IUserAccount> cq = cb.createQuery(IUserAccount.class);
+
+		final Root<UserAccount> from = cq.from(UserAccount.class);
+
+		cq.select(from);
+
+		cq.where(cb.equal(from.get(UserAccount_.email), username));
+
+		final TypedQuery<IUserAccount> q = em.createQuery(cq);
+		return getSingleResult(q);
 	}
 
 }

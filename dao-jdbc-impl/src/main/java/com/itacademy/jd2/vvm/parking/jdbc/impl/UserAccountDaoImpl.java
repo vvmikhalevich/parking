@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
@@ -100,6 +99,12 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 
 	@Override
 	public List<IUserAccount> find(UserAccountFilter filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IUserAccount findByLogin(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}

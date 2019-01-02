@@ -2,6 +2,8 @@ package com.itacademy.jd2.vvm.parking.dao.orm.impl.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
@@ -16,6 +18,7 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	private String lastName;
 
 	@Column
+	@Enumerated(EnumType.ORDINAL)
 	private RoleType role;
 
 	@Column

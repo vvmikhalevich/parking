@@ -64,4 +64,16 @@
 			value="/WEB-INF/views/tariff/form.jsp" />
 	</definition>
 
+	<definition name="userAccount.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/userAccount/list.jsp" />
+	</definition>
+
+	<definition name="userAccount.edit"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/userAccount/form.jsp" />
+	</definition>
+
 </tiles-definitions>

@@ -76,4 +76,10 @@ public class UserAccountServiceImpl implements IUserAccountService {
 		return dao.find(filter);
 	}
 
+	@Override
+	public IUserAccount findByLogin(String username) {
+
+		return dao.findByLogin(username);
+	}
+
 }

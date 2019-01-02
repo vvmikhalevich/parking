@@ -3,6 +3,7 @@ package com.itacademy.jd2.vvm.parking.web.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,43 +12,52 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
+import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
+
 @Component("customAuthenticationProvider")
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-    // TODO inject UserService
+	private IUserAccountService userAccountService;
 
-    @Override
-    public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
-        final String username = authentication.getPrincipal() + "";
-        final String password = authentication.getCredentials() + "";
+	@Autowired
+	public CustomAuthenticationProvider(IUserAccountService userAccountService) {
+		super();
+		this.userAccountService = userAccountService;
+	}
 
-        // TODO find use by login
-        if (!"admin".equals(username)) {
-            throw new BadCredentialsException("1000");
-        }
+	@Override
+	public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
+		final String username = authentication.getPrincipal() + "";
+		final String password = authentication.getCredentials() + "";
 
-        // TODO verify password (DB contains hash - not a plain password)
-        if (!"nimda".equals(password)) {
-            throw new BadCredentialsException("1000");
-        }
+		final IUserAccount entity = userAccountService.findByLogin(username);
 
-        final int userId = 1; // FIXME: it should be the real user id from DB
+		if (entity == null) {
+			throw new BadCredentialsException("1000");
+		}
 
-        List<String> userRoles = new ArrayList<>();// TODO get list of user's
-        // roles
-        userRoles.add("ROLE_"+"admin");  // !!! ROLE_  prefix is required 
+		// TODO verify password (DB contains hash - not a plain password)
+		if (!entity.getPassword().equals(password)) {
+			throw new BadCredentialsException("1000");
+		}
 
-        final List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for (String roleName : userRoles) {
-            authorities.add(new SimpleGrantedAuthority(roleName));
-        }
-        return new ExtendedUsernamePasswordAuthenticationToken(userId, username, password, authorities);
+		final int userId = entity.getId();
 
-    }
+		List<String> userRoles = new ArrayList<>();
+		userRoles.add("ROLE_" + entity.getRole().name());
 
-    @Override
-    public boolean supports(final Class<?> authentication) {
-        return authentication.equals(UsernamePasswordAuthenticationToken.class);
-    }
+		final List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		for (String roleName : userRoles) {
+			authorities.add(new SimpleGrantedAuthority(roleName));
+		}
+		return new ExtendedUsernamePasswordAuthenticationToken(userId, username, password, authorities);
+
+	}
+
+	@Override
+	public boolean supports(final Class<?> authentication) {
+		return authentication.equals(UsernamePasswordAuthenticationToken.class);
+	}
 
 }
