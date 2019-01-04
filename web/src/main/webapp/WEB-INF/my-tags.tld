@@ -22,4 +22,14 @@
 		</attribute>
 	</tag>
 
+	<tag>
+		<name>i18n</name>
+		<tag-class>com.itacademy.jd2.vvm.parking.web.tag.I18N</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>key</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
 </taglib>

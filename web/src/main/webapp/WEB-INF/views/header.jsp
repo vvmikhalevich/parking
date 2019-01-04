@@ -23,6 +23,8 @@
 					<a class="right" href="${contextPath}/execute_logout"
 						title="logout"><i class="material-icons">arrow_forward</i></a>
 				</sec:authorize>
+
+
 			</ul>
 		</div>
 	</nav>
