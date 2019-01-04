@@ -76,4 +76,13 @@
 			value="/WEB-INF/views/userAccount/form.jsp" />
 	</definition>
 
+	<definition name="foto.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/foto/list.jsp" />
+	</definition>
+
+	<definition name="foto.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/foto/form.jsp" />
+	</definition>
 </tiles-definitions>

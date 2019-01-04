@@ -9,4 +9,6 @@ public interface IFotoDao extends IDao<IFoto, Integer> {
 
 	List<IFoto> find(FotoFilter filter);
 
+	long getCount(FotoFilter filter);
+
 }

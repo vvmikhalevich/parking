@@ -26,4 +26,6 @@ public interface IFotoService {
 
 	List<IFoto> find(FotoFilter filter);
 
+	long getCount(FotoFilter filter);
+
 }

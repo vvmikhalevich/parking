@@ -84,6 +84,9 @@ public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFot
 		return null;
 	}
 
-	
+	@Override
+	public long getCount(FotoFilter filter) {
+		return executeCountQuery("");
+	}
 
 }

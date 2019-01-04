@@ -68,4 +68,17 @@ public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFot
 		}
 	}
 
+	@Override
+	public long getCount(FotoFilter filter) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+		final CriteriaQuery<Long> cq = cb.createQuery(Long.class); // define
+																	// type of
+		// result
+		final Root<Foto> from = cq.from(Foto.class); // select from foto
+		cq.select(cb.count(from)); // select what? select count(*)
+		final TypedQuery<Long> q = em.createQuery(cq);
+		return q.getSingleResult(); // execute query
+	}
+
 }

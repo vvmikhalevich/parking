@@ -73,4 +73,9 @@ public class FotoServiceImpl implements IFotoService {
 		return dao.find(filter);
 	}
 
+	@Override
+	public long getCount(FotoFilter filter) {
+		return dao.getCount(filter);
+	}
+
 }
