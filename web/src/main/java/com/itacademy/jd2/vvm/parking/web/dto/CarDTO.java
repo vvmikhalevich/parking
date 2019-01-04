@@ -20,7 +20,7 @@ public class CarDTO {
 
 	private Integer fotoId;
 
-	private String fotoName;
+	private String link;
 
 	private Date created;
 
@@ -90,12 +90,12 @@ public class CarDTO {
 		this.fotoId = fotoId;
 	}
 
-	public String getFotoName() {
-		return fotoName;
+	public String getLink() {
+		return link;
 	}
 
-	public void setFotoName(String fotoName) {
-		this.fotoName = fotoName;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public Date getCreated() {

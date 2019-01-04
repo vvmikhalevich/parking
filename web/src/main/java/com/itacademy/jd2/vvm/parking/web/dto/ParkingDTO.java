@@ -4,11 +4,15 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
-public class FotoDTO {
+public class ParkingDTO {
 
 	private Integer id;
-	@Size(min = 1, max = 50)
-	private String link;
+	@Size(min = 1, max = 20)
+	private String name;
+
+	private String adress;
+
+	private String status;
 
 	private Date created;
 
@@ -22,12 +26,28 @@ public class FotoDTO {
 		this.id = id;
 	}
 
-	public String getLink() {
-		return link;
+	public String getName() {
+		return name;
 	}
 
-	public void setLink(final String link) {
-		this.link = link;
+	public void setName(final String name) {
+		this.name = name;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Date getCreated() {

@@ -18,11 +18,12 @@
 			<tr>
 				<td><c:out value="${car.id}" /></td>
 
-				<td><c:out value="${car.modelId})" /></td>
+				<td><c:out value="${car.modelName}(model_id=${car.modelId})" /></td>
 
 				<td><c:out value="${car.number}" /></td>
-				<td><c:out value="${car.userAccount})" /></td>
-				<td><c:out value="${car.fotoLink}(model_id=${car.fotoId})" /></td>
+				<td><c:out
+						value="${car.userAccountLastName}(userAccountId=${car.userAccountId})" /></td>
+				<td><c:out value="${car.fotoId}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.updated}" /></td>
 				<td class="right"><a class="btn-floating"

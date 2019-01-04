@@ -85,4 +85,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/foto/form.jsp" />
 	</definition>
+
+	<definition name="parking.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/parking/list.jsp" />
+	</definition>
+
+	<definition name="parking.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/parking/form.jsp" />
+	</definition>
+
 </tiles-definitions>

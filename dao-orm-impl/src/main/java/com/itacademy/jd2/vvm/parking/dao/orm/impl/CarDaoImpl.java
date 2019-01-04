@@ -50,6 +50,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 		from.fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
 		from.fetch(Car_.userAccount, JoinType.LEFT);
+		from.fetch(Car_.foto, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {

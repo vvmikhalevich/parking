@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
@@ -59,9 +60,9 @@ public class CarController extends AbstractController {
 		final List<ICar> entities = carService.find(filter);
 		List<CarDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
 
-		final Map<String, Object> cars = new HashMap<>();
-		cars.put("gridItems", dtos);
-		return new ModelAndView("car.list", cars);
+		final Map<String, Object> models = new HashMap<>();
+		models.put("gridItems", dtos);
+		return new ModelAndView("car.list", models);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -118,11 +119,7 @@ public class CarController extends AbstractController {
 	private void loadCommonFormModels(final Map<String, Object> hashMap) {
 		final List<IModel> models = modelService.getAll();
 		final List<IUserAccount> users = userAccountService.getAll();
-
-		/*
-		 * final Map<Integer, String> brandsMap = new HashMap<>(); for (final IBrand
-		 * iBrand : brands) { brandsMap.put(iBrand.getId(), iBrand.getName()); }
-		 */
+		final List<IFoto> fotos = fotoService.getAll();
 
 		final Map<Integer, String> modelsMap = models.stream()
 				.collect(Collectors.toMap(IModel::getId, IModel::getName));
@@ -131,6 +128,8 @@ public class CarController extends AbstractController {
 		final Map<Integer, String> userAccountsMap = users.stream()
 				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getFirstName));
 		hashMap.put("userAccountsChoices", userAccountsMap);
+		final Map<Integer, String> fotosMap = fotos.stream().collect(Collectors.toMap(IFoto::getId, IFoto::getLink));
+		hashMap.put("fotosChoices", fotosMap);
 
 	}
 

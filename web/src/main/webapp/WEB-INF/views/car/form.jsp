@@ -8,7 +8,7 @@
 </h4>
 <div class="row">
 	<form:form class="col s12" method="POST" action="${pagesCar}"
-		modelAttribute="formCar">
+		modelAttribute="formModel">
 
 		<form:input path="id" type="hidden" />
 
@@ -18,7 +18,7 @@
 					<form:options items="${modelsChoices}" />
 				</form:select>
 				<form:errors path="modelId" cssClass="red-text" />
-				<label for="modelId">Model</label>
+				<label for="modelId">model</label>
 			</div>
 		</div>
 
@@ -40,6 +40,15 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="input-field col s12">
+				<form:select path="fotoId" disabled="${readonly}">
+					<form:options items="${fotosChoices}" />
+				</form:select>
+				<form:errors path="fotoId" cssClass="red-text" />
+				<label for="fotoId">foto of car</label>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="col s6"></div>
