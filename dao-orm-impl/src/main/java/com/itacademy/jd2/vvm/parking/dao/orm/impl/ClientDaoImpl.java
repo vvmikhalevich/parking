@@ -46,6 +46,8 @@ public class ClientDaoImpl extends AbstractDaoImpl<IClient, Integer> implements 
 		cq.select(from); // select what? select *
 
 		from.fetch(Client_.car, JoinType.LEFT).fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
+		from.fetch(Client_.userAccount, JoinType.LEFT);
+		from.fetch(Client_.tariff, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
@@ -112,6 +114,8 @@ public class ClientDaoImpl extends AbstractDaoImpl<IClient, Integer> implements 
 		from.fetch(Client_.car, JoinType.LEFT).fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
 
 		from.fetch(Client_.userAccount, JoinType.LEFT);
+
+		from.fetch(Client_.tariff, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

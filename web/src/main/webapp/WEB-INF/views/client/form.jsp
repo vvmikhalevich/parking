@@ -2,33 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h4 class="header">
 	<c:choose>
-		<c:when test="${empty formModel.id }">Create car</c:when>
-		<c:otherwise>Edit car</c:otherwise>
+		<c:when test="${empty formModel.id }">Create client</c:when>
+		<c:otherwise>Edit client</c:otherwise>
 	</c:choose>
 </h4>
 <div class="row">
-	<form:form class="col s12" method="POST" action="${pagesCar}"
+	<form:form class="col s12" method="POST" action="${pagesClient}"
 		modelAttribute="formModel">
 
 		<form:input path="id" type="hidden" />
-
-		<div class="row">
-			<div class="input-field col s12">
-				<form:select path="modelId" disabled="${readonly}">
-					<form:options items="${modelsChoices}" />
-				</form:select>
-				<form:errors path="modelId" cssClass="red-text" />
-				<label for="modelId">model</label>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="input-field col s12">
-				<form:input path="number" type="text" disabled="${readonly}" />
-				<form:errors path="number" cssClass="red-text" />
-				<label for="number">Number of car</label>
-			</div>
-		</div>
 
 		<div class="row">
 			<div class="input-field col s12">
@@ -42,13 +24,25 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<form:select path="fotoId" disabled="${readonly}">
-					<form:options items="${fotosChoices}" />
+				<form:select path="carId" disabled="${readonly}">
+					<form:options items="${carsChoices}" />
 				</form:select>
-				<form:errors path="fotoId" cssClass="red-text" />
-				<label for="fotoId">foto of car</label>
+				<form:errors path="carId" cssClass="red-text" />
+				<label for="carId">Cars</label>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="input-field col s12">
+				<form:select path="tariffId" disabled="${readonly}">
+					<form:options items="${tariffsChoices}" />
+				</form:select>
+				<form:errors path="tariffId" cssClass="red-text" />
+				<label for="tariffId">Tariffs</label>
+			</div>
+		</div>
+
+
 
 		<div class="row">
 			<div class="col s6"></div>
@@ -58,7 +52,7 @@
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesCar}">к
+				<a class="btn waves-effect waves-light right" href="${pagesClient}">к
 					списку<i class="material-icons right"></i>
 				</a>
 			</div>

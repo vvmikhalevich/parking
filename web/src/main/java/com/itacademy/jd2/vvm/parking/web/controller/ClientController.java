@@ -18,21 +18,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.ClientFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
-import com.itacademy.jd2.vvm.parking.service.IFotoService;
+import com.itacademy.jd2.vvm.parking.service.IClientService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
+import com.itacademy.jd2.vvm.parking.service.ITariffService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
-import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
+import com.itacademy.jd2.vvm.parking.web.converter.ClientFromDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.converter.ClientToDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.dto.ClientDTO;
 
 @Controller
-@RequestMapping(value = "/car")
-public class CarController extends AbstractController {
+@RequestMapping(value = "/client")
+public class ClientController extends AbstractController {
+
+	@Autowired
+	private IClientService clientService;
 
 	@Autowired
 	private ICarService carService;
@@ -44,92 +48,92 @@ public class CarController extends AbstractController {
 	private IUserAccountService userAccountService;
 
 	@Autowired
-	private IFotoService fotoService;
+	private ITariffService tariffService;
 
 	@Autowired
-	private CarFromDTOConverter fromDtoConverter;
+	private ClientFromDTOConverter fromDtoConverter;
 
 	@Autowired
-	private CarToDTOConverter toDtoConverter;
+	private ClientToDTOConverter toDtoConverter;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView index(final HttpServletRequest req) {
 
-		final CarFilter filter = new CarFilter();
+		final ClientFilter filter = new ClientFilter();
 
-		final List<ICar> entities = carService.find(filter);
-		List<CarDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
+		final List<IClient> entities = clientService.find(filter);
+		List<ClientDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
 
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);
-		return new ModelAndView("car.list", models);
+		return new ModelAndView("client.list", models);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showForm() {
 		final Map<String, Object> hashMap = new HashMap<>();
-		final ICar newEntity = carService.createEntity();
+		final IClient newEntity = clientService.createEntity();
 		hashMap.put("formModel", toDtoConverter.apply(newEntity));
 		loadCommonFormModels(hashMap);
-		return new ModelAndView("car.edit", hashMap);
+		return new ModelAndView("client.edit", hashMap);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Object save(@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result) {
+	public Object save(@Valid @ModelAttribute("formModel") final ClientDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
 			final Map<String, Object> hashMap = new HashMap<>();
 			hashMap.put("formModel", formModel);
 			loadCommonFormModels(hashMap);
-			return new ModelAndView("car.edit", hashMap);
+			return new ModelAndView("client.edit", hashMap);
 		} else {
-			final ICar entity = fromDtoConverter.apply(formModel);
+			final IClient entity = fromDtoConverter.apply(formModel);
 
-			carService.save(entity);
-			return "redirect:/car";
+			clientService.save(entity);
+			return "redirect:/client";
 		}
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView viewDetails(@PathVariable(name = "id", required = true) final Integer id) {
-		final ICar dbModel = carService.getFullInfo(id);
-		final CarDTO dto = toDtoConverter.apply(dbModel);
+		final IClient dbModel = clientService.getFullInfo(id);
+		final ClientDTO dto = toDtoConverter.apply(dbModel);
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
 		loadCommonFormModels(hashMap);
-		return new ModelAndView("car.edit", hashMap);
+		return new ModelAndView("client.edit", hashMap);
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@PathVariable(name = "id", required = true) final Integer id) {
-		final CarDTO dto = toDtoConverter.apply(carService.getFullInfo(id));
+		final ClientDTO dto = toDtoConverter.apply(clientService.getFullInfo(id));
 
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
 		loadCommonFormModels(hashMap);
-		return new ModelAndView("car.edit", hashMap);
+		return new ModelAndView("client.edit", hashMap);
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String delete(@PathVariable(name = "id", required = true) final Integer id) {
-		carService.delete(id);
-		return "redirect:/car";
+		clientService.delete(id);
+		return "redirect:/client";
 	}
 
 	private void loadCommonFormModels(final Map<String, Object> hashMap) {
-		final List<IModel> models = modelService.getAll();
+		final List<ICar> cars = carService.getAll();
 		final List<IUserAccount> users = userAccountService.getAll();
-		final List<IFoto> fotos = fotoService.getAll();
+		final List<ITariff> tariff = tariffService.getAll();
 
-		final Map<Integer, String> modelsMap = models.stream()
-				.collect(Collectors.toMap(IModel::getId, IModel::getName));
-		hashMap.put("modelsChoices", modelsMap);
+		final Map<Integer, String> carsMap = cars.stream().collect(Collectors.toMap(ICar::getId, ICar::getNumber));
+		hashMap.put("carsChoices", carsMap);
 
 		final Map<Integer, String> userAccountsMap = users.stream()
 				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getLastName));
 		hashMap.put("userAccountsChoices", userAccountsMap);
-		final Map<Integer, String> fotosMap = fotos.stream().collect(Collectors.toMap(IFoto::getId, IFoto::getLink));
-		hashMap.put("fotosChoices", fotosMap);
+		final Map<Integer, String> tariffsMap = tariff.stream()
+				.collect(Collectors.toMap(ITariff::getId, ITariff::getName));
+		hashMap.put("tariffsChoices", tariffsMap);
 
 	}
 

@@ -2,8 +2,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <header>
-	<nav>
-		<div class="nav-wrapper container">
+	<nav class="nav-extended">
+		<div class="nav-wrapper ">
 			<ul class="left hide-on-med-and-down">
 				<li><a href="${contextPath}/">Home</a></li>
 				<li><a href="${pagesBrand}">Brands</a></li>
@@ -15,9 +15,11 @@
 				<li><a href="${pagesFoto}">Photos</a></li>
 				<li><a href="${pagesParking}">Parkings</a></li>
 				<li><a href="${pagesPlace}">Places</a></li>
+
 				<li><a href="${pagesPlaceOwner}">PlaceOwners</a></li>
 				<li><a href="${pagesEvent}">Events</a></li>
 				<li><a href="${pagesTransaction}">Transactions</a></li>
+
 
 				<sec:authorize access="!isAnonymous()">
 					<a class="right" href="${contextPath}/execute_logout"
@@ -27,5 +29,6 @@
 
 			</ul>
 		</div>
+
 	</nav>
 </header>

@@ -28,4 +28,6 @@ public interface IClientService {
 
 	long getCount(ClientFilter filter);
 
+	IClient getFullInfo(Integer id);
+
 }
