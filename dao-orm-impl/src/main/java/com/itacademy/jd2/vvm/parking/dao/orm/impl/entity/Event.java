@@ -23,7 +23,7 @@ public class Event extends BaseEntity implements IEvent {
 	@Column(updatable = false)
 	private Date timeStart;
 
-	@Column(updatable = false)
+	@Column
 	private Date timeEnd;
 
 	@Override

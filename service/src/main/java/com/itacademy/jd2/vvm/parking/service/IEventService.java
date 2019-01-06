@@ -28,4 +28,6 @@ public interface IEventService {
 
 	long getCount(EventFilter filter);
 
+	IEvent getFullInfo(Integer id);
+
 }

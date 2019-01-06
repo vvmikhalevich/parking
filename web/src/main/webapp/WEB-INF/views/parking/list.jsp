@@ -27,8 +27,8 @@
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${parking.updated}" /></td>
 				<td class="right"><a class="btn-floating"
-					href="${pagesParking}/${brand.id}"><i class="material-icons">info</i></a>
-					<a class="btn-floating" href="${pagesBrand}/${parking.id}/edit"><i
+					href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
+					<a class="btn-floating" href="${pagesParking}/${parking.id}/edit"><i
 						class="material-icons">edit</i></a> <a class="btn-floating red"
 					href="${pagesParking}/${parking.id}/delete"><i
 						class="material-icons">delete</i></a></td>

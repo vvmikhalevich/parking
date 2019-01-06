@@ -104,4 +104,44 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/client/form.jsp" />
 	</definition>
+
+	<definition name="transaction.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/transaction/list.jsp" />
+	</definition>
+
+	<definition name="transaction.edit"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/transaction/form.jsp" />
+	</definition>
+	<definition name="place.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/place/list.jsp" />
+	</definition>
+
+	<definition name="place.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/place/form.jsp" />
+	</definition>
+	<definition name="event.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/event/list.jsp" />
+	</definition>
+
+	<definition name="event.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/event/form.jsp" />
+	</definition>
+
+	<definition name="placeOwner.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/placeOwner/list.jsp" />
+	</definition>
+
+	<definition name="placeOwner.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/placeOwner/form.jsp" />
+	</definition>
 </tiles-definitions>

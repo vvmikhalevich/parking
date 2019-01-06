@@ -14,8 +14,8 @@ import com.itacademy.jd2.vvm.parking.dao.api.IPlaceDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Car;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Place;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Parking;
+import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Place;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
 @Repository

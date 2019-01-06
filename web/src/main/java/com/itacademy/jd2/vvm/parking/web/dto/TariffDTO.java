@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.validation.constraints.Size;
@@ -10,7 +11,7 @@ public class TariffDTO {
 	@Size(min = 1, max = 20)
 	private String name;
 
-	private Integer price;
+	private BigDecimal price;
 
 	private String status;
 
@@ -50,11 +51,11 @@ public class TariffDTO {
 		this.updated = updated;
 	}
 
-	public Integer getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
@@ -41,6 +42,9 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 		final Root<Place> from = cq.from(Place.class);
 		cq.select(from); // select what? select *
+
+		from.fetch(Place_.parking, JoinType.LEFT);
+		from.fetch(Place_.car, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
@@ -98,8 +102,25 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 	@Override
 	public IPlace getFullInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<IPlace> cq = cb.createQuery(IPlace.class); // define returning result
+		final Root<Place> from = cq.from(Place.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Place_.parking, JoinType.LEFT);
+		from.fetch(Place_.car, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Place_.id), id)); // where id=?
+
+		final TypedQuery<IPlace> q = em.createQuery(cq);
+
+		return getSingleResult(q);
 	}
 
 }

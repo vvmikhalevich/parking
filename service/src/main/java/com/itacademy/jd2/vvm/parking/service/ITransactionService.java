@@ -26,4 +26,6 @@ public interface ITransactionService {
 
 	List<ITransaction> find(TransactionFilter filter);
 
+	ITransaction getFullInfo(Integer id);
+
 }

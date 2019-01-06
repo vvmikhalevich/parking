@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 			@Override
 			public ITariff doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
-				pStmt.setInt(2, entity.getPrice());
+				pStmt.setBigDecimal(2, entity.getPrice());
 				pStmt.setString(3, entity.getStatus());
 				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
@@ -56,7 +57,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 			@Override
 			public ITariff doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
-				pStmt.setInt(2, entity.getPrice());
+				pStmt.setBigDecimal(2, entity.getPrice());
 				pStmt.setString(3, entity.getStatus());
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -76,7 +77,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 		final ITariff entity = createEntity();
 		entity.setId((Integer) resultSet.getObject("id"));
 		entity.setName(resultSet.getString("name"));
-		entity.setPrice((Integer) resultSet.getObject("price"));
+		entity.setPrice((BigDecimal) resultSet.getObject("price"));
 		entity.setStatus(resultSet.getString("status"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));

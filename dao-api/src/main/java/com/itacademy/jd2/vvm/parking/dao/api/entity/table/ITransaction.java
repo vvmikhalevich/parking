@@ -1,14 +1,16 @@
 package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
+import java.math.BigDecimal;
+
 public interface ITransaction extends IBaseEntity {
 
 	IClient getClient();
 
 	void setClient(IClient client);
 
-	Integer getValue();
+	BigDecimal getValue();
 
-	void setValue(Integer value);
+	void setValue(BigDecimal value);
 
 	String getDescription();
 

@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -12,7 +14,7 @@ public class Tariff extends BaseEntity implements ITariff {
 	private String name;
 
 	@Column
-	private Integer price;
+	private BigDecimal price;
 
 	@Column
 	private String status;
@@ -28,12 +30,12 @@ public class Tariff extends BaseEntity implements ITariff {
 	}
 
 	@Override
-	public Integer getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
 	@Override
-	public void setPrice(Integer price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

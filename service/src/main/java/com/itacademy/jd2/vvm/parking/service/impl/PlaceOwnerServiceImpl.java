@@ -80,4 +80,9 @@ public class PlaceOwnerServiceImpl implements IPlaceOwnerService {
 		dao.deleteAll();
 	}
 
+	@Override
+	public IPlaceOwner getFullInfo(Integer id) {
+		return dao.getFullInfo(id);
+	}
+
 }

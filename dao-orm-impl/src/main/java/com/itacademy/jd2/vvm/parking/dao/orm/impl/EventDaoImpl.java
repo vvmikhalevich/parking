@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
@@ -42,6 +43,9 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 		final Root<Event> from = cq.from(Event.class);
 		cq.select(from); // select what? select *
 
+		from.fetch(Event_.place, JoinType.LEFT);
+		from.fetch(Event_.car, JoinType.LEFT);
+
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
 			final Path<?> expression = getSortPath(from, sortColumn);
@@ -64,7 +68,7 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 
 		case "id":
 			return from.get(Event_.id);
-		case "car_id":
+		case "carId":
 			return from.get(Event_.car).get(Car_.number);
 		case "place_id":
 			return from.get(Event_.place).get(Place_.name);
@@ -98,8 +102,25 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 
 	@Override
 	public IEvent getFullInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<IEvent> cq = cb.createQuery(IEvent.class); // define returning result
+		final Root<Event> from = cq.from(Event.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Event_.place, JoinType.LEFT);
+		from.fetch(Event_.car, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Event_.id), id)); // where id=?
+
+		final TypedQuery<IEvent> q = em.createQuery(cq);
+
+		return getSingleResult(q);
 	}
 
 }

@@ -1,13 +1,18 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
+import java.math.BigDecimal;
+
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class Transaction extends BaseEntity implements ITransaction {
 
+	private IUserAccount userAccount;
+
 	private IClient client;
 
-	private Integer value;
+	private BigDecimal value;
 
 	private String description;
 
@@ -19,11 +24,11 @@ public class Transaction extends BaseEntity implements ITransaction {
 		this.client = client;
 	}
 
-	public Integer getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -33,6 +38,14 @@ public class Transaction extends BaseEntity implements ITransaction {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public IUserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(IUserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 }

@@ -15,35 +15,35 @@ public class CarToDTOConverter implements Function<ICar, CarDTO> {
 
 	@Override
 	public CarDTO apply(final ICar entity) {
-		final CarDTO carDto = new CarDTO();
-		carDto.setId(entity.getId());
-		carDto.setNumber(entity.getNumber());
-		carDto.setCreated(entity.getCreated());
-		carDto.setUpdated(entity.getUpdated());
+		final CarDTO dto = new CarDTO();
+		dto.setId(entity.getId());
+		dto.setNumber(entity.getNumber());
+		dto.setCreated(entity.getCreated());
+		dto.setUpdated(entity.getUpdated());
 		final IModel model = entity.getModel();
 		if (model != null) {
-			carDto.setModelId(model.getId());
-			carDto.setModelName(model.getName());
+			dto.setModelId(model.getId());
+			dto.setModelName(model.getName());
 
 		}
 
 		final IUserAccount userAccount = entity.getUserAccount();
 		if (userAccount != null) {
-			carDto.setUserAccountId(userAccount.getId());
-			carDto.setUserAccountFirstName(userAccount.getFirstName());
-			carDto.setUserAccountLastName(userAccount.getLastName());
+			dto.setUserAccountId(userAccount.getId());
+			dto.setUserAccountFirstName(userAccount.getFirstName());
+			dto.setUserAccountLastName(userAccount.getLastName());
 
 		}
 		final IFoto foto = entity.getFoto();
 
 		if (foto != null) {
-			carDto.setFotoId(foto.getId());
+			dto.setFotoId(foto.getId());
 			;
-			carDto.setLink(foto.getLink());
+			dto.setLink(foto.getLink());
 
 		}
 
-		return carDto;
+		return dto;
 	}
 
 }

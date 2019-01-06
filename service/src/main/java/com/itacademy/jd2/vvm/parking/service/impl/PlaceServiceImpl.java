@@ -80,4 +80,9 @@ public class PlaceServiceImpl implements IPlaceService {
 		dao.deleteAll();
 	}
 
+	@Override
+	public IPlace getFullInfo(Integer id) {
+		return dao.getFullInfo(id);
+	}
+
 }

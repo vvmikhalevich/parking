@@ -28,4 +28,6 @@ public interface IPlaceService {
 
 	long getCount(PlaceFilter filter);
 
+	IPlace getFullInfo(Integer id);
+
 }

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
@@ -46,6 +47,8 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		// define what will be added to result set
 		cq.select(from); // select * from Transaction
 
+		// from.fetch(Transaction_.client, JoinType.LEFT);
+		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
 		/*
 		 * if (filter.getFetchBrand()) { // select m, b from model m left join brand b
 		 * ... from.fetch(Model_.brand, JoinType.LEFT); }
@@ -99,8 +102,26 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 
 	@Override
 	public ITransaction getFullInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<ITransaction> cq = cb.createQuery(ITransaction.class); // define returning result
+		final Root<Transaction> from = cq.from(Transaction.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
+
+		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.tariff, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Transaction_.id), id)); // where id=?
+
+		final TypedQuery<ITransaction> q = em.createQuery(cq);
+
+		return getSingleResult(q);
 	}
 
 }

@@ -35,8 +35,11 @@ public class EventServiceImpl implements IEventService {
 	public void save(final IEvent entity) {
 		final Date modifedOn = new Date();
 		entity.setUpdated(modifedOn);
+		entity.setTimeEnd(modifedOn);
+
 		if (entity.getId() == null) {
 			entity.setCreated(modifedOn);
+			entity.setTimeStart(modifedOn);
 			dao.insert(entity);
 			LOGGER.info("new saved event: {}", entity);
 		} else {
@@ -78,6 +81,11 @@ public class EventServiceImpl implements IEventService {
 	public void deleteAll() {
 		LOGGER.info("delete all events");
 		dao.deleteAll();
+	}
+
+	@Override
+	public IEvent getFullInfo(Integer id) {
+		return dao.getFullInfo(id);
 	}
 
 }

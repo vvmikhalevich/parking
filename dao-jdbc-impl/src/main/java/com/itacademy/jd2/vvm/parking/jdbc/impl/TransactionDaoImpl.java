@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +33,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 			@Override
 			public ITransaction doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setInt(1, entity.getClient().getId());
-				pStmt.setInt(2, entity.getValue());
+				pStmt.setBigDecimal(2, entity.getValue());
 				pStmt.setString(3, entity.getDescription());
 				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
@@ -59,7 +60,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 			@Override
 			public ITransaction doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setInt(1, entity.getClient().getId());
-				pStmt.setInt(2, entity.getValue());
+				pStmt.setBigDecimal(2, entity.getValue());
 				pStmt.setString(3, entity.getDescription());
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -79,7 +80,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		final ITransaction entity = createEntity();
 		entity.setId((Integer) resultSet.getObject("id"));
 		// entity.setClient(resultSet.getObject("client_id"));
-		entity.setValue((Integer) resultSet.getObject("price"));
+		entity.setValue((BigDecimal) resultSet.getObject("price"));
 		entity.setDescription(resultSet.getString("description"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));

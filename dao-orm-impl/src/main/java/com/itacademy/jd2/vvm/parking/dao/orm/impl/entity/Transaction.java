@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +17,7 @@ public class Transaction extends BaseEntity implements ITransaction {
 	private IClient client;
 
 	@Column
-	private Integer value;
+	private BigDecimal value;
 
 	@Column
 	private String description;
@@ -31,12 +33,12 @@ public class Transaction extends BaseEntity implements ITransaction {
 	}
 
 	@Override
-	public Integer getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@Override
-	public void setValue(Integer value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
