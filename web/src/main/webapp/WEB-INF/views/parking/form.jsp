@@ -18,7 +18,7 @@
 				<div class="input-field col s12">
 					<form:input path="name" type="text" disabled="${readonly}" />
 					<form:errors path="name" cssClass="red-text" />
-					<label for="name">название</label>
+					<label for="name">Name of parking</label>
 				</div>
 			</div>
 
@@ -26,7 +26,7 @@
 				<div class="input-field col s12">
 					<form:input path="adress" type="text" disabled="${readonly}" />
 					<form:errors path="adress" cssClass="red-text" />
-					<label for="adress">название</label>
+					<label for="adress">Adress</label>
 				</div>
 			</div>
 
@@ -34,7 +34,7 @@
 				<div class="input-field col s12">
 					<form:input path="status" type="text" disabled="${readonly}" />
 					<form:errors path="status" cssClass="red-text" />
-					<label for="status">название</label>
+					<label for="status">Status</label>
 				</div>
 			</div>
 
