@@ -29,8 +29,8 @@ public class EventFromDTOConverter implements Function<EventDTO, IEvent> {
 	public IEvent apply(final EventDTO dto) {
 		final IEvent entity = eventService.createEntity();
 		entity.setId(dto.getId());
-		// entity.setTimeStart(dto.getTimeStart());
-		// entity.setTimeEnd(dto.getTimeEnd());
+		entity.setTimeStart(dto.getTimeStart());
+		entity.setTimeEnd(dto.getTimeEnd());
 
 		final IPlace place = placeService.createEntity();
 		place.setId(dto.getPlaceId());

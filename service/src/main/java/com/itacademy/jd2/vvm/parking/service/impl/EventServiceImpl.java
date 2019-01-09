@@ -35,11 +35,11 @@ public class EventServiceImpl implements IEventService {
 	public void save(final IEvent entity) {
 		final Date modifedOn = new Date();
 		entity.setUpdated(modifedOn);
-		entity.setTimeEnd(modifedOn);
+		// entity.setTimeEnd(modifedOn);
 
 		if (entity.getId() == null) {
 			entity.setCreated(modifedOn);
-			entity.setTimeStart(modifedOn);
+			// entity.setTimeStart(modifedOn);
 			dao.insert(entity);
 			LOGGER.info("new saved event: {}", entity);
 		} else {

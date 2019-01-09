@@ -2,6 +2,8 @@ package com.itacademy.jd2.vvm.parking.web.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class EventDTO {
 
 	private Integer id;
@@ -14,9 +16,14 @@ public class EventDTO {
 
 	private String carNumber;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date timeStart;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date timeEnd;
+
+	@DateTimeFormat(pattern = "hh:mm a")
+	private Date timeEndTime;
 
 	private Date created;
 

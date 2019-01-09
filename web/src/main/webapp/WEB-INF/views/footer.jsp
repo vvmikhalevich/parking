@@ -15,8 +15,8 @@
 				</ul>
 
 				<div class="col l4 offset-l2 s12">
-					<li><a href="${contextPath}?language=ru">RU</a></li>
-					<li><a href="${contextPath}?language=en">EN</a></li>
+					<li><a class="white-text" href="${contextPath}?language=ru">RU</a></li>
+					<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
 				</div>
 			</div>
 

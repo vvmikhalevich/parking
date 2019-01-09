@@ -33,7 +33,8 @@
 		</div>
 
 
-		<%-- 
+
+
 		<div class="row">
 			<div class="input-field col s12">
 				<form:input path="timeStart" type="text" disabled="${readonly}" />
@@ -49,7 +50,7 @@
 				<label for="timeEnd">Time of end (year-month-day)</label>
 			</div>
 		</div>
---%>
+
 
 		<div class="row">
 			<div class="col s6"></div>
