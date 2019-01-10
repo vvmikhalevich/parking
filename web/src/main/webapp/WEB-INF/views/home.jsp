@@ -3,5 +3,5 @@
 	<font size="2">Home page</font>
 </div>
 <div align="center">
-	<font size="12" color="blue">Parking GRODNO</font>
+	<font size="12" color=" #0888A1">Parking GRODNO</font>
 </div>

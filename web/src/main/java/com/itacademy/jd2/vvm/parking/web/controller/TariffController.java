@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.StatusType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
 import com.itacademy.jd2.vvm.parking.service.ITariffService;
@@ -107,8 +109,17 @@ public class TariffController extends AbstractController {
 
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
+		loadCommonFormModels(hashMap);
 
 		return new ModelAndView("tariff.edit", hashMap);
+	}
+
+	private void loadCommonFormModels(final Map<String, Object> hashMap) {
+
+		final List<StatusType> statusTypesList = Arrays.asList(StatusType.values());
+		final Map<String, String> statusTypesMap = statusTypesList.stream()
+				.collect(Collectors.toMap(StatusType::name, StatusType::name));
+		hashMap.put("statusesChoices", statusTypesMap);
 	}
 
 }

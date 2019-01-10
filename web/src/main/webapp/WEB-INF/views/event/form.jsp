@@ -36,35 +36,49 @@
 
 
 		<div class="row">
-			<div class="input-field col s12">
-				<form:input path="timeStart" type="text" disabled="${readonly}" />
+			<div class="input-field col s6">
+				<form:input path="timeStart" type="text" disabled="${readonly}"
+					cssClass="datepicker" />
 				<form:errors path="timeStart" cssClass="red-text" />
-				<label for="timeStart">Time of start (year-month-day)</label>
+				<label for="timeStart">Start date</label>
 			</div>
-		</div>
-
-		<div class="row">
-			<div class="input-field col s12">
-				<form:input path="timeEnd" type="text" disabled="${readonly}" />
-				<form:errors path="timeEnd" cssClass="red-text" />
-				<label for="timeEnd">Time of end (year-month-day)</label>
+			<div class="input-field col s6">
+				<form:input path="timeStartTime" type="text" disabled="${readonly}"
+					cssClass="timepicker" />
+				<form:errors path="timeStartTime" cssClass="red-text" />
+				<label for="timeStartTime">Start time</label>
 			</div>
-		</div>
 
 
-		<div class="row">
-			<div class="col s6"></div>
-			<div class="col s3">
-				<c:if test="${!readonly}">
-					<button class="btn waves-effect waves-light right" type="submit">Save</button>
-				</c:if>
-			</div>
-			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesEvent}">to
-					the listƒ<i class="material-icons right"></i>
-				</a>
-			</div>
-		</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<form:input path="timeEnd" type="text" disabled="${readonly}"
+						cssClass="datepicker" />
+					<form:errors path="timeEnd" cssClass="red-text" />
+					<label for="timeEnd">End date</label>
+				</div>
+				<div class="input-field col s6">
+					<form:input path="timeEndTime" type="text" disabled="${readonly}"
+						cssClass="timepicker" />
+					<form:errors path="timeEndTime" cssClass="red-text" />
+					<label for="timeEndTime">End time</label>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col s6"></div>
+					<div class="col s3">
+						<c:if test="${!readonly}">
+							<button class="btn waves-effect waves-light right" type="submit">Save</button>
+						</c:if>
+					</div>
+					<div class="col s3">
+						<a class="btn waves-effect waves-light right" href="${pagesEvent}">to
+							the listƒ<i class="material-icons right"></i>
+						</a>
+					</div>
+				</div>
 	</form:form>
 </div>
 

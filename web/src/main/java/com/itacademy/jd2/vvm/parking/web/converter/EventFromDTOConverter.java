@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.web.converter;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,40 @@ public class EventFromDTOConverter implements Function<EventDTO, IEvent> {
 	public IEvent apply(final EventDTO dto) {
 		final IEvent entity = eventService.createEntity();
 		entity.setId(dto.getId());
-		entity.setTimeStart(dto.getTimeStart());
+
 		entity.setTimeEnd(dto.getTimeEnd());
+
+		final Date timeStart = dto.getTimeStart();
+		if (timeStart != null) {
+			final Calendar fullDateCalendar = Calendar.getInstance();
+			fullDateCalendar.setTime(timeStart);
+
+			final Date timeStartTime = dto.getTimeStartTime();
+			if (timeStartTime != null) {
+				final Calendar timeCalendar = Calendar.getInstance();
+				timeCalendar.setTime(timeStartTime);
+				fullDateCalendar.set(Calendar.HOUR_OF_DAY, timeCalendar.get(Calendar.HOUR_OF_DAY));
+				fullDateCalendar.set(Calendar.MINUTE, timeCalendar.get(Calendar.MINUTE));
+			}
+
+			entity.setTimeStart(fullDateCalendar.getTime());
+		}
+
+		final Date timeEnd = dto.getTimeEnd();
+		if (timeEnd != null) {
+			final Calendar fullDateCalendar = Calendar.getInstance();
+			fullDateCalendar.setTime(timeEnd);
+
+			final Date timeEndTime = dto.getTimeEndTime();
+			if (timeEndTime != null) {
+				final Calendar timeCalendar = Calendar.getInstance();
+				timeCalendar.setTime(timeEndTime);
+				fullDateCalendar.set(Calendar.HOUR_OF_DAY, timeCalendar.get(Calendar.HOUR_OF_DAY));
+				fullDateCalendar.set(Calendar.MINUTE, timeCalendar.get(Calendar.MINUTE));
+			}
+
+			entity.setTimeEnd(fullDateCalendar.getTime());
+		}
 
 		final IPlace place = placeService.createEntity();
 		place.setId(dto.getPlaceId());

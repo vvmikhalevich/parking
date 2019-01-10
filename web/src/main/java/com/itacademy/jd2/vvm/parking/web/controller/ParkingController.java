@@ -73,6 +73,15 @@ public class ParkingController extends AbstractController {
 		return new ModelAndView("parking.edit", hashMap);
 	}
 
+	@RequestMapping(value = "/addPlaces", method = RequestMethod.GET)
+	public ModelAndView showFormPlaces() {
+		final Map<String, Object> hashMap = new HashMap<>();
+		final IParking newEntity = parkingService.createEntity();
+		hashMap.put("formModel", toDtoConverter.apply(newEntity));
+
+		return new ModelAndView("addPlace.edit", hashMap);
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("formModel") final ParkingDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
@@ -98,7 +107,7 @@ public class ParkingController extends AbstractController {
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
 
-		return new ModelAndView("parking.edit", hashMap);
+		return new ModelAndView("addPlace.edit", hashMap);
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)

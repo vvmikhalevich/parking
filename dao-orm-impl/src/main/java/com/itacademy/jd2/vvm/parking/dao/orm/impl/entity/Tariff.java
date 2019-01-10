@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.StatusType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 
 @Entity
@@ -17,7 +18,7 @@ public class Tariff extends BaseEntity implements ITariff {
 	private BigDecimal price;
 
 	@Column
-	private String status;
+	private StatusType status;
 
 	@Override
 	public String getName() {
@@ -40,12 +41,12 @@ public class Tariff extends BaseEntity implements ITariff {
 	}
 
 	@Override
-	public String getStatus() {
+	public StatusType getStatus() {
 		return status;
 	}
 
 	@Override
-	public void setStatus(String status) {
+	public void setStatus(StatusType status) {
 		this.status = status;
 	}
 

@@ -25,6 +25,9 @@ public class EventDTO {
 	@DateTimeFormat(pattern = "hh:mm a")
 	private Date timeEndTime;
 
+	@DateTimeFormat(pattern = "hh:mm a")
+	private Date timeStartTime;
+
 	private Date created;
 
 	private Date updated;
@@ -99,6 +102,22 @@ public class EventDTO {
 
 	public void setUpdated(Date updated) {
 		this.updated = updated;
+	}
+
+	public Date getTimeEndTime() {
+		return timeEndTime;
+	}
+
+	public void setTimeEndTime(Date timeEndTime) {
+		this.timeEndTime = timeEndTime;
+	}
+
+	public Date getTimeStartTime() {
+		return timeStartTime;
+	}
+
+	public void setTimeStartTime(Date timeStartTime) {
+		this.timeStartTime = timeStartTime;
 	}
 
 }

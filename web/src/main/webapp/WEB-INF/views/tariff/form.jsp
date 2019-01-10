@@ -21,7 +21,7 @@
 					<label for="name">название</label>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="input-field col s12">
 					<form:input path="price" type="text" disabled="${readonly}" />
@@ -29,14 +29,19 @@
 					<label for="name">price</label>
 				</div>
 			</div>
-			
+
+
+
 			<div class="row">
 				<div class="input-field col s12">
-					<form:input path="status" type="text" disabled="${readonly}" />
+					<form:select path="status" disabled="${readonly}">
+						<form:options items="${statusesChoices}" />
+					</form:select>
 					<form:errors path="status" cssClass="red-text" />
-					<label for="name">status</label>
+					<label for="status">status</label>
 				</div>
 			</div>
+
 
 			<div class="row">
 				<div class="col s6"></div>

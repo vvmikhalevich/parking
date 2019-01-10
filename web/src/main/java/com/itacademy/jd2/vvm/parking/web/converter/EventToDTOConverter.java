@@ -17,7 +17,9 @@ public class EventToDTOConverter implements Function<IEvent, EventDTO> {
 		final EventDTO dto = new EventDTO();
 		dto.setId(entity.getId());
 		dto.setTimeStart(entity.getTimeStart());
+		dto.setTimeStartTime(entity.getTimeStart());
 		dto.setTimeEnd(entity.getTimeEnd());
+		dto.setTimeEndTime(entity.getTimeEnd());
 		dto.setCreated(entity.getCreated());
 		dto.setUpdated(entity.getUpdated());
 

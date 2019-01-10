@@ -2,6 +2,7 @@ package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
 import java.math.BigDecimal;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.StatusType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 
 public class Tariff extends BaseEntity implements ITariff {
@@ -10,7 +11,7 @@ public class Tariff extends BaseEntity implements ITariff {
 
 	private BigDecimal price;
 
-	private String status;
+	private StatusType status;
 
 	public String getName() {
 		return name;
@@ -28,11 +29,11 @@ public class Tariff extends BaseEntity implements ITariff {
 		this.price = price;
 	}
 
-	public String getStatus() {
+	public StatusType getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(StatusType status) {
 		this.status = status;
 	}
 

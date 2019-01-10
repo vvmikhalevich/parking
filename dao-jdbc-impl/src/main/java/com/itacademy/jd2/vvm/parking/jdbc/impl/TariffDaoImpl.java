@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.ITariffDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.StatusType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Tariff;
@@ -31,7 +32,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 			public ITariff doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setBigDecimal(2, entity.getPrice());
-				pStmt.setString(3, entity.getStatus());
+				pStmt.setString(3, entity.getStatus().name());
 				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -58,7 +59,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 			public ITariff doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setBigDecimal(2, entity.getPrice());
-				pStmt.setString(3, entity.getStatus());
+				pStmt.setString(3, entity.getStatus().name());
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
@@ -78,7 +79,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 		entity.setId((Integer) resultSet.getObject("id"));
 		entity.setName(resultSet.getString("name"));
 		entity.setPrice((BigDecimal) resultSet.getObject("price"));
-		entity.setStatus(resultSet.getString("status"));
+		entity.setStatus(StatusType.valueOf(resultSet.getString("status")));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 		return entity;
