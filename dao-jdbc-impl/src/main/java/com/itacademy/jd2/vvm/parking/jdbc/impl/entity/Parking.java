@@ -8,6 +8,10 @@ public class Parking extends BaseEntity implements IParking {
 
 	private String adress;
 
+	private Integer width;
+
+	private Integer length;
+
 	private String status;
 
 	public String getName() {
@@ -32,5 +36,21 @@ public class Parking extends BaseEntity implements IParking {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Integer getWidth() {
+		return width;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public Integer getLength() {
+		return length;
+	}
+
+	public void setLength(Integer length) {
+		this.length = length;
 	}
 }

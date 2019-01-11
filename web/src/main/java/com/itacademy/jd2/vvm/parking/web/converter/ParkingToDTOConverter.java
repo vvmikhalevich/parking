@@ -17,6 +17,8 @@ public class ParkingToDTOConverter implements Function<IParking, ParkingDTO> {
 		dto.setName(entity.getName());
 		dto.setAdress(entity.getAdress());
 		dto.setStatus(entity.getStatus());
+		dto.setWidth(entity.getWidth());
+		dto.setLength(entity.getLength());
 		dto.setCreated(entity.getCreated());
 		dto.setUpdated(entity.getUpdated());
 		return dto;

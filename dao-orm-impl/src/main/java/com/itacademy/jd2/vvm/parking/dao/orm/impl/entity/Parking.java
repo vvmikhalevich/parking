@@ -15,6 +15,12 @@ public class Parking extends BaseEntity implements IParking {
 	private String adress;
 
 	@Column
+	private Integer width;
+
+	@Column
+	private Integer length;
+
+	@Column
 	private String status;
 
 	@Override
@@ -45,5 +51,21 @@ public class Parking extends BaseEntity implements IParking {
 	@Override
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Integer getWidth() {
+		return width;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public Integer getLength() {
+		return length;
+	}
+
+	public void setLength(Integer length) {
+		this.length = length;
 	}
 }

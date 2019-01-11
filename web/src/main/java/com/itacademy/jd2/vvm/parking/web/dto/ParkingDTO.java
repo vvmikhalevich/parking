@@ -12,6 +12,10 @@ public class ParkingDTO {
 
 	private String adress;
 
+	private Integer width;
+
+	private Integer length;
+
 	private String status;
 
 	private Date created;
@@ -64,6 +68,22 @@ public class ParkingDTO {
 
 	public void setUpdated(final Date updated) {
 		this.updated = updated;
+	}
+
+	public Integer getWidth() {
+		return width;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public Integer getLength() {
+		return length;
+	}
+
+	public void setLength(Integer length) {
+		this.length = length;
 	}
 
 }

@@ -32,6 +32,22 @@
 
 			<div class="row">
 				<div class="input-field col s12">
+					<form:input path="width" type="text" disabled="${readonly}" />
+					<form:errors path="width" cssClass="red-text" />
+					<label for="width">Width</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<form:input path="length" type="text" disabled="${readonly}" />
+					<form:errors path="length" cssClass="red-text" />
+					<label for="length">Length</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
 					<form:input path="status" type="text" disabled="${readonly}" />
 					<form:errors path="status" cssClass="red-text" />
 					<label for="status">Status</label>

@@ -125,6 +125,8 @@ CREATE TABLE "parking" (
 	"id" serial NOT NULL,
 	"name" character varying NOT NULL,
 	"adress" character varying NOT NULL,
+	"width" integer NOT NULL,
+	"length" integer NOT NULL,
 	"status" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
@@ -150,7 +152,7 @@ CREATE TABLE "place" (
 
 
 
-CREATE TABLE "event" (
+CREATE TABLE "parking copy" (
 	"id" serial NOT NULL,
 	"car_id" integer NOT NULL,
 	"place_id" integer NOT NULL,
@@ -158,7 +160,7 @@ CREATE TABLE "event" (
 	"time_end" TIMESTAMP NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
-	CONSTRAINT event_pk PRIMARY KEY ("id")
+	CONSTRAINT parking copy_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
@@ -188,5 +190,6 @@ ALTER TABLE "place_owner" ADD CONSTRAINT "place_owner_fk1" FOREIGN KEY ("place_i
 ALTER TABLE "place" ADD CONSTRAINT "place_fk0" FOREIGN KEY ("parking_id") REFERENCES "parking"("id");
 ALTER TABLE "place" ADD CONSTRAINT "place_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 
-ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
-ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+ALTER TABLE "parking copy" ADD CONSTRAINT "parking copy_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
+ALTER TABLE "parking copy" ADD CONSTRAINT "parking copy_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+

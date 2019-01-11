@@ -14,4 +14,12 @@ public interface IParking extends IBaseEntity {
 
 	void setStatus(String status);
 
+	Integer getWidth();
+
+	void setWidth(Integer width);
+
+	Integer getLength();
+
+	void setLength(Integer length);
+
 }
