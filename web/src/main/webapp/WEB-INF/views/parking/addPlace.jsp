@@ -6,108 +6,93 @@
 		<c:otherwise>Edit parking</c:otherwise>
 	</c:choose>
 </h4>
+
+<table border="1" cellspacing="1" width="100%" id="table1"
+	class="parking-table">
+
+
+	<c:forEach var="y" begin="1" end="${formModel.width}">
+		<tr>
+			<c:forEach var="x" begin="1" end="${formModel.length}">
+				<td id="${x}_${y}">${x}_${y}</td>
+			</c:forEach>
+		</tr>
+
+	</c:forEach>
+
+
+
+</table>
+
+
+
+
+
+
 <div class="row">
-	<div class="row">
-		<form:form class="col s12" method="POST" action="${pagesParking}"
-			modelAttribute="formModel">
+	<div class="col s6"></div>
+	<div class="col s3">
+		<c:if test="${!readonly}">
+			<button class="btn waves-effect waves-light right" type="button"
+				id="save-button">Save places</button>
+		</c:if>
+	</div>
+	<div class="col s3">
+		<a class="btn waves-effect waves-light right" href="${pagesParking}">to
+			parkings<i class="material-icons right"></i>
+		</a>
+	</div>
+</div>
 
-			<form:input path="id" type="hidden" />
 
-			<html>
-
-<head>
-<meta charset="utf-8">
-</head>
-<body>
-
-	<table border="1" cellspacing="1" width="100%" id="table1">
-		<tr>
-			<th>Column1</th>
-			<th>Column2</th>
-			<th>Column3</th>
-			<th>Column4</th>
-			<th>Column5</th>
-		</tr>
-		<tr>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-		</tr>
-		<tr>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-		</tr>
-		<tr>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-		</tr>
-		<tr>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-			<td>place</td>
-		</tr>
-	</table>
-
-</body>
 
 <script>
-	$(document).ready(
-			function() {
-				$('td').click(
-						function() {
-							if (this.style.background == ""
-									|| this.style.background == "white") {
-								$(this).css('background', 'red');
-							} else {
-								$(this).css('background', 'white');
-							}
-						});
+	$(document).ready(function() {
+		//cell selection
+		$('td').click(function() {
+			$(this).toggleClass("selected");
+		});
+
+		$('#save-button').click(function() {
+			var data = {};
+			$('.parking-table td').each(function(index) {
+				var td = $(this);
+				var id = td.attr('id');
+				var clazz = td.attr('class');
+				data[id] = clazz === 'selected' ? true : false;
 			});
+
+			console.log(data)
+
+			
+			
+			$.ajax({
+				type : "POST",
+				url : '${pagesParking}/addPlaces/${formModel.id}',
+				data : JSON.stringify(data),
+				success : function() {
+					alert('success');
+					window.location = '${pagesParking}/parking';
+				},
+				dataType : "json",
+				contentType : "application/json; charset=utf-8",
+			});
+
+		});
+
+	});
 </script>
 
-			</html>
 
 
-
-		</form:form>
-
-		<div class="row">
-			<div class="col s6"></div>
-			<div class="col s3">
-				<c:if test="${!readonly}">
-					<button class="btn waves-effect waves-light right" type="submit">Save
-						places</button>
-				</c:if>
-			</div>
-			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesParking}">to
-					parkings<i class="material-icons right"></i>
-				</a>
-			</div>
-		</div>
-
-	</div>
+<%-- 
+<c:if test='${param["showAlerts"]}'>
+	<!-- checks the URL parameter -->
 
 
+	<script src="${contextPath}/resources/js/sample-alert-with-params.js"></script>
+	<script>
+		showMessage('${contextPath}'); // execute function defined somewhere above
+	</script>
 
-
-	<c:if test='${param["showAlerts"]}'>
-		<!-- checks the URL parameter -->
-
-
-		<script src="${contextPath}/resources/js/sample-alert-with-params.js"></script>
-		<script>
-			showMessage('${contextPath}'); // execute function defined somewhere above
-		</script>
-
-	</c:if>
+</c:if> --%>

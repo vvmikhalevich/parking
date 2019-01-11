@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,13 +77,20 @@ public class ParkingController extends AbstractController {
 		return new ModelAndView("parking.edit", hashMap);
 	}
 
-	@RequestMapping(value = "/addPlaces", method = RequestMethod.GET)
-	public ModelAndView showFormPlaces() {
+	@RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.GET)
+	public ModelAndView showFormPlaces(@PathVariable(name = "id", required = true) final Integer id) {
 		final Map<String, Object> hashMap = new HashMap<>();
-		final IParking newEntity = parkingService.createEntity();
-		hashMap.put("formModel", toDtoConverter.apply(newEntity));
+		final IParking dbModel = parkingService.get(id);
+		hashMap.put("formModel", toDtoConverter.apply(dbModel));
 
 		return new ModelAndView("addPlace.edit", hashMap);
+	}
+	
+	@RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> savePlaces(@RequestBody Map<String, Boolean> jsonData, @PathVariable(name = "id", required = true) final Integer id) {
+		System.out.println("map : " + jsonData);
+
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

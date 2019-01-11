@@ -34,8 +34,8 @@
 						value="${parking.updated}" /></td>
 
 				<td><a class="waves-effect waves-light btn right"
-					href="${pagesParking}/addPlaces"><i class="material-icons">add
-							places</i></a></td>
+					href="${pagesParking}/addPlaces/${parking.id}"><i
+						class="material-icons">add places</i></a></td>
 
 				<td class="right"><a class="btn-floating"
 					href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
