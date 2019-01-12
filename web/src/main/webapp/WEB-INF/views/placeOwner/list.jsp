@@ -8,7 +8,7 @@
 	<tbody>
 		<tr>
 			<th>id</th>
-			<th>userAccount(user_account_id)</th>
+			<th>client(client_id)</th>
 			<th>place(place_id)</th>
 			<th>created</th>
 			<th>updated</th>
@@ -20,7 +20,7 @@
 				<td><c:out value="${placeOwner.id}" /></td>
 
 				<td><c:out
-						value="${placeOwner.userAccountLastName}(userAccountId=${placeOwner.userAccountId})" /></td>
+						value="${placeOwner.clientId}(clientId=${placeOwner.clientId})" /></td>
 
 				<td><c:out
 						value="${placeOwner.placeName}(placeId=${placeOwner.placeId})" /></td>

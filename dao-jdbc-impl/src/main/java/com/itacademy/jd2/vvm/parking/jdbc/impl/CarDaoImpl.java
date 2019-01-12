@@ -40,17 +40,17 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 	@Override
 	public void insert(final ICar entity) {
-		executeStatement(new PreparedStatementAction<ICar>(String.format(
-				"insert into %s (model_id, number, user_account_id, foto_id, created, updated) values(?,?,?,?,?,?)",
-				getTableName()), true) {
+		executeStatement(new PreparedStatementAction<ICar>(
+				String.format("insert into %s (model_id, number, foto_id, created, updated) values(?,?,?,?,?)",
+						getTableName()),
+				true) {
 			@Override
 			public ICar doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setInt(1, entity.getModel().getId());
 				pStmt.setString(2, entity.getNumber());
-				pStmt.setInt(3, entity.getUserAccount().getId());
-				pStmt.setInt(4, entity.getFoto().getId());
-				pStmt.setObject(5, entity.getCreated(), Types.TIMESTAMP);
-				pStmt.setObject(6, entity.getUpdated(), Types.TIMESTAMP);
+				pStmt.setInt(3, entity.getFoto().getId());
+				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
+				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
 
@@ -69,15 +69,13 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 	@Override
 	public void update(final ICar entity) {
 		executeStatement(new PreparedStatementAction<ICar>(
-				String.format("update %s set model_id=?, number=?, user_account_id=?, foto_id=?, updated=? where id=?",
-						getTableName())) {
+				String.format("update %s set model_id=?, number=?, foto_id=?, updated=? where id=?", getTableName())) {
 			@Override
 			public ICar doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setInt(1, entity.getModel().getId());
 				pStmt.setString(2, entity.getNumber());
-				pStmt.setInt(3, entity.getUserAccount().getId());
-				pStmt.setInt(4, entity.getFoto().getId());
-				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
+				pStmt.setInt(3, entity.getFoto().getId());
+				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
 				return entity;
@@ -90,23 +88,12 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		final ICar entity = createEntity();
 		entity.setId((Integer) resultSet.getObject("id"));
 		entity.setNumber(resultSet.getString("number"));
-		// entity.setUserAccount(resultSet.getInt("user_account_id"));
-		// entity.setFoto(resultSet.getInt("foto_id"));
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 
 		final IModel model = new Model();
 		model.setId((Integer) resultSet.getObject("model_id"));
 		entity.setModel(model);
-
-		final Integer userAccountId = (Integer) resultSet.getObject("user_account_id");
-		if (userAccountId != null) {
-			final UserAccount userAccount = new UserAccount();
-			userAccount.setId(userAccountId);
-
-			entity.setUserAccount(userAccount);
-
-		}
 
 		final Integer fotoId = (Integer) resultSet.getObject("foto_id");
 		if (fotoId != null) {

@@ -14,11 +14,11 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<form:select path="userAccountId" disabled="${readonly}">
-					<form:options items="${usersChoices}" />
+				<form:select path="clientId" disabled="${readonly}">
+					<form:options items="${clientsChoices}" />
 				</form:select>
-				<form:errors path="userAccountId" cssClass="red-text" />
-				<label for="userAccountId">Users</label>
+				<form:errors path="clientId" cssClass="red-text" />
+				<label for="clientId">Users</label>
 			</div>
 		</div>
 

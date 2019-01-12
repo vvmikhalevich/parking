@@ -8,7 +8,6 @@
 			<th>id</th>
 			<th>model(model_id)</th>
 			<th>number</th>
-			<th>user(user_account_id)</th>
 			<th>foto(foto_id)</th>
 			<th>created</th>
 			<th>updated</th>
@@ -21,8 +20,7 @@
 				<td><c:out value="${car.modelName}(model_id=${car.modelId})" /></td>
 
 				<td><c:out value="${car.number}" /></td>
-				<td><c:out
-						value="${car.userAccountLastName}(userAccountId=${car.userAccountId})" /></td>
+
 				<td><c:out value="${car.fotoId}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.updated}" /></td>

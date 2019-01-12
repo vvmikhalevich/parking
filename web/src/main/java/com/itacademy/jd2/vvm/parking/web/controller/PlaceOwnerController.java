@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceOwnerFilter;
+import com.itacademy.jd2.vvm.parking.service.IClientService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceOwnerService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
@@ -40,6 +42,9 @@ public class PlaceOwnerController extends AbstractController {
 
 	@Autowired
 	private IUserAccountService userAccountService;
+
+	@Autowired
+	private IClientService clientService;
 
 	@Autowired
 	private PlaceOwnerFromDTOConverter fromDtoConverter;
@@ -114,6 +119,7 @@ public class PlaceOwnerController extends AbstractController {
 	private void loadCommonFormModels(final Map<String, Object> hashMap) {
 		final List<IPlace> places = placeService.getAll();
 		final List<IUserAccount> users = userAccountService.getAll();
+		final List<IClient> clients = clientService.getAll();
 
 		final Map<Integer, String> placesMap = places.stream()
 				.collect(Collectors.toMap(IPlace::getId, IPlace::getName));
@@ -122,6 +128,10 @@ public class PlaceOwnerController extends AbstractController {
 		final Map<Integer, String> usersMap = users.stream()
 				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getLastName));
 		hashMap.put("usersChoices", usersMap);
+
+		final Map<Integer, Integer> clientsMap = clients.stream()
+				.collect(Collectors.toMap(IClient::getId, IClient::getId));
+		hashMap.put("clientsChoices", clientsMap);
 
 	}
 

@@ -1,24 +1,17 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 
-	private IUserAccount userAccount;
+	private IClient client;
 
 	private IPlace place;
 
 	private String status;
-
-	public IUserAccount getUserAccount() {
-		return userAccount;
-	}
-
-	public void setUserAccount(IUserAccount userAccount) {
-		this.userAccount = userAccount;
-	}
 
 	public IPlace getPlace() {
 		return place;
@@ -34,6 +27,26 @@ public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public IClient getClient() {
+		return client;
+	}
+
+	public void setClient(IClient client) {
+		this.client = client;
+	}
+
+	@Override
+	public IUserAccount getUserAccount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setUserAccount(IUserAccount userAccount) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

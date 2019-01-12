@@ -6,6 +6,8 @@ public class PlaceOwnerDTO {
 
 	private Integer id;
 
+	private Integer clientId;
+
 	private Integer userAccountId;
 
 	private String userAccountFirstName;
@@ -82,6 +84,14 @@ public class PlaceOwnerDTO {
 
 	public void setUpdated(Date updated) {
 		this.updated = updated;
+	}
+
+	public Integer getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
 	}
 
 }

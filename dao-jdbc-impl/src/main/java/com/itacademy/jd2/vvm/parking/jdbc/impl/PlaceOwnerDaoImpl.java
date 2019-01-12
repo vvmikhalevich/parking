@@ -10,24 +10,24 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.itacademy.jd2.vvm.parking.dao.api.IClientDao;
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceOwnerDao;
-import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceOwnerFilter;
+import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Client;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Place;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.PlaceOwner;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
 @Repository
 public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> implements IPlaceOwnerDao {
 
-	private IUserAccountDao userAccountDao;
+	private IClientDao clientDao;
 
 	@Autowired
-	public PlaceOwnerDaoImpl(IUserAccountDao userAccountDao) {
+	public PlaceOwnerDaoImpl(IClientDao clientDao) {
 		super();
-		this.userAccountDao = userAccountDao;
+		this.clientDao = clientDao;
 	}
 
 	@Override
@@ -37,13 +37,11 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 
 	@Override
 	public void insert(final IPlaceOwner entity) {
-		executeStatement(new PreparedStatementAction<IPlaceOwner>(
-				String.format("insert into %s (user_account_id, place_id, created, updated) values(?,?,?,?,?)",
-						getTableName()),
-				true) {
+		executeStatement(new PreparedStatementAction<IPlaceOwner>(String.format(
+				"insert into %s (client_id, place_id, created, updated) values(?,?,?,?,?)", getTableName()), true) {
 			@Override
 			public IPlaceOwner doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setInt(1, entity.getUserAccount().getId());
+				pStmt.setInt(1, entity.getClient().getId());
 				pStmt.setInt(2, entity.getPlace().getId());
 				pStmt.setObject(3, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
@@ -65,10 +63,10 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 	@Override
 	public void update(final IPlaceOwner entity) {
 		executeStatement(new PreparedStatementAction<IPlaceOwner>(
-				String.format("update %s set user_account_id=?, place_id=?, updated=? where id=?", getTableName())) {
+				String.format("update %s set client_id=?, place_id=?, updated=? where id=?", getTableName())) {
 			@Override
 			public IPlaceOwner doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setInt(1, entity.getUserAccount().getId());
+				pStmt.setInt(1, entity.getClient().getId());
 				pStmt.setInt(2, entity.getPlace().getId());
 				pStmt.setObject(3, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -86,12 +84,12 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 
-		final Integer userAccountId = (Integer) resultSet.getObject("user_account_id");
-		if (userAccountId != null) {
-			final UserAccount userAccount = new UserAccount();
-			userAccount.setId(userAccountId);
+		final Integer clientId = (Integer) resultSet.getObject("client_id");
+		if (clientId != null) {
+			final Client client = new Client();
+			client.setId(clientId);
 
-			entity.setUserAccount(userAccount);
+			entity.setClient(client);
 
 		}
 

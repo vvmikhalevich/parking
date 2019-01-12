@@ -20,9 +20,6 @@ public class Car extends BaseEntity implements ICar {
 	@Column
 	private String number;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = UserAccount.class)
-	private IUserAccount userAccount;
-
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Foto.class)
 	private IFoto foto;
 
@@ -44,16 +41,6 @@ public class Car extends BaseEntity implements ICar {
 	@Override
 	public void setNumber(String number) {
 		this.number = number;
-	}
-
-	@Override
-	public IUserAccount getUserAccount() {
-		return userAccount;
-	}
-
-	@Override
-	public void setUserAccount(IUserAccount userAccount) {
-		this.userAccount = userAccount;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceOwnerDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceOwnerFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.PlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.PlaceOwner_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
@@ -44,7 +45,7 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // select what? select *
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.userAccount, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(UserAccount_.firstName, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
@@ -68,8 +69,8 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 
 		case "id":
 			return from.get(PlaceOwner_.id);
-		case "userAccount":
-			return from.get(PlaceOwner_.userAccount).get(UserAccount_.firstName);
+		case "client":
+			return from.get(PlaceOwner_.client).get(Client_.id);
 		case "car":
 			return from.get(PlaceOwner_.place).get(Place_.name);
 
@@ -108,7 +109,7 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // define what need to be selected
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.userAccount, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(UserAccount_.firstName, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

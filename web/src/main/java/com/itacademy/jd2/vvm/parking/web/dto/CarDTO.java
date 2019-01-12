@@ -12,12 +12,6 @@ public class CarDTO {
 
 	private String number;
 
-	private Integer userAccountId;
-
-	private String userAccountFirstName;
-
-	private String userAccountLastName;
-
 	private Integer fotoId;
 
 	private String link;
@@ -56,30 +50,6 @@ public class CarDTO {
 
 	public void setNumber(String number) {
 		this.number = number;
-	}
-
-	public Integer getUserAccountId() {
-		return userAccountId;
-	}
-
-	public void setUserAccountId(Integer userAccountId) {
-		this.userAccountId = userAccountId;
-	}
-
-	public String getUserAccountFirstName() {
-		return userAccountFirstName;
-	}
-
-	public void setUserAccountFirstName(String userAccountFirstName) {
-		this.userAccountFirstName = userAccountFirstName;
-	}
-
-	public String getUserAccountLastName() {
-		return userAccountLastName;
-	}
-
-	public void setUserAccountLastName(String userAccountLastName) {
-		this.userAccountLastName = userAccountLastName;
 	}
 
 	public Integer getFotoId() {

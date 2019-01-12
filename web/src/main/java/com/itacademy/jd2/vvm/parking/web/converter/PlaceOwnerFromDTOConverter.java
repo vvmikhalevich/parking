@@ -5,12 +5,12 @@ import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
+import com.itacademy.jd2.vvm.parking.service.IClientService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceOwnerService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
-import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.dto.PlaceOwnerDTO;
 
 @Component
@@ -23,7 +23,7 @@ public class PlaceOwnerFromDTOConverter implements Function<PlaceOwnerDTO, IPlac
 	private IPlaceService placeService;
 
 	@Autowired
-	private IUserAccountService userAccountService;
+	private IClientService clientService;
 
 	@Override
 	public IPlaceOwner apply(final PlaceOwnerDTO dto) {
@@ -35,9 +35,9 @@ public class PlaceOwnerFromDTOConverter implements Function<PlaceOwnerDTO, IPlac
 		place.setName(dto.getPlaceName());
 		entity.setPlace(place);
 
-		final IUserAccount userAccount = userAccountService.createEntity();
-		userAccount.setId(dto.getUserAccountId());
-		entity.setUserAccount(userAccount);
+		final IClient client = clientService.createEntity();
+		client.setId(dto.getClientId());
+		entity.setClient(client);
 
 		return entity;
 	}

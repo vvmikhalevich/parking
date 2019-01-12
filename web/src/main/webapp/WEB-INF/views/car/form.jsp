@@ -30,15 +30,6 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="input-field col s12">
-				<form:select path="userAccountId" disabled="${readonly}">
-					<form:options items="${userAccountsChoices}" />
-				</form:select>
-				<form:errors path="userAccountId" cssClass="red-text" />
-				<label for="userAccountId">User Account</label>
-			</div>
-		</div>
 
 		<div class="row">
 			<div class="input-field col s12">
