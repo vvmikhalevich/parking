@@ -3,7 +3,9 @@
 <h4 class="header">
 	<c:choose>
 		<c:when test="${empty formModel.id }">Create places</c:when>
-		<c:otherwise>Edit parking</c:otherwise>
+		<c:when test="${readonly}">Info parking ${formModel.name}</c:when>
+		<c:otherwise>Edit parking ${formModel.name}</c:otherwise>
+
 	</c:choose>
 </h4>
 
@@ -20,15 +22,38 @@
 
 	</c:forEach>
 
-
-
 </table>
+<c:if test="${readonly}">
+
+<script>
+		$(document).ready(function() {
+			//cell selection from json
+			
+				
+			
+
+			
+				var data = jsonData;
+				$('.parking-table td').each(function(index) {
+					var td = $(this);
+					var id = td.attr('id');
+					var clazz = td.attr('class');
+					
+					data[id] = clazz === 'selected' ? true : false;
+				});
+
+				
+	console.log(data)
+
+		;
+
+	});
+</script>
 
 
 
 
-
-
+</c:if>
 <div class="row">
 	<div class="col s6"></div>
 	<div class="col s3">
@@ -45,47 +70,53 @@
 </div>
 
 
-
-<script>
-	$(document).ready(function() {
-		//cell selection
-		$('td').click(function() {
-			$(this).toggleClass("selected");
-		});
-
-		$('#save-button').click(function() {
-			var data = {};
-			$('.parking-table td').each(function(index) {
-				var td = $(this);
-				var id = td.attr('id');
-				var clazz = td.attr('class');
-				data[id] = clazz === 'selected' ? true : false;
+<c:if test="${!readonly}">
+	<script>
+		$(document).ready(function() {
+			//cell selection
+			$('td').click(function() {
+				$(this).toggleClass("selected");
 			});
 
-			console.log(data)
+			$('#save-button').click(function() {
+				var data = {};
+				$('.parking-table td').each(function(index) {
+					var td = $(this);
+					var id = td.attr('id');
+					var clazz = td.attr('class');
+					data[id] = clazz === 'selected' ? true : false;
+				});
 
-			
-			
-			$.ajax({
-				type : "POST",
-				url : '${pagesParking}/addPlaces/${formModel.id}',
-				data : JSON.stringify(data),
-				success : function() {
-					alert('success');
-					window.location = '${pagesParking}/parking';
-				},
-				dataType : "json",
-				contentType : "application/json; charset=utf-8",
+				console.log(data)
+
+				$.ajax({
+					type : "POST",
+					url : '${pagesParking}/addPlaces/${formModel.id}',
+					data : JSON.stringify(data),
+					success : function() {
+						alert('success');
+						window.location = '${pagesParking}';
+					},
+					error : function() {
+						alert('failure');
+						window.location = '${pagesParking}';
+					},
+					dataType : "json",
+					contentType : "application/json; charset=utf-8",
+				});
+
 			});
 
 		});
-
-	});
-</script>
-
+	</script>
+</c:if>
 
 
 <%-- 
+
+
+alert("success");
+					window.location = '${pagesParking}/parking';
 <c:if test='${param["showAlerts"]}'>
 	<!-- checks the URL parameter -->
 

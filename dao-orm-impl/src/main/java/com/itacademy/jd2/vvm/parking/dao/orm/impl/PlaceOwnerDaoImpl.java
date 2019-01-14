@@ -45,7 +45,9 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // select what? select *
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(UserAccount_.firstName, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT);
+
+		// .fetch(UserAccount_.firstName, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {

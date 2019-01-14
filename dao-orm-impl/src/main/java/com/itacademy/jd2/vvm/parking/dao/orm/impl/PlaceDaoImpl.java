@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,10 +9,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
@@ -45,6 +48,8 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 		from.fetch(Place_.parking, JoinType.LEFT);
 		from.fetch(Place_.car, JoinType.LEFT);
+
+		applyFilter(filter, cb, cq, from);
 
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
@@ -83,6 +88,20 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 		default:
 			throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
+		}
+	}
+
+	private void applyFilter(final PlaceFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<Place> from) {
+		final List<Predicate> ands = new ArrayList<>();
+
+		final Integer id = filter.getParkingId();
+		if (!StringUtils.isEmpty(id)) {
+			ands.add(cb.equal(from.get(Place_.parking), id));
+		}
+
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
 		}
 	}
 
