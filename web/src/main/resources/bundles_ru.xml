@@ -2,4 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="table.column.id">Идентификатор</entry>
+	<entry key="table.column.name">Название</entry>
+	<entry key="table.column.created">Создан</entry>
+	<entry key="table.column.updated">Изменен</entry>
+	<entry key="table.column.brands">Бренды</entry>
 </properties>

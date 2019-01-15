@@ -3,7 +3,6 @@ package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 
@@ -35,18 +34,6 @@ public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 
 	public void setClient(IClient client) {
 		this.client = client;
-	}
-
-	@Override
-	public IUserAccount getUserAccount() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setUserAccount(IUserAccount userAccount) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

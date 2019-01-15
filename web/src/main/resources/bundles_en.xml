@@ -2,4 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="table.column.id">ID</entry>
+	<entry key="table.column.name">Name</entry>
+	<entry key="table.column.created">Created</entry>
+	<entry key="table.column.updated">Updated</entry>
+	<entry key="table.column.brands">Brands</entry>
 </properties>

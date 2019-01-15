@@ -16,11 +16,11 @@ import org.springframework.stereotype.Repository;
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceOwnerDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceOwnerFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.PlaceOwner;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.PlaceOwner_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
 public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> implements IPlaceOwnerDao {
@@ -45,7 +45,7 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // select what? select *
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
 
 		// .fetch(UserAccount_.firstName, JoinType.LEFT);
 
@@ -111,7 +111,9 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // define what need to be selected
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(UserAccount_.firstName, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
+		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.car, JoinType.LEFT).fetch(Car_.model,
+				JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

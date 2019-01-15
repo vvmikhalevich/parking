@@ -138,9 +138,6 @@ public class ParkingController extends AbstractController {
 
 			}
 		}
-		// final IPlace entity = fromDtoConverter.apply(formModel);
-
-		// placeService.save(entity);
 
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
@@ -195,6 +192,7 @@ public class ParkingController extends AbstractController {
 
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
+		hashMap.put("jsonData", modelMap);
 
 		return new ModelAndView("addPlace.edit", hashMap);
 	}

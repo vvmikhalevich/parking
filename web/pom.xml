@@ -18,6 +18,19 @@
 	<artifactId>web</artifactId>
 
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.itacademy.jd2.vvm.parking</groupId>
 			<artifactId>service</artifactId>

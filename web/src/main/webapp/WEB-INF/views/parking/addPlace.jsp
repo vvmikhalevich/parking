@@ -25,30 +25,23 @@
 </table>
 <c:if test="${readonly}">
 
-<script>
+	<script>
 		$(document).ready(function() {
 			//cell selection from json
-			
-				
-			
 
-			
-				var data = jsonData;
-				$('.parking-table td').each(function(index) {
-					var td = $(this);
-					var id = td.attr('id');
-					var clazz = td.attr('class');
-					
-					data[id] = clazz === 'selected' ? true : false;
-				});
+			var data = jsonData;
+			$('.parking-table td').each(function(index) {
+				var td = $(this);
+				var id = td.attr('id');
+				var clazz = td.attr('class');
 
-				
-	console.log(data)
+				data[id] = clazz === 'selected' ? true : false;
+			});
 
-		;
+			;
 
-	});
-</script>
+		});
+	</script>
 
 
 

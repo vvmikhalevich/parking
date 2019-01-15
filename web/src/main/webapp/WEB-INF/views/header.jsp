@@ -1,12 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <header>
 	<nav class="nav-extended">
 		<div class="nav-wrapper ">
 			<ul class="left hide-on-med-and-down">
 				<li><a href="${contextPath}/">Home</a></li>
-				<li><a href="${pagesBrand}">Brands</a></li>
+				<li><a href="${pagesBrand}"><mytaglib:i18n
+							key="table.column.brands" /></a></li>
 				<li><a href="${pagesModel}">Models</a></li>
 				<li><a href="${pagesCar}">Cars</a></li>
 				<li><a href="${pagesClient}">Clients</a></li>
