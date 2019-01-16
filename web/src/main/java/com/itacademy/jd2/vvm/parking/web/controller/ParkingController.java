@@ -1,18 +1,18 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -38,7 +38,6 @@ import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.web.converter.ParkingFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.ParkingToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.ParkingDTO;
-import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 
 @Controller
@@ -171,19 +170,19 @@ public class ParkingController extends AbstractController {
 
 		Iterator<IPlace> i = entities.iterator();
 
-		final Map<String, Boolean> modelMap = new HashMap<>();
+		final Set<String> places = new HashSet<>();
 
 		while (i.hasNext()) {
 
 			IPlace place = i.next();
 			if (place != null) {
 				String name = place.getName();
-				modelMap.put(name, true);
-				System.out.println(name);
+				places.add(name);
+				//System.out.println(name);
 			}
 
 		}
-		System.out.println(modelMap);
+		//System.out.println(modelMap);
 
 		// List<PlaceDTO> dtos =
 		// entities.stream().map(toDtoConverter).collect(Collectors.toList());
@@ -192,7 +191,7 @@ public class ParkingController extends AbstractController {
 
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
-		hashMap.put("jsonData", modelMap);
+		hashMap.put("places", places);
 
 		return new ModelAndView("addPlace.edit", hashMap);
 	}
