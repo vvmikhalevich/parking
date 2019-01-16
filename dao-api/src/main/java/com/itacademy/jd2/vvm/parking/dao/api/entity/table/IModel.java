@@ -9,5 +9,7 @@ public interface IModel extends IBaseEntity {
 	IBrand getBrand();
 
 	void setBrand(IBrand brand);
+	
+	
 
 }

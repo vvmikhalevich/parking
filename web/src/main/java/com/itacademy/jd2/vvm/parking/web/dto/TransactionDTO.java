@@ -7,9 +7,7 @@ public class TransactionDTO {
 
 	private Integer id;
 
-	private Integer clientId;
-
-	private Integer clientUserAccountId;
+	private Integer userAccountId;
 
 	private BigDecimal value;
 
@@ -28,19 +26,11 @@ public class TransactionDTO {
 	}
 
 	public Integer getClientId() {
-		return clientId;
+		return userAccountId;
 	}
 
 	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
-	}
-
-	public Integer getClientUserAccountId() {
-		return clientUserAccountId;
-	}
-
-	public void setClientUserAccountId(Integer clientUserAccountId) {
-		this.clientUserAccountId = clientUserAccountId;
+		this.userAccountId = clientId;
 	}
 
 	public BigDecimal getValue() {

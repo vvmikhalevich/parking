@@ -45,7 +45,7 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // select what? select *
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
+		from.fetch(PlaceOwner_.userAccount, JoinType.LEFT);
 
 		// .fetch(UserAccount_.firstName, JoinType.LEFT);
 
@@ -111,9 +111,7 @@ public class PlaceOwnerDaoImpl extends AbstractDaoImpl<IPlaceOwner, Integer> imp
 		cq.select(from); // define what need to be selected
 
 		from.fetch(PlaceOwner_.place, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
-		from.fetch(PlaceOwner_.client, JoinType.LEFT).fetch(Client_.car, JoinType.LEFT).fetch(Car_.model,
-				JoinType.LEFT);
+		from.fetch(PlaceOwner_.userAccount, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

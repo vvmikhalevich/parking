@@ -48,7 +48,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		cq.select(from); // select * from Transaction
 
 		// from.fetch(Transaction_.client, JoinType.LEFT);
-		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
+		from.fetch(Transaction_.userAccount, JoinType.LEFT);
 		/*
 		 * if (filter.getFetchBrand()) { // select m, b from model m left join brand b
 		 * ... from.fetch(Model_.brand, JoinType.LEFT); }
@@ -70,8 +70,8 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		switch (sortColumn) {
 		case "id":
 			return from.get(Transaction_.id);
-		case "client_id":
-			return from.get(Transaction_.client).get(Client_.id);
+		case "user_account_id":
+			return from.get(Transaction_.userAccount).get(UserAccount_.id);
 		case "value":
 			return from.get(Transaction_.value);
 		case "description":
@@ -110,9 +110,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 
 		cq.select(from); // define what need to be selected
 
-		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.userAccount, JoinType.LEFT);
-
-		from.fetch(Transaction_.client, JoinType.LEFT).fetch(Client_.tariff, JoinType.LEFT);
+		from.fetch(Transaction_.userAccount, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

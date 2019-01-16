@@ -10,6 +10,10 @@ public interface ICar extends IBaseEntity {
 
 	void setNumber(String number);
 
+	IUserAccount getUserAccount();
+
+	void setUserAccount(IUserAccount userAccount);
+
 	IFoto getFoto();
 
 	void setFoto(IFoto foto);

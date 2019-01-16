@@ -2,9 +2,9 @@ package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
 public interface IPlaceOwner extends IBaseEntity {
 
-	IClient getClient();
+	IUserAccount getUserAccount();
 
-	void setClient(IClient client);
+	void setUserAccount(IUserAccount userAccount);
 
 	IPlace getPlace();
 

@@ -21,9 +21,6 @@ public class Place extends BaseEntity implements IPlace {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Car.class)
 	private ICar car;
 
-	@Column
-	private String status;
-
 	@Override
 	public String getName() {
 		return name;
@@ -52,16 +49,6 @@ public class Place extends BaseEntity implements IPlace {
 	@Override
 	public void setCar(ICar car) {
 		this.car = car;
-	}
-
-	@Override
-	public String getStatus() {
-		return status;
-	}
-
-	@Override
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 }

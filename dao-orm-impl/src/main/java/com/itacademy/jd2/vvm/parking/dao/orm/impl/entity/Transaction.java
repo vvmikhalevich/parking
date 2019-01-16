@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 @Entity
 public class Transaction extends BaseEntity implements ITransaction {
 
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = Client.class)
-	private IClient client;
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = UserAccount.class)
+	private IUserAccount userAccount;
 
 	@Column
 	private BigDecimal value;
@@ -23,13 +23,13 @@ public class Transaction extends BaseEntity implements ITransaction {
 	private String description;
 
 	@Override
-	public IClient getClient() {
-		return client;
+	public IUserAccount getUserAccount() {
+		return userAccount;
 	}
 
 	@Override
-	public void setClient(IClient client) {
-		this.client = client;
+	public void setUserAccount(IUserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 	@Override

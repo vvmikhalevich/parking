@@ -18,7 +18,7 @@ public class TransactionFromDTOConverter implements Function<TransactionDTO, ITr
 	private ITransactionService transactionService;
 
 	@Autowired
-	private IClientService clientService;
+	private IUserAccountService userAccountService;
 
 	@Override
 	public ITransaction apply(final TransactionDTO dto) {
@@ -27,10 +27,10 @@ public class TransactionFromDTOConverter implements Function<TransactionDTO, ITr
 		entity.setValue(dto.getValue());
 		entity.setDescription(dto.getDescription());
 
-		final IClient client = clientService.createEntity();
-		client.setId(dto.getClientId());
+		final IUserAccount userAccount = userAccountService.createEntity();
+		userAccount.setId(dto.get);
 
-		entity.setClient(client);
+		entity.setUserAccount(userAccount);
 
 		return entity;
 	}

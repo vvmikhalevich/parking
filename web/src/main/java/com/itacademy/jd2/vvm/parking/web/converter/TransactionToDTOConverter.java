@@ -20,9 +20,9 @@ public class TransactionToDTOConverter implements Function<ITransaction, Transac
 		dto.setDescription(entity.getDescription());
 		dto.setCreated(entity.getCreated());
 		dto.setUpdated(entity.getUpdated());
-		final IClient client = entity.getClient();
-		if (client != null) {
-			dto.setClientId(client.getId());
+		final IUserAccount userAccount = entity.getUserAccount();
+		if (userAccount != null) {
+			dto.set
 
 		}
 		// final IUserAccount userAccount = client.getUserAccount();

@@ -14,7 +14,4 @@ public interface IPlace extends IBaseEntity {
 
 	void setCar(ICar car);
 
-	String getStatus();
-
-	void setStatus(String status);
 }

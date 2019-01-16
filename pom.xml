@@ -45,11 +45,13 @@
 				<version>1.0.0</version>
 			</dependency>
 
+			<!--
 			<dependency>
 				<groupId>com.itacademy.jd2.vvm.parking</groupId>
 				<artifactId>dao-jdbc-impl</artifactId>
 				<version>1.0.0</version>
 			</dependency>
+ 			-->
 
 			<dependency>
 				<groupId>com.itacademy.jd2.vvm.parking</groupId>

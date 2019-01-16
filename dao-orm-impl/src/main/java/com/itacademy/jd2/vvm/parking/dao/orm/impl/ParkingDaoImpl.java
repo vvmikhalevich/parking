@@ -69,7 +69,8 @@ public class ParkingDaoImpl extends AbstractDaoImpl<IParking, Integer> implement
 			return from.get(Parking_.width);
 		case "length":
 			return from.get(Parking_.length);
-
+		case "cost_per_day":
+			return from.get(Parking_.costPerDay);
 		case "status":
 			return from.get(Parking_.status);
 		case "created":

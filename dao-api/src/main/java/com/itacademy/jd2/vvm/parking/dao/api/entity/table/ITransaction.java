@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public interface ITransaction extends IBaseEntity {
 
-	IClient getClient();
+	IUserAccount getUserAccount();
 
-	void setClient(IClient client);
+	void setUserAccount(IUserAccount userAccount);
 
 	BigDecimal getValue();
 

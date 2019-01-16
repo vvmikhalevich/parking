@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -22,6 +24,9 @@ public class Parking extends BaseEntity implements IParking {
 
 	@Column
 	private String status;
+
+	@Column
+	private BigDecimal costPerDay;
 
 	@Override
 	public String getName() {
@@ -67,5 +72,13 @@ public class Parking extends BaseEntity implements IParking {
 
 	public void setLength(Integer length) {
 		this.length = length;
+	}
+
+	public BigDecimal getCostPerDay() {
+		return costPerDay;
+	}
+
+	public void setCostPerDay(BigDecimal costPerDay) {
+		this.costPerDay = costPerDay;
 	}
 }
