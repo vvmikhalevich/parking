@@ -6,4 +6,7 @@
 	<entry key="table.column.created">Создан</entry>
 	<entry key="table.column.updated">Изменен</entry>
 	<entry key="table.column.brands">Бренды</entry>
+	<entry key="table.column.brand">Бренд</entry>
+	<entry key="table.column.models">Модели</entry>
+	<entry key="table.column.model">Модель</entry>
 </properties>

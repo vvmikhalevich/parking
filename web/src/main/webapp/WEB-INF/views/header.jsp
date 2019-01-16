@@ -9,7 +9,8 @@
 				<li><a href="${contextPath}/">Home</a></li>
 				<li><a href="${pagesBrand}"><mytaglib:i18n
 							key="table.column.brands" /></a></li>
-				<li><a href="${pagesModel}">Models</a></li>
+				<li><a href="${pagesModel}"><mytaglib:i18n
+							key="table.column.models" /></a></li>
 				<li><a href="${pagesCar}">Cars</a></li>
 				<li><a href="${pagesClient}">Clients</a></li>
 				<li><a href="${pagesTariff}">Tariffs</a></li>
@@ -20,7 +21,10 @@
 
 				<li><a href="${pagesPlaceOwner}">PlaceOwners</a></li>
 				<li><a href="${pagesEvent}">Events</a></li>
-				<li><a href="${pagesTransaction}">Transactions</a></li>
+
+				<li><sec:authorize access="!isAnonymous()">
+						<a href="${pagesTransaction}">Transactions</a>
+					</sec:authorize></li>
 
 
 				<sec:authorize access="!isAnonymous()">

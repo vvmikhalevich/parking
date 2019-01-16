@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
@@ -25,6 +26,7 @@ import com.itacademy.jd2.vvm.parking.service.IModelService;
 import com.itacademy.jd2.vvm.parking.web.converter.ModelFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.ModelToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.ModelDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 
 @Controller
 @RequestMapping(value = "/model")
@@ -42,9 +44,17 @@ public class ModelController extends AbstractController {
 	private ModelToDTOConverter toDtoConverter;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(final HttpServletRequest req) {
+	public ModelAndView index(final HttpServletRequest req,
+			@RequestParam(name = "page", required = false) final Integer pageNumber,
+			@RequestParam(name = "sort", required = false) final String sortColumn) {
+
+		final GridStateDTO gridState = getListDTO(req);
+		gridState.setPage(pageNumber);
+		gridState.setSort(sortColumn, "id");
 
 		final ModelFilter filter = new ModelFilter();
+		prepareFilter(gridState, filter);
+		gridState.setTotalCount(modelService.getCount(filter));
 
 		final List<IModel> entities = modelService.find(filter);
 		List<ModelDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
