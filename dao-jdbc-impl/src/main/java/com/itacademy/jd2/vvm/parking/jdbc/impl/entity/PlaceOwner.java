@@ -1,12 +1,12 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlaceOwner;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 
-	private IClient client;
+	private IUserAccount userAccount;
 
 	private IPlace place;
 
@@ -28,12 +28,12 @@ public class PlaceOwner extends BaseEntity implements IPlaceOwner {
 		this.status = status;
 	}
 
-	public IClient getClient() {
-		return client;
+	public IUserAccount getUserAccount() {
+		return userAccount;
 	}
 
-	public void setClient(IClient client) {
-		this.client = client;
+	public void setUserAccount(IUserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 }

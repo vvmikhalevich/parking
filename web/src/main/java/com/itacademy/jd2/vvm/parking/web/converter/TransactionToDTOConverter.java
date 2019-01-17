@@ -4,7 +4,6 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.web.dto.TransactionDTO;
@@ -22,13 +21,10 @@ public class TransactionToDTOConverter implements Function<ITransaction, Transac
 		dto.setUpdated(entity.getUpdated());
 		final IUserAccount userAccount = entity.getUserAccount();
 		if (userAccount != null) {
-			dto.set
+			dto.setUserAccountId(userAccount.getId());
+			dto.setUserAccountLastName(userAccount.getLastName());
 
 		}
-		// final IUserAccount userAccount = client.getUserAccount();
-		// if (userAccount != null) {
-		// dto.setClientUserAccountId(userAccount.getId());
-		// }
 
 		return dto;
 	}

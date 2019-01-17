@@ -9,6 +9,8 @@ public class TransactionDTO {
 
 	private Integer userAccountId;
 
+	private String userAccountLastName;
+
 	private BigDecimal value;
 
 	private String description;
@@ -25,12 +27,20 @@ public class TransactionDTO {
 		this.id = id;
 	}
 
-	public Integer getClientId() {
+	public Integer getUserAccountId() {
 		return userAccountId;
 	}
 
-	public void setClientId(Integer clientId) {
-		this.userAccountId = clientId;
+	public void setUserAccountId(Integer userAccountId) {
+		this.userAccountId = userAccountId;
+	}
+
+	public String getUserAccountLastName() {
+		return userAccountLastName;
+	}
+
+	public void setUserAccountLastName(String userAccountLastName) {
+		this.userAccountLastName = userAccountLastName;
 	}
 
 	public BigDecimal getValue() {

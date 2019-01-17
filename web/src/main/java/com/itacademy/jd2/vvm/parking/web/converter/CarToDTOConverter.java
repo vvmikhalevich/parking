@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
 
 @Component
@@ -26,8 +27,15 @@ public class CarToDTOConverter implements Function<ICar, CarDTO> {
 
 		}
 
-		final IFoto foto = entity.getFoto();
+		final IUserAccount userAccount = entity.getUserAccount();
+		if (userAccount != null) {
+			dto.setUserAccountId(userAccount.getId());
+			dto.setUserAccountFirstName(userAccount.getFirstName());
+			dto.setUserAccountLastName(userAccount.getLastName());
 
+		}
+
+		final IFoto foto = entity.getFoto();
 		if (foto != null) {
 			dto.setFotoId(foto.getId());
 			;

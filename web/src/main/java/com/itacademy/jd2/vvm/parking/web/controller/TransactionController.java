@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
-import com.itacademy.jd2.vvm.parking.service.IClientService;
 import com.itacademy.jd2.vvm.parking.service.ITransactionService;
+import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.TransactionFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.TransactionToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.TransactionDTO;
@@ -33,7 +33,7 @@ public class TransactionController extends AbstractController {
 	private ITransactionService transactionService;
 
 	@Autowired
-	private IClientService clientService;
+	private IUserAccountService userAccountService;
 
 	@Autowired
 	private TransactionFromDTOConverter fromDtoConverter;
@@ -106,16 +106,16 @@ public class TransactionController extends AbstractController {
 	}
 
 	private void loadCommonFormModels(final Map<String, Object> hashMap) {
-		final List<IClient> clients = clientService.getAll();
+		final List<IUserAccount> userAccounts = userAccountService.getAll();
 
 		/*
 		 * final Map<Integer, String> brandsMap = new HashMap<>(); for (final IBrand
 		 * iBrand : brands) { brandsMap.put(iBrand.getId(), iBrand.getName()); }
 		 */
 
-		final Map<Integer, Integer> clientsMap = clients.stream()
-				.collect(Collectors.toMap(IClient::getId, IClient::getId));
-		hashMap.put("clientsChoices", clientsMap);
+		final Map<Integer, String> usersMap = userAccounts.stream()
+				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getLastName));
+		hashMap.put("userAccountsChoices", usersMap);
 
 	}
 

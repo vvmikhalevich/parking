@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.validation.constraints.Size;
@@ -15,6 +16,8 @@ public class ParkingDTO {
 	private Integer width;
 
 	private Integer length;
+
+	private BigDecimal costPerDay;
 
 	private String status;
 
@@ -44,6 +47,14 @@ public class ParkingDTO {
 
 	public void setAdress(String adress) {
 		this.adress = adress;
+	}
+
+	public BigDecimal getCostPerDay() {
+		return costPerDay;
+	}
+
+	public void setCostPerDay(BigDecimal costPerDay) {
+		this.costPerDay = costPerDay;
 	}
 
 	public String getStatus() {

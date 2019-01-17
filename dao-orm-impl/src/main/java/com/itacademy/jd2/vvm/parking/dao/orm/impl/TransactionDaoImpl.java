@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 import com.itacademy.jd2.vvm.parking.dao.api.ITransactionDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Client_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Transaction;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Transaction_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
 public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> implements ITransactionDao {
@@ -47,7 +47,6 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		// define what will be added to result set
 		cq.select(from); // select * from Transaction
 
-		// from.fetch(Transaction_.client, JoinType.LEFT);
 		from.fetch(Transaction_.userAccount, JoinType.LEFT);
 		/*
 		 * if (filter.getFetchBrand()) { // select m, b from model m left join brand b

@@ -5,10 +5,10 @@ import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IClient;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
-import com.itacademy.jd2.vvm.parking.service.IClientService;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.service.ITransactionService;
+import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.dto.TransactionDTO;
 
 @Component
@@ -28,7 +28,8 @@ public class TransactionFromDTOConverter implements Function<TransactionDTO, ITr
 		entity.setDescription(dto.getDescription());
 
 		final IUserAccount userAccount = userAccountService.createEntity();
-		userAccount.setId(dto.get);
+		userAccount.setId(dto.getUserAccountId());
+		userAccount.setLastName(dto.getUserAccountLastName());
 
 		entity.setUserAccount(userAccount);
 

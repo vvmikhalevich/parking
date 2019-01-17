@@ -1,6 +1,7 @@
 package com.itacademy.jd2.vvm.parking.web.dto;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.validation.constraints.Size;
 
@@ -10,6 +11,9 @@ public class UserAccountDTO {
 
 	private Integer id;
 	@Size(min = 1, max = 20)
+
+	private Set<Integer> placeIds;
+
 	private String firstName;
 
 	private String lastName;
@@ -23,6 +27,14 @@ public class UserAccountDTO {
 	private Date created;
 
 	private Date updated;
+
+	public Set<Integer> getPlaceIds() {
+		return placeIds;
+	}
+
+	public void setPlaceIds(Set<Integer> placeIds) {
+		this.placeIds = placeIds;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
+import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.UserAccountFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.UserAccountToDTOConverter;
@@ -32,9 +34,15 @@ import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 @RequestMapping(value = "/userAccount")
 public class UserAccountController extends AbstractController {
 
+	@Autowired
+	private IPlaceService placeService;
+
+	@Autowired
 	private IUserAccountService userAccountService;
 
+	@Autowired
 	private UserAccountToDTOConverter toDtoConverter;
+	@Autowired
 	private UserAccountFromDTOConverter fromDtoConverter;
 
 	@Autowired
@@ -120,5 +128,9 @@ public class UserAccountController extends AbstractController {
 		final Map<String, String> roleTypesMap = roleTypesList.stream()
 				.collect(Collectors.toMap(RoleType::name, RoleType::name));
 		hashMap.put("rolesChoices", roleTypesMap);
+
+		final Map<Integer, String> placesMap = placeService.getAll().stream()
+				.collect(Collectors.toMap(IPlace::getId, IPlace::getName));
+		hashMap.put("placeChoices", placesMap);
 	}
 }

@@ -36,17 +36,18 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 	@Override
 	public void insert(final IPlace entity) {
-		executeStatement(new PreparedStatementAction<IPlace>(String.format(
-				"insert into %s (name, parking_id, car_id, status, created, updated) values(?,?,?,?,?,?,?)",
-				getTableName()), true) {
+		executeStatement(new PreparedStatementAction<IPlace>(
+				String.format("insert into %s (name, parking_id, car_id, status, created, updated) values(?,?,?,?,?,?)",
+						getTableName()),
+				true) {
 			@Override
 			public IPlace doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setInt(2, entity.getParking().getId());
 				pStmt.setInt(3, entity.getCar().getId());
-				pStmt.setString(4, entity.getStatus());
-				pStmt.setObject(5, entity.getCreated(), Types.TIMESTAMP);
-				pStmt.setObject(6, entity.getUpdated(), Types.TIMESTAMP);
+
+				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
+				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
 
@@ -64,15 +65,15 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 	@Override
 	public void update(final IPlace entity) {
-		executeStatement(new PreparedStatementAction<IPlace>(String.format(
-				"update %s set name=?, parking_id=?, car_id=?, status=?, updated=? where id=?", getTableName())) {
+		executeStatement(new PreparedStatementAction<IPlace>(
+				String.format("update %s set name=?, parking_id=?, car_id=?,  updated=? where id=?", getTableName())) {
 			@Override
 			public IPlace doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setInt(2, entity.getParking().getId());
 				pStmt.setInt(3, entity.getCar().getId());
-				pStmt.setString(4, entity.getStatus());
-				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
+
+				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
 				return entity;
@@ -84,7 +85,6 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 	protected IPlace parseRow(final ResultSet resultSet, final Set<String> columns) throws SQLException {
 		final IPlace entity = createEntity();
 		entity.setId((Integer) resultSet.getObject("id"));
-		entity.setStatus(resultSet.getString("status"));
 
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));

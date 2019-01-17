@@ -6,7 +6,7 @@
 	<tbody>
 		<tr>
 			<th>id</th>
-			<th>client(client_id)</th>
+			<th>user_accout(user_acoount_id)</th>
 			<th>value</th>
 			<th>description</th>
 			<th>created</th>
@@ -19,7 +19,7 @@
 				<td><c:out value="${transaction.id}" /></td>
 
 				<td><c:out
-						value="${transaction.clientId}(client_id=${transaction.clientId})" /></td>
+						value="${transaction.userAccountLastName}(client_id=${transaction.userAccountId})" /></td>
 				<td><c:out value="${transaction.value}" /></td>
 				<td><c:out value="${transaction.description}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

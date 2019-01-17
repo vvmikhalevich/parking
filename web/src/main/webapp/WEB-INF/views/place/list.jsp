@@ -9,7 +9,7 @@
 			<th>name</th>
 			<th>parking(parking_id)</th>
 			<th>car(car_id)</th>
-			<th>status</th>
+
 			<th>created</th>
 			<th>updated</th>
 			<th></th>
@@ -24,7 +24,7 @@
 						value="${place.parkingName}(parkingId=${place.parkingId})" /></td>
 
 				<td><c:out value="${place.carNumber}(carId=${place.carId})" /></td>
-				<td><c:out value="${place.status}" /></td>
+
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${place.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

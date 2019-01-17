@@ -15,6 +15,9 @@
 					column="length">length</mytaglib:sort-link></th>
 
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
+					column="costPerDay">cost per day</mytaglib:sort-link></th>
+
+			<th><mytaglib:sort-link pageUrl="${pagesParking}"
 					column="status">status</mytaglib:sort-link></th>
 			<th>created</th>
 			<th>updated</th>
@@ -27,6 +30,7 @@
 				<td><c:out value="${parking.adress}" /></td>
 				<td><c:out value="${parking.width}" /></td>
 				<td><c:out value="${parking.length}" /></td>
+				<td><c:out value="${parking.costPerDay}" /></td>
 				<td><c:out value="${parking.status}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${parking.created}" /></td>

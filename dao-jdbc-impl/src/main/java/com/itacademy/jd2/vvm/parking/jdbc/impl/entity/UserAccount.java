@@ -1,6 +1,9 @@
 package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
+import java.util.Set;
+
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class UserAccount extends BaseEntity implements IUserAccount {
@@ -73,6 +76,18 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	public String getPassword() {
 
 		return password;
+	}
+
+	@Override
+	public Set<IPlace> getPlaces() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPlaces(Set<IPlace> places) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

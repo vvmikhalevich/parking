@@ -24,6 +24,8 @@ public class ModelToDTOConverter implements Function<IModel, ModelDTO> {
 			dto.setBrandName(brand.getName());
 
 		}
+		
+
 
 		return dto;
 	}

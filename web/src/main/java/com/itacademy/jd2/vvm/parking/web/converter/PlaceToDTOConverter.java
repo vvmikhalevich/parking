@@ -17,7 +17,6 @@ public class PlaceToDTOConverter implements Function<IPlace, PlaceDTO> {
 		final PlaceDTO dto = new PlaceDTO();
 		dto.setId(entity.getId());
 		dto.setName(entity.getName());
-		dto.setStatus(entity.getStatus());
 		dto.setCreated(entity.getCreated());
 		dto.setUpdated(entity.getUpdated());
 		final IParking parking = entity.getParking();

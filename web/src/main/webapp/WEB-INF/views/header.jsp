@@ -4,7 +4,14 @@
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <header>
 	<nav class="nav-extended">
-		<div class="nav-wrapper ">
+		<div class="nav-wrapper">
+			<ul class="right hide-on-med-and-down">
+				<li><a class="white-text" href="${contextPath}?language=ru">RU</a></li>
+				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
+			</ul>
+
+		</div>
+		<div class="nav-wrapper container">
 			<ul class="left hide-on-med-and-down">
 				<li><a href="${contextPath}/">Home</a></li>
 				<li><a href="${pagesBrand}"><mytaglib:i18n
@@ -12,14 +19,14 @@
 				<li><a href="${pagesModel}"><mytaglib:i18n
 							key="table.column.models" /></a></li>
 				<li><a href="${pagesCar}">Cars</a></li>
-				<li><a href="${pagesClient}">Clients</a></li>
-				<li><a href="${pagesTariff}">Tariffs</a></li>
+
+
 				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
 				<li><a href="${pagesFoto}">Photos</a></li>
 				<li><a href="${pagesParking}">Parkings</a></li>
 				<li><a href="${pagesPlace}">Places</a></li>
 
-				<li><a href="${pagesPlaceOwner}">PlaceOwners</a></li>
+
 				<li><a href="${pagesEvent}">Events</a></li>
 
 				<li><sec:authorize access="!isAnonymous()">
@@ -33,7 +40,11 @@
 				</sec:authorize>
 
 
+
+
+
 			</ul>
+
 		</div>
 
 	</nav>

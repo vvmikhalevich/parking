@@ -6,6 +6,11 @@ body {
 
 main {
 	flex: 1 0 auto;
+	padding-bottom: 10px;
+}
+
+table {
+	margin-bottom: 10px;
 }
 
 .input-field label.multiselect-label, .input-field label.switch-label {
@@ -50,5 +55,4 @@ nav {
 
 .parking-table td.selected {
 	background-color: red;
-	
 }

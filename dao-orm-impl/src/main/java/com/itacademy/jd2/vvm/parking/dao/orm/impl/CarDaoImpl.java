@@ -20,7 +20,7 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Model_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Transaction_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
 public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDao {
@@ -73,7 +73,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 			return from.get(Car_.model).get(Model_.name);
 		case "number":
 			return from.get(Car_.number);
-		case "user_account_id":
+		case "userAccountId":
 			return from.get(Car_.userAccount).get(UserAccount_.id);
 		case "foto":
 			return from.get(Car_.foto).get(Foto_.link);

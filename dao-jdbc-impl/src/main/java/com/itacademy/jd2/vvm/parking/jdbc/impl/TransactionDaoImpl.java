@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.itacademy.jd2.vvm.parking.dao.api.ITransactionDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
-import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Client;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Transaction;
+import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.util.PreparedStatementAction;
 
 @Repository
@@ -26,13 +26,12 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 
 	@Override
 	public void insert(final ITransaction entity) {
-		executeStatement(new PreparedStatementAction<ITransaction>(
-				String.format("insert into %s (client_id, value, description, created, updated) values(?,?,?,?,?)",
-						getTableName()),
-				true) {
+		executeStatement(new PreparedStatementAction<ITransaction>(String.format(
+				"insert into %s (user_account_id, value, description, created, updated) values(?,?,?,?,?)",
+				getTableName()), true) {
 			@Override
 			public ITransaction doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setInt(1, entity.getClient().getId());
+				pStmt.setInt(1, entity.getUserAccount().getId());
 				pStmt.setBigDecimal(2, entity.getValue());
 				pStmt.setString(3, entity.getDescription());
 				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
@@ -59,7 +58,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 				.format("update %s set client_id=?, value=?, description=? updated=? where id=?", getTableName())) {
 			@Override
 			public ITransaction doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
-				pStmt.setInt(1, entity.getClient().getId());
+				pStmt.setInt(1, entity.getUserAccount().getId());
 				pStmt.setBigDecimal(2, entity.getValue());
 				pStmt.setString(3, entity.getDescription());
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
@@ -85,12 +84,12 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 
-		final Integer clientId = (Integer) resultSet.getObject("client_id");
-		if (clientId != null) {
-			final Client client = new Client();
-			client.setId(clientId);
+		final Integer userAccountId = (Integer) resultSet.getObject("user_account_id");
+		if (userAccountId != null) {
+			final UserAccount userAccount = new UserAccount();
+			userAccount.setId(userAccountId);
 
-			entity.setClient(client);
+			entity.setUserAccount(userAccount);
 		}
 
 		return entity;

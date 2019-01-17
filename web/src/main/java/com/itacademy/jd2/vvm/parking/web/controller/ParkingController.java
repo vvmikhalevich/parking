@@ -1,6 +1,5 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
@@ -38,7 +35,6 @@ import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.web.converter.ParkingFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.ParkingToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.ParkingDTO;
-import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 
 @Controller
@@ -123,10 +119,8 @@ public class ParkingController extends AbstractController {
 					final IParking parking = parkingService.get(id);
 					parking.setId(id);
 					entity.setParking(parking);
-					final ICar car = carService.get(1);
-					entity.setCar(car);
-
-					entity.setStatus("enable");
+					// final ICar car = carService.get(1);
+					// entity.setCar(car);
 
 					final Date date = new Date();
 					entity.setCreated(date);

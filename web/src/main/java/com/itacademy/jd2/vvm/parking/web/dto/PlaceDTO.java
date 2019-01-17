@@ -16,8 +16,6 @@ public class PlaceDTO {
 
 	private String carNumber;
 
-	private String status;
-
 	private Date created;
 
 	private Date updated;
@@ -68,14 +66,6 @@ public class PlaceDTO {
 
 	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public Date getCreated() {

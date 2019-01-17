@@ -4,7 +4,7 @@
 	<c:choose>
 		<c:when test="${empty formModel.id }">Create parking</c:when>
 		<c:otherwise>Edit parking</c:otherwise>
-		
+
 	</c:choose>
 </h4>
 <div class="row">
@@ -44,6 +44,14 @@
 					<form:input path="length" type="text" disabled="${readonly}" />
 					<form:errors path="length" cssClass="red-text" />
 					<label for="length">Length</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s12">
+					<form:input path="costPerDay" type="text" disabled="${readonly}" />
+					<form:errors path="costPerDay" cssClass="red-text" />
+					<label for="costPerDay">cost per day</label>
 				</div>
 			</div>
 

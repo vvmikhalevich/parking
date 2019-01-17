@@ -17,11 +17,11 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<form:select path="clientId" disabled="${readonly}">
-					<form:options items="${clientsChoices}" />
+				<form:select path="userAccountId" disabled="${readonly}">
+					<form:options items="${userAccountsChoices}" />
 				</form:select>
-				<form:errors path="clientId" cssClass="red-text" />
-				<label for="clientId">clients</label>
+				<form:errors path="userAccountId" cssClass="red-text" />
+				<label for="userAccountId">userAccount</label>
 			</div>
 		</div>
 
@@ -29,7 +29,7 @@
 			<div class="input-field col s12">
 				<form:input path="value" type="text" disabled="${readonly}" />
 				<form:errors path="value" cssClass="red-text" />
-				<label for="value">значение платежа</label>
+				<label for="value">value of cost</label>
 			</div>
 		</div>
 
@@ -37,7 +37,7 @@
 			<div class="input-field col s12">
 				<form:input path="description" type="text" disabled="${readonly}" />
 				<form:errors path="description" cssClass="red-text" />
-				<label for="description">примечание</label>
+				<label for="description">description</label>
 			</div>
 		</div>
 

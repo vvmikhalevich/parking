@@ -79,8 +79,7 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 			return from.get(Place_.parking).get(Parking_.name);
 		case "car_id":
 			return from.get(Place_.car).get(Car_.number);
-		case "status":
-			return from.get(Place_.status);
+
 		case "created":
 			return from.get(Place_.created);
 		case "updated":

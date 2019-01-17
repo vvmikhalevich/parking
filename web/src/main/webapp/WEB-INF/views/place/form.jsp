@@ -40,15 +40,6 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="input-field col s12">
-				<form:input path="status" type="text" disabled="${readonly}" />
-				<form:errors path="status" cssClass="red-text" />
-				<label for="status">Status of place</label>
-			</div>
-		</div>
-
-
 
 		<div class="row">
 			<div class="col s6"></div>
