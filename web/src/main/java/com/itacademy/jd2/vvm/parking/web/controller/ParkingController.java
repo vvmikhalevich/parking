@@ -2,10 +2,12 @@ package com.itacademy.jd2.vvm.parking.web.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -165,19 +167,19 @@ public class ParkingController extends AbstractController {
 
 		Iterator<IPlace> i = entities.iterator();
 
-		final Map<String, Boolean> modelMap = new HashMap<>();
+		final Set<String> places = new HashSet<>();
 
 		while (i.hasNext()) {
 
 			IPlace place = i.next();
 			if (place != null) {
 				String name = place.getName();
-				modelMap.put(name, true);
-				System.out.println(name);
+				places.add(name);
+				//System.out.println(name);
 			}
 
 		}
-		System.out.println(modelMap);
+		//System.out.println(modelMap);
 
 		// List<PlaceDTO> dtos =
 		// entities.stream().map(toDtoConverter).collect(Collectors.toList());
@@ -186,7 +188,7 @@ public class ParkingController extends AbstractController {
 
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
-		hashMap.put("jsonData", modelMap);
+		hashMap.put("places", places);
 
 		return new ModelAndView("addPlace.edit", hashMap);
 	}

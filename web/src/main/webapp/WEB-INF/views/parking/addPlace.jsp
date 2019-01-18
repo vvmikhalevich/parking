@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <h4 class="header">
 	<c:choose>
 		<c:when test="${empty formModel.id }">Create places</c:when>
@@ -16,14 +18,23 @@
 	<c:forEach var="y" begin="1" end="${formModel.width}">
 		<tr>
 			<c:forEach var="x" begin="1" end="${formModel.length}">
-				<td id="${x}_${y}">${x}_${y}</td>
+				<c:set var="cellId" value="${x}_${y}"></c:set>
+				
+				<c:if test="${readonly}">
+				
+				<spring:eval var="containsValue" expression="places.contains(cellId)" />
+				
+				<c:set var="clazz" value="${containsValue  ? 'selected' : ''}"></c:set> 
+				</c:if>
+				
+				<td id="${cellId}" class="${clazz}">${cellId}</td>
 			</c:forEach>
 		</tr>
 
 	</c:forEach>
 
 </table>
-<c:if test="${readonly}">
+<%-- <c:if test="${readonly}">
 
 	<script>
 		$(document).ready(function() {
@@ -46,7 +57,7 @@
 
 
 
-</c:if>
+</c:if> --%>
 <div class="row">
 	<div class="col s6"></div>
 	<div class="col s3">
@@ -63,46 +74,52 @@
 </div>
 
 
-<c:if test="${!readonly}">
-	<script>
-		$(document).ready(function() {
-			//cell selection
-			$('td').click(function() {
-				$(this).toggleClass("selected");
-			});
+<c:choose>
+	<c:when test="${readonly}">
 
-			$('#save-button').click(function() {
-				var data = {};
-				$('.parking-table td').each(function(index) {
-					var td = $(this);
-					var id = td.attr('id');
-					var clazz = td.attr('class');
-					data[id] = clazz === 'selected' ? true : false;
+
+	</c:when>
+
+	<c:otherwise>
+		<script>
+			$(document).ready(function() {
+				//cell selection
+				$('td').click(function() {
+					$(this).toggleClass("selected");
 				});
 
-				console.log(data)
+				$('#save-button').click(function() {
+					var data = {};
+					$('.parking-table td').each(function(index) {
+						var td = $(this);
+						var id = td.attr('id');
+						var clazz = td.attr('class');
+						data[id] = clazz === 'selected' ? true : false;
+					});
 
-				$.ajax({
-					type : "POST",
-					url : '${pagesParking}/addPlaces/${formModel.id}',
-					data : JSON.stringify(data),
-					success : function() {
-						alert('success');
-						window.location = '${pagesParking}';
-					},
-					error : function() {
-						alert('failure');
-						window.location = '${pagesParking}';
-					},
-					dataType : "json",
-					contentType : "application/json; charset=utf-8",
+					$.ajax({
+						type : "POST",
+						url : '${pagesParking}/addPlaces/${formModel.id}',
+						data : JSON.stringify(data),
+						success : function() {
+							window.location = '${pagesParking}';
+						},
+						error : function() {
+							alert('unexpected error');
+							window.location = '${pagesParking}';
+						},
+						contentType : "application/json; charset=utf-8",
+					});
+
 				});
 
 			});
+		</script>
+	</c:otherwise>
+</c:choose>
 
-		});
-	</script>
-</c:if>
+
+
 
 
 <%-- 
