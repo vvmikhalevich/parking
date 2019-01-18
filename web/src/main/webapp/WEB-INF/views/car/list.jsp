@@ -45,5 +45,6 @@
 		</c:forEach>
 	</tbody>
 </table>
+<jspFragments:paging />
 <a class="waves-effect waves-light btn right" href="${pagesCar}/add"><i
 	class="material-icons">add</i></a>

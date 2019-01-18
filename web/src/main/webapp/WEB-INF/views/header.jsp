@@ -4,13 +4,7 @@
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <header>
 	<nav class="nav-extended">
-		<div class="nav-wrapper">
-			<ul class="right hide-on-med-and-down">
-				<li><a class="white-text" href="${contextPath}?language=ru">RU</a></li>
-				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
-			</ul>
 
-		</div>
 		<div class="nav-wrapper container">
 			<ul class="left hide-on-med-and-down">
 				<li><a href="${contextPath}/">Home</a></li>
@@ -39,7 +33,8 @@
 						title="logout"><i class="material-icons">arrow_forward</i></a>
 				</sec:authorize>
 
-
+				<li><a class="white-text" href="${contextPath}?language=ru">RU</a></li>
+				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
 
 
 

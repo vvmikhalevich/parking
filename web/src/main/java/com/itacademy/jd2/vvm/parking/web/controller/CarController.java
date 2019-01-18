@@ -1,8 +1,15 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
@@ -23,6 +31,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.IFotoService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
@@ -35,6 +44,8 @@ import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 @Controller
 @RequestMapping(value = "/car")
 public class CarController extends AbstractController {
+
+	public static final String FILE_FOLDER = "d:\\";
 
 	@Autowired
 	private ICarService carService;
@@ -64,7 +75,9 @@ public class CarController extends AbstractController {
 		gridState.setSort(sortColumn, "id");
 
 		final CarFilter filter = new CarFilter();
-
+		prepareFilter(gridState, filter);
+		gridState.setTotalCount(carService.getCount(filter));
+		
 		final List<ICar> entities = carService.find(filter);
 		List<CarDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
 
@@ -83,7 +96,9 @@ public class CarController extends AbstractController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Object save(@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result) {
+	public Object save(@RequestParam("file") final MultipartFile file,
+			@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result)
+			throws IOException, GeneralSecurityException {
 		if (result.hasErrors()) {
 			final Map<String, Object> hashMap = new HashMap<>();
 			hashMap.put("formModel", formModel);
@@ -92,7 +107,25 @@ public class CarController extends AbstractController {
 		} else {
 			final ICar entity = fromDtoConverter.apply(formModel);
 
+			// save image
+			String originalFilename = file.getOriginalFilename(); // to DB
+			String contentType = file.getContentType();// to DB
+			String uuid = UUID.randomUUID().toString(); // to DB
+
+			System.out.printf("Uploaded file %s", originalFilename);
+
+			InputStream inputStream = file.getInputStream();
+			Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+			// save link foto
+			final IFoto foto = fotoService.createEntity();
+			foto.setLink(uuid);
+			fotoService.save(foto);
+
+			entity.setFoto(foto);
+
 			carService.save(entity);
+
 			return "redirect:/car";
 		}
 	}

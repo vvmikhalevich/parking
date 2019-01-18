@@ -8,7 +8,7 @@
 </h4>
 <div class="row">
 	<form:form class="col s12" method="POST" action="${pagesCar}"
-		modelAttribute="formModel">
+		enctype="multipart/form-data" modelAttribute="formModel">
 
 		<form:input path="id" type="hidden" />
 
@@ -42,31 +42,28 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<form:select path="fotoId" disabled="${readonly}">
-					<form:options items="${fotosChoices}" />
-				</form:select>
-				<form:errors path="fotoId" cssClass="red-text" />
-				<label for="fotoId">foto of car</label>
+				<input type="file" name="file" /> <label for="file">Foto</label>
 			</div>
 		</div>
+
+
 
 		<div class="row">
 			<div class="col s6"></div>
 			<div class="col s3">
 				<c:if test="${!readonly}">
-					<button class="btn waves-effect waves-light right" type="submit">сохранить</button>
+					<button class="btn waves-effect waves-light right" type="submit">save</button>
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesCar}">к
-					списку<i class="material-icons right"></i>
+				<a class="btn waves-effect waves-light right" href="${pagesCar}">cancel<i class="material-icons right"></i>
 				</a>
 			</div>
 		</div>
 	</form:form>
 </div>
 
-
+<%-- 
 <c:if test='${param["showAlerts"]}'>
 	<!-- checks the URL parameter -->
 
@@ -76,5 +73,5 @@
 		showMessage('${contextPath}'); // execute function defined somewhere above
 	</script>
 
-</c:if>
+</c:if> --%>
 

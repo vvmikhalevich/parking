@@ -48,9 +48,9 @@ public class CarFromDTOConverter implements Function<CarDTO, ICar> {
 
 		entity.setUserAccount(userAccount);
 
-		final IFoto foto = fotoService.createEntity();
-		foto.setId(dto.getFotoId());
-		entity.setFoto(foto);
+		// final IFoto foto = fotoService.createEntity();
+		// foto.setId(dto.getFotoId());
+		// entity.setFoto(foto);
 
 		return entity;
 	}
