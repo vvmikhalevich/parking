@@ -9,6 +9,7 @@
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="link">link</mytaglib:sort-link></th>
+			<th>foto</th>
 			<th>created</th>
 			<th>updated</th>
 			<th></th>
@@ -17,6 +18,9 @@
 			<tr>
 				<td><c:out value="${foto.id}" /></td>
 				<td><c:out value="${foto.link}" /></td>
+				<td><img alt="no image"
+					src="${contextPath}/file/image?uuid=${foto.link}" width="180"
+					height="150" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${foto.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -33,21 +37,4 @@
 <jspFragments:paging />
 <a class="waves-effect waves-light btn right" href="${pagesFoto}/add"><i
 	class="material-icons">add</i></a>
-<div>
-	<form method="POST" enctype="multipart/form-data"
-		action="${contextPath}/file">
-		<table>
-			<tr>
-				<td>File to upload:</td>
-				<td><input type="file" name="file" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Upload" /></td>
-			</tr>
-		</table>
-	</form>
 
-	<img alt="no image"
-		src="${contextPath}/file/image?uuid=<%= request.getParameter("uuid") %>" />
-</div>

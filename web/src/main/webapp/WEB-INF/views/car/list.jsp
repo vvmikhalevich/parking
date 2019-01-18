@@ -1,29 +1,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
+<%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
 <h4 class="header">Cars</h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th>id</th>
-			<th>model(model_id)</th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
+			<th>model</th>
 			<th>number</th>
-			<th>userAccont(userAccont_id)</th>
-			<th>foto(foto_id)</th>
-			<th>created</th>
-			<th>updated</th>
+			<th>userAccont(id)</th>
+			<th>foto</th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="created">
+					<mytaglib:i18n key="table.column.created" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="updated">
+					<mytaglib:i18n key="table.column.updated" />
+				</mytaglib:sort-link></th>
 			<th></th>
 		</tr>
 		<c:forEach var="car" items="${gridItems}" varStatus="loopCounter">
 			<tr>
 				<td><c:out value="${car.id}" /></td>
 
-				<td><c:out value="${car.modelName}(model_id=${car.modelId})" /></td>
+				<td><c:out value="${car.modelName}" /></td>
 
 				<td><c:out value="${car.number}" /></td>
 				<td><c:out
-						value="${car.userAccountLastName}(userAccount_id=${car.userAccountId})" /></td>
-				<td><c:out value="${car.fotoId}" /></td>
+						value="${car.userAccountLastName}(${car.userAccountId})" /></td>
+				<td><img alt="no image"
+					src="${contextPath}/file/image?uuid=${car.link}" width="120"
+					height="100" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.updated}" /></td>
 				<td class="right"><a class="btn-floating"

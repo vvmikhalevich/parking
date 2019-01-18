@@ -35,7 +35,7 @@ public class FileUploadController {
 
 		InputStream inputStream = file.getInputStream();
 		Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
-		return "redirect:/foto";
+		return "redirect:/foto/add";
 	}
 
 	@RequestMapping(value = "/image")

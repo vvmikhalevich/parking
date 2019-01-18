@@ -125,7 +125,7 @@ CREATE TABLE "event" (
 	"car_id" integer NOT NULL,
 	"place_id" integer NOT NULL,
 	"time_start" TIMESTAMP NOT NULL,
-	"time_end" TIMESTAMP NOT NULL,
+	"time_end" TIMESTAMP,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT event_pk PRIMARY KEY ("id")
@@ -155,3 +155,4 @@ ALTER TABLE "place" ADD CONSTRAINT "place_fk1" FOREIGN KEY ("car_id") REFERENCES
 
 ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+
