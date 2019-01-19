@@ -38,8 +38,8 @@ public class CarToDTOConverter implements Function<ICar, CarDTO> {
 		final IFoto foto = entity.getFoto();
 		if (foto != null) {
 			dto.setFotoId(foto.getId());
-			;
 			dto.setLink(foto.getLink());
+			dto.setCreated(foto.getCreated());
 
 		}
 

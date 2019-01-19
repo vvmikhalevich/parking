@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="table.column.id">Идентификатор</entry>
+	<entry key="table.column.id">Номер</entry>
 	<entry key="table.column.name">Название</entry>
 	<entry key="table.column.created">Создан</entry>
 	<entry key="table.column.updated">Изменен</entry>

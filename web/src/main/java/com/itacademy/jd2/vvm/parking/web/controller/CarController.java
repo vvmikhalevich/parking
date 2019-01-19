@@ -77,7 +77,7 @@ public class CarController extends AbstractController {
 		final CarFilter filter = new CarFilter();
 		prepareFilter(gridState, filter);
 		gridState.setTotalCount(carService.getCount(filter));
-		
+
 		final List<ICar> entities = carService.find(filter);
 		List<CarDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
 
@@ -106,23 +106,40 @@ public class CarController extends AbstractController {
 			return new ModelAndView("car.edit", hashMap);
 		} else {
 			final ICar entity = fromDtoConverter.apply(formModel);
-
+			final IFoto foto;
 			// save image
-			String originalFilename = file.getOriginalFilename(); // to DB
-			String contentType = file.getContentType();// to DB
-			String uuid = UUID.randomUUID().toString(); // to DB
+			if (file.getName() != "" && entity.getFoto() == null) {
 
-			System.out.printf("Uploaded file %s", originalFilename);
+				String originalFilename = file.getOriginalFilename(); // to DB
+				String contentType = file.getContentType();// to DB
+				String uuid = UUID.randomUUID().toString(); // to DB
+				System.out.printf("Uploaded file %s", originalFilename);
 
-			InputStream inputStream = file.getInputStream();
-			Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
+				InputStream inputStream = file.getInputStream();
+				Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-			// save link foto
-			final IFoto foto = fotoService.createEntity();
-			foto.setLink(uuid);
-			fotoService.save(foto);
+				foto = fotoService.createEntity();
 
-			entity.setFoto(foto);
+				foto.setLink(uuid);
+				fotoService.save(foto);
+				entity.setFoto(foto);
+
+			} else if (file.getName() != "" && entity.getFoto() != null) {
+
+				String originalFilename = file.getOriginalFilename(); // to DB
+				String contentType = file.getContentType();// to DB
+				String uuid = UUID.randomUUID().toString(); // to DB
+				System.out.printf("Uploaded file %s", originalFilename);
+
+				InputStream inputStream = file.getInputStream();
+				Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+				foto = fotoService.get(entity.getFoto().getId());
+				foto.setLink(uuid);
+
+				entity.setFoto(foto);
+
+			}
 
 			carService.save(entity);
 

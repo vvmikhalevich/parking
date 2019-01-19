@@ -40,13 +40,31 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="input-field col s12">
-				<input type="file" name="file" /> <label for="file">Foto</label>
+		<c:if test="${!readonly}">
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="file" name="file" /> <label for="file"></label>
+				</div>
 			</div>
-		</div>
 
+		</c:if>
 
+		<c:if test="${!empty formModel.id }">
+			<img alt="no image"
+				src="${contextPath}/file/image?uuid=${formModel.link}" width="120"
+				height="100" />
+			<div class="input-field col s12">
+				<form:input path="link" type="text" disabled="${readonly}" />
+				<form:errors path="link" cssClass="red-text" />
+				<label for="link">Link</label>
+			</div>
+			<div class="input-field col s12">
+				<form:input path="fotoId" type="text" disabled="${readonly}" />
+				<form:errors path="fotoId" cssClass="red-text" />
+				<label for="fotoId">Foto id</label>
+			</div>
+
+		</c:if>
 
 		<div class="row">
 			<div class="col s6"></div>
@@ -56,22 +74,13 @@
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesCar}">cancel<i class="material-icons right"></i>
+				<a class="btn waves-effect waves-light right" href="${pagesCar}">cancel<i
+					class="material-icons right"></i>
 				</a>
 			</div>
 		</div>
 	</form:form>
 </div>
 
-<%-- 
-<c:if test='${param["showAlerts"]}'>
-	<!-- checks the URL parameter -->
 
-
-	<script src="${contextPath}/resources/js/sample-alert-with-params.js"></script>
-	<script>
-		showMessage('${contextPath}'); // execute function defined somewhere above
-	</script>
-
-</c:if> --%>
 
