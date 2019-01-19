@@ -53,12 +53,12 @@
 			<img alt="no image"
 				src="${contextPath}/file/image?uuid=${formModel.link}" width="120"
 				height="100" />
-			<div class="input-field col s12">
+			<div class="input-field col s12" visibility: hidden>
 				<form:input path="link" type="text" disabled="${readonly}" />
 				<form:errors path="link" cssClass="red-text" />
 				<label for="link">Link</label>
 			</div>
-			<div class="input-field col s12">
+			<div class="input-field col s12" visibility: hidden>
 				<form:input path="fotoId" type="text" disabled="${readonly}" />
 				<form:errors path="fotoId" cssClass="red-text" />
 				<label for="fotoId">Foto id</label>
