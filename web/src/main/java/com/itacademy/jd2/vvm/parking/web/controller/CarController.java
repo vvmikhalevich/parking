@@ -136,7 +136,7 @@ public class CarController extends AbstractController {
 
 				foto = fotoService.get(entity.getFoto().getId());
 				foto.setLink(uuid);
-
+				fotoService.save(foto);
 				entity.setFoto(foto);
 
 			}
