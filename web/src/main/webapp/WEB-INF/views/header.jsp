@@ -14,7 +14,7 @@
 							key="table.column.models" /></a></li>
 				<li><a href="${pagesCar}">Cars</a></li>
 
-
+				<li><a href="${pagesTariff}">Tariff</a></li>
 				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
 				<li><a href="${pagesFoto}">Photos</a></li>
 				<li><a href="${pagesParking}">Parkings</a></li>

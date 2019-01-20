@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IParkingDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
 import com.itacademy.jd2.vvm.parking.jdbc.impl.entity.Parking;
@@ -30,7 +31,7 @@ public class ParkingDaoImpl extends AbstractDaoImpl<IParking, Integer> implement
 			public IParking doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setString(2, entity.getAdress());
-				pStmt.setString(3, entity.getStatus());
+				pStmt.setString(3, entity.getStatus().name());
 				pStmt.setObject(4, entity.getCreated(), Types.TIMESTAMP);
 				pStmt.setObject(5, entity.getUpdated(), Types.TIMESTAMP);
 
@@ -57,7 +58,7 @@ public class ParkingDaoImpl extends AbstractDaoImpl<IParking, Integer> implement
 			public IParking doWithPreparedStatement(final PreparedStatement pStmt) throws SQLException {
 				pStmt.setString(1, entity.getName());
 				pStmt.setString(2, entity.getAdress());
-				pStmt.setString(3, entity.getStatus());
+				pStmt.setString(3, entity.getStatus().name());
 				pStmt.setObject(4, entity.getUpdated(), Types.TIMESTAMP);
 
 				pStmt.executeUpdate();
@@ -77,7 +78,8 @@ public class ParkingDaoImpl extends AbstractDaoImpl<IParking, Integer> implement
 		entity.setId((Integer) resultSet.getObject("id"));
 		entity.setName(resultSet.getString("name"));
 		entity.setAdress(resultSet.getString("adress"));
-		entity.setStatus(resultSet.getString("status"));
+		entity.setStatus(ParkingType.valueOf(resultSet.getString("status")));
+
 		entity.setCreated(resultSet.getTimestamp("created"));
 		entity.setUpdated(resultSet.getTimestamp("updated"));
 		return entity;

@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 
 @Entity
@@ -23,7 +26,8 @@ public class Parking extends BaseEntity implements IParking {
 	private Integer length;
 
 	@Column
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private ParkingType status;
 
 	@Column
 	private BigDecimal costPerDay;
@@ -49,35 +53,41 @@ public class Parking extends BaseEntity implements IParking {
 	}
 
 	@Override
-	public String getStatus() {
-		return status;
-	}
-
-	@Override
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public Integer getWidth() {
 		return width;
 	}
 
+	@Override
 	public void setWidth(Integer width) {
 		this.width = width;
 	}
 
+	@Override
 	public Integer getLength() {
 		return length;
 	}
 
+	@Override
 	public void setLength(Integer length) {
 		this.length = length;
 	}
 
+	@Override
+	public ParkingType getStatus() {
+		return status;
+	}
+
+	@Override
+	public void setStatus(ParkingType status) {
+		this.status = status;
+	}
+
+	@Override
 	public BigDecimal getCostPerDay() {
 		return costPerDay;
 	}
 
+	@Override
 	public void setCostPerDay(BigDecimal costPerDay) {
 		this.costPerDay = costPerDay;
 	}

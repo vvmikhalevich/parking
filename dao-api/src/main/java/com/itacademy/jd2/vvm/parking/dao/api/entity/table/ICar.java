@@ -14,6 +14,10 @@ public interface ICar extends IBaseEntity {
 
 	void setUserAccount(IUserAccount userAccount);
 
+	ITariff getTariff();
+
+	void setTariff(ITariff tariff);
+
 	IFoto getFoto();
 
 	void setFoto(IFoto foto);

@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
@@ -86,8 +89,10 @@ public class ParkingController extends AbstractController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showForm() {
 		final Map<String, Object> hashMap = new HashMap<>();
-		final IParking newEntity = parkingService.createEntity();
-		hashMap.put("formModel", toDtoConverter.apply(newEntity));
+
+		loadCommonFormModels(hashMap);
+
+		hashMap.put("formModel", new ParkingDTO());
 
 		return new ModelAndView("parking.edit", hashMap);
 	}
@@ -137,7 +142,8 @@ public class ParkingController extends AbstractController {
 		}
 
 		final IParking parking = parkingService.get(id);
-		parking.setStatus("enable");
+		parking.setStatus(ParkingType.valueOf("enable"));
+		;
 		parkingService.save(parking);
 
 		return ResponseEntity.status(HttpStatus.OK).body(null);
@@ -205,7 +211,18 @@ public class ParkingController extends AbstractController {
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
 
+		loadCommonFormModels(hashMap);
+
 		return new ModelAndView("parking.edit", hashMap);
+	}
+
+	private void loadCommonFormModels(final Map<String, Object> hashMap) {
+
+		final List<ParkingType> roleTypesList = Arrays.asList(ParkingType.values());
+		final Map<String, String> parkingTypesMap = roleTypesList.stream()
+				.collect(Collectors.toMap(ParkingType::name, ParkingType::name));
+		hashMap.put("statusesChoices", parkingTypesMap);
+
 	}
 
 }

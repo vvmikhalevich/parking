@@ -16,6 +16,10 @@ public class PlaceDTO {
 
 	private String carNumber;
 
+	private Integer userAccountId;
+
+	private String userAccountLastName;
+
 	private Date created;
 
 	private Date updated;
@@ -66,6 +70,22 @@ public class PlaceDTO {
 
 	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
+	}
+
+	public Integer getUserAccountId() {
+		return userAccountId;
+	}
+
+	public void setUserAccountId(Integer userAccountId) {
+		this.userAccountId = userAccountId;
+	}
+
+	public String getUserAccountLastName() {
+		return userAccountLastName;
+	}
+
+	public void setUserAccountLastName(String userAccountLastName) {
+		this.userAccountLastName = userAccountLastName;
 	}
 
 	public Date getCreated() {

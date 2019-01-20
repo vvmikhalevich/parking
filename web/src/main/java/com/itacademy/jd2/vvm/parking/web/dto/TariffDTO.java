@@ -5,17 +5,15 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.TariffType;
-
 public class TariffDTO {
 
 	private Integer id;
 	@Size(min = 1, max = 20)
 	private String name;
 
-	private BigDecimal price;
+	private BigDecimal costPerDay;
 
-	private TariffType status;
+	private String status;
 
 	private Date created;
 
@@ -37,6 +35,22 @@ public class TariffDTO {
 		this.name = name;
 	}
 
+	public BigDecimal getCostPerDay() {
+		return costPerDay;
+	}
+
+	public void setCostPerDay(BigDecimal costPerDay) {
+		this.costPerDay = costPerDay;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Date getCreated() {
 		return created;
 	}
@@ -51,22 +65,6 @@ public class TariffDTO {
 
 	public void setUpdated(final Date updated) {
 		this.updated = updated;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public TariffType getStatus() {
-		return status;
-	}
-
-	public void setStatus(TariffType status) {
-		this.status = status;
 	}
 
 }

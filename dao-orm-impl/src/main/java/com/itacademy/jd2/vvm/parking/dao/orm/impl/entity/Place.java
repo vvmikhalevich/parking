@@ -8,6 +8,7 @@ import javax.persistence.OneToOne;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 @Entity
 public class Place extends BaseEntity implements IPlace {
@@ -20,6 +21,9 @@ public class Place extends BaseEntity implements IPlace {
 
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = Car.class)
 	private ICar car;
+
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = UserAccount.class)
+	private IUserAccount userAccount;
 
 	@Override
 	public String getName() {
@@ -49,6 +53,16 @@ public class Place extends BaseEntity implements IPlace {
 	@Override
 	public void setCar(ICar car) {
 		this.car = car;
+	}
+
+	@Override
+	public IUserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	@Override
+	public void setUserAccount(IUserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 }

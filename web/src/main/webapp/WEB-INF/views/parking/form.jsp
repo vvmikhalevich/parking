@@ -57,11 +57,15 @@
 
 			<div class="row">
 				<div class="input-field col s12">
-					<form:input path="status" type="text" disabled="${readonly}" />
+					<form:select path="status" disabled="${readonly}">
+						<form:options items="${statusesChoices}" />
+					</form:select>
 					<form:errors path="status" cssClass="red-text" />
-					<label for="status">Status</label>
+					<label for="status">status</label>
 				</div>
 			</div>
+
+
 
 			<div class="row">
 				<div class="col s6"></div>

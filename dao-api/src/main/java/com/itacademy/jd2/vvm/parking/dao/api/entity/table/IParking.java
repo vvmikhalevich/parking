@@ -2,6 +2,8 @@ package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
 import java.math.BigDecimal;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
+
 public interface IParking extends IBaseEntity {
 
 	String getName();
@@ -24,8 +26,8 @@ public interface IParking extends IBaseEntity {
 
 	void setCostPerDay(BigDecimal costPerDay);
 
-	String getStatus();
+	ParkingType getStatus();
 
-	void setStatus(String status);
+	void setStatus(ParkingType status);
 
 }

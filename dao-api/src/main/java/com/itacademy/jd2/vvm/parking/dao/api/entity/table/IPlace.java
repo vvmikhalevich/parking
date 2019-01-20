@@ -14,4 +14,8 @@ public interface IPlace extends IBaseEntity {
 
 	void setCar(ICar car);
 
+	IUserAccount getUserAccount();
+
+	void setUserAccount(IUserAccount user);
+
 }

@@ -1,7 +1,5 @@
 package com.itacademy.jd2.vvm.parking.dao.api.entity.table;
 
-import java.util.Set;
-
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 
 public interface IUserAccount extends IBaseEntity {
@@ -25,9 +23,5 @@ public interface IUserAccount extends IBaseEntity {
 	String getPassword();
 
 	void setPassword(String password);
-
-	Set<IPlace> getPlaces();
-
-	void setPlaces(Set<IPlace> places);
 
 }

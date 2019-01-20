@@ -9,7 +9,8 @@
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="name">name</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="price">price</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
+					column="costPerDay">price</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="status">status</mytaglib:sort-link></th>
 			<th>created</th>
 			<th>updated</th>
@@ -19,7 +20,7 @@
 			<tr>
 				<td><c:out value="${tariff.id}" /></td>
 				<td><c:out value="${tariff.name}" /></td>
-				<td><c:out value="${tariff.price}" /></td>
+				<td><c:out value="${tariff.costPerDay}" /></td>
 				<td><c:out value="${tariff.status}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${tariff.created}" /></td>

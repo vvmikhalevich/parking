@@ -20,6 +20,7 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Model_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
@@ -52,6 +53,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		from.fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
 		from.fetch(Car_.userAccount, JoinType.LEFT);
 		from.fetch(Car_.foto, JoinType.LEFT);
+		from.fetch(Car_.tariff, JoinType.LEFT);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {
@@ -73,8 +75,10 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 			return from.get(Car_.model).get(Model_.name);
 		case "number":
 			return from.get(Car_.number);
-		case "userAccountId":
+		case "userAccount_id":
 			return from.get(Car_.userAccount).get(UserAccount_.id);
+		case "tariff_id":
+			return from.get(Car_.tariff).get(Tariff_.id);
 		case "foto":
 			return from.get(Car_.foto).get(Foto_.link);
 		case "created":
@@ -113,6 +117,7 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		from.fetch(Car_.model, JoinType.LEFT).fetch(Model_.brand, JoinType.LEFT);
 		from.fetch(Car_.userAccount, JoinType.LEFT);
 		from.fetch(Car_.foto, JoinType.LEFT);
+		from.fetch(Car_.tariff, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

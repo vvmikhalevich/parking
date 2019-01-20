@@ -41,6 +41,16 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="input-field col s12">
+				<form:select path="tariffId" disabled="${readonly}">
+					<form:options items="${tariffsChoices}" />
+				</form:select>
+				<form:errors path="tariffId" cssClass="red-text" />
+				<label for="tariffId">Tariff of car</label>
+			</div>
+		</div>
+
 		<c:if test="${!readonly}">
 			<div class="row">
 				<div class="input-field col s12">

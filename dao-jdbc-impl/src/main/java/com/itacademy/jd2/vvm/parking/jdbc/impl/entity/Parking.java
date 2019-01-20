@@ -2,6 +2,7 @@ package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 
 import java.math.BigDecimal;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 
 public class Parking extends BaseEntity implements IParking {
@@ -14,7 +15,7 @@ public class Parking extends BaseEntity implements IParking {
 
 	private Integer length;
 
-	private String status;
+	private ParkingType status;
 
 	private BigDecimal costPerDay;
 
@@ -34,14 +35,6 @@ public class Parking extends BaseEntity implements IParking {
 		this.adress = adress;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public Integer getWidth() {
 		return width;
 	}
@@ -58,6 +51,14 @@ public class Parking extends BaseEntity implements IParking {
 		this.length = length;
 	}
 
+	public ParkingType getStatus() {
+		return status;
+	}
+
+	public void setStatus(ParkingType status) {
+		this.status = status;
+	}
+
 	public BigDecimal getCostPerDay() {
 		return costPerDay;
 	}
@@ -65,4 +66,5 @@ public class Parking extends BaseEntity implements IParking {
 	public void setCostPerDay(BigDecimal costPerDay) {
 		this.costPerDay = costPerDay;
 	}
+
 }

@@ -111,6 +111,8 @@ public class UserAccountController extends AbstractController {
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
 
+		loadCommonFormModels(hashMap);
+
 		return new ModelAndView("userAccount.edit", hashMap);
 	}
 

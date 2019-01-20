@@ -23,6 +23,7 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
 public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IPlaceDao {
@@ -48,6 +49,7 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 		from.fetch(Place_.parking, JoinType.LEFT);
 		from.fetch(Place_.car, JoinType.LEFT);
+		from.fetch(Place_.userAccount, JoinType.LEFT);
 
 		applyFilter(filter, cb, cq, from);
 
@@ -79,7 +81,8 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 			return from.get(Place_.parking).get(Parking_.name);
 		case "car_id":
 			return from.get(Place_.car).get(Car_.number);
-
+		case "user_account_id":
+			return from.get(Place_.userAccount).get(UserAccount_.lastName);
 		case "created":
 			return from.get(Place_.created);
 		case "updated":
@@ -130,6 +133,7 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 
 		from.fetch(Place_.parking, JoinType.LEFT);
 		from.fetch(Place_.car, JoinType.LEFT);
+		from.fetch(Place_.userAccount, JoinType.LEFT);
 
 		cq.distinct(true); // to avoid duplicate rows in result
 

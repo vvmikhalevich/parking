@@ -29,12 +29,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.ModelFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.IFotoService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
+import com.itacademy.jd2.vvm.parking.service.ITariffService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
@@ -46,6 +47,9 @@ import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 public class CarController extends AbstractController {
 
 	public static final String FILE_FOLDER = "d:\\";
+
+	@Autowired
+	private ITariffService tariffService;
 
 	@Autowired
 	private ICarService carService;
@@ -192,6 +196,7 @@ public class CarController extends AbstractController {
 		final List<IModel> models = modelService.getAll();
 		final List<IUserAccount> users = userAccountService.getAll();
 		final List<IFoto> fotos = fotoService.getAll();
+		final List<ITariff> tariffs = tariffService.getAll();
 
 		final Map<Integer, String> modelsMap = models.stream()
 				.collect(Collectors.toMap(IModel::getId, IModel::getName));
@@ -202,6 +207,9 @@ public class CarController extends AbstractController {
 		hashMap.put("userAccountsChoices", userAccountsMap);
 		final Map<Integer, String> fotosMap = fotos.stream().collect(Collectors.toMap(IFoto::getId, IFoto::getLink));
 		hashMap.put("fotosChoices", fotosMap);
+		final Map<Integer, String> tariffsMap = tariffs.stream()
+				.collect(Collectors.toMap(ITariff::getId, ITariff::getName));
+		hashMap.put("tariffsChoices", tariffsMap);
 
 	}
 

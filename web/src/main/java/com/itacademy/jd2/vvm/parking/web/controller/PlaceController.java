@@ -20,10 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.IParkingService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
+import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.PlaceFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.PlaceToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
@@ -34,6 +36,9 @@ public class PlaceController extends AbstractController {
 
 	@Autowired
 	private IPlaceService placeService;
+
+	@Autowired
+	private IUserAccountService userAccountService;
 
 	@Autowired
 	private ICarService carService;
@@ -63,8 +68,8 @@ public class PlaceController extends AbstractController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showForm() {
 		final Map<String, Object> hashMap = new HashMap<>();
-		final IPlace newEntity = placeService.createEntity();
-		hashMap.put("formModel", toDtoConverter.apply(newEntity));
+
+		hashMap.put("formModel", new PlaceDTO());
 		loadCommonFormModels(hashMap);
 		return new ModelAndView("place.edit", hashMap);
 	}
@@ -114,6 +119,7 @@ public class PlaceController extends AbstractController {
 	private void loadCommonFormModels(final Map<String, Object> hashMap) {
 		final List<IParking> parkings = parkingService.getAll();
 		final List<ICar> cars = carService.getAll();
+		final List<IUserAccount> userAccounts = userAccountService.getAll();
 
 		final Map<Integer, String> parkingsMap = parkings.stream()
 				.collect(Collectors.toMap(IParking::getId, IParking::getName));
@@ -121,6 +127,10 @@ public class PlaceController extends AbstractController {
 
 		final Map<Integer, String> carsMap = cars.stream().collect(Collectors.toMap(ICar::getId, ICar::getNumber));
 		hashMap.put("carsChoices", carsMap);
+
+		final Map<Integer, String> usersMap = userAccounts.stream()
+				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getLastName));
+		hashMap.put("usersChoices", usersMap);
 
 	}
 

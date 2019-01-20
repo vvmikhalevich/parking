@@ -18,6 +18,10 @@ public class CarDTO {
 
 	private String userAccountLastName;
 
+	private Integer tariffId;
+
+	private String tariffName;
+
 	private Integer fotoId;
 
 	private String link;
@@ -80,6 +84,22 @@ public class CarDTO {
 
 	public void setUserAccountLastName(String userAccountLastName) {
 		this.userAccountLastName = userAccountLastName;
+	}
+
+	public Integer getTariffId() {
+		return tariffId;
+	}
+
+	public void setTariffId(Integer tariffId) {
+		this.tariffId = tariffId;
+	}
+
+	public String getTariffName() {
+		return tariffName;
+	}
+
+	public void setTariffName(String tariffName) {
+		this.tariffName = tariffName;
 	}
 
 	public Integer getFotoId() {

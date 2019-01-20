@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
 
 @Component
@@ -30,6 +31,13 @@ public class PlaceToDTOConverter implements Function<IPlace, PlaceDTO> {
 		if (car != null) {
 			dto.setCarId(car.getId());
 			dto.setCarNumber(car.getNumber());
+		}
+
+		final IUserAccount userAccount = entity.getUserAccount();
+		if (userAccount != null) {
+			dto.setUserAccountId(userAccount.getId());
+			dto.setUserAccountLastName(userAccount.getLastName());
+
 		}
 
 		return dto;

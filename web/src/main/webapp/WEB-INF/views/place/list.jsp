@@ -7,9 +7,9 @@
 		<tr>
 			<th>id</th>
 			<th>name</th>
-			<th>parking(parking_id)</th>
-			<th>car(car_id)</th>
-
+			<th>parking(id)</th>
+			<th>car(id)</th>
+			<th>userAccount(id)</th>
 			<th>created</th>
 			<th>updated</th>
 			<th></th>
@@ -20,11 +20,12 @@
 
 				<td><c:out value="${place.name}" /></td>
 
+				<td><c:out value="${place.parkingName}(${place.parkingId})" /></td>
+
+				<td><c:out value="${place.carNumber}(${place.carId})" /></td>
+
 				<td><c:out
-						value="${place.parkingName}(parkingId=${place.parkingId})" /></td>
-
-				<td><c:out value="${place.carNumber}(carId=${place.carId})" /></td>
-
+						value="${place.userAccountLastName}(${place.userAccountId})" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${place.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

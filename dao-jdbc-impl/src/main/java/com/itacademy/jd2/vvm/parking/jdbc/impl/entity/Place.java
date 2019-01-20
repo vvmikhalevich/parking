@@ -3,6 +3,7 @@ package com.itacademy.jd2.vvm.parking.jdbc.impl.entity;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 
 public class Place extends BaseEntity implements IPlace {
 
@@ -12,7 +13,7 @@ public class Place extends BaseEntity implements IPlace {
 
 	private ICar car;
 
-	private String status;
+	private IUserAccount userAccount;
 
 	public String getName() {
 		return name;
@@ -38,12 +39,12 @@ public class Place extends BaseEntity implements IPlace {
 		this.car = car;
 	}
 
-	public String getStatus() {
-		return status;
+	public IUserAccount getUserAccount() {
+		return userAccount;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setUserAccount(IUserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 
 }

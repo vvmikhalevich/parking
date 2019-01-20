@@ -13,6 +13,7 @@
 			<th>model</th>
 			<th>number</th>
 			<th>userAccont(id)</th>
+			<th>tariff(id)</th>
 			<th>foto</th>
 			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -31,6 +32,7 @@
 				<td><c:out value="${car.number}" /></td>
 				<td><c:out
 						value="${car.userAccountLastName}(${car.userAccountId})" /></td>
+				<td><c:out value="${car.tariffName}(${car.tariffId})" /></td>
 				<td><img alt="no image"
 					src="${contextPath}/file/image?uuid=${car.link}" width="120"
 					height="100" /></td>
