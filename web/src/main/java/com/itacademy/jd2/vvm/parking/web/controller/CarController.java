@@ -108,7 +108,8 @@ public class CarController extends AbstractController {
 			final ICar entity = fromDtoConverter.apply(formModel);
 			final IFoto foto;
 			// save image
-			if (file.getName() != "" && entity.getFoto() == null) {
+			String name = file.getOriginalFilename();
+			if ((name.length() != 0) && (entity.getFoto() == null)) {
 
 				String originalFilename = file.getOriginalFilename(); // to DB
 				String contentType = file.getContentType();// to DB
@@ -124,7 +125,7 @@ public class CarController extends AbstractController {
 				fotoService.save(foto);
 				entity.setFoto(foto);
 
-			} else if (file.getName() != "" && entity.getFoto() != null) {
+			} else if ((name.length() != 0) && (entity.getFoto() != null)) {
 
 				String originalFilename = file.getOriginalFilename(); // to DB
 				String contentType = file.getContentType();// to DB
@@ -136,6 +137,13 @@ public class CarController extends AbstractController {
 
 				foto = fotoService.get(entity.getFoto().getId());
 				foto.setLink(uuid);
+				fotoService.save(foto);
+				entity.setFoto(foto);
+
+			} else if ((name.length() == 0) && (entity.getFoto() != null)) {
+
+				foto = fotoService.get(entity.getFoto().getId());
+				foto.setLink(foto.getLink());
 				fotoService.save(foto);
 				entity.setFoto(foto);
 
@@ -170,7 +178,13 @@ public class CarController extends AbstractController {
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String delete(@PathVariable(name = "id", required = true) final Integer id) {
+
+		final CarDTO dto = toDtoConverter.apply(carService.getFullInfo(id));
+		Integer fotoId = dto.getFotoId();
+
 		carService.delete(id);
+		fotoService.delete(fotoId);
+
 		return "redirect:/car";
 	}
 

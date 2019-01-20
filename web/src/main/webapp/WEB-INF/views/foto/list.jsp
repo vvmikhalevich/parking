@@ -7,11 +7,17 @@
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="id">id</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="link">link</mytaglib:sort-link></th>
 			<th>foto</th>
-			<th>created</th>
-			<th>updated</th>
+			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="created">
+					<mytaglib:i18n key="table.column.created" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesFoto}" column="updated">
+					<mytaglib:i18n key="table.column.updated" />
+				</mytaglib:sort-link></th>
 			<th></th>
 		</tr>
 		<c:forEach var="foto" items="${gridItems}" varStatus="loopCounter">

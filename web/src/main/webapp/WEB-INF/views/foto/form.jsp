@@ -9,7 +9,7 @@
 <div class="row">
 	<div class="row">
 		<form:form class="col s12" method="POST" action="${pagesFoto}"
-			modelAttribute="formModel">
+			enctype="multipart/form-data" modelAttribute="formModel">
 
 			<form:input path="id" type="hidden" />
 
@@ -36,28 +36,28 @@
 					</a>
 				</div>
 			</div>
+
+
+
+			<div>
+				<c:if test="${!readonly}">
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="file" name="file" /> <label for="file"></label>
+						</div>
+					</div>
+
+				</c:if>
+
+				<img alt="no image"
+					src="${contextPath}/file/image?uuid=${formModel.link}" width="180"
+					height="150" />
+
+			</div>
 		</form:form>
 	</div>
 
-	<div>
-		<form method="POST" enctype="multipart/form-data"
-			action="${contextPath}/file">
-			<table>
-				<tr>
-					<td>File to upload:</td>
-					<td><input type="file" name="file" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Upload" /></td>
-				</tr>
-			</table>
-		</form>
 
-		<img alt="no image"
-			src="${contextPath}/file/image?uuid=<%= request.getParameter("uuid") %>"
-			width="180" height="150" />
-	</div>
 
 
 	<c:if test='${param["showAlerts"]}'>

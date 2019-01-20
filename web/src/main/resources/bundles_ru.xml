@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+	<entry key="table.column.save">Сохранить</entry>
+	<entry key="table.column.cancel">Отмена</entry>
+
+	<entry key="table.column.info">Информация</entry>
+	<entry key="table.column.create">Создание</entry>
+	<entry key="table.column.edit">Редактирование</entry>
+	<entry key="table.column.about">о</entry>
+
 	<entry key="table.column.id">Номер</entry>
 	<entry key="table.column.name">Название</entry>
 	<entry key="table.column.created">Создан</entry>
 	<entry key="table.column.updated">Изменен</entry>
+
 	<entry key="table.column.brands">Бренды</entry>
 	<entry key="table.column.brand">Бренд</entry>
+	<entry key="table.column.brande">бренде</entry>
+	<entry key="table.column.branda">бренда</entry>
+
+
 	<entry key="table.column.models">Модели</entry>
 	<entry key="table.column.model">Модель</entry>
+	<entry key="table.column.modele">моделе</entry>
+	<entry key="table.column.modeli">модели</entry>
+
 </properties>

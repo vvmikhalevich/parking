@@ -3,7 +3,8 @@
 <h4 class="header">
 	<c:choose>
 		<c:when test="${empty formModel.id }">Create car</c:when>
-		<c:otherwise>Edit car</c:otherwise>
+		<c:when test="${readonly}">Info car</c:when>
+		<c:when test="${!readonly}">Edit car</c:when>
 	</c:choose>
 </h4>
 <div class="row">

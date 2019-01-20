@@ -28,6 +28,7 @@ CREATE TABLE "car" (
 	"number" character varying NOT NULL,
 	"model_id" integer NOT NULL,
 	"user_account_id" integer NOT NULL,
+	"tariff_id" integer NOT NULL,
 	"foto_id" integer NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
@@ -80,15 +81,6 @@ CREATE TABLE "transaction" (
 
 
 
-CREATE TABLE "place_2_user_account" (
-	"user_account_id" integer NOT NULL,
-	"place_id" integer NOT NULL
-) WITH (
-  OIDS=FALSE
-);
-
-
-
 CREATE TABLE "parking" (
 	"id" serial NOT NULL,
 	"name" character varying NOT NULL,
@@ -111,6 +103,7 @@ CREATE TABLE "place" (
 	"name" character varying NOT NULL,
 	"parking_id" integer NOT NULL,
 	"car_id" integer,
+	"user_account_id" bigint,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,
 	CONSTRAINT place_pk PRIMARY KEY ("id")
@@ -122,8 +115,8 @@ CREATE TABLE "place" (
 
 CREATE TABLE "event" (
 	"id" serial NOT NULL,
-	"car_id" integer NOT NULL,
 	"place_id" integer NOT NULL,
+	"car_id" integer NOT NULL,
 	"time_start" TIMESTAMP NOT NULL,
 	"time_end" TIMESTAMP,
 	"created" TIMESTAMP NOT NULL,
@@ -135,24 +128,37 @@ CREATE TABLE "event" (
 
 
 
+CREATE TABLE "tariff" (
+	"id" serial NOT NULL,
+	"name" character varying NOT NULL,
+	"cost_per_day" DECIMAL NOT NULL,
+	"status" character varying NOT NULL,
+	"created" TIMESTAMP NOT NULL,
+	"updated" TIMESTAMP NOT NULL,
+	CONSTRAINT tariff_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
 
 ALTER TABLE "model" ADD CONSTRAINT "model_fk0" FOREIGN KEY ("brand_id") REFERENCES "brand"("id");
 
 ALTER TABLE "car" ADD CONSTRAINT "car_fk0" FOREIGN KEY ("model_id") REFERENCES "model"("id");
 ALTER TABLE "car" ADD CONSTRAINT "car_fk1" FOREIGN KEY ("user_account_id") REFERENCES "user_account"("id");
-ALTER TABLE "car" ADD CONSTRAINT "car_fk2" FOREIGN KEY ("foto_id") REFERENCES "foto"("id");
+ALTER TABLE "car" ADD CONSTRAINT "car_fk2" FOREIGN KEY ("tariff_id") REFERENCES "tariff"("id");
+ALTER TABLE "car" ADD CONSTRAINT "car_fk3" FOREIGN KEY ("foto_id") REFERENCES "foto"("id");
 
 
 
 ALTER TABLE "transaction" ADD CONSTRAINT "transaction_fk0" FOREIGN KEY ("user_account_id") REFERENCES "user_account"("id");
 
-ALTER TABLE "place_2_user_account" ADD CONSTRAINT "place_2_user_account_fk0" FOREIGN KEY ("user_account_id") REFERENCES "user_account"("id");
-ALTER TABLE "place_2_user_account" ADD CONSTRAINT "place_2_user_account_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
-
 
 ALTER TABLE "place" ADD CONSTRAINT "place_fk0" FOREIGN KEY ("parking_id") REFERENCES "parking"("id");
 ALTER TABLE "place" ADD CONSTRAINT "place_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
+ALTER TABLE "place" ADD CONSTRAINT "place_fk2" FOREIGN KEY ("user_account_id") REFERENCES "user_account"("id");
 
-ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
-ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+ALTER TABLE "event" ADD CONSTRAINT "event_fk0" FOREIGN KEY ("place_id") REFERENCES "place"("id");
+ALTER TABLE "event" ADD CONSTRAINT "event_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 
