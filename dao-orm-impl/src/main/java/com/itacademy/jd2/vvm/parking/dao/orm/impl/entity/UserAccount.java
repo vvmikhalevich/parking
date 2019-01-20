@@ -31,7 +31,7 @@ public class UserAccount extends BaseEntity implements IUserAccount {
 	private String lastName;
 
 	@Column
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private RoleType role;
 
 	@Column

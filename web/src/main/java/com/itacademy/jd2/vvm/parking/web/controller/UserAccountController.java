@@ -77,15 +77,18 @@ public class UserAccountController extends AbstractController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showForm() {
 		final Map<String, Object> hashMap = new HashMap<>();
-		final IUserAccount newEntity = userAccountService.createEntity();
-		hashMap.put("formModel", toDtoConverter.apply(newEntity));
 
+		hashMap.put("formModel", new UserAccountDTO());
+
+		loadCommonFormModels(hashMap);
 		return new ModelAndView("userAccount.edit", hashMap);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("formModel") final UserAccountDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
+			final Map<String, Object> hashMap = new HashMap<>();
+			loadCommonFormModels(hashMap);
 			return "userAccount.edit";
 		} else {
 			final IUserAccount entity = fromDtoConverter.apply(formModel);
@@ -129,8 +132,5 @@ public class UserAccountController extends AbstractController {
 				.collect(Collectors.toMap(RoleType::name, RoleType::name));
 		hashMap.put("rolesChoices", roleTypesMap);
 
-		final Map<Integer, String> placesMap = placeService.getAll().stream()
-				.collect(Collectors.toMap(IPlace::getId, IPlace::getName));
-		hashMap.put("placeChoices", placesMap);
 	}
 }

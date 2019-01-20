@@ -5,8 +5,6 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
-
 public class UserAccountDTO {
 
 	private Integer id;
@@ -18,7 +16,7 @@ public class UserAccountDTO {
 
 	private String lastName;
 
-	private RoleType role;
+	private String role;
 
 	private String email;
 
@@ -52,20 +50,20 @@ public class UserAccountDTO {
 		this.lastName = lastName;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public RoleType getRole() {
-		return role;
-	}
-
-	public void setRole(RoleType role) {
-		this.role = role;
 	}
 
 	public String getEmail() {

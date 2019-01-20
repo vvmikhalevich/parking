@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.StatusType;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.TariffType;
 
 public class TariffDTO {
 
@@ -15,7 +15,7 @@ public class TariffDTO {
 
 	private BigDecimal price;
 
-	private StatusType status;
+	private TariffType status;
 
 	private Date created;
 
@@ -61,11 +61,11 @@ public class TariffDTO {
 		this.price = price;
 	}
 
-	public StatusType getStatus() {
+	public TariffType getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusType status) {
+	public void setStatus(TariffType status) {
 		this.status = status;
 	}
 

@@ -8,6 +8,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
@@ -29,7 +30,7 @@ public class UserAccountFromDTOConverter implements Function<UserAccountDTO, IUs
 		entity.setId(dto.getId());
 		entity.setFirstName(dto.getFirstName());
 		entity.setLastName(dto.getLastName());
-		entity.setRole(dto.getRole());
+		entity.setRole(RoleType.valueOf(dto.getRole()));
 		entity.setEmail(dto.getEmail());
 		entity.setPassword(dto.getPassword());
 

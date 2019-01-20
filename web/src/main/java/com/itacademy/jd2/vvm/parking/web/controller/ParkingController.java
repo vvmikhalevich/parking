@@ -120,6 +120,7 @@ public class ParkingController extends AbstractController {
 					entity.setName(name);
 					final IParking parking = parkingService.get(id);
 					parking.setId(id);
+
 					entity.setParking(parking);
 					// final ICar car = carService.get(1);
 					// entity.setCar(car);
@@ -134,6 +135,10 @@ public class ParkingController extends AbstractController {
 
 			}
 		}
+
+		final IParking parking = parkingService.get(id);
+		parking.setStatus("enable");
+		parkingService.save(parking);
 
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
@@ -175,11 +180,11 @@ public class ParkingController extends AbstractController {
 			if (place != null) {
 				String name = place.getName();
 				places.add(name);
-				//System.out.println(name);
+				// System.out.println(name);
 			}
 
 		}
-		//System.out.println(modelMap);
+		// System.out.println(modelMap);
 
 		// List<PlaceDTO> dtos =
 		// entities.stream().map(toDtoConverter).collect(Collectors.toList());

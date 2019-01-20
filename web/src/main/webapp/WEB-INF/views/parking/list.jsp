@@ -37,9 +37,11 @@
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${parking.updated}" /></td>
 
-				<td><a class="waves-effect waves-light btn right"
-					href="${pagesParking}/addPlaces/${parking.id}"><i
-						class="material-icons">add places</i></a></td>
+				<c:if test="${parking.status=='created'}">
+					<td><a class="waves-effect waves-light btn right"
+						href="${pagesParking}/addPlaces/${parking.id}"><i
+							class="material-icons">add places</i></a></td>
+				</c:if>
 
 				<td class="right"><a class="btn-floating"
 					href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
