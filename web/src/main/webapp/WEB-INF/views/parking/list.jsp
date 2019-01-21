@@ -9,7 +9,8 @@
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="name">name</mytaglib:sort-link></th>
-			<th>adress</th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}"
+					column="adress">adress</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="width">width</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
 					column="length">length</mytaglib:sort-link></th>
@@ -19,8 +20,14 @@
 
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
 					column="status">status</mytaglib:sort-link></th>
-			<th>created</th>
-			<th>updated</th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}"
+					column="created">
+					<mytaglib:i18n key="table.column.created" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}"
+					column="updated">
+					<mytaglib:i18n key="table.column.updated" />
+				</mytaglib:sort-link></th>
 			<th></th>
 		</tr>
 		<c:forEach var="parking" items="${gridItems}" varStatus="loopCounter">

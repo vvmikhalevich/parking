@@ -68,9 +68,9 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 
 		case "id":
 			return from.get(Event_.id);
-		case "carId":
+		case "car":
 			return from.get(Event_.car).get(Car_.number);
-		case "place_id":
+		case "place":
 			return from.get(Event_.place).get(Place_.name);
 		case "time_start":
 			return from.get(Event_.timeStart);

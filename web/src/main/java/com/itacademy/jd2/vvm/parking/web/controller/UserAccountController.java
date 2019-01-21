@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
@@ -29,6 +28,7 @@ import com.itacademy.jd2.vvm.parking.web.converter.UserAccountFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.UserAccountToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.UserAccountDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.util.SendMailTLS;
 
 @Controller
 @RequestMapping(value = "/userAccount")
@@ -93,6 +93,11 @@ public class UserAccountController extends AbstractController {
 		} else {
 			final IUserAccount entity = fromDtoConverter.apply(formModel);
 			userAccountService.save(entity);
+
+			String email = entity.getEmail();
+
+			// SendMailTLS.main(email);
+
 			return "redirect:/userAccount"; // generates 302 response with Location="/parking/userAccount"
 		}
 	}

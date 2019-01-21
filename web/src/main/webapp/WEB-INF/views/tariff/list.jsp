@@ -10,10 +10,16 @@
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="name">name</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
-					column="costPerDay">price</mytaglib:sort-link></th>
+					column="costPerDay">costPerDay</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="status">status</mytaglib:sort-link></th>
-			<th>created</th>
-			<th>updated</th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
+					column="created">
+					<mytaglib:i18n key="table.column.created" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
+					column="updated">
+					<mytaglib:i18n key="table.column.updated" />
+				</mytaglib:sort-link></th>
 			<th></th>
 		</tr>
 		<c:forEach var="tariff" items="${gridItems}" varStatus="loopCounter">

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
@@ -29,6 +30,7 @@ import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.PlaceFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.PlaceToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 
 @Controller
 @RequestMapping(value = "/place")
@@ -53,12 +55,20 @@ public class PlaceController extends AbstractController {
 	private PlaceToDTOConverter toDtoConverter;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(final HttpServletRequest req) {
+	public ModelAndView index(final HttpServletRequest req,
+			@RequestParam(name = "page", required = false) final Integer pageNumber,
+			@RequestParam(name = "sort", required = false) final String sortColumn) {
+
+		final GridStateDTO gridState = getListDTO(req);
+		gridState.setPage(pageNumber);
+		gridState.setSort(sortColumn, "id");
 
 		final PlaceFilter filter = new PlaceFilter();
+		prepareFilter(gridState, filter);
 
 		final List<IPlace> entities = placeService.find(filter);
 		List<PlaceDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
+		gridState.setTotalCount(placeService.getCount(filter));
 
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);

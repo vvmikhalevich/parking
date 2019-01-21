@@ -6,7 +6,7 @@
 				<h5 class="white-text">Links</h5>
 				<ul>
 					<li><a class="grey-text text-lighten-3"
-						href="https://drive.google.com/file/d/1vx3TMs6Z3Q3S9dzKpzBfA9D82-6G_VVK/view?usp=sharing"
+						href="https://drive.google.com/file/d/1kvhOcWFmYlcek2jsgZVr8hOgLq-QtG67/view?usp=sharing"
 						target="_blank">Link of DB</a></li>
 					<li><a class="grey-text text-lighten-3"
 						href="https://drive.google.com" target="_blank">Link of

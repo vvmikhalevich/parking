@@ -69,7 +69,7 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		switch (sortColumn) {
 		case "id":
 			return from.get(Transaction_.id);
-		case "user_account_id":
+		case "user_account":
 			return from.get(Transaction_.userAccount).get(UserAccount_.id);
 		case "value":
 			return from.get(Transaction_.value);

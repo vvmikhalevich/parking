@@ -15,10 +15,18 @@
 					column="lastName">last name</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
 					column="role">role</mytaglib:sort-link></th>
-			<th>email</th>
-			<th>password</th>
-			<th>created</th>
-			<th>updated</th>
+			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
+					column="email">email</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
+					column="password">password</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
+					column="created">
+					<mytaglib:i18n key="table.column.created" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
+					column="updated">
+					<mytaglib:i18n key="table.column.updated" />
+				</mytaglib:sort-link></th>
 			<th></th>
 		</tr>
 		<c:forEach var="userAccount" items="${gridItems}"

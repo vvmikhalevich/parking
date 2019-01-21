@@ -10,11 +10,12 @@
 			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="id">
 					<mytaglib:i18n key="table.column.id" />
 				</mytaglib:sort-link></th>
-			<th>model</th>
-			<th>number</th>
-			<th>userAccont(id)</th>
-			<th>tariff(id)</th>
-			<th>foto</th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="model">model</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="number">number</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}"
+					column="userAccount">userAccont(id)</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="tariff">tariff(id)</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="foto">foto</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="created">
 					<mytaglib:i18n key="table.column.created" />
 				</mytaglib:sort-link></th>

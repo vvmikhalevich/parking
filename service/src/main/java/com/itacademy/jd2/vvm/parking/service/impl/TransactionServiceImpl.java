@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itacademy.jd2.vvm.parking.dao.api.ITransactionDao;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
 import com.itacademy.jd2.vvm.parking.service.ITransactionService;
@@ -78,6 +77,11 @@ public class TransactionServiceImpl implements ITransactionService {
 	public ITransaction getFullInfo(Integer id) {
 		final ITransaction entity = dao.getFullInfo(id);
 		return entity;
+	}
+
+	@Override
+	public long getCount(TransactionFilter filter) {
+		return dao.getCount(filter);
 	}
 
 }

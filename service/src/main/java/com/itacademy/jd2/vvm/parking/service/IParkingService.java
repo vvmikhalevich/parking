@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
 
 public interface IParkingService {

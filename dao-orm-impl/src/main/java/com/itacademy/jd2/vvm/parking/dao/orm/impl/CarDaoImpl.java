@@ -75,10 +75,10 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 			return from.get(Car_.model).get(Model_.name);
 		case "number":
 			return from.get(Car_.number);
-		case "userAccount_id":
-			return from.get(Car_.userAccount).get(UserAccount_.id);
-		case "tariff_id":
-			return from.get(Car_.tariff).get(Tariff_.id);
+		case "userAccount":
+			return from.get(Car_.userAccount).get(UserAccount_.lastName);
+		case "tariff":
+			return from.get(Car_.tariff).get(Tariff_.name);
 		case "foto":
 			return from.get(Car_.foto).get(Foto_.link);
 		case "created":

@@ -63,7 +63,7 @@ public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements 
 			return from.get(Tariff_.id);
 		case "name":
 			return from.get(Tariff_.name);
-		case "cost_per_day":
+		case "costPerDay":
 			return from.get(Tariff_.costPerDay);
 		case "status":
 			return from.get(Tariff_.status);
