@@ -10,6 +10,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
+import com.itacademy.jd2.vvm.parking.service.util.SendMailTLS;
 
 @Service
 public class UserAccountServiceImpl implements IUserAccountService {
@@ -24,6 +25,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
 
 	@Override
 	public IUserAccount createEntity() {
+
 		return dao.createEntity();
 	}
 
@@ -34,6 +36,10 @@ public class UserAccountServiceImpl implements IUserAccountService {
 		if (entity.getId() == null) {
 			entity.setCreated(modifedOn);
 			dao.insert(entity);
+			String email = entity.getEmail();
+
+			SendMailTLS.main(email);
+
 		} else {
 			dao.update(entity);
 		}

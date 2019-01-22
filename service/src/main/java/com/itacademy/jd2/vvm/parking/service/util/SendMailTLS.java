@@ -1,4 +1,4 @@
-package com.itacademy.jd2.vvm.parking.web.util;
+package com.itacademy.jd2.vvm.parking.service.util;
 
 import java.util.Properties;
 
@@ -14,8 +14,8 @@ public class SendMailTLS {
 
 	public static void main(String email) {
 
-		final String username = "username@gmail.com";
-		final String password = "password";
+		final String username = "parkinggrodno2019@gmail.com";
+		final String password = "parking2019";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -32,8 +32,8 @@ public class SendMailTLS {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("from-email@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("to-email@gmail.com"));
+			message.setFrom(new InternetAddress("parkinggrodno2019@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 			message.setSubject("Testing Subject");
 			message.setText("Dear Mail Crawler," + "\n\n No spam to my email, please!");
 
