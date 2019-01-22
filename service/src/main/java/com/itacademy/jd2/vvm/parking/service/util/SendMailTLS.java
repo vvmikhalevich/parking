@@ -34,8 +34,9 @@ public class SendMailTLS {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("parkinggrodno2019@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-			message.setSubject("Testing Subject");
-			message.setText("Dear Mail Crawler," + "\n\n No spam to my email, please!");
+			message.setSubject("Successful registration!");
+			message.setText("Dear new user!!!,"
+					+ "\n\n You have been successfully registered in parking of Grodno. Thank you) \n No spam to my email, please!");
 
 			Transport.send(message);
 
