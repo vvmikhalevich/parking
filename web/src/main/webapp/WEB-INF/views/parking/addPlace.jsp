@@ -34,30 +34,7 @@
 	</c:forEach>
 
 </table>
-<%-- <c:if test="${readonly}">
 
-	<script>
-		$(document).ready(function() {
-			//cell selection from json
-
-			var data = jsonData;
-			$('.parking-table td').each(function(index) {
-				var td = $(this);
-				var id = td.attr('id');
-				var clazz = td.attr('class');
-
-				data[id] = clazz === 'selected' ? true : false;
-			});
-
-			;
-
-		});
-	</script>
-
-
-
-
-</c:if> --%>
 <div class="row">
 	<div class="col s6"></div>
 	<div class="col s3">
@@ -117,23 +94,3 @@
 		</script>
 	</c:otherwise>
 </c:choose>
-
-
-
-
-
-<%-- 
-
-
-alert("success");
-					window.location = '${pagesParking}/parking';
-<c:if test='${param["showAlerts"]}'>
-	<!-- checks the URL parameter -->
-
-
-	<script src="${contextPath}/resources/js/sample-alert-with-params.js"></script>
-	<script>
-		showMessage('${contextPath}'); // execute function defined somewhere above
-	</script>
-
-</c:if> --%>

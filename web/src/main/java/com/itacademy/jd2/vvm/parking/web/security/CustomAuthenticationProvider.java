@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.web.security;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
+import com.itacademy.jd2.vvm.parking.service.util.SaltedMD5Example;
 
 @Component("customAuthenticationProvider")
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -31,6 +34,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		final String username = authentication.getPrincipal() + "";
 		final String password = authentication.getCredentials() + "";
 
+		String hash = null;
+
+		try {
+			hash = SaltedMD5Example.main(password);
+		} catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		final IUserAccount entity = userAccountService.findByLogin(username);
 
 		if (entity == null) {
@@ -38,7 +50,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		}
 
 		// TODO verify password (DB contains hash - not a plain password)
-		if (!entity.getPassword().equals(password)) {
+		if (!entity.getPassword().equals(hash)) {
 			throw new BadCredentialsException("1000");
 		}
 

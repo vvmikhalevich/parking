@@ -15,9 +15,18 @@
 		base-package="com.itacademy.jd2.vvm.parking.web.security" />
 
 	<http>
-		<!-- <intercept-url pattern="/brand**" access="hasRole('admin')" /> -->
+		<intercept-url pattern="/brand**"
+			access="hasRole('admin')" />
+
 		<intercept-url pattern="/model**"
-			access="!isAnonymous()" />
+			access="hasRole('admin')" />
+
+		<intercept-url pattern="/car**"
+			access="hasRole('admin')" />
+
+
+		<!-- <intercept-url pattern="/place**" access="!isAnonymous()" /> -->
+
 
 		<form-login login-page="/login" default-target-url="/"
 			authentication-failure-url="/login?error"

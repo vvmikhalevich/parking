@@ -1,5 +1,7 @@
 package com.itacademy.jd2.vvm.parking.service.impl;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.service.util.SendMailTLS;
+import com.itacademy.jd2.vvm.parking.service.util.SaltedMD5Example;;
 
 @Service
 public class UserAccountServiceImpl implements IUserAccountService {
@@ -35,10 +38,25 @@ public class UserAccountServiceImpl implements IUserAccountService {
 		entity.setUpdated(modifedOn);
 		if (entity.getId() == null) {
 			entity.setCreated(modifedOn);
-			dao.insert(entity);
+			String password = entity.getPassword();
+			String hash = null;
+			try {
+				hash = SaltedMD5Example.main(password);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchProviderException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			String email = entity.getEmail();
 
-			SendMailTLS.main(email);
+			entity.setPassword(hash);
+
+			dao.insert(entity);
+
+			// SendMailTLS.main(email);
 
 		} else {
 			dao.update(entity);
