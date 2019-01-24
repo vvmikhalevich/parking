@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,10 +9,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.itacademy.jd2.vvm.parking.dao.api.ICarDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
@@ -54,6 +57,8 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		from.fetch(Car_.userAccount, JoinType.LEFT);
 		from.fetch(Car_.foto, JoinType.LEFT);
 		from.fetch(Car_.tariff, JoinType.LEFT);
+
+		applyFilter(filter, cb, cq, from);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {
@@ -127,6 +132,20 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		final TypedQuery<ICar> q = em.createQuery(cq);
 
 		return getSingleResult(q);
+	}
+
+	private void applyFilter(final CarFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<Car> from) {
+		final List<Predicate> ands = new ArrayList<>();
+
+		final String number = filter.getNumber();
+		if (!StringUtils.isEmpty(number)) {
+			ands.add(cb.equal(from.get(Car_.number), number));
+		}
+
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
+		}
 	}
 
 }

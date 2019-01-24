@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.GeneralSecurityException;
 import java.util.HashMap;
@@ -41,10 +43,15 @@ import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.search.CarSearchDTO;
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 
 @Controller
 @RequestMapping(value = "/car")
 public class CarController extends AbstractController {
+
+	private static final String SEARCH_FORM_MODEL = "searchFormModel";
+	private static final String SEARCH_DTO = CarController.class.getSimpleName() + "_SEACH_DTO";
 
 	public static final String FILE_FOLDER = "d:\\";
 
@@ -69,8 +76,8 @@ public class CarController extends AbstractController {
 	@Autowired
 	private CarToDTOConverter toDtoConverter;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(final HttpServletRequest req,
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView index(final HttpServletRequest req, @ModelAttribute(SEARCH_FORM_MODEL) CarSearchDTO searchDto,
 			@RequestParam(name = "page", required = false) final Integer pageNumber,
 			@RequestParam(name = "sort", required = false) final String sortColumn) {
 
@@ -78,7 +85,28 @@ public class CarController extends AbstractController {
 		gridState.setPage(pageNumber);
 		gridState.setSort(sortColumn, "id");
 
+		if (req.getMethod().equalsIgnoreCase("get")) {
+			// do not use empty payload which comes in case of GET
+			searchDto = getSearchDTO(req);
+		} else {
+			req.getSession().setAttribute(SEARCH_DTO, searchDto);
+		}
+
 		final CarFilter filter = new CarFilter();
+
+		if (AuthHelper.hasRole("admin")) {
+			// build filter without restrictions
+
+		} else {
+			// build filter with\ restriction by logged userId
+			Integer loggedUserId = AuthHelper.getLoggedUserId();
+			filter.setLoggedUserId(loggedUserId);
+		}
+
+		if (searchDto.getNumber() != null) {
+			filter.setNumber(searchDto.getNumber());
+		}
+
 		prepareFilter(gridState, filter);
 		gridState.setTotalCount(carService.getCount(filter));
 
@@ -87,6 +115,8 @@ public class CarController extends AbstractController {
 
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);
+		models.put(SEARCH_FORM_MODEL, searchDto);
+
 		return new ModelAndView("car.list", models);
 	}
 
@@ -99,7 +129,7 @@ public class CarController extends AbstractController {
 		return new ModelAndView("car.edit", hashMap);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Object save(@RequestParam("file") final MultipartFile file,
 			@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result)
 			throws IOException, GeneralSecurityException {
@@ -140,6 +170,12 @@ public class CarController extends AbstractController {
 				Files.copy(inputStream, new File(FILE_FOLDER + uuid).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
 				foto = fotoService.get(entity.getFoto().getId());
+
+				String oldUuid = foto.getLink();
+				String namePath = FILE_FOLDER + oldUuid;
+				Path path = Paths.get(namePath);
+				Files.delete(path);
+
 				foto.setLink(uuid);
 				fotoService.save(foto);
 				entity.setFoto(foto);
@@ -181,12 +217,16 @@ public class CarController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String delete(@PathVariable(name = "id", required = true) final Integer id) {
+	public String delete(@PathVariable(name = "id", required = true) final Integer id) throws IOException {
 
 		final CarDTO dto = toDtoConverter.apply(carService.getFullInfo(id));
 		Integer fotoId = dto.getFotoId();
 
 		carService.delete(id);
+		String uuid = dto.getLink();
+		String namePath = FILE_FOLDER + uuid;
+		Path path = Paths.get(namePath);
+		Files.delete(path);
 		fotoService.delete(fotoId);
 
 		return "redirect:/car";
@@ -211,6 +251,15 @@ public class CarController extends AbstractController {
 				.collect(Collectors.toMap(ITariff::getId, ITariff::getName));
 		hashMap.put("tariffsChoices", tariffsMap);
 
+	}
+
+	private CarSearchDTO getSearchDTO(final HttpServletRequest req) {
+		CarSearchDTO searchDTO = (CarSearchDTO) req.getSession().getAttribute(SEARCH_DTO);
+		if (searchDTO == null) {
+			searchDTO = new CarSearchDTO();
+			req.getSession().setAttribute(SEARCH_DTO, searchDTO);
+		}
+		return searchDTO;
 	}
 
 }

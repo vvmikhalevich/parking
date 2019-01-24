@@ -16,16 +16,22 @@
 
 	<http>
 		<intercept-url pattern="/brand**"
-			access="hasRole('admin')" />
+			access="hasAnyRole('admin', 'manager')" />
 
 		<intercept-url pattern="/model**"
-			access="hasRole('admin')" />
+			access="hasAnyRole('admin', 'manager')" />
 
 		<intercept-url pattern="/car**"
-			access="hasRole('admin')" />
+			access="hasAnyRole('admin', 'manager', 'user')" />
 
+		<intercept-url pattern="/event**"
+			access="hasAnyRole('admin', 'manager')" />
 
-		<!-- <intercept-url pattern="/place**" access="!isAnonymous()" /> -->
+		<intercept-url pattern="/userAccount**"
+			access="hasAnyRole('admin', 'manager')" />
+
+		<intercept-url pattern="/place**"
+			access="!isAnonymous()" />
 
 
 		<form-login login-page="/login" default-target-url="/"

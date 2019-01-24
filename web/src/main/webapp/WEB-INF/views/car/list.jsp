@@ -2,8 +2,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <h4 class="header">Cars</h4>
+
+
+<div class="row">
+	<div class="col s12 m12">
+		<div class="card-panel blue lighten-5">
+			<div class="row">
+				<form:form method="POST" action="${pagesCar}"
+					enctype="multipart/form-data" modelAttribute="searchFormModel">
+					<div class="input-field col s4">
+						<form:input path="number" type="text" />
+						<label for="number">Number</label>
+					</div>
+					<div class="col s4">
+						<button class="btn waves-effect waves-light right" type="submit">search</button>
+					</div>
+				</form:form>
+			</div>
+		</div>
+	</div>
+</div>
 <table class="bordered highlight">
 	<tbody>
 		<tr>

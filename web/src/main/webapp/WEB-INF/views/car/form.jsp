@@ -8,7 +8,7 @@
 	</c:choose>
 </h4>
 <div class="row">
-	<form:form class="col s12" method="POST" action="${pagesCar}"
+	<form:form class="col s12" method="POST" action="${pagesCar}/add"
 		enctype="multipart/form-data" modelAttribute="formModel">
 
 		<form:input path="id" type="hidden" />

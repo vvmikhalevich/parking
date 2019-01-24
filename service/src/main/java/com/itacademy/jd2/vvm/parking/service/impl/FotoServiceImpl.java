@@ -53,6 +53,7 @@ public class FotoServiceImpl implements IFotoService {
 
 	@Override
 	public void delete(final Integer id) {
+
 		dao.delete(id);
 	}
 

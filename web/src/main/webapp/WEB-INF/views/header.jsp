@@ -32,19 +32,21 @@
 
 				<li><a href="${contextPath}/">Home</a></li>
 
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="dropdown1">Cars<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
+						<li><a class="dropdown-trigger" href="#!"
+							data-target="dropdown1">Cars<i class="material-icons right">arrow_drop_down</i></a></li>
+					</sec:authorize></li>
 
 				<li><a class="dropdown-trigger" href="#!"
 					data-target="dropdown2">Parkings<i class="material-icons right">arrow_drop_down</i></a></li>
 
 
 				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
-				<%-- <li><a href="${pagesFoto}">Photos</a></li> --%>
+				<li><a href="${pagesFoto}">Photos</a></li>
 				<li><a href="${pagesEvent}">Events</a></li>
 
 
-				<li><sec:authorize access="!isAnonymous()">
+				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
 						<a href="${pagesTransaction}">Transactions</a>
 					</sec:authorize></li>
 
