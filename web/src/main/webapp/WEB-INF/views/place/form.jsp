@@ -29,17 +29,18 @@
 				<label for="parkingId">Parking</label>
 			</div>
 		</div>
-
+<%-- 
 		<div class="row">
 			<div class="input-field col s12">
 				<form:select path="carId" disabled="${readonly}">
+					<form:option value="">empty</form:option>
 					<form:options items="${carsChoices}" />
 				</form:select>
 				<form:errors path="carId" cssClass="red-text" />
 				<label for="carId">Car</label>
 			</div>
 		</div>
-
+ --%>
 		<div class="row">
 			<div class="input-field col s12">
 				<form:select path="userAccountId" disabled="${readonly}">

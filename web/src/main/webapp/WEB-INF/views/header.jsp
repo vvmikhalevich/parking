@@ -40,7 +40,7 @@
 
 
 				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
-				<li><a href="${pagesFoto}">Photos</a></li>
+				<%-- <li><a href="${pagesFoto}">Photos</a></li> --%>
 				<li><a href="${pagesEvent}">Events</a></li>
 
 
@@ -55,11 +55,9 @@
 						title="logout"><i class="material-icons">arrow_forward</i></a>
 				</sec:authorize>
 
-				<li><a class="white-text" href="${contextPath}?language=ru">RU</a></li>
+				<li><a class="right" class="white-text"
+					href="${contextPath}?language=ru">RU</a></li>
 				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
-
-
-
 
 			</ul>
 

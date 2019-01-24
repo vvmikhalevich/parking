@@ -13,6 +13,7 @@
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">car(id)</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}"
 					column="userAccount">userAccount(id)</mytaglib:sort-link></th>
+			<th>Out from place</th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="created">
 					<mytaglib:i18n key="table.column.created" />
 				</mytaglib:sort-link></th>
@@ -27,12 +28,16 @@
 
 				<td><c:out value="${place.name}" /></td>
 
-				<td><c:out value="${place.parkingName}(${place.parkingId})" /></td>
+				<td><a href="${pagesParking}/${place.parkingId}">${place.parkingName}</a>
 
-				<td><c:out value="${place.carNumber}(${place.carId})" /></td>
+				</td>
 
-				<td><c:out
-						value="${place.userAccountLastName}(${place.userAccountId})" /></td>
+				<td><c:out value="${place.carNumber}" /></td>
+
+				<td><c:out value="${place.userAccountLastName}" /></td>
+				<td><a class="waves-effect waves-light btn right"
+					href="${pagesParking}/addPlaces/${parking.id}"><i
+						class="material-icons">add places</i></a></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${place.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

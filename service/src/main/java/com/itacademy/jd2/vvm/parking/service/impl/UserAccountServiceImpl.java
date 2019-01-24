@@ -59,6 +59,20 @@ public class UserAccountServiceImpl implements IUserAccountService {
 			// SendMailTLS.main(email);
 
 		} else {
+			String password = entity.getPassword();
+			String hash = null;
+			try {
+				hash = SaltedMD5Example.main(password);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchProviderException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			entity.setPassword(hash);
+
 			dao.update(entity);
 		}
 	}

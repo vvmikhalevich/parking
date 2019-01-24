@@ -199,7 +199,7 @@ public class ParkingController extends AbstractController {
 
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
-		hashMap.put("places", places);
+		hashMap.put("places", places);// map (placeId, PlaceDetailsDto)
 
 		return new ModelAndView("addPlace.edit", hashMap);
 	}

@@ -11,7 +11,7 @@
 	</c:choose>
 </h4>
 
-<table border="1" cellspacing="1" width="100%" id="table1"
+<table border="1" cellspacing="1"  id="table1"
 	class="parking-table">
 
 

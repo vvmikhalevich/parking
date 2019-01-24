@@ -17,8 +17,7 @@
 					column="role">role</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
 					column="email">email</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="password">password</mytaglib:sort-link></th>
+			
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -37,7 +36,7 @@
 				<td><c:out value="${userAccount.lastName}" /></td>
 				<td><c:out value="${userAccount.role}" /></td>
 				<td><c:out value="${userAccount.email}" /></td>
-				<td><c:out value="${userAccount.password}" /></td>
+		
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${userAccount.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

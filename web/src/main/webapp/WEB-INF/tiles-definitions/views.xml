@@ -151,4 +151,6 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/placeOwner/form.jsp" />
 	</definition>
+
+
 </tiles-definitions>
