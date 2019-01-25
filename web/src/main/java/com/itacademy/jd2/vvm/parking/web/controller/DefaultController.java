@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 import com.itacademy.jd2.vvm.parking.web.tag.I18N;
 
 @Controller
@@ -37,6 +38,11 @@ public class DefaultController {
 			req.getSession().setAttribute(I18N.SESSION_LOCALE_KEY, locale);
 			LOGGER.info("switch to locale:" + locale);
 		}
+		
+		
+		//TODO if role=xxx=> return "redirect:/admin view"
+		
+		//AuthHelper.isAdmin()
 		return "home";
 	}
 

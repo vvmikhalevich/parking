@@ -3,12 +3,10 @@ package com.itacademy.jd2.vvm.parking.web.controller;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.ParkingType;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
@@ -46,183 +43,179 @@ import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 @RequestMapping(value = "/parking")
 public class ParkingController extends AbstractController {
 
-	@Autowired
-	private ICarService carService;
+    @Autowired
+    private ICarService carService;
 
-	@Autowired
-	private IPlaceService placeService;
+    @Autowired
+    private IPlaceService placeService;
 
-	private IParkingService parkingService;
+    private IParkingService parkingService;
 
-	private ParkingToDTOConverter toDtoConverter;
-	private ParkingFromDTOConverter fromDtoConverter;
+    private ParkingToDTOConverter toDtoConverter;
+    private ParkingFromDTOConverter fromDtoConverter;
 
-	@Autowired
-	private ParkingController(IParkingService parkingService, ParkingToDTOConverter toDtoConverter,
-			ParkingFromDTOConverter fromDtoConverter) {
-		super();
-		this.parkingService = parkingService;
-		this.toDtoConverter = toDtoConverter;
-		this.fromDtoConverter = fromDtoConverter;
-	}
+    @Autowired
+    private ParkingController(IParkingService parkingService, ParkingToDTOConverter toDtoConverter,
+            ParkingFromDTOConverter fromDtoConverter) {
+        super();
+        this.parkingService = parkingService;
+        this.toDtoConverter = toDtoConverter;
+        this.fromDtoConverter = fromDtoConverter;
+    }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(final HttpServletRequest req,
-			@RequestParam(name = "page", required = false) final Integer pageNumber,
-			@RequestParam(name = "sort", required = false) final String sortColumn) {
-		final GridStateDTO gridState = getListDTO(req);
-		gridState.setPage(pageNumber);
-		gridState.setSort(sortColumn, "id");
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView index(final HttpServletRequest req,
+            @RequestParam(name = "page", required = false) final Integer pageNumber,
+            @RequestParam(name = "sort", required = false) final String sortColumn) {
+        final GridStateDTO gridState = getListDTO(req);
+        gridState.setPage(pageNumber);
+        gridState.setSort(sortColumn, "id");
 
-		final ParkingFilter filter = new ParkingFilter();
-		prepareFilter(gridState, filter);
+        final ParkingFilter filter = new ParkingFilter();
+        prepareFilter(gridState, filter);
 
-		final List<IParking> entities = parkingService.find(filter);
-		List<ParkingDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
-		gridState.setTotalCount(parkingService.getCount(filter));
+        final List<IParking> entities = parkingService.find(filter);
+        List<ParkingDTO> dtos = entities.stream().map(toDtoConverter).collect(Collectors.toList());
+        gridState.setTotalCount(parkingService.getCount(filter));
 
-		final Map<String, Object> models = new HashMap<>();
-		models.put("gridItems", dtos);
-		return new ModelAndView("parking.list", models);
-	}
+        final Map<String, Object> models = new HashMap<>();
+        models.put("gridItems", dtos);
+        return new ModelAndView("parking.list", models);
+    }
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView showForm() {
-		final Map<String, Object> hashMap = new HashMap<>();
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView showForm() {
+        final Map<String, Object> hashMap = new HashMap<>();
 
-		loadCommonFormModels(hashMap);
+        loadCommonFormModels(hashMap);
 
-		hashMap.put("formModel", new ParkingDTO());
+        hashMap.put("formModel", new ParkingDTO());
 
-		return new ModelAndView("parking.edit", hashMap);
-	}
+        return new ModelAndView("parking.edit", hashMap);
+    }
 
-	@RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.GET)
-	public ModelAndView showFormPlaces(@PathVariable(name = "id", required = true) final Integer id) {
-		final Map<String, Object> hashMap = new HashMap<>();
-		final IParking dbModel = parkingService.get(id);
-		hashMap.put("formModel", toDtoConverter.apply(dbModel));
+    @RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.GET)
+    public ModelAndView showFormPlaces(@PathVariable(name = "id", required = true) final Integer id) {
+        final Map<String, Object> hashMap = new HashMap<>();
+        final IParking dbModel = parkingService.get(id);
+        hashMap.put("formModel", toDtoConverter.apply(dbModel));
 
-		return new ModelAndView("addPlace.edit", hashMap);
-	}
+        return new ModelAndView("addPlace.edit", hashMap);
+    }
 
-	@RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> savePlaces(@RequestBody Map<String, Boolean> jsonData,
-			@PathVariable(name = "id", required = true) final Integer id) {
-		System.out.println("map : " + jsonData);
-		System.out.println("id parking : " + id);
+    @RequestMapping(value = "/addPlaces/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> savePlaces(@RequestBody Map<String, Boolean> jsonData,
+            @PathVariable(name = "id", required = true) final Integer id) {
+        System.out.println("map : " + jsonData);
+        System.out.println("id parking : " + id);
 
-		Iterator<Entry<String, Boolean>> i = jsonData.entrySet().iterator();
-		while (i.hasNext()) {
-			Entry<String, Boolean> e = i.next();
-			if (e != null) {
-				String name = (String) e.getKey();
-				Boolean value = (Boolean) e.getValue();
-				System.out.println(name + "=" + value);
-				if (value) {
+        Iterator<Entry<String, Boolean>> i = jsonData.entrySet().iterator();
+        while (i.hasNext()) {
+            Entry<String, Boolean> e = i.next();
+            if (e != null) {
+                String name = (String) e.getKey();
+                Boolean value = (Boolean) e.getValue();
+                System.out.println(name + "=" + value);
+                if (value) {
 
-					final IPlace entity = placeService.createEntity();
-					entity.setName(name);
-					final IParking parking = parkingService.get(id);
-					parking.setId(id);
+                    final IPlace entity = placeService.createEntity();
+                    entity.setName(name);
+                    final IParking parking = parkingService.get(id);
+                    parking.setId(id);
 
-					entity.setParking(parking);
-					// final ICar car = carService.get(1);
-					// entity.setCar(car);
+                    entity.setParking(parking);
+                    // final ICar car = carService.get(1);
+                    // entity.setCar(car);
 
-					final Date date = new Date();
-					entity.setCreated(date);
-					entity.setUpdated(date);
+                    final Date date = new Date();
+                    entity.setCreated(date);
+                    entity.setUpdated(date);
 
-					placeService.save(entity);
+                    placeService.save(entity);
 
-				}
+                }
 
-			}
-		}
+            }
+        }
 
-		final IParking parking = parkingService.get(id);
-		parking.setStatus(ParkingType.valueOf("enable"));
-		;
-		parkingService.save(parking);
+        final IParking parking = parkingService.get(id);
+        parking.setStatus(ParkingType.valueOf("enable"));
+        ;
+        parkingService.save(parking);
 
-		return ResponseEntity.status(HttpStatus.OK).body(null);
-	}
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String save(@Valid @ModelAttribute("formModel") final ParkingDTO formModel, final BindingResult result) {
-		if (result.hasErrors()) {
-			return "parking.edit";
-		} else {
-			final IParking entity = fromDtoConverter.apply(formModel);
-			parkingService.save(entity);
-			return "redirect:/parking"; // generates 302 response with Location="/parking/parking"
-		}
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    public String save(@Valid @ModelAttribute("formModel") final ParkingDTO formModel, final BindingResult result) {
+        if (result.hasErrors()) {
+            return "parking.edit";
+        } else {
+            final IParking entity = fromDtoConverter.apply(formModel);
+            parkingService.save(entity);
+            return "redirect:/parking"; // generates 302 response with Location="/parking/parking"
+        }
+    }
 
-	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String delete(@PathVariable(name = "id", required = true) final Integer id) {
-		parkingService.delete(id);
-		return "redirect:/parking";
-	}
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable(name = "id", required = true) final Integer id) {
+        parkingService.delete(id);
+        return "redirect:/parking";
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ModelAndView viewDetails(@PathVariable(name = "id", required = true) final Integer id) {
-		final IParking parking = parkingService.get(id);
-		final ParkingDTO dto = toDtoConverter.apply(parking);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView viewDetails(@PathVariable(name = "id", required = true) final Integer id) {
+        final IParking parking = parkingService.get(id);
+        final ParkingDTO dto = toDtoConverter.apply(parking);
 
-		final PlaceFilter filter = new PlaceFilter();
-		filter.setParkingId(id);
+        final PlaceFilter filter = new PlaceFilter();
+        filter.setParkingId(id);
 
-		final List<IPlace> entities = placeService.find(filter);
+        final List<IPlace> entities = placeService.find(filter);
 
-		Iterator<IPlace> i = entities.iterator();
+        Iterator<IPlace> i = entities.iterator();
 
-		final Set<String> places = new HashSet<>();
+        final Map<String, IPlace> places = new HashMap<>();
 
-		while (i.hasNext()) {
+        for (IPlace iPlace : entities) {
+            
+            //TODO new SomeDtoWithInfoYouNeedOnJSP
+            places.put(iPlace.getName(), iPlace);
+        }
+        
+        // System.out.println(modelMap);
 
-			IPlace place = i.next();
-			if (place != null) {
-				String name = place.getName();
-				places.add(name);
-				// System.out.println(name);
-			}
+        // List<PlaceDTO> dtos =
+        // entities.stream().map(toDtoConverter).collect(Collectors.toList());
 
-		}
-		// System.out.println(modelMap);
+        final Map<String, Object> hashMap = new HashMap<>();
 
-		// List<PlaceDTO> dtos =
-		// entities.stream().map(toDtoConverter).collect(Collectors.toList());
+        hashMap.put("formModel", dto);
+        hashMap.put("readonly", true);
+        hashMap.put("places", places);// map (placeId, PlaceDetailsDto)
 
-		final Map<String, Object> hashMap = new HashMap<>();
+        return new ModelAndView("addPlace.edit", hashMap);
+    }
 
-		hashMap.put("formModel", dto);
-		hashMap.put("readonly", true);
-		hashMap.put("places", places);// map (placeId, PlaceDetailsDto)
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable(name = "id", required = true) final Integer id) {
+        final ParkingDTO dto = toDtoConverter.apply(parkingService.get(id));
 
-		return new ModelAndView("addPlace.edit", hashMap);
-	}
+        final Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("formModel", dto);
 
-	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@PathVariable(name = "id", required = true) final Integer id) {
-		final ParkingDTO dto = toDtoConverter.apply(parkingService.get(id));
+        loadCommonFormModels(hashMap);
 
-		final Map<String, Object> hashMap = new HashMap<>();
-		hashMap.put("formModel", dto);
+        return new ModelAndView("parking.edit", hashMap);
+    }
 
-		loadCommonFormModels(hashMap);
+    private void loadCommonFormModels(final Map<String, Object> hashMap) {
 
-		return new ModelAndView("parking.edit", hashMap);
-	}
+        final List<ParkingType> roleTypesList = Arrays.asList(ParkingType.values());
+        final Map<String, String> parkingTypesMap = roleTypesList.stream()
+                .collect(Collectors.toMap(ParkingType::name, ParkingType::name));
+        hashMap.put("statusesChoices", parkingTypesMap);
 
-	private void loadCommonFormModels(final Map<String, Object> hashMap) {
-
-		final List<ParkingType> roleTypesList = Arrays.asList(ParkingType.values());
-		final Map<String, String> parkingTypesMap = roleTypesList.stream()
-				.collect(Collectors.toMap(ParkingType::name, ParkingType::name));
-		hashMap.put("statusesChoices", parkingTypesMap);
-
-	}
+    }
 
 }

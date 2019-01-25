@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <h4 class="header">
 	<c:choose>
@@ -11,23 +11,27 @@
 	</c:choose>
 </h4>
 
-<table border="1" cellspacing="1"  id="table1"
-	class="parking-table">
+<table border="1" cellspacing="1" id="table1" class="parking-table">
 
 
 	<c:forEach var="y" begin="1" end="${formModel.width}">
 		<tr>
 			<c:forEach var="x" begin="1" end="${formModel.length}">
 				<c:set var="cellId" value="${x}_${y}"></c:set>
-				
+
 				<c:if test="${readonly}">
-				
-				<spring:eval var="containsValue" expression="places.contains(cellId)" />
-				
-				<c:set var="clazz" value="${containsValue  ? 'selected' : ''}"></c:set> 
+
+					<spring:eval var="containsValue"
+						expression="places.containsKey(cellId)" />
+					<spring:eval var="place" expression="places.get(cellId)" />
+
+					<c:set var="clazz" value="${containsValue  ? 'selected' : ''}"></c:set>
 				</c:if>
-				
-				<td id="${cellId}" class="${clazz}">${cellId}</td>
+
+				<td id="${cellId}" class="${clazz}"><c:if test="${ containsValue}">
+					PlaceId=${place.id} 
+					<br>Place name = ${place.name} <br>${place.created}
+				</c:if></td>
 			</c:forEach>
 		</tr>
 
