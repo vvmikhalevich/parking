@@ -140,7 +140,8 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 
 		final String number = filter.getNumber();
 		if (!StringUtils.isEmpty(number)) {
-			ands.add(cb.equal(from.get(Car_.number), number));
+			// ands.add(cb.equal(from.get(Car_.number), number));
+			ands.add(cb.like(from.get(Car_.number), "%" + number + "%"));
 		}
 
 		if (!ands.isEmpty()) {

@@ -31,6 +31,8 @@ public class PlaceToDTOConverter implements Function<IPlace, PlaceDTO> {
 		if (car != null) {
 			dto.setCarId(car.getId());
 			dto.setCarNumber(car.getNumber());
+		} else {
+			dto.setCarId(0);
 		}
 
 		final IUserAccount userAccount = entity.getUserAccount();
@@ -38,6 +40,8 @@ public class PlaceToDTOConverter implements Function<IPlace, PlaceDTO> {
 			dto.setUserAccountId(userAccount.getId());
 			dto.setUserAccountLastName(userAccount.getLastName());
 
+		} else {
+			dto.setUserAccountId(0);
 		}
 
 		return dto;

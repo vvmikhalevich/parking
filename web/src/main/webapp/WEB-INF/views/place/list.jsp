@@ -13,41 +13,53 @@
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">car(id)</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}"
 					column="userAccount">userAccount(id)</mytaglib:sort-link></th>
-			<th>Out from place</th>
+
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="created">
 					<mytaglib:i18n key="table.column.created" />
 				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="updated">
 					<mytaglib:i18n key="table.column.updated" />
 				</mytaglib:sort-link></th>
+			<th>Out from place</th>
 			<th></th>
 		</tr>
 		<c:forEach var="place" items="${gridItems}" varStatus="loopCounter">
 			<tr>
-				<td><c:out value="${place.id}" /></td>
+				<td>${place.id}</td>
 
-				<td><c:out value="${place.name}" /></td>
+				<td>${place.name}</td>
 
-				<td><a href="${pagesParking}/${place.parkingId}">${place.parkingName}</a>
+				<td><a href="${pagesParking}/${place.parkingId}">${place.parkingName}</a></td>
 
-				</td>
+				<td>${place.carNumber}</td>
 
-				<td><c:out value="${place.carNumber}" /></td>
+				<td><a href="${pagesUserAccount}/${place.userAccountId}">${place.userAccountLastName}</a></td>
 
-				<td><c:out value="${place.userAccountLastName}" /></td>
-				<td><a class="waves-effect waves-light btn right"
-					href="${pagesParking}/addPlaces/${parking.id}"><i
-						class="material-icons">add places</i></a></td>
+
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${place.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${place.updated}" /></td>
+				<td><c:if test="${place.carId!='0'}">
+						<a class="btn-floating btn-small waves-effect waves-light red"
+							href="${pagesPlace}/${place.id}/deleteCar"><i
+							class="material-icons">delete car from place</i></a>
+					</c:if> <c:if test="${place.carNumber=='0'}">
+						<a
+							class="btn-floating btn-small waves-effect waves-light red disabled"
+							href="${pagesPlace}/${place.id}/deleteCar"><i
+							class="material-icons">delete car from place</i></a>
+					</c:if></td>
+
+
 				<td class="right"><a class="btn-floating"
 					href="${pagesPlace}/${place.id}"><i class="material-icons">info</i></a>
 					<a class="btn-floating" href="${pagesPlace}/${place.id}/edit"><i
 						class="material-icons">edit</i></a> <a class="btn-floating red"
 					href="${pagesPlace}/${place.id}/delete"><i
 						class="material-icons">delete</i></a></td>
+
+
 			</tr>
 		</c:forEach>
 	</tbody>

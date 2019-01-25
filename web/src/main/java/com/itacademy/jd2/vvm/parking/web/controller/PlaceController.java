@@ -84,7 +84,7 @@ public class PlaceController extends AbstractController {
 		return new ModelAndView("place.edit", hashMap);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Object save(@Valid @ModelAttribute("formModel") final PlaceDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
 			final Map<String, Object> hashMap = new HashMap<>();
@@ -97,6 +97,17 @@ public class PlaceController extends AbstractController {
 			placeService.save(entity);
 			return "redirect:/place";
 		}
+	}
+
+	@RequestMapping(value = "/{id}/deleteCar", method = RequestMethod.GET)
+	public String deleteCar(@PathVariable(name = "id", required = true) final Integer id) {
+
+		final IPlace entity = placeService.getFullInfo(id);
+
+		entity.setCar(null);
+
+		placeService.save(entity);
+		return "redirect:/place";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

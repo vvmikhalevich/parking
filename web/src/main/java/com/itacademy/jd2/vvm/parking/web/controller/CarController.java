@@ -31,12 +31,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.IFotoService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
+import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.ITariffService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
@@ -63,6 +65,9 @@ public class CarController extends AbstractController {
 
 	@Autowired
 	private IModelService modelService;
+
+	@Autowired
+	private IPlaceService placeService;
 
 	@Autowired
 	private IUserAccountService userAccountService;
@@ -216,6 +221,43 @@ public class CarController extends AbstractController {
 		return new ModelAndView("car.edit", hashMap);
 	}
 
+	@RequestMapping(value = "/{id}/put", method = RequestMethod.GET)
+	public ModelAndView put(@PathVariable(name = "id", required = true) final Integer id) {
+		final CarDTO dto = toDtoConverter.apply(carService.getFullInfo(id));
+
+		final Map<String, Object> hashMap = new HashMap<>();
+		hashMap.put("formModel", dto);
+		loadCommonFormModels(hashMap);
+		return new ModelAndView("car.put", hashMap);
+	}
+
+	@RequestMapping(value = "/put", method = RequestMethod.POST)
+	public Object put(@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result) {
+		if (result.hasErrors()) {
+			final Map<String, Object> hashMap = new HashMap<>();
+			hashMap.put("formModel", formModel);
+			loadCommonFormModels(hashMap);
+			return new ModelAndView("car.put", hashMap);
+		} else {
+
+			final ICar form = fromDtoConverter.apply(formModel);
+			Integer carId = form.getId();
+			// Integer placeId = form.get
+			Integer userAccountId = form.getUserAccount().getId();
+
+			// final IPlace place = placeService.get(placeId);
+			final ICar car = carService.get(carId);
+			final IUserAccount user = userAccountService.get(userAccountId);
+
+			// place.setCar(car);
+			// place.setUserAccount(user);
+			// placeService.save(place);
+
+		}
+
+		return "redirect:/car";
+	}
+
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String delete(@PathVariable(name = "id", required = true) final Integer id) throws IOException {
 
@@ -237,6 +279,7 @@ public class CarController extends AbstractController {
 		final List<IUserAccount> users = userAccountService.getAll();
 		final List<IFoto> fotos = fotoService.getAll();
 		final List<ITariff> tariffs = tariffService.getAll();
+		final List<IPlace> places = placeService.getAll();
 
 		final Map<Integer, String> modelsMap = models.stream()
 				.collect(Collectors.toMap(IModel::getId, IModel::getName));
@@ -250,6 +293,9 @@ public class CarController extends AbstractController {
 		final Map<Integer, String> tariffsMap = tariffs.stream()
 				.collect(Collectors.toMap(ITariff::getId, ITariff::getName));
 		hashMap.put("tariffsChoices", tariffsMap);
+		final Map<Integer, String> placesMap = places.stream()
+				.collect(Collectors.toMap(IPlace::getId, IPlace::getName));
+		hashMap.put("placesChoices", placesMap);
 
 	}
 

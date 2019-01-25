@@ -38,22 +38,24 @@ public class PlaceFromDTOConverter implements Function<PlaceDTO, IPlace> {
 
 		final IParking parking = parkingService.createEntity();
 		parking.setId(dto.getParkingId());
-		//parking.setName(dto.getParkingName());
+		// parking.setName(dto.getParkingName());
 		entity.setParking(parking);
 
 		if (dto.getCarId() != null) {
 			final ICar car = carService.createEntity();
 			car.setId(dto.getCarId());
-			//car.setNumber(dto.getCarNumber());
+			// car.setNumber(dto.getCarNumber());
 
 			entity.setCar(car);
 		}
 
-		final IUserAccount userAccount = userAccountService.createEntity();
-		userAccount.setId(dto.getUserAccountId());
-		userAccount.setLastName(dto.getUserAccountLastName());
+		if (dto.getUserAccountId() != null) {
+			final IUserAccount userAccount = userAccountService.createEntity();
+			userAccount.setId(dto.getUserAccountId());
+			userAccount.setLastName(dto.getUserAccountLastName());
 
-		entity.setUserAccount(userAccount);
+			entity.setUserAccount(userAccount);
+		}
 
 		return entity;
 	}

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+
 public class UserAccountDTO {
 
 	private Integer id;
@@ -18,6 +20,7 @@ public class UserAccountDTO {
 
 	private String role;
 
+	// @Email
 	private String email;
 
 	private String password;

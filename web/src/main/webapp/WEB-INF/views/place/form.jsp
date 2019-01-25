@@ -7,7 +7,7 @@
 	</c:choose>
 </h4>
 <div class="row">
-	<form:form class="col s12" method="POST" action="${pagesPlace}"
+	<form:form class="col s12" method="POST" action="${pagesPlace}/add"
 		modelAttribute="formModel">
 
 		<form:input path="id" type="hidden" />
@@ -29,7 +29,7 @@
 				<label for="parkingId">Parking</label>
 			</div>
 		</div>
-<%-- 
+
 		<div class="row">
 			<div class="input-field col s12">
 				<form:select path="carId" disabled="${readonly}">
@@ -40,14 +40,15 @@
 				<label for="carId">Car</label>
 			</div>
 		</div>
- --%>
+
 		<div class="row">
 			<div class="input-field col s12">
 				<form:select path="userAccountId" disabled="${readonly}">
+					<form:option value="">empty</form:option>
 					<form:options items="${usersChoices}" />
 				</form:select>
 				<form:errors path="userAccountId" cssClass="red-text" />
-				<label for="userAccountId">Car</label>
+				<label for="userAccountId">User</label>
 			</div>
 		</div>
 

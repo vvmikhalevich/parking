@@ -54,6 +54,11 @@
 			value="/WEB-INF/views/car/form.jsp" />
 	</definition>
 
+	<definition name="car.put" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/putForm.jsp" />
+	</definition>
+
 	<definition name="tariff.list" extends="DefaultTemplate">
 		<put-attribute name="body"
 			value="/WEB-INF/views/tariff/list.jsp" />

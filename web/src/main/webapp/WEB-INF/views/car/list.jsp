@@ -51,17 +51,18 @@
 			<tr>
 				<td><c:out value="${car.id}" /></td>
 
-				<td><c:out value="${car.modelName}" /></td>
+				<td><a href="${pagesModel}/${car.modelId}">${car.modelName}</a></td>
 
 				<td><c:out value="${car.number}" /></td>
-				<td><c:out value="${car.userAccountLastName}" /></td>
-				<td><c:out value="${car.tariffName}" /></td>
+				<td><a href="${pagesUserAccount}/${car.userAccountId}">${car.userAccountLastName}</a></td>
+				<td><a href="${pagesTariff}/${car.tariffId}">${car.tariffName}</a></td>
 				<td><img alt="no image"
 					src="${contextPath}/file/image?uuid=${car.link}" width="120"
 					height="100" /></td>
-				<td><a class="waves-effect waves-light btn right"
-					href="${pagesParking}/addPlaces/${parking.id}"><i
-						class="material-icons">add places</i></a></td>
+
+				<td><a class="waves-effect waves-light btn-small"
+					href="${pagesCar}/${car.id}/put"><i class="material-icons">check</i>put</a></td>
+
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.updated}" /></td>
 				<td class="right"><a class="btn-floating"

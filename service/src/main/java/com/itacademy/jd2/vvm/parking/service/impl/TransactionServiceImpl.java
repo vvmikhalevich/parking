@@ -2,6 +2,12 @@ package com.itacademy.jd2.vvm.parking.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +30,22 @@ public class TransactionServiceImpl implements ITransactionService {
 	public TransactionServiceImpl(ITransactionDao dao) {
 		super();
 		this.dao = dao;
+	}
+
+	@PostConstruct
+	private void emulator() {
+		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+
+		service.scheduleWithFixedDelay(new Runnable() {
+
+			@Override
+			public void run() {
+				LOGGER.info("execute transaction emulator");
+
+				// TODO Auto-generated method stub
+
+			}
+		}, 0, 60, TimeUnit.SECONDS);
 	}
 
 	@Override

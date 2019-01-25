@@ -26,6 +26,10 @@ public class CarDTO {
 
 	private String link;
 
+	private Integer placeId;
+
+	private String placeName;
+
 	private Date created;
 
 	private Date updated;
@@ -116,6 +120,22 @@ public class CarDTO {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public Integer getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(Integer placeId) {
+		this.placeId = placeId;
+	}
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 
 	public Date getCreated() {
