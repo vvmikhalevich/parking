@@ -8,8 +8,8 @@
 	<tbody>
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="id">id</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="car">car(id)</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="place">place(id)</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="car">car</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="place">place</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}"
 					column="time_start">time of start</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}"
@@ -26,9 +26,9 @@
 			<tr>
 				<td><c:out value="${event.id}" /></td>
 
-				<td><c:out value="${event.carNumber}(${event.carId})" /></td>
+				<td><a href="${pagesCar}/${event.carId}">${event.carNumber}</a></td>
 
-				<td><c:out value="${event.placeName}(${event.placeId})" /></td>
+				<td><a href="${pagesPlace}/${event.placeId}">${event.placeName}</a></td>
 
 
 				<td><c:out value="${event.timeStart}" /></td>

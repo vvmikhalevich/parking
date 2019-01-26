@@ -40,12 +40,17 @@
 				<li><a class="dropdown-trigger" href="#!"
 					data-target="dropdown2">Parkings<i class="material-icons right">arrow_drop_down</i></a></li>
 
+				<sec:authorize access="!hasAnyRole('admin', 'manager')">
 
-				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
+					<li><a href="${pagesPrivate}">Private</a></li>
+				</sec:authorize>
+
 
 				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
+						<li><a href="${pagesUserAccount}">UserAccounts</a></li>
+					</sec:authorize> <%-- <li><sec:authorize access="hasAnyRole('admin', 'manager')">
 						<li><a href="${pagesFoto}">Photos</a></li>
-					</sec:authorize></li>
+					</sec:authorize></li> --%>
 				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
 						<li><a href="${pagesEvent}">Events</a></li>
 					</sec:authorize></li>
@@ -61,13 +66,20 @@
 						title="logout"><i class="material-icons">arrow_forward</i></a>
 				</sec:authorize>
 
+
+
+			</ul>
+			<ul class="right hide-on-med-and-down">
 				<li><a class="right" class="white-text"
 					href="${contextPath}?language=ru">RU</a></li>
 				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
-
+				<sec:authorize access="!isAuthenticated()">
+					<li><a href="${contextPath}/login">Login</a></li>
+				</sec:authorize>
 			</ul>
 
 		</div>
+
 
 	</nav>
 	<ul id="dropdown1" class="dropdown-content">

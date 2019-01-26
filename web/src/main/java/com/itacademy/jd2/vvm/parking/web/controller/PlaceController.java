@@ -24,6 +24,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IEvent;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.EventFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.IEventService;
@@ -114,14 +115,21 @@ public class PlaceController extends AbstractController {
 
 		placeService.save(entity);
 
-		final IEvent event = eventService.findByPlace(id);
-		
-		
+		final EventFilter eventFilter = new EventFilter();
 
-		Date timeEnd = new Date();
-		event.setTimeEnd(timeEnd);;
+		eventFilter.setCarId(id);
 
-		eventService.save(event);
+		final List<IEvent> events = eventService.find(eventFilter);
+
+		if (events != null) {
+			IEvent event = events.get(0);
+
+			Date timeEnd = new Date();
+			event.setTimeEnd(timeEnd);
+			
+
+			eventService.save(event);
+		}
 
 		return "redirect:/place";
 	}

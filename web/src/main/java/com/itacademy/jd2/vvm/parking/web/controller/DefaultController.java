@@ -38,12 +38,12 @@ public class DefaultController {
 			req.getSession().setAttribute(I18N.SESSION_LOCALE_KEY, locale);
 			LOGGER.info("switch to locale:" + locale);
 		}
-		
-		
-		//TODO if role=xxx=> return "redirect:/admin view"
-		
-		//AuthHelper.isAdmin()
-		return "home";
+
+		// TODO if role=xxx=> return "redirect:/admin view"
+
+		// AuthHelper.isAdmin()
+
+		return "redirect:/login";
 	}
 
 }

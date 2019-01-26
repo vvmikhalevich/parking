@@ -17,6 +17,8 @@
 <c:set var="pagesEvent" value="${contextPath}/event" scope="request" />
 <c:set var="pagesTransaction" value="${contextPath}/transaction"
 	scope="request" />
+<c:set var="pagesLogin" value="${contextPath}/login" scope="request" />
+<c:set var="pagesPrivate" value="${contextPath}/private" scope="request" />
 
 
 

@@ -10,7 +10,7 @@
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
 					column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
-					column="user_account">userAccount(id)</mytaglib:sort-link></th>
+					column="user_account">userAccount</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
 					column="value">value</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
@@ -30,8 +30,7 @@
 			<tr>
 				<td><c:out value="${transaction.id}" /></td>
 
-				<td><c:out
-						value="${transaction.userAccountLastName}(${transaction.userAccountId})" /></td>
+				<td><a href="${pagesUserAccount}/${transaction.userAccountId}">${transaction.userAccountLastName}</a></td>
 				<td><c:out value="${transaction.value}" /></td>
 				<td><c:out value="${transaction.description}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

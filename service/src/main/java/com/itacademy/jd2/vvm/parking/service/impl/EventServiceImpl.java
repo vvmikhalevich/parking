@@ -88,9 +88,9 @@ public class EventServiceImpl implements IEventService {
 		return dao.getFullInfo(id);
 	}
 
-	@Override
-	public IEvent findByPlace(Integer id) {
-		return dao.findByPlace(id);
-	}
+	/*
+	 * @Override public IEvent findByPlace(Integer id) { return dao.findByPlace(id);
+	 * }
+	 */
 
 }

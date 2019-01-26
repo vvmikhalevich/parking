@@ -48,6 +48,8 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 		from.fetch(Event_.place, JoinType.LEFT);
 		from.fetch(Event_.car, JoinType.LEFT);
 
+		applyFilter(filter, cb, cq, from);
+
 		final String sortColumn = filter.getSortColumn();
 		if (filter.getSortColumn() != null) {
 			final Path<?> expression = getSortPath(from, sortColumn);
@@ -125,28 +127,21 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 		return getSingleResult(q);
 	}
 
-	@Override
-	public IEvent findByPlace(Integer id) {
-		final EntityManager em = getEntityManager();
-		final CriteriaBuilder cb = em.getCriteriaBuilder();
+	private void applyFilter(final EventFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<Event> from) {
 
-		final CriteriaQuery<IEvent> cq = cb.createQuery(IEvent.class);
-
-		final Root<Event> from = cq.from(Event.class);
-
-		cq.select(from);
+		final Integer id = filter.getCarId();
 
 		final List<Predicate> ands = new ArrayList<>();
 
-		ands.add(cb.equal(from.get(Event_.place).get(Place_.id), id));
-		ands.add(cb.isNull(from.get(Event_.timeEnd)));
+		if (id != null) {
+			ands.add(cb.equal(from.get(Event_.place).get(Place_.id), id));
+			ands.add(cb.isNull(from.get(Event_.timeEnd)));
+		}
 
 		if (!ands.isEmpty()) {
 			cq.where(cb.and(ands.toArray(new Predicate[0])));
 		}
-
-		final TypedQuery<IEvent> q = em.createQuery(cq);
-		return getSingleResult(q);
 
 	}
 
