@@ -8,6 +8,8 @@ public class PlaceFilter extends AbstractFilter {
 	private Boolean withoutCar;
 
 	private String number;
+	
+	private String userAccountLastName;
 
 	public Integer getParkingId() {
 		return parkingId;
@@ -39,6 +41,14 @@ public class PlaceFilter extends AbstractFilter {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public String getUserAccountLastName() {
+		return userAccountLastName;
+	}
+
+	public void setUserAccountLastName(String userAccountLastName) {
+		this.userAccountLastName = userAccountLastName;
 	}
 
 }

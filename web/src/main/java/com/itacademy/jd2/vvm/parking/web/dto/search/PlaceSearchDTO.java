@@ -3,8 +3,8 @@ package com.itacademy.jd2.vvm.parking.web.dto.search;
 public class PlaceSearchDTO {
 
 	private String number;
-	
-	private String UserAccountLastName;
+
+	private String userAccountLastName;
 
 	public String getNumber() {
 		return number;
@@ -15,11 +15,11 @@ public class PlaceSearchDTO {
 	}
 
 	public String getUserAccountLastName() {
-		return UserAccountLastName;
+		return userAccountLastName;
 	}
 
 	public void setUserAccountLastName(String userAccountLastName) {
-		UserAccountLastName = userAccountLastName;
+		this.userAccountLastName = userAccountLastName;
 	}
 
 }

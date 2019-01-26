@@ -97,6 +97,10 @@ public class PlaceController extends AbstractController {
 			filter.setNumber(searchDto.getNumber());
 		}
 
+		if (searchDto.getUserAccountLastName() != null) {
+			filter.setUserAccountLastName(searchDto.getUserAccountLastName());
+		}
+
 		prepareFilter(gridState, filter);
 
 		final List<IPlace> entities = placeService.find(filter);
@@ -106,7 +110,7 @@ public class PlaceController extends AbstractController {
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);
 		models.put(SEARCH_FORM_MODEL, searchDto);
-		
+
 		return new ModelAndView("place.list", models);
 	}
 

@@ -43,7 +43,7 @@ public class DefaultController {
 
 		// AuthHelper.isAdmin()
 
-		return "redirect:/login";
+		return "home";
 	}
 
 }

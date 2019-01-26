@@ -104,9 +104,19 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 		final List<Predicate> ands = new ArrayList<>();
 
 		final String number = filter.getNumber();
+
+		final String userAccountLastName = filter.getUserAccountLastName();
+
 		if (!StringUtils.isEmpty(number)) {
 
 			ands.add(cb.like(from.get(Place_.car).get(Car_.number), "%" + number + "%"));
+		}
+
+		if (!StringUtils.isEmpty(userAccountLastName)) {
+
+			ands.add(
+					cb.like(from.get(Place_.userAccount).get(UserAccount_.lastName), "%" + userAccountLastName + "%"));
+			
 		}
 
 		if (id != null) {

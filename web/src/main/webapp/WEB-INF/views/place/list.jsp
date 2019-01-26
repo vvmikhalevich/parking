@@ -16,6 +16,10 @@
 						<form:input path="number" type="text" />
 						<label for="number">Number of car</label>
 					</div>
+					<div class="input-field col s4">
+						<form:input path="userAccountLastName" type="text" />
+						<label for="userAccountLastName">Last name</label>
+					</div>
 					<div class="col s4">
 						<button class="btn waves-effect waves-light right" type="submit">search</button>
 					</div>
