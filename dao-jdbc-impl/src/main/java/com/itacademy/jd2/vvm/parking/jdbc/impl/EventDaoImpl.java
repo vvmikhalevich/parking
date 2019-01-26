@@ -137,9 +137,5 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 		return "event";
 	}
 
-	@Override
-	public IEvent findByPlace(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

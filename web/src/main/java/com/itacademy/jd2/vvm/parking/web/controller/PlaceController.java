@@ -35,10 +35,15 @@ import com.itacademy.jd2.vvm.parking.web.converter.PlaceFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.PlaceToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.PlaceDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.search.PlaceSearchDTO;
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 
 @Controller
 @RequestMapping(value = "/place")
 public class PlaceController extends AbstractController {
+
+	private static final String SEARCH_FORM_MODEL = "searchFormModel";
+	private static final String SEARCH_DTO = PlaceController.class.getSimpleName() + "_SEACH_DTO";
 
 	@Autowired
 	private IEventService eventService;
@@ -61,8 +66,8 @@ public class PlaceController extends AbstractController {
 	@Autowired
 	private PlaceToDTOConverter toDtoConverter;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index(final HttpServletRequest req,
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView index(final HttpServletRequest req, @ModelAttribute(SEARCH_FORM_MODEL) PlaceSearchDTO searchDto,
 			@RequestParam(name = "page", required = false) final Integer pageNumber,
 			@RequestParam(name = "sort", required = false) final String sortColumn) {
 
@@ -70,7 +75,28 @@ public class PlaceController extends AbstractController {
 		gridState.setPage(pageNumber);
 		gridState.setSort(sortColumn, "id");
 
+		if (req.getMethod().equalsIgnoreCase("get")) {
+			// do not use empty payload which comes in case of GET
+			searchDto = getSearchDTO(req);
+		} else {
+			req.getSession().setAttribute(SEARCH_DTO, searchDto);
+		}
+
 		final PlaceFilter filter = new PlaceFilter();
+
+		if (AuthHelper.hasRole("admin")) {
+			// build filter without restrictions
+
+		} else {
+			// build filter with\ restriction by logged userId
+			Integer loggedUserId = AuthHelper.getLoggedUserId();
+			// filter.setLoggedUserId(loggedUserId);
+		}
+
+		if (searchDto.getNumber() != null) {
+			filter.setNumber(searchDto.getNumber());
+		}
+
 		prepareFilter(gridState, filter);
 
 		final List<IPlace> entities = placeService.find(filter);
@@ -79,6 +105,8 @@ public class PlaceController extends AbstractController {
 
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);
+		models.put(SEARCH_FORM_MODEL, searchDto);
+		
 		return new ModelAndView("place.list", models);
 	}
 
@@ -126,7 +154,6 @@ public class PlaceController extends AbstractController {
 
 			Date timeEnd = new Date();
 			event.setTimeEnd(timeEnd);
-			
 
 			eventService.save(event);
 		}
@@ -177,6 +204,15 @@ public class PlaceController extends AbstractController {
 				.collect(Collectors.toMap(IUserAccount::getId, IUserAccount::getLastName));
 		hashMap.put("usersChoices", usersMap);
 
+	}
+
+	private PlaceSearchDTO getSearchDTO(final HttpServletRequest req) {
+		PlaceSearchDTO searchDTO = (PlaceSearchDTO) req.getSession().getAttribute(SEARCH_DTO);
+		if (searchDTO == null) {
+			searchDTO = new PlaceSearchDTO();
+			req.getSession().setAttribute(SEARCH_DTO, searchDTO);
+		}
+		return searchDTO;
 	}
 
 }

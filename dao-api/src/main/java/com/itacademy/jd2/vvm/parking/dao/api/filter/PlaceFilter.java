@@ -7,6 +7,8 @@ public class PlaceFilter extends AbstractFilter {
 
 	private Boolean withoutCar;
 
+	private String number;
+
 	public Integer getParkingId() {
 		return parkingId;
 	}
@@ -29,6 +31,14 @@ public class PlaceFilter extends AbstractFilter {
 
 	public void setWithoutCar(Boolean withoutCar) {
 		this.withoutCar = withoutCar;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 }

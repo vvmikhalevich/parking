@@ -14,6 +14,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
@@ -101,6 +102,12 @@ public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IP
 		final Integer userAccountId = filter.getUserAccountId();
 
 		final List<Predicate> ands = new ArrayList<>();
+
+		final String number = filter.getNumber();
+		if (!StringUtils.isEmpty(number)) {
+
+			ands.add(cb.like(from.get(Place_.car).get(Car_.number), "%" + number + "%"));
+		}
 
 		if (id != null) {
 			ands.add(cb.equal(from.get(Place_.parking), id));

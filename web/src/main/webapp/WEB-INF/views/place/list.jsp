@@ -14,7 +14,7 @@
 					enctype="multipart/form-data" modelAttribute="searchFormModel">
 					<div class="input-field col s4">
 						<form:input path="number" type="text" />
-						<label for="number">Number</label>
+						<label for="number">Number of car</label>
 					</div>
 					<div class="col s4">
 						<button class="btn waves-effect waves-light right" type="submit">search</button>
