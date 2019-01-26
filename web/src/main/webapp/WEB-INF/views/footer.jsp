@@ -2,7 +2,7 @@
 	<div class="footer-copyright">
 		<div class="container">
 			2019 Copyright Text <a class="grey-text text-lighten-4 right"
-				href="https://drive.google.com/file/d/1kvhOcWFmYlcek2jsgZVr8hOgLq-QtG67/view?usp=sharing"
+				href="https://drive.google.com/file/d/19shFDFgZ1wipJ33UdWq_III3LmFU2FVm/view?usp=sharing"
 				target="_blank">Link of DB</a>
 		</div>
 		<div class="container">

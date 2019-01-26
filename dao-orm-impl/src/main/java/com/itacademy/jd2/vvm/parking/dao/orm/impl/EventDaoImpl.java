@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
@@ -121,6 +123,31 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 		final TypedQuery<IEvent> q = em.createQuery(cq);
 
 		return getSingleResult(q);
+	}
+
+	@Override
+	public IEvent findByPlace(Integer id) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		final CriteriaQuery<IEvent> cq = cb.createQuery(IEvent.class);
+
+		final Root<Event> from = cq.from(Event.class);
+
+		cq.select(from);
+
+		final List<Predicate> ands = new ArrayList<>();
+
+		ands.add(cb.equal(from.get(Event_.place).get(Place_.id), id));
+		ands.add(cb.isNull(from.get(Event_.timeEnd)));
+
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
+		}
+
+		final TypedQuery<IEvent> q = em.createQuery(cq);
+		return getSingleResult(q);
+
 	}
 
 }

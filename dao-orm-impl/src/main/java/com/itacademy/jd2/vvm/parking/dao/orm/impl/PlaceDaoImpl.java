@@ -14,7 +14,6 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IPlaceDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
@@ -28,117 +27,136 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 @Repository
 public class PlaceDaoImpl extends AbstractDaoImpl<IPlace, Integer> implements IPlaceDao {
 
-    protected PlaceDaoImpl() {
-        super(Place.class);
-    }
+	protected PlaceDaoImpl() {
+		super(Place.class);
+	}
 
-    @Override
-    public IPlace createEntity() {
-        Place place = new Place();
-        return place;
-    }
+	@Override
+	public IPlace createEntity() {
+		Place place = new Place();
+		return place;
+	}
 
-    @Override
-    public List<IPlace> find(PlaceFilter filter) {
-        final EntityManager em = getEntityManager();
-        final CriteriaBuilder cb = em.getCriteriaBuilder();
-        final CriteriaQuery<IPlace> cq = cb.createQuery(IPlace.class);
+	@Override
+	public List<IPlace> find(PlaceFilter filter) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
+		final CriteriaQuery<IPlace> cq = cb.createQuery(IPlace.class);
 
-        final Root<Place> from = cq.from(Place.class);
-        cq.select(from); // select what? select *
+		final Root<Place> from = cq.from(Place.class);
+		cq.select(from); // select what? select *
 
-        from.fetch(Place_.parking, JoinType.LEFT);
-        from.fetch(Place_.car, JoinType.LEFT);
-        from.fetch(Place_.userAccount, JoinType.LEFT);
+		from.fetch(Place_.parking, JoinType.LEFT);
+		from.fetch(Place_.car, JoinType.LEFT);
+		from.fetch(Place_.userAccount, JoinType.LEFT);
 
-        applyFilter(filter, cb, cq, from);
+		applyFilter(filter, cb, cq, from);
 
-        final String sortColumn = filter.getSortColumn();
-        if (filter.getSortColumn() != null) {
-            final Path<?> expression = getSortPath(from, sortColumn);
-            cq.orderBy(new OrderImpl(expression, filter.getSortOrder()));// build path to
-            // sort
-            // property
-            cq.orderBy(new OrderImpl(expression, filter.getSortOrder())); // order
-                                                                          // by
-            // column_name
-            // order
-        }
+		final String sortColumn = filter.getSortColumn();
+		if (filter.getSortColumn() != null) {
+			final Path<?> expression = getSortPath(from, sortColumn);
+			cq.orderBy(new OrderImpl(expression, filter.getSortOrder()));// build path to
+			// sort
+			// property
+			cq.orderBy(new OrderImpl(expression, filter.getSortOrder())); // order
+																			// by
+			// column_name
+			// order
+		}
 
-        final TypedQuery<IPlace> q = em.createQuery(cq);
-        setPaging(filter, q);
-        return q.getResultList();
-    }
+		final TypedQuery<IPlace> q = em.createQuery(cq);
+		setPaging(filter, q);
+		return q.getResultList();
+	}
 
-    private Path<?> getSortPath(final Root<Place> from, final String sortColumn) {
-        switch (sortColumn) {
+	private Path<?> getSortPath(final Root<Place> from, final String sortColumn) {
+		switch (sortColumn) {
 
-        case "id":
-            return from.get(Place_.id);
-        case "name":
-            return from.get(Place_.name);
-        case "parking":
-            return from.get(Place_.parking).get(Parking_.name);
-        case "car":
-            return from.get(Place_.car).get(Car_.number);
-        case "userAccount":
-            return from.get(Place_.userAccount).get(UserAccount_.lastName);
-        case "created":
-            return from.get(Place_.created);
-        case "updated":
-            return from.get(Place_.updated);
+		case "id":
+			return from.get(Place_.id);
+		case "name":
+			return from.get(Place_.name);
+		case "parking":
+			return from.get(Place_.parking).get(Parking_.name);
+		case "car":
+			return from.get(Place_.car).get(Car_.number);
+		case "userAccount":
+			return from.get(Place_.userAccount).get(UserAccount_.lastName);
+		case "created":
+			return from.get(Place_.created);
+		case "updated":
+			return from.get(Place_.updated);
 
-        default:
-            throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
-        }
-    }
+		default:
+			throw new UnsupportedOperationException("sorting is not supported by column:" + sortColumn);
+		}
+	}
 
-    private void applyFilter(final PlaceFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
-            final Root<Place> from) {
+	private void applyFilter(final PlaceFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<Place> from) {
 
-        final Integer id = filter.getParkingId();
+		final Integer id = filter.getParkingId();
+		final Boolean withoutCar = filter.getWithoutCar();
 
-        if (id != null) {
-            cq.where(cb.equal(from.get(Place_.parking), id));
-        }
-    }
+		final Integer userAccountId = filter.getUserAccountId();
 
-    @Override
-    public long getCount(PlaceFilter filter) {
-        final EntityManager em = getEntityManager();
-        final CriteriaBuilder cb = em.getCriteriaBuilder();
+		final List<Predicate> ands = new ArrayList<>();
 
-        final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-        final Root<Place> from = cq.from(Place.class);
+		if (id != null) {
+			ands.add(cb.equal(from.get(Place_.parking), id));
+		}
 
-        cq.select(cb.count(from));
+		if (userAccountId != null) {
+			ands.add(cb.equal(from.get(Place_.userAccount), userAccountId));
+		}
 
-        final TypedQuery<Long> q = em.createQuery(cq);
-        return q.getSingleResult();
-    }
+		if (withoutCar != null) {
+			if (withoutCar == true)
+				ands.add(cb.isNull(from.get(Place_.car)));
+		}
 
-    @Override
-    public IPlace getFullInfo(Integer id) {
-        final EntityManager em = getEntityManager();
-        final CriteriaBuilder cb = em.getCriteriaBuilder();
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
+		}
 
-        final CriteriaQuery<IPlace> cq = cb.createQuery(IPlace.class); // define returning result
-        final Root<Place> from = cq.from(Place.class); // define table for select
+	}
 
-        cq.select(from); // define what need to be selected
+	@Override
+	public long getCount(PlaceFilter filter) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        from.fetch(Place_.parking, JoinType.LEFT);
-        from.fetch(Place_.car, JoinType.LEFT);
-        from.fetch(Place_.userAccount, JoinType.LEFT);
+		final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		final Root<Place> from = cq.from(Place.class);
 
-        cq.distinct(true); // to avoid duplicate rows in result
+		cq.select(cb.count(from));
 
-        // .. where id=...
-        cq.where(cb.equal(from.get(Place_.id), id)); // where id=?
+		final TypedQuery<Long> q = em.createQuery(cq);
+		return q.getSingleResult();
+	}
 
-        final TypedQuery<IPlace> q = em.createQuery(cq);
+	@Override
+	public IPlace getFullInfo(Integer id) {
+		final EntityManager em = getEntityManager();
+		final CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        return getSingleResult(q);
-    }
+		final CriteriaQuery<IPlace> cq = cb.createQuery(IPlace.class); // define returning result
+		final Root<Place> from = cq.from(Place.class); // define table for select
+
+		cq.select(from); // define what need to be selected
+
+		from.fetch(Place_.parking, JoinType.LEFT);
+		from.fetch(Place_.car, JoinType.LEFT);
+		from.fetch(Place_.userAccount, JoinType.LEFT);
+
+		cq.distinct(true); // to avoid duplicate rows in result
+
+		// .. where id=...
+		cq.where(cb.equal(from.get(Place_.id), id)); // where id=?
+
+		final TypedQuery<IPlace> q = em.createQuery(cq);
+
+		return getSingleResult(q);
+	}
 
 }

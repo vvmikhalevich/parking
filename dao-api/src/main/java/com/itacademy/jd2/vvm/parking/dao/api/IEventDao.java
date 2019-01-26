@@ -13,4 +13,6 @@ public interface IEventDao extends IDao<IEvent, Integer> {
 
 	IEvent getFullInfo(Integer id);
 
+	IEvent findByPlace(Integer id);
+
 }

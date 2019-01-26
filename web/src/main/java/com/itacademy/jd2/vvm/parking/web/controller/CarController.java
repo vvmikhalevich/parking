@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.GeneralSecurityException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,19 +30,23 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IEvent;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
+import com.itacademy.jd2.vvm.parking.service.IEventService;
 import com.itacademy.jd2.vvm.parking.service.IFotoService;
 import com.itacademy.jd2.vvm.parking.service.IModelService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.ITariffService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.converter.CarPutFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
@@ -56,6 +61,9 @@ public class CarController extends AbstractController {
 	private static final String SEARCH_DTO = CarController.class.getSimpleName() + "_SEACH_DTO";
 
 	public static final String FILE_FOLDER = "d:\\";
+
+	@Autowired
+	private IEventService eventService;
 
 	@Autowired
 	private ITariffService tariffService;
@@ -80,6 +88,9 @@ public class CarController extends AbstractController {
 
 	@Autowired
 	private CarToDTOConverter toDtoConverter;
+
+	@Autowired
+	private CarPutFromDTOConverter carPutFromDtoConverter;
 
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView index(final HttpServletRequest req, @ModelAttribute(SEARCH_FORM_MODEL) CarSearchDTO searchDto,
@@ -121,6 +132,7 @@ public class CarController extends AbstractController {
 		final Map<String, Object> models = new HashMap<>();
 		models.put("gridItems", dtos);
 		models.put(SEARCH_FORM_MODEL, searchDto);
+		models.put("placeId", 0);
 
 		return new ModelAndView("car.list", models);
 	}
@@ -224,34 +236,45 @@ public class CarController extends AbstractController {
 	@RequestMapping(value = "/{id}/put", method = RequestMethod.GET)
 	public ModelAndView put(@PathVariable(name = "id", required = true) final Integer id) {
 		final CarDTO dto = toDtoConverter.apply(carService.getFullInfo(id));
-
+		Integer userAccountId = dto.getUserAccountId();
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
 		loadCommonFormModels(hashMap);
+		loadCommonFormModels(hashMap, userAccountId);
+
 		return new ModelAndView("car.put", hashMap);
 	}
 
 	@RequestMapping(value = "/put", method = RequestMethod.POST)
 	public Object put(@Valid @ModelAttribute("formModel") final CarDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
-			final Map<String, Object> hashMap = new HashMap<>();
-			hashMap.put("formModel", formModel);
-			loadCommonFormModels(hashMap);
-			return new ModelAndView("car.put", hashMap);
+			
+			return "redirect:/car";
 		} else {
 
-			final ICar form = fromDtoConverter.apply(formModel);
-			Integer carId = form.getId();
-			// Integer placeId = form.get
-			Integer userAccountId = form.getUserAccount().getId();
+			final IPlace formPlace = carPutFromDtoConverter.apply(formModel);
 
-			// final IPlace place = placeService.get(placeId);
+			Integer carId = formPlace.getCar().getId();
+			Integer placeId = formPlace.getId();
+			Integer userAccountId = formPlace.getUserAccount().getId();
+
+			final IPlace place = placeService.get(placeId);
 			final ICar car = carService.get(carId);
 			final IUserAccount user = userAccountService.get(userAccountId);
 
-			// place.setCar(car);
-			// place.setUserAccount(user);
-			// placeService.save(place);
+			place.setCar(car);
+			place.setUserAccount(user);
+			placeService.save(place);
+
+			final IEvent event = eventService.createEntity();
+
+			event.setCar(car);
+			event.setPlace(place);
+
+			Date timeStart = new Date();
+			event.setTimeStart(timeStart);
+
+			eventService.save(event);
 
 		}
 
@@ -279,7 +302,6 @@ public class CarController extends AbstractController {
 		final List<IUserAccount> users = userAccountService.getAll();
 		final List<IFoto> fotos = fotoService.getAll();
 		final List<ITariff> tariffs = tariffService.getAll();
-		final List<IPlace> places = placeService.getAll();
 
 		final Map<Integer, String> modelsMap = models.stream()
 				.collect(Collectors.toMap(IModel::getId, IModel::getName));
@@ -293,10 +315,20 @@ public class CarController extends AbstractController {
 		final Map<Integer, String> tariffsMap = tariffs.stream()
 				.collect(Collectors.toMap(ITariff::getId, ITariff::getName));
 		hashMap.put("tariffsChoices", tariffsMap);
+
+	}
+
+	private void loadCommonFormModels(final Map<String, Object> hashMap, Integer userAccountId) {
+
+		PlaceFilter filter = new PlaceFilter();
+		filter.setUserAccountId(userAccountId);
+		filter.setWithoutCar(true);
+
+		final List<IPlace> places = placeService.find(filter);
+
 		final Map<Integer, String> placesMap = places.stream()
 				.collect(Collectors.toMap(IPlace::getId, IPlace::getName));
 		hashMap.put("placesChoices", placesMap);
-
 	}
 
 	private CarSearchDTO getSearchDTO(final HttpServletRequest req) {

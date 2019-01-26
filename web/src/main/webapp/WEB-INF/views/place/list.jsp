@@ -9,10 +9,10 @@
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="id">id</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="name">name</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="parking">parking(id)</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">car(id)</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="parking">parking</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">car</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}"
-					column="userAccount">userAccount(id)</mytaglib:sort-link></th>
+					column="userAccount">userAccount</mytaglib:sort-link></th>
 
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -31,7 +31,7 @@
 
 				<td><a href="${pagesParking}/${place.parkingId}">${place.parkingName}</a></td>
 
-				<td>${place.carNumber}</td>
+				<td><a href="${pagesCar}/${place.carId}">${place.carNumber}</a></td>
 
 				<td><a href="${pagesUserAccount}/${place.userAccountId}">${place.userAccountLastName}</a></td>
 
@@ -44,7 +44,7 @@
 						<a class="btn-floating btn-small waves-effect waves-light red"
 							href="${pagesPlace}/${place.id}/deleteCar"><i
 							class="material-icons">delete car from place</i></a>
-					</c:if> <c:if test="${place.carNumber=='0'}">
+					</c:if> <c:if test="${place.carId=='0'}">
 						<a
 							class="btn-floating btn-small waves-effect waves-light red disabled"
 							href="${pagesPlace}/${place.id}/deleteCar"><i

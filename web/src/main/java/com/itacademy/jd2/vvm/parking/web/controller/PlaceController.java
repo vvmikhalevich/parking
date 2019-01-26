@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IEvent;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
 import com.itacademy.jd2.vvm.parking.service.ICarService;
+import com.itacademy.jd2.vvm.parking.service.IEventService;
 import com.itacademy.jd2.vvm.parking.service.IParkingService;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
@@ -35,6 +38,9 @@ import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 @Controller
 @RequestMapping(value = "/place")
 public class PlaceController extends AbstractController {
+
+	@Autowired
+	private IEventService eventService;
 
 	@Autowired
 	private IPlaceService placeService;
@@ -107,6 +113,16 @@ public class PlaceController extends AbstractController {
 		entity.setCar(null);
 
 		placeService.save(entity);
+
+		final IEvent event = eventService.findByPlace(id);
+		
+		
+
+		Date timeEnd = new Date();
+		event.setTimeEnd(timeEnd);;
+
+		eventService.save(event);
+
 		return "redirect:/place";
 	}
 

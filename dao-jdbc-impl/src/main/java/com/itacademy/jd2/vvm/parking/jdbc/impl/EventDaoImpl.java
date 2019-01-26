@@ -136,4 +136,10 @@ public class EventDaoImpl extends AbstractDaoImpl<IEvent, Integer> implements IE
 	protected String getTableName() {
 		return "event";
 	}
+
+	@Override
+	public IEvent findByPlace(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

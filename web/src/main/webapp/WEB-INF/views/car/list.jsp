@@ -60,8 +60,20 @@
 					src="${contextPath}/file/image?uuid=${car.link}" width="120"
 					height="100" /></td>
 
-				<td><a class="waves-effect waves-light btn-small"
-					href="${pagesCar}/${car.id}/put"><i class="material-icons">check</i>put</a></td>
+				<td><c:if test="${placeId!='0'}">
+						<a class="waves-effect waves-light btn-small disable"
+							href="${pagesCar}/${car.id}/put"><i class="material-icons">check</i>put</a>
+						<a class="btn-floating btn-small waves-effect waves-light red"
+							href="${pagesPlace}/${car.placeId}/deleteCar"><i
+							class="material-icons">delete car from place</i></a>
+					</c:if> <c:if test="${placeId=='0'}">
+						<a class="waves-effect waves-light btn-small"
+							href="${pagesCar}/${car.id}/put"><i class="material-icons">check</i>put</a>
+						<a
+							class="btn-floating btn-small waves-effect waves-light red disabled"
+							href="${pagesPlace}/${car.placeId}/deleteCar"><i
+							class="material-icons">delete car from place</i></a>
+					</c:if></td>
 
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${car.updated}" /></td>

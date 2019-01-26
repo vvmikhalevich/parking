@@ -87,7 +87,6 @@ CREATE TABLE "parking" (
 	"adress" character varying NOT NULL,
 	"width" integer NOT NULL,
 	"length" integer NOT NULL,
-	"cost_per_day" DECIMAL NOT NULL,
 	"status" character varying NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"updated" TIMESTAMP NOT NULL,

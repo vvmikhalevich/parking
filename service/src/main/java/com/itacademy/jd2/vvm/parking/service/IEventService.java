@@ -30,4 +30,6 @@ public interface IEventService {
 
 	IEvent getFullInfo(Integer id);
 
+	IEvent findByPlace(Integer id);
+
 }

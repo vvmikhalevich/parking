@@ -42,9 +42,13 @@
 
 
 				<li><a href="${pagesUserAccount}">UserAccounts</a></li>
-				<li><a href="${pagesFoto}">Photos</a></li>
-				<li><a href="${pagesEvent}">Events</a></li>
 
+				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
+						<li><a href="${pagesFoto}">Photos</a></li>
+					</sec:authorize></li>
+				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
+						<li><a href="${pagesEvent}">Events</a></li>
+					</sec:authorize></li>
 
 				<li><sec:authorize access="hasAnyRole('admin', 'manager')">
 						<a href="${pagesTransaction}">Transactions</a>

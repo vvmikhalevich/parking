@@ -49,14 +49,6 @@
 
 			<div class="row">
 				<div class="input-field col s12">
-					<form:input path="costPerDay" type="text" disabled="${readonly}" />
-					<form:errors path="costPerDay" cssClass="red-text" />
-					<label for="costPerDay">cost per day</label>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="input-field col s12">
 					<form:select path="status" disabled="${readonly}">
 						<form:options items="${statusesChoices}" />
 					</form:select>
