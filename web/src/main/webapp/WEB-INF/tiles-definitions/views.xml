@@ -157,5 +157,14 @@
 			value="/WEB-INF/views/placeOwner/form.jsp" />
 	</definition>
 
+	<definition name="private.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/list.jsp" />
+	</definition>
+
+	<definition name="private.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/form.jsp" />
+	</definition>
 
 </tiles-definitions>
