@@ -27,4 +27,7 @@ public interface ICarService {
 
 	ICar getFullInfo(Integer id);
 
+	@Transactional
+	void deleteAll();
+
 }

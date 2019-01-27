@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
 
 public class ModelServiceTest extends AbstractTest {
@@ -24,7 +23,7 @@ public class ModelServiceTest extends AbstractTest {
 		final IModel entityFromDb = modelService.get(entity.getId());
 
 		assertEquals(entity.getName(), entityFromDb.getName());
-		// assertEquals(entity.getBrand().getId(), entityFromDb.getBrand().getId());
+		assertEquals(entity.getBrand().getId(), entityFromDb.getBrand().getId());
 		assertNotNull(entityFromDb.getId());
 		assertNotNull(entityFromDb.getCreated());
 		assertNotNull(entityFromDb.getUpdated());

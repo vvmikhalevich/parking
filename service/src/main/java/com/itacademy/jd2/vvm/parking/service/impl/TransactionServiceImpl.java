@@ -30,10 +30,13 @@ public class TransactionServiceImpl implements ITransactionService {
 
 	private ITransactionDao dao;
 
+	@Autowired
 	private IUserAccountService userAccountService;
 
+	@Autowired
 	private ITransactionService transactionService;
 
+	@Autowired
 	private ICarService carService;
 
 	@Autowired
@@ -52,14 +55,16 @@ public class TransactionServiceImpl implements ITransactionService {
 			public void run() {
 				LOGGER.info("execute transaction emulator");
 
-			/*	final List<ICar> entities = carService.getAll();
+				final List<ICar> entities = carService.getAll();
 
 				for (ICar iCar : entities) {
 
-					Integer userAccountId = iCar.getUserAccount().getId();
+					ICar car = carService.getFullInfo(iCar.getId());
+
+					Integer userAccountId = car.getUserAccount().getId();
 
 					BigDecimal value = new BigDecimal(0);
-					value = value.subtract(iCar.getTariff().getCostPerDay());
+					value = value.subtract(car.getTariff().getCostPerDay());
 
 					String number = iCar.getNumber();
 
@@ -74,10 +79,10 @@ public class TransactionServiceImpl implements ITransactionService {
 
 					transactionService.save(entity);
 
-				}*/
+				}
 
 			}
-		}, 0, 60, TimeUnit.SECONDS);
+		}, 0, 5, TimeUnit.MINUTES);
 	}
 
 	@Override

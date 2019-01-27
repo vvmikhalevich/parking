@@ -5,43 +5,47 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
 
-public class BrandServiceTest extends AbstractTest {
+public class ParkingServiceTest extends AbstractTest {
 
 	@Test
 	public void testCreate() {
-		final IBrand entity = saveNewBrand();
+		final IParking entity = saveNewParking();
 
-		final IBrand entityFromDb = brandService.get(entity.getId());
+		final IParking entityFromDb = parkingService.get(entity.getId());
 
 		assertNotNull(entityFromDb);
 		assertEquals(entity.getName(), entityFromDb.getName());
+		assertEquals(entity.getAdress(), entityFromDb.getAdress());
+		assertEquals(entity.getStatus(), entityFromDb.getStatus());
+		assertEquals(entity.getLength(), entityFromDb.getLength());
+		assertEquals(entity.getWidth(), entityFromDb.getWidth());
 		assertNotNull(entityFromDb.getId());
 		assertNotNull(entityFromDb.getCreated());
 		assertNotNull(entityFromDb.getUpdated());
 		assertTrue(entityFromDb.getCreated().equals(entityFromDb.getUpdated()));
 	}
 
-	
-
 	@Test
 	public void testUpdate() throws InterruptedException {
-		final IBrand entity = saveNewBrand();
+		final IParking entity = saveNewParking();
 
 		String newName = entity.getName() + "_updated";
 		entity.setName(newName);
 		Thread.sleep(2000);
-		brandService.save(entity);
+		parkingService.save(entity);
 
-		final IBrand entityFromDb = brandService.get(entity.getId());
+		final IParking entityFromDb = parkingService.get(entity.getId());
 
 		assertNotNull(entityFromDb);
 		assertEquals(newName, entityFromDb.getName());
+		assertEquals(entity.getAdress(), entityFromDb.getAdress());
+		assertEquals(entity.getStatus(), entityFromDb.getStatus());
+		assertEquals(entity.getLength(), entityFromDb.getLength());
+		assertEquals(entity.getWidth(), entityFromDb.getWidth());
 		assertNotNull(entityFromDb.getId());
 		assertNotNull(entityFromDb.getCreated());
 		assertNotNull(entityFromDb.getUpdated());
@@ -50,37 +54,16 @@ public class BrandServiceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testGetAll() {
-		final int intialCount = brandService.getAll().size();
-
-		final int randomObjectsCount = getRandomObjectsCount();
-		for (int i = 0; i < randomObjectsCount; i++) {
-			saveNewBrand();
-		}
-
-		final List<IBrand> allEntities = brandService.getAll();
-
-		for (final IBrand entityFromDb : allEntities) {
-			assertNotNull(entityFromDb.getName());
-			assertNotNull(entityFromDb.getId());
-			assertNotNull(entityFromDb.getCreated());
-			assertNotNull(entityFromDb.getUpdated());
-		}
-
-		assertEquals(randomObjectsCount + intialCount, allEntities.size());
-	}
-
-	@Test
 	public void testDelete() {
-		final IBrand entity = saveNewBrand();
-		brandService.delete(entity.getId());
-		assertNull(brandService.get(entity.getId()));
+		final IParking entity = saveNewParking();
+		parkingService.delete(entity.getId());
+		assertNull(parkingService.get(entity.getId()));
 	}
 
 	@Test
 	public void testDeleteAll() {
-		saveNewBrand();
-		brandService.deleteAll();
-		assertEquals(0, brandService.getAll().size());
+		saveNewParking();
+		parkingService.deleteAll();
+		assertEquals(0, parkingService.getAll().size());
 	}
 }

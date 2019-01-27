@@ -58,6 +58,12 @@ public class CarServiceImpl implements ICarService {
 	}
 
 	@Override
+	public void deleteAll() {
+
+		dao.deleteAll();
+	}
+	
+	@Override
 	public List<ICar> getAll() {
 		final List<ICar> all = dao.selectAll();
 		LOGGER.debug("total count in DB: {}", all.size());
