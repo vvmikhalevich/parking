@@ -24,11 +24,11 @@ import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.service.IPlaceService;
 import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
-import com.itacademy.jd2.vvm.parking.service.util.SendMailTLS;
 import com.itacademy.jd2.vvm.parking.web.converter.UserAccountFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.UserAccountToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.UserAccountDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 
 @Controller
 @RequestMapping(value = "/userAccount")
@@ -77,10 +77,17 @@ public class UserAccountController extends AbstractController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showForm() {
 		final Map<String, Object> hashMap = new HashMap<>();
-
+		String role = "";
 		hashMap.put("formModel", new UserAccountDTO());
+		
+		 Integer loggedUserId = AuthHelper.getLoggedUserId();
+		
+		 if ( loggedUserId ==null) {
+			 role = "user";
+        } 
 
-		loadCommonFormModels(hashMap);
+
+		loadCommonFormModels(hashMap, role);
 		return new ModelAndView("userAccount.edit", hashMap);
 	}
 
@@ -88,7 +95,9 @@ public class UserAccountController extends AbstractController {
 	public String save(@Valid @ModelAttribute("formModel") final UserAccountDTO formModel, final BindingResult result) {
 		if (result.hasErrors()) {
 			final Map<String, Object> hashMap = new HashMap<>();
-			loadCommonFormModels(hashMap);
+			String role = "";
+
+			loadCommonFormModels(hashMap, role);
 			return "userAccount.edit";
 		} else {
 			final IUserAccount entity = fromDtoConverter.apply(formModel);
@@ -111,8 +120,8 @@ public class UserAccountController extends AbstractController {
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
 		hashMap.put("readonly", true);
-
-		loadCommonFormModels(hashMap);
+		String role = "";
+		loadCommonFormModels(hashMap, role);
 
 		return new ModelAndView("userAccount.edit", hashMap);
 	}
@@ -123,17 +132,27 @@ public class UserAccountController extends AbstractController {
 
 		final Map<String, Object> hashMap = new HashMap<>();
 		hashMap.put("formModel", dto);
-		loadCommonFormModels(hashMap);
+		String role = "";
+		loadCommonFormModels(hashMap, role);
 
 		return new ModelAndView("userAccount.edit", hashMap);
 	}
 
-	private void loadCommonFormModels(final Map<String, Object> hashMap) {
+	private void loadCommonFormModels(final Map<String, Object> hashMap, String role) {
 
-		final List<RoleType> roleTypesList = Arrays.asList(RoleType.values());
-		final Map<String, String> roleTypesMap = roleTypesList.stream()
-				.collect(Collectors.toMap(RoleType::name, RoleType::name));
-		hashMap.put("rolesChoices", roleTypesMap);
+		if (role == "") {
+			final List<RoleType> roleTypesList = Arrays.asList(RoleType.values());
+			final Map<String, String> roleTypesMap = roleTypesList.stream()
+					.collect(Collectors.toMap(RoleType::name, RoleType::name));
+			hashMap.put("rolesChoices", roleTypesMap);
+
+		} else {
+			final List<RoleType> roleTypesList = Arrays.asList(RoleType.valueOf("user"));
+			final Map<String, String> roleTypesMap = roleTypesList.stream()
+					.collect(Collectors.toMap(RoleType::name, RoleType::name));
+
+			hashMap.put("rolesChoices", roleTypesMap);
+		}
 
 	}
 }

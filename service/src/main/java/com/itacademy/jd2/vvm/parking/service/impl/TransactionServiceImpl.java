@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.service.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -14,95 +15,127 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itacademy.jd2.vvm.parking.dao.api.ITransactionDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
+import com.itacademy.jd2.vvm.parking.service.ICarService;
 import com.itacademy.jd2.vvm.parking.service.ITransactionService;
+import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
 
 @Service
 public class TransactionServiceImpl implements ITransactionService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
 
-    private ITransactionDao dao;
+	private ITransactionDao dao;
 
-    @Autowired
-    public TransactionServiceImpl(ITransactionDao dao) {
-        super();
-        this.dao = dao;
-    }
+	private IUserAccountService userAccountService;
 
-    @PostConstruct
-    private void emulator() {
-        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+	private ITransactionService transactionService;
 
-        service.scheduleWithFixedDelay(new Runnable() {
+	private ICarService carService;
 
-            @Override
-            public void run() {
-                LOGGER.info("execute transaction emulator");
+	@Autowired
+	public TransactionServiceImpl(ITransactionDao dao) {
+		super();
+		this.dao = dao;
+	}
 
-                // TODO Auto-generated method stub
+	@PostConstruct
+	private void emulator() {
+		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 
-            }
-        }, 0, 60, TimeUnit.SECONDS);
-    }
+		service.scheduleWithFixedDelay(new Runnable() {
 
-    @Override
-    public ITransaction createEntity() {
-        return dao.createEntity();
-    }
+			@Override
+			public void run() {
+				LOGGER.info("execute transaction emulator");
 
-    @Override
-    public void save(final ITransaction entity) {
-        final Date modifedOn = new Date();
-        entity.setUpdated(modifedOn);
-        if (entity.getId() == null) {
-            LOGGER.info("new transaction created: {}", entity);
-            entity.setCreated(modifedOn);
-            dao.insert(entity);
-        } else {
-            LOGGER.debug("transaction updated: {}", entity);
-            dao.update(entity);
-        }
-    }
+			/*	final List<ICar> entities = carService.getAll();
 
-    @Override
-    public ITransaction get(final Integer id) {
-        final ITransaction entity = dao.get(id);
-        return entity;
-    }
+				for (ICar iCar : entities) {
 
-    @Override
-    public void delete(final Integer id) {
-        dao.delete(id);
-    }
+					Integer userAccountId = iCar.getUserAccount().getId();
 
-    @Override
-    public void deleteAll() {
-        LOGGER.info("delete all transactions");
-        dao.deleteAll();
-    }
+					BigDecimal value = new BigDecimal(0);
+					value = value.subtract(iCar.getTariff().getCostPerDay());
 
-    @Override
-    public List<ITransaction> getAll() {
-        final List<ITransaction> all = dao.selectAll();
-        return all;
-    }
+					String number = iCar.getNumber();
 
-    @Override
-    public List<ITransaction> find(TransactionFilter filter) {
-        return dao.find(filter);
-    }
+					final ITransaction entity = transactionService.createEntity();
 
-    @Override
-    public ITransaction getFullInfo(Integer id) {
-        final ITransaction entity = dao.getFullInfo(id);
-        return entity;
-    }
+					entity.setValue(value);
+					entity.setDescription(number + " - " + "списание");
 
-    @Override
-    public long getCount(TransactionFilter filter) {
-        return dao.getCount(filter);
-    }
+					final IUserAccount userAccount = userAccountService.get(userAccountId);
+
+					entity.setUserAccount(userAccount);
+
+					transactionService.save(entity);
+
+				}*/
+
+			}
+		}, 0, 60, TimeUnit.SECONDS);
+	}
+
+	@Override
+	public ITransaction createEntity() {
+		return dao.createEntity();
+	}
+
+	@Override
+	public void save(final ITransaction entity) {
+		final Date modifedOn = new Date();
+		entity.setUpdated(modifedOn);
+		if (entity.getId() == null) {
+			LOGGER.info("new transaction created: {}", entity);
+			entity.setCreated(modifedOn);
+			dao.insert(entity);
+		} else {
+			LOGGER.debug("transaction updated: {}", entity);
+			dao.update(entity);
+		}
+	}
+
+	@Override
+	public ITransaction get(final Integer id) {
+		final ITransaction entity = dao.get(id);
+		return entity;
+	}
+
+	@Override
+	public void delete(final Integer id) {
+		dao.delete(id);
+	}
+
+	@Override
+	public void deleteAll() {
+		LOGGER.info("delete all transactions");
+		dao.deleteAll();
+	}
+
+	@Override
+	public List<ITransaction> getAll() {
+		final List<ITransaction> all = dao.selectAll();
+		return all;
+	}
+
+	@Override
+	public List<ITransaction> find(TransactionFilter filter) {
+		return dao.find(filter);
+	}
+
+	@Override
+	public ITransaction getFullInfo(Integer id) {
+		final ITransaction entity = dao.getFullInfo(id);
+		return entity;
+	}
+
+	@Override
+	public long getCount(TransactionFilter filter) {
+		return dao.getCount(filter);
+	}
 
 }

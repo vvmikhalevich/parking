@@ -27,6 +27,7 @@ import com.itacademy.jd2.vvm.parking.web.converter.TariffFromDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.converter.TariffToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.TariffDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 
 @Controller
 @RequestMapping(value = "/tariff")
@@ -72,6 +73,11 @@ public class TariffController extends AbstractController {
 
 		hashMap.put("formModel", new TariffDTO());
 		loadCommonFormModels(hashMap);
+		Integer loggedUserId = AuthHelper.getLoggedUserId();
+
+		if (loggedUserId == null) {
+			return new ModelAndView("tariff.list");
+		}
 
 		return new ModelAndView("tariff.edit", hashMap);
 	}
@@ -81,6 +87,12 @@ public class TariffController extends AbstractController {
 		if (result.hasErrors()) {
 			return "tariff.edit";
 		} else {
+			Integer loggedUserId = AuthHelper.getLoggedUserId();
+
+			if (loggedUserId == null) {
+				return "redirect:/tariff";
+			}
+
 			final ITariff entity = fromDtoConverter.apply(formModel);
 			tariffService.save(entity);
 			return "redirect:/tariff"; // generates 302 response with Location="/parking/tariff"

@@ -139,9 +139,17 @@ public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDa
 		final List<Predicate> ands = new ArrayList<>();
 
 		final String number = filter.getNumber();
+
+		final Integer userAccountId = filter.getUserAccountId();
+
 		if (!StringUtils.isEmpty(number)) {
 			// ands.add(cb.equal(from.get(Car_.number), number));
 			ands.add(cb.like(from.get(Car_.number), "%" + number + "%"));
+		}
+
+		if (userAccountId != null) {
+
+			ands.add(cb.equal(from.get(Car_.userAccount).get(UserAccount_.id), userAccountId));
 		}
 
 		if (!ands.isEmpty()) {

@@ -39,6 +39,26 @@ public class DefaultController {
 			LOGGER.info("switch to locale:" + locale);
 		}
 
+		if (AuthHelper.isAdmin()) {
+			return "redirect:/car";
+			
+		}
+		
+		if (AuthHelper.isManager()) {
+			return "redirect:/car";
+			
+		}
+		
+
+		if (AuthHelper.isUser()) {
+			return "redirect:/private";
+			
+		}
+		
+		if (AuthHelper.getLoggedUserId()==null) {
+			return "redirect:/parking";
+			
+		}
 		// TODO if role=xxx=> return "redirect:/admin view"
 
 		// AuthHelper.isAdmin()

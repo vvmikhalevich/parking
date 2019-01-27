@@ -2,6 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <h4 class="header">Tariffs</h4>
 <table class="bordered highlight">
@@ -32,16 +34,20 @@
 						value="${tariff.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${tariff.updated}" /></td>
-				<td class="right"><a class="btn-floating"
-					href="${pagesTariff}/${tariff.id}"><i class="material-icons">info</i></a>
-					<a class="btn-floating" href="${pagesTariff}/${tariff.id}/edit"><i
-						class="material-icons">edit</i></a> <a class="btn-floating red"
-					href="${pagesTariff}/${tariff.id}/delete"><i
-						class="material-icons">delete</i></a></td>
+				<sec:authorize access="hasAnyRole('admin', 'manager')">
+					<td class="right"><a class="btn-floating"
+						href="${pagesTariff}/${tariff.id}"><i class="material-icons">info</i></a>
+						<a class="btn-floating" href="${pagesTariff}/${tariff.id}/edit"><i
+							class="material-icons">edit</i></a> <a class="btn-floating red"
+						href="${pagesTariff}/${tariff.id}/delete"><i
+							class="material-icons">delete</i></a></td>
+				</sec:authorize>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
 <jspFragments:paging />
-<a class="waves-effect waves-light btn right" href="${pagesTariff}/add"><i
-	class="material-icons">add</i></a>
+<sec:authorize access="hasAnyRole('admin')">
+	<a class="waves-effect waves-light btn right" href="${pagesTariff}/add"><i
+		class="material-icons">add</i></a>
+</sec:authorize>

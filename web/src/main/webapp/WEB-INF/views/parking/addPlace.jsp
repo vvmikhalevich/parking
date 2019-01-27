@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <h4 class="header">
 	<c:choose>
@@ -25,13 +27,45 @@
 						expression="places.containsKey(cellId)" />
 					<spring:eval var="place" expression="places.get(cellId)" />
 
+
 					<c:set var="clazz" value="${containsValue  ? 'selected' : ''}"></c:set>
+					<c:set var="clazz2"
+						value="${containsValue  ? 'unselected' : 'grey'}"></c:set>
 				</c:if>
 
-				<td id="${cellId}" class="${clazz}"><c:if test="${ containsValue}">
-					PlaceId=${place.id} 
-					<br>Place name = ${place.name} <br>${place.created}
-				</c:if></td>
+				<td id="${cellId}" 
+					<c:if test="${cellId!='0' && place.userAccountId!='0' }">
+					 
+					class="${clazz2}"
+					
+				</c:if>
+					<c:if test="${cellId!='0' && place.userAccountId=='0'}">
+					 
+					 class="${clazz}"
+					
+				</c:if>><c:if
+						test="${ containsValue}">
+
+						<sec:authorize access="hasAnyRole('admin', 'manager')">
+						место:${place.name} <br>
+						</sec:authorize>
+						<c:if test="${place.userAccountId!='0'}">
+						занято
+					<c:if test="${place.carId!='0'}">
+								<sec:authorize access="hasAnyRole('admin', 'manager')">
+									<br>${place.carNumber}
+					</sec:authorize>
+							</c:if>
+
+
+						</c:if>
+						<c:if test="${place.userAccountId=='0'}">
+					свободно
+					
+					
+					</c:if>
+
+					</c:if></td>
 			</c:forEach>
 		</tr>
 

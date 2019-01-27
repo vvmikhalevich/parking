@@ -167,4 +167,10 @@
 			value="/WEB-INF/views/private/form.jsp" />
 	</definition>
 
+	<definition name="privateTransaction.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/listTransaction.jsp" />
+	</definition>
+
 </tiles-definitions>

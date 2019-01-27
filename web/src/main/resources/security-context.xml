@@ -22,13 +22,19 @@
 			access="hasAnyRole('admin', 'manager')" />
 
 		<intercept-url pattern="/car**"
-			access="hasAnyRole('admin', 'manager', 'user')" />
+			access="hasAnyRole('admin', 'manager')" />
 
 		<intercept-url pattern="/event**"
 			access="hasAnyRole('admin', 'manager')" />
 
 		<intercept-url pattern="/userAccount**"
 			access="hasAnyRole('admin', 'manager')" />
+
+		<!-- <intercept-url pattern="/tariff/**"
+			access="hasAnyRole('admin', 'manager')" />
+ -->
+		<!-- <intercept-url pattern="/parking/**"
+			access="hasAnyRole('admin', 'manager')" /> -->
 
 		<intercept-url pattern="/place**"
 			access="!isAnonymous()" />

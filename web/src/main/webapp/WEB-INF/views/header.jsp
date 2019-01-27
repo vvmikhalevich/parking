@@ -17,9 +17,11 @@
 
 	<ul id="dropdown2" class="dropdown-content">
 		<li><a href="${pagesParking}">Parkings</a></li>
-		<li><a href="${pagesPlace}">Places</a></li>
+		<sec:authorize access="hasAnyRole('admin', 'manager')">
+			<li><a href="${pagesPlace}">Places</a></li>
+		</sec:authorize>
 		<li class="divider"></li>
-		<li><a href="${pagesTariff}">Tariff</a></li>
+
 	</ul>
 
 	<nav class="nav-extended">
@@ -39,8 +41,9 @@
 
 				<li><a class="dropdown-trigger" href="#!"
 					data-target="dropdown2">Parkings<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a href="${pagesTariff}">Tariff</a></li>
 
-				<sec:authorize access="!hasAnyRole('admin', 'manager')">
+				<sec:authorize access="hasAnyRole('user', 'manager', 'admin')">
 
 					<li><a href="${pagesPrivate}">Private</a></li>
 				</sec:authorize>
@@ -75,6 +78,7 @@
 				<li><a class="white-text" href="${contextPath}?language=en">EN</a></li>
 				<sec:authorize access="!isAuthenticated()">
 					<li><a href="${contextPath}/login">Login</a></li>
+					<li><a href="${contextPath}/userAccount/add">Registration</a></li>
 				</sec:authorize>
 			</ul>
 

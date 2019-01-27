@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
@@ -14,7 +16,11 @@ import org.springframework.stereotype.Repository;
 
 import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.EventFilter;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Event;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Event_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
@@ -44,10 +50,8 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 
 		// define what will be added to result set
 		cq.select(from); // select * from UserAccount
-		/*
-		 * if (filter.getFetchBrand()) { // select m, b from model m left join brand b
-		 * ... from.fetch(Model_.brand, JoinType.LEFT); }
-		 */
+
+		applyFilter(filter, cb, cq, from);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {
@@ -114,6 +118,24 @@ public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> i
 
 		final TypedQuery<IUserAccount> q = em.createQuery(cq);
 		return getSingleResult(q);
+	}
+
+	private void applyFilter(final UserAccountFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<UserAccount> from) {
+
+		final String email = filter.getUserEmail();
+
+		final List<Predicate> ands = new ArrayList<>();
+
+		if (email != null) {
+			ands.add(cb.equal(from.get(UserAccount_.email), email));
+
+		}
+
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
+		}
+
 	}
 
 }

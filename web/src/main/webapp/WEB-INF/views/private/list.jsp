@@ -8,116 +8,126 @@
 <h4 class="header" align="center">Private</h4>
 
 
-
 <body>
 
-
-
 	<div class="row">
-		<div class="col col-sm-12">
-
-			<div class="row">
-				<div class="col col-sm-3">
-					<div class="leftmenu hidden-xs">
-						<div class="selecteditem">
-							<a class="left-menu-href" href="${pagesPrivate}">Профиль</a>
-						</div>
-
-						<br />
-						<div class="menuitem">
-							<a class="" href="${pagesTransaction}">История расходов</a>
-						</div>
-
-						<br />
-						<div class="menuitem">
-							<a class="" href="${pagesEvent}">История событий</a>
-						</div>
 
 
+		<div class="col col-sm-3">
 
-					</div>
-
-
+			<div class="leftmenu hidden-xs">
+				<div class="selecteditem">
+					<a class="left-menu-href" href="${pagesPrivate}">Профиль</a>
 				</div>
+
+				<br />
+				<div class="menuitem">
+					<a class="" href="${pagesPrivate}/transaction/${userAccountId}">История
+						расходов</a>
+				</div>
+
+				<br />
+				<%-- <div class="menuitem">
+					<a class="" href="${pagesPrivate}/event/${userAccountId}">История
+						событий</a>
+				</div> --%>
 			</div>
+
 		</div>
+
 
 		<div class="col col-sm-9">
 			<div class="row">
-				<div class="col col-sm-12">
-					<div class="account-content-section">
-						<table>
-							<tbody>
-								<tr>
-									<td class="account-field-caption">Имя:</td>
-									<td><sec:authentication property="name" /></td>
-								</tr>
-								<tr>
-									<td class="account-field-caption">E-mail:</td>
-									<td>v.v.mikhalevich@gmail.com</td>
-								</tr>
-								<tr>
-									<td class="account-field-caption">Последний визит:</td>
-									<td>13:26:08 26 января 2019</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+				
+				<table>
+
+					<th>Your account</th>
+
+					<tbody>
+						<tr>
+							<th>first name</th>
+							<th>last name</th>
+							<th>role</th>
+							<th>email</th>
+
+							<th><mytaglib:i18n key="table.column.created" /></th>
+							<th><mytaglib:i18n key="table.column.updated" /></th>
+							<th></th>
+						</tr>
+						<c:forEach var="userAccount" items="${gridItems}"
+							varStatus="loopCounter">
+							<tr>
+
+								<td><c:out
+										value="${userAccount.firstName}(${userAccount.id})" /></td>
+								<td><c:out value="${userAccount.lastName}" /></td>
+								<td><c:out value="${userAccount.role}" /></td>
+								<td><c:out value="${userAccount.email}" /></td>
+
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${userAccount.created}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${userAccount.updated}" /></td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
 
 
+					<th>Your car(s)</th>
+
+					<tbody>
+						<tr>
+
+							<th>model</th>
+							<th>number</th>
+							<th>userAccount</th>
+							<th>tariff</th>
+							<th>foto</th>
+
+							<th><mytaglib:i18n key="table.column.created" /></th>
+							<th><mytaglib:i18n key="table.column.updated" /></th>
+							<th></th>
+						</tr>
+						<c:forEach var="car" items="${gridItems2}" varStatus="loopCounter">
+							<tr>
+								<td><a href="${pagesModel}/${car.modelId}">${car.modelName}</a></td>
+
+								<td><c:out value="${car.number}" /></td>
+								<td><a href="${pagesUserAccount}/${car.userAccountId}">${car.userAccountLastName}</a></td>
+								<td><a href="${pagesTariff}/${car.tariffId}">${car.tariffName}</a></td>
+								<td><img alt="no image"
+									src="${contextPath}/file/image?uuid=${car.link}" width="120"
+									height="100" /></td>
+
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${car.created}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${car.updated}" /></td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
+
+					<th>Your balance</th>
+					<tbody>
 
 
-			<div class="row">
-				<div class="col col-sm-12">
-					<div class="account-content-section">
-						<div class="account-field-caption">Последние события:</div>
-						<table width="100%">
-							<tbody>
-								<tr id="theader-event_logs"
-									style="font-size: 85%; text-align: center;">
-									<td id="event_logs_d___created_at">Время</td>
-									<td id="event_logs_____msg">Событие</td>
-								</tr>
-							</tbody>
-							<tbody id="dyndata-event_logs">
-								<tr class="listline">
-									<td class="">2019-01-27 01:20:58</td>
-									<td class="">Успешный вход (IP=37.212.69.21)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-26 13:26:08</td>
-									<td class="">Успешный вход (IP=37.212.69.21)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-25 20:31:30</td>
-									<td class="">Успешный вход (IP=86.57.167.170)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-24 23:57:16</td>
-									<td class="">Успешный вход (IP=37.212.68.149)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-24 21:39:27</td>
-									<td class="">Успешный вход (IP=37.212.68.149)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-24 21:39:24</td>
-									<td class="">Email-адрес успешно подтверждён
-										(IP=37.212.68.149)</td>
-								</tr>
-								<tr class="listline">
-									<td class="">2019-01-24 21:39:07</td>
-									<td class="">Пользователь зарегистрирован
-										(IP=37.212.68.149)</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+						<td>Your balance</td>
+						<td>${balance}</td>
+
+					</tbody>
+
+				</table>
+
+				
 			</div>
 		</div>
+
+
+
+
 	</div>
+
 </body>
 

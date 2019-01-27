@@ -1,5 +1,6 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
@@ -16,8 +18,10 @@ import org.springframework.stereotype.Repository;
 import com.itacademy.jd2.vvm.parking.dao.api.ITransactionDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITransaction;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.TransactionFilter;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Transaction;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Transaction_;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
@@ -48,10 +52,8 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		cq.select(from); // select * from Transaction
 
 		from.fetch(Transaction_.userAccount, JoinType.LEFT);
-		/*
-		 * if (filter.getFetchBrand()) { // select m, b from model m left join brand b
-		 * ... from.fetch(Model_.brand, JoinType.LEFT); }
-		 */
+
+		applyFilter(filter, cb, cq, from);
 
 		final String sortColumn = filter.getSortColumn();
 		if (sortColumn != null) {
@@ -119,6 +121,24 @@ public class TransactionDaoImpl extends AbstractDaoImpl<ITransaction, Integer> i
 		final TypedQuery<ITransaction> q = em.createQuery(cq);
 
 		return getSingleResult(q);
+	}
+
+	private void applyFilter(final TransactionFilter filter, final CriteriaBuilder cb, final CriteriaQuery<?> cq,
+			final Root<Transaction> from) {
+
+		final Integer userAccountId = filter.getUserAccountId();
+
+		final List<Predicate> ands = new ArrayList<>();
+
+		if (userAccountId != null) {
+			ands.add(cb.equal(from.get(Transaction_.userAccount).get(UserAccount_.id), userAccountId));
+
+		}
+
+		if (!ands.isEmpty()) {
+			cq.where(cb.and(ands.toArray(new Predicate[0])));
+		}
+
 	}
 
 }
