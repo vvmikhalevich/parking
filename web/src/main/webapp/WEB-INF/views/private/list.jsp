@@ -17,13 +17,14 @@
 
 			<div class="leftmenu hidden-xs">
 				<div class="selecteditem">
-					<a class="left-menu-href" href="${pagesPrivate}">Профиль</a>
+					<a class="left-menu-href" href="${pagesPrivate}"><mytaglib:i18n
+							key="table.column.Private" /></a>
 				</div>
 
 				<br />
 				<div class="menuitem">
-					<a class="" href="${pagesPrivate}/transaction/${userAccountId}">История
-						расходов</a>
+					<a class="" href="${pagesPrivate}/transaction/${userAccountId}"><mytaglib:i18n
+							key="table.column.HistoryBalance" /></a>
 				</div>
 
 				<br />
@@ -38,17 +39,17 @@
 
 		<div class="col col-sm-9">
 			<div class="row">
-				
+
 				<table>
 
-					<th>Your account</th>
+					<th><mytaglib:i18n key="table.column.YourAccount"/></th>
 
 					<tbody>
 						<tr>
-							<th>first name</th>
-							<th>last name</th>
-							<th>role</th>
-							<th>email</th>
+							<th><mytaglib:i18n key="table.column.FirstName" /></th>
+							<th><mytaglib:i18n key="table.column.LastName" /></th>
+							<th><mytaglib:i18n key="table.column.Role" /></th>
+							<th>Email</th>
 
 							<th><mytaglib:i18n key="table.column.created" /></th>
 							<th><mytaglib:i18n key="table.column.updated" /></th>
@@ -59,7 +60,7 @@
 							<tr>
 
 								<td><c:out
-										value="${userAccount.firstName}(${userAccount.id})" /></td>
+										value="${userAccount.firstName}" /></td>
 								<td><c:out value="${userAccount.lastName}" /></td>
 								<td><c:out value="${userAccount.role}" /></td>
 								<td><c:out value="${userAccount.email}" /></td>
@@ -74,16 +75,16 @@
 					</tbody>
 
 
-					<th>Your car(s)</th>
+					<th><mytaglib:i18n key="table.column.YourCars" /></th>
 
 					<tbody>
 						<tr>
 
-							<th>model</th>
-							<th>number</th>
-							<th>userAccount</th>
-							<th>tariff</th>
-							<th>foto</th>
+							<th><mytaglib:i18n key="table.column.Model" /></th>
+							<th><mytaglib:i18n key="table.column.Number" /></th>
+							<th><mytaglib:i18n key="table.column.UserAccount" /></th>
+							<th><mytaglib:i18n key="table.column.Tariff" /></th>
+							<th><mytaglib:i18n key="table.column.Foto" /></th>
 
 							<th><mytaglib:i18n key="table.column.created" /></th>
 							<th><mytaglib:i18n key="table.column.updated" /></th>
@@ -91,11 +92,11 @@
 						</tr>
 						<c:forEach var="car" items="${gridItems2}" varStatus="loopCounter">
 							<tr>
-								<td><a href="${pagesModel}/${car.modelId}">${car.modelName}</a></td>
+								<td>${car.modelName}</a></td>
 
 								<td><c:out value="${car.number}" /></td>
-								<td><a href="${pagesUserAccount}/${car.userAccountId}">${car.userAccountLastName}</a></td>
-								<td><a href="${pagesTariff}/${car.tariffId}">${car.tariffName}</a></td>
+								<td>${car.userAccountLastName}</a></td>
+								<td>${car.tariffName}</a></td>
 								<td><img alt="no image"
 									src="${contextPath}/file/image?uuid=${car.link}" width="120"
 									height="100" /></td>
@@ -109,18 +110,18 @@
 						</c:forEach>
 					</tbody>
 
-					<th>Your balance</th>
+					<th><mytaglib:i18n key="table.column.YourBalance"/></th>
 					<tbody>
 
 
-						<td>Your balance</td>
-						<td>${balance}</td>
+						<td><mytaglib:i18n key="table.column.YourBalance"/></td>
+						<td> ${balance} BYN</td>
 
 					</tbody>
 
 				</table>
 
-				
+
 			</div>
 		</div>
 

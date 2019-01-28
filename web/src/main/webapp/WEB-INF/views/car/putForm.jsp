@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<h4 class="header">Put the car</h4>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
+<%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
+<h4 class="header"><mytaglib:i18n key="table.column.PutCarOnPlace" /></h4>
 <div class="row">
 	<form:form class="col s12" method="POST" action="${pagesCar}/put"
 		enctype="multipart/form-data" modelAttribute="formModel">
@@ -14,7 +16,8 @@
 					<form:options items="${userAccountsChoices}" />
 				</form:select>
 				<form:errors path="userAccountId" cssClass="red-text" />
-				<label for="userAccountId">User of car</label>
+				<label for="userAccountId"><mytaglib:i18n
+						key="table.column.UserAccount" /></label>
 			</div>
 		</div>
 
@@ -26,7 +29,7 @@
 			<div class="input-field col s12">
 				<form:input path="number" type="text" disabled="true" />
 				<form:errors path="number" cssClass="red-text" />
-				<label for="number">Number of car</label>
+				<label for="number"><mytaglib:i18n key="table.column.Number" /></label>
 			</div>
 		</div>
 
@@ -36,7 +39,8 @@
 					<form:options items="${placesChoices}" />
 				</form:select>
 				<form:errors path="placeId" cssClass="red-text" />
-				<label for="placeId">Place</label>
+				<label for="placeId"><mytaglib:i18n
+						key="table.column.Place" /></label>
 			</div>
 		</div>
 
@@ -46,13 +50,15 @@
 		<div class="row">
 			<div class="col s6"></div>
 			<div class="col s3">
-				<c:if test="${placesChoices!='{}'}">
-					<button class="btn waves-effect waves-light right" type="submit">save</button>
+				<c:if test="${!readonly}">
+					<button class="btn waves-effect waves-light right" type="submit">
+						<mytaglib:i18n key="table.column.save" />
+					</button>
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesCar}">cancel<i
-					class="material-icons right"></i>
+				<a class="btn waves-effect waves-light right" href="${pagesCar}"><mytaglib:i18n
+						key="table.column.cancel" /><i class="material-icons right"></i>
 				</a>
 			</div>
 		</div>

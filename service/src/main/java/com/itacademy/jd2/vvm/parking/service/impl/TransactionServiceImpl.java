@@ -82,7 +82,7 @@ public class TransactionServiceImpl implements ITransactionService {
 				}
 
 			}
-		}, 0, 5, TimeUnit.MINUTES);
+		}, 0,60, TimeUnit.MINUTES);
 	}
 
 	@Override

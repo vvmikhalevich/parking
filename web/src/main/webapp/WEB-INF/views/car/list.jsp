@@ -5,7 +5,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h4 class="header">Cars</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.Cars" />
+</h4>
 
 
 <div class="row">
@@ -16,10 +18,12 @@
 					enctype="multipart/form-data" modelAttribute="searchFormModel">
 					<div class="input-field col s4">
 						<form:input path="number" type="text" />
-						<label for="number">Number</label>
+						<label for="number"><mytaglib:i18n
+					key="table.column.Number" /></label>
 					</div>
 					<div class="col s4">
-						<button class="btn waves-effect waves-light right" type="submit">search</button>
+						<button class="btn waves-effect waves-light right" type="submit"><mytaglib:i18n
+					key="table.column.SEARCH" /></button>
 					</div>
 				</form:form>
 			</div>
@@ -32,13 +36,19 @@
 			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="id">
 					<mytaglib:i18n key="table.column.id" />
 				</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="model">model</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="number">number</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="model"><mytaglib:i18n
+					key="table.column.Model" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="number"><mytaglib:i18n
+					key="table.column.Number" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesCar}"
-					column="userAccount">userAccount</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="tariff">tariff</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="foto">foto</mytaglib:sort-link></th>
-			<th>Select car of place</th>
+					column="userAccount"><mytaglib:i18n
+					key="table.column.UserAccount" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="tariff"><mytaglib:i18n
+					key="table.column.Tariff" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="foto"><mytaglib:i18n
+					key="table.column.Foto" /></mytaglib:sort-link></th>
+			<th><mytaglib:i18n
+					key="table.column.PutCarOnPlace" /></th>
 			<th><mytaglib:sort-link pageUrl="${pagesCar}" column="created">
 					<mytaglib:i18n key="table.column.created" />
 				</mytaglib:sort-link></th>

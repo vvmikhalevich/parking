@@ -1,10 +1,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
+<%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 <h4 class="header">
 	<c:choose>
-		<c:when test="${empty formModel.id }">Create car</c:when>
-		<c:when test="${readonly}">Info car</c:when>
-		<c:when test="${!readonly}">Edit car</c:when>
+		<c:when test="${empty formModel.id }">
+			<mytaglib:i18n key="table.column.create" />
+			<mytaglib:i18n key="table.column.car" />
+		</c:when>
+		<c:when test="${readonly}">
+			<mytaglib:i18n key="table.column.info" />
+			<mytaglib:i18n key="table.column.about" />
+			<mytaglib:i18n key="table.column.car" />
+		</c:when>
+		<c:when test="${!readonly}">
+			<mytaglib:i18n key="table.column.edit" />
+			<mytaglib:i18n key="table.column.car" />
+		</c:when>
 	</c:choose>
 </h4>
 <div class="row">
@@ -19,7 +31,7 @@
 					<form:options items="${modelsChoices}" />
 				</form:select>
 				<form:errors path="modelId" cssClass="red-text" />
-				<label for="modelId">model</label>
+				<label for="modelId"><mytaglib:i18n key="table.column.Model" /></label>
 			</div>
 		</div>
 
@@ -27,7 +39,7 @@
 			<div class="input-field col s12">
 				<form:input path="number" type="text" disabled="${readonly}" />
 				<form:errors path="number" cssClass="red-text" />
-				<label for="number">Number of car</label>
+				<label for="number"><mytaglib:i18n key="table.column.Number" /></label>
 			</div>
 		</div>
 
@@ -37,7 +49,8 @@
 					<form:options items="${userAccountsChoices}" />
 				</form:select>
 				<form:errors path="userAccountId" cssClass="red-text" />
-				<label for="userAccountId">User of car</label>
+				<label for="userAccountId"><mytaglib:i18n
+						key="table.column.UserAccount" /></label>
 			</div>
 		</div>
 
@@ -47,12 +60,14 @@
 					<form:options items="${tariffsChoices}" />
 				</form:select>
 				<form:errors path="tariffId" cssClass="red-text" />
-				<label for="tariffId">Tariff of car</label>
+				<label for="tariffId"><mytaglib:i18n
+						key="table.column.Tariff" /></label>
 			</div>
 		</div>
-
+		<label for="foto"><mytaglib:i18n key="table.column.Foto" /></label>
 		<c:if test="${!readonly}">
 			<div class="row">
+
 				<div class="input-field col s12">
 					<input type="file" name="file" /> <label for="file"></label>
 				</div>
@@ -81,12 +96,14 @@
 			<div class="col s6"></div>
 			<div class="col s3">
 				<c:if test="${!readonly}">
-					<button class="btn waves-effect waves-light right" type="submit">save</button>
+					<button class="btn waves-effect waves-light right" type="submit">
+						<mytaglib:i18n key="table.column.save" />
+					</button>
 				</c:if>
 			</div>
 			<div class="col s3">
-				<a class="btn waves-effect waves-light right" href="${pagesCar}">cancel<i
-					class="material-icons right"></i>
+				<a class="btn waves-effect waves-light right" href="${pagesCar}"><mytaglib:i18n
+						key="table.column.cancel" /><i class="material-icons right"></i>
 				</a>
 			</div>
 		</div>

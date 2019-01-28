@@ -9,21 +9,103 @@
 	<entry key="table.column.create">Создание</entry>
 	<entry key="table.column.edit">Редактирование</entry>
 	<entry key="table.column.about">о</entry>
+	<entry key="table.column.orAnd">или(и)</entry>
 
-	<entry key="table.column.id">Номер</entry>
+	<entry key="table.column.id">№</entry>
 	<entry key="table.column.name">Название</entry>
 	<entry key="table.column.created">Создан</entry>
 	<entry key="table.column.updated">Изменен</entry>
 
-	<entry key="table.column.brands">Бренды</entry>
-	<entry key="table.column.brand">Бренд</entry>
+	<entry key="table.column.Brands">Бренды</entry>
+	<entry key="table.column.Brand">Бренд</entry>
 	<entry key="table.column.brande">бренде</entry>
 	<entry key="table.column.branda">бренда</entry>
 
 
-	<entry key="table.column.models">Модели</entry>
-	<entry key="table.column.model">Модель</entry>
+	<entry key="table.column.Models">Модели</entry>
+	<entry key="table.column.Model">Модель</entry>
 	<entry key="table.column.modele">моделе</entry>
 	<entry key="table.column.modeli">модели</entry>
+
+	<entry key="table.column.Cars">Авто</entry>
+	<entry key="table.column.Car">Авто</entry>
+	<entry key="table.column.car">авто</entry>
+	<entry key="table.column.Number">Номер</entry>
+
+	<entry key="table.column.Tariffs">Тарифы</entry>
+	<entry key="table.column.Tariff">Тариф</entry>
+	<entry key="table.column.tariffa">тарифа</entry>
+
+	<entry key="table.column.UserAccounts">Клиенты</entry>
+	<entry key="table.column.UserAccount">Клиент</entry>
+	<entry key="table.column.userAccounta">клиента</entry>
+	<entry key="table.column.userAccounte">клиентe</entry>
+
+	<entry key="table.column.LastName">Фамилия</entry>
+	<entry key="table.column.FirstName">Имя</entry>
+
+
+	<entry key="table.column.Foto">Фото</entry>
+
+	<entry key="table.column.PutCarOnPlace">Поставить на место</entry>
+
+	<entry key="table.column.SEARCH">ПОИСК</entry>
+
+	<entry key="table.column.Status">Статус</entry>
+	<entry key="table.column.CostPerDay">Цена за день</entry>
+
+	<entry key="table.column.Parkings">Парковки</entry>
+	<entry key="table.column.parking">парковки</entry>
+	<entry key="table.column.parkinga">парковкe</entry>
+	<entry key="table.column.Parkingg">Парковка</entry>
+	<entry key="table.column.Adress">Адрес</entry>
+	<entry key="table.column.Width">Ширина</entry>
+	<entry key="table.column.Length">Длина</entry>
+
+	<entry key="table.column.Places">Места</entry>
+	<entry key="table.column.places">мест</entry>
+
+	<entry key="table.column.place">место</entry>
+	<entry key="table.column.Place">Место</entry>
+	<entry key="table.column.placea">местa</entry>
+
+	<entry key="table.column.RemoveCar">Убрать авто</entry>
+
+	<entry key="table.column.free">свободно</entry>
+	<entry key="table.column.full">занято</entry>
+
+	<entry key="table.column.Private">Личный кабинет</entry>
+
+	<entry key="table.column.Role">Роль</entry>
+	<entry key="table.column.Password">Пароль</entry>
+
+	<entry key="table.column.Events">События</entry>
+	<entry key="table.column.event">событие</entry>
+	<entry key="table.column.TimeOfStart">Время въезда</entry>
+	<entry key="table.column.TimeOfEnd">Время выезда</entry>
+	<entry key="table.column.DateOfStart">Дата въезда</entry>
+	<entry key="table.column.DateOfEnd">Дата вsезда</entry>
+
+	<entry key="table.column.Transactions">Транзакции</entry>
+	<entry key="table.column.transactioni">транзакции</entry>
+	<entry key="table.column.Value">Значение</entry>
+	<entry key="table.column.Description">Примечание</entry>
+
+	<entry key="table.column.Login">Вход</entry>
+
+	<entry key="table.column.Registration">Регистрация</entry>
+
+	<entry key="table.column.YourAccount">Ваша учетная запись</entry>
+	<entry key="table.column.YourBalance">Ваш баланс</entry>
+	<entry key="table.column.YourTransaction">Ваши транзакции</entry>
+
+	<entry key="table.column.YourCars">Авто</entry>
+	
+	<entry key="table.column.HistoryBalance">История расходов</entry>
+	
+	<entry key="table.column.with">с</entry>
+	<entry key="table.column.and">и</entry>
+	
+	<entry key="table.column.Enter">Вход</entry>
 
 </properties>

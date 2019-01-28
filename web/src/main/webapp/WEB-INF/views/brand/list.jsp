@@ -4,7 +4,7 @@
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
 <h4 class="header">
-	<mytaglib:i18n key="table.column.brands" />
+	<mytaglib:i18n key="table.column.Brands" />
 </h4>
 <table class="bordered highlight">
 	<tbody>

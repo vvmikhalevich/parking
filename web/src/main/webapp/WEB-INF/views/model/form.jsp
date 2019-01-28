@@ -41,7 +41,7 @@
 					<form:options items="${brandsChoices}" />
 				</form:select>
 				<form:errors path="brandId" cssClass="red-text" />
-				<label for="brandId"><mytaglib:i18n key="table.column.brand" /></label>
+				<label for="brandId"><mytaglib:i18n key="table.column.Brand" /></label>
 			</div>
 		</div>
 

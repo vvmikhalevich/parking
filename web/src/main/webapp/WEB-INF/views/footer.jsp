@@ -7,7 +7,7 @@
 		</div>
 		<div class="container">
 			<a class="grey-text text-lighten-4 right"
-				href="https://drive.google.com/file/d/1JOsVdymzQhT0ZrVGjr3EjQ2jT0BsSxbm/view?usp=sharing"
+				href="https://drive.google.com/file/d/13Vp-qu3eHenlkm89-UcASRxxmBcHTZJ4/view?usp=sharing"
 				target="_blank"> Link of Mindmup</a>
 		</div>
 		<div class="container">

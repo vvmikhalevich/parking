@@ -1,9 +1,23 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
+<%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 <h4 class="header">
 	<c:choose>
-		<c:when test="${empty formModel.id }">Create event</c:when>
-		<c:otherwise>Edit event</c:otherwise>
+		<c:when test="${empty formModel.id }">
+			<mytaglib:i18n key="table.column.create" />
+			<mytaglib:i18n key="table.column.event" />
+
+		</c:when>
+		<c:when test="${readonly}">
+			<mytaglib:i18n key="table.column.info" />
+			<mytaglib:i18n key="table.column.about" />
+			<mytaglib:i18n key="table.column.event" />
+		</c:when>
+		<c:when test="${!readonly}">
+			<mytaglib:i18n key="table.column.edit" />
+			<mytaglib:i18n key="table.column.event" />
+		</c:when>
 	</c:choose>
 </h4>
 <div class="row">
@@ -18,7 +32,7 @@
 					<form:options items="${carsChoices}" />
 				</form:select>
 				<form:errors path="carId" cssClass="red-text" />
-				<label for="carId">Car</label>
+				<label for="carId"><mytaglib:i18n key="table.column.Car" /></label>
 			</div>
 		</div>
 
@@ -28,7 +42,7 @@
 					<form:options items="${placesChoices}" />
 				</form:select>
 				<form:errors path="placeId" cssClass="red-text" />
-				<label for="placeId">Place</label>
+				<label for="placeId"><mytaglib:i18n key="table.column.Place" /></label>
 			</div>
 		</div>
 
@@ -40,13 +54,15 @@
 				<form:input path="timeStart" type="text" disabled="${readonly}"
 					cssClass="datepicker" />
 				<form:errors path="timeStart" cssClass="red-text" />
-				<label for="timeStart">Start date</label>
+				<label for="timeStart"><mytaglib:i18n
+						key="table.column.DateOfStart" /></label>
 			</div>
 			<div class="input-field col s6">
 				<form:input path="timeStartTime" type="text" disabled="${readonly}"
 					cssClass="timepicker" />
 				<form:errors path="timeStartTime" cssClass="red-text" />
-				<label for="timeStartTime">Start time</label>
+				<label for="timeStartTime"><mytaglib:i18n
+						key="table.column.TimeOfStart" /></label>
 			</div>
 
 
@@ -55,13 +71,15 @@
 					<form:input path="timeEnd" type="text" disabled="${readonly}"
 						cssClass="datepicker" />
 					<form:errors path="timeEnd" cssClass="red-text" />
-					<label for="timeEnd">End date</label>
+					<label for="timeEnd"><mytaglib:i18n
+							key="table.column.DateOfEnd" /></label>
 				</div>
 				<div class="input-field col s6">
 					<form:input path="timeEndTime" type="text" disabled="${readonly}"
 						cssClass="timepicker" />
 					<form:errors path="timeEndTime" cssClass="red-text" />
-					<label for="timeEndTime">End time</label>
+					<label for="timeEndTime"><mytaglib:i18n
+							key="table.column.TimeOfEnd" /></label>
 				</div>
 
 
@@ -70,12 +88,14 @@
 					<div class="col s6"></div>
 					<div class="col s3">
 						<c:if test="${!readonly}">
-							<button class="btn waves-effect waves-light right" type="submit">Save</button>
+							<button class="btn waves-effect waves-light right" type="submit">
+								<mytaglib:i18n key="table.column.save" />
+							</button>
 						</c:if>
 					</div>
 					<div class="col s3">
-						<a class="btn waves-effect waves-light right" href="${pagesEvent}">to
-							the listƒ<i class="material-icons right"></i>
+						<a class="btn waves-effect waves-light right" href="${pagesEvent}"><mytaglib:i18n
+								key="table.column.cancel" /><i class="material-icons right"></i>
 						</a>
 					</div>
 				</div>

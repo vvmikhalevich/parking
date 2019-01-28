@@ -3,17 +3,21 @@
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
-<h4 class="header">Events</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.Events" />
+</h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="id">id</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="car">car</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="place">place</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="car"><mytaglib:i18n key="table.column.Car" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="place"><mytaglib:i18n key="table.column.Place" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}"
-					column="time_start">time of start</mytaglib:sort-link></th>
+					column="time_start"><mytaglib:i18n key="table.column.TimeOfStart" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}"
-					column="time_end">time of end</mytaglib:sort-link></th>
+					column="time_end"><mytaglib:i18n key="table.column.TimeOfEnd" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesEvent}" column="created">
 					<mytaglib:i18n key="table.column.created" />
 				</mytaglib:sort-link></th>

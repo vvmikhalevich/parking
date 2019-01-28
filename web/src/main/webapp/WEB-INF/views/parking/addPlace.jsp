@@ -3,12 +3,22 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
+<%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
 <h4 class="header">
 	<c:choose>
-		<c:when test="${empty formModel.id }">Create places</c:when>
-		<c:when test="${readonly}">Info parking ${formModel.name}</c:when>
-		<c:otherwise>Edit parking ${formModel.name}</c:otherwise>
+		<c:when test="${empty formModel.id }">
+			<mytaglib:i18n key="table.column.create" />
+			<mytaglib:i18n key="table.column.places" />
+		</c:when>
+		<c:when test="${readonly}">
+			<mytaglib:i18n key="table.column.info" />
+			<mytaglib:i18n key="table.column.about" />
+			<mytaglib:i18n key="table.column.parkinga" /> ${formModel.name}</c:when>
+		<c:otherwise>
+			<mytaglib:i18n key="table.column.edit" />
+			<mytaglib:i18n key="table.column.parking" /> ${formModel.name}</c:otherwise>
 
 	</c:choose>
 </h4>
@@ -33,7 +43,7 @@
 						value="${containsValue  ? 'unselected' : 'grey'}"></c:set>
 				</c:if>
 
-				<td id="${cellId}" 
+				<td id="${cellId}"
 					<c:if test="${cellId!='0' && place.userAccountId!='0' }">
 					 
 					class="${clazz2}"
@@ -47,10 +57,10 @@
 						test="${ containsValue}">
 
 						<sec:authorize access="hasAnyRole('admin', 'manager')">
-						место:${place.name} <br>
+						<mytaglib:i18n key="table.column.place" /> :${place.name} <br>
 						</sec:authorize>
 						<c:if test="${place.userAccountId!='0'}">
-						занято
+						<mytaglib:i18n key="table.column.full" /> 
 					<c:if test="${place.carId!='0'}">
 								<sec:authorize access="hasAnyRole('admin', 'manager')">
 									<br>${place.carNumber}
@@ -60,7 +70,7 @@
 
 						</c:if>
 						<c:if test="${place.userAccountId=='0'}">
-					свободно
+					<mytaglib:i18n key="table.column.free" /> 
 					
 					
 					</c:if>
@@ -78,13 +88,14 @@
 	<div class="col s3">
 		<c:if test="${!readonly}">
 			<button class="btn waves-effect waves-light right" type="button"
-				id="save-button">Save places</button>
+				id="save-button">
+				<mytaglib:i18n key="table.column.save" />
+			</button>
 		</c:if>
 	</div>
 	<div class="col s3">
-		<a class="btn waves-effect waves-light right" href="${pagesParking}">to
-			parkings<i class="material-icons right"></i>
-		</a>
+		<a class="btn waves-effect waves-light right" href="${pagesParking}"><mytaglib:i18n
+				key="table.column.cancel" /><i class="material-icons right"></i> </a>
 	</div>
 </div>
 

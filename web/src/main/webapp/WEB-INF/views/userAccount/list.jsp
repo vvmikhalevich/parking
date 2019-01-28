@@ -3,21 +3,31 @@
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
-<h4 class="header">UserAccounts</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.UserAccounts" />
+</h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="id">id</mytaglib:sort-link></th>
+					column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="firstName">first name</mytaglib:sort-link></th>
+					column="firstName">
+					<mytaglib:i18n key="table.column.FirstName" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="lastName">last name</mytaglib:sort-link></th>
+					column="lastName">
+					<mytaglib:i18n key="table.column.LastName" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="role">role</mytaglib:sort-link></th>
+					column="role">
+					<mytaglib:i18n key="table.column.Role" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
-					column="email">email</mytaglib:sort-link></th>
-			
+					column="email">Email</mytaglib:sort-link></th>
+
 			<th><mytaglib:sort-link pageUrl="${pagesUserAccount}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -36,7 +46,7 @@
 				<td><c:out value="${userAccount.lastName}" /></td>
 				<td><c:out value="${userAccount.role}" /></td>
 				<td><c:out value="${userAccount.email}" /></td>
-		
+
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${userAccount.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"

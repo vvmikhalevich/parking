@@ -5,15 +5,21 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h4 class="header">Tariffs</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.Tariffs" />
+</h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="id">id</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="name">name</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="name">
+					<mytaglib:i18n key="table.column.name" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
-					column="costPerDay">costPerDay</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="status">status</mytaglib:sort-link></th>
+					column="costPerDay"><mytaglib:i18n key="table.column.CostPerDay" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesTariff}" column="status"><mytaglib:i18n key="table.column.Status" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTariff}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />

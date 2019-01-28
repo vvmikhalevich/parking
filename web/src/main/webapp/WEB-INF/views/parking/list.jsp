@@ -5,20 +5,26 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h4 class="header">Parkings</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.Parkings" />
+</h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="id">id</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="name">name</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="name">
+					<mytaglib:i18n key="table.column.name" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="adress">adress</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="width">width</mytaglib:sort-link></th>
+					column="adress"><mytaglib:i18n key="table.column.Adress" /></mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="width"><mytaglib:i18n key="table.column.Width" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="length">length</mytaglib:sort-link></th>
+					column="length"><mytaglib:i18n key="table.column.Length" /></mytaglib:sort-link></th>
 
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="status">status</mytaglib:sort-link></th>
+					column="status"><mytaglib:i18n key="table.column.Status" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -47,15 +53,17 @@
 						href="${pagesParking}/addPlaces/${parking.id}"><i
 							class="material-icons">add places</i></a></td>
 				</c:if>
-				
-					<td class="right"><a class="btn-floating"
-						href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
-						<sec:authorize access="hasAnyRole('admin', 'manager')">
+
+				<td class="right"><a class="btn-floating"
+					href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
+					<sec:authorize access="hasAnyRole('admin', 'manager')">
 						<a class="btn-floating" href="${pagesParking}/${parking.id}/edit"><i
-							class="material-icons">edit</i></a> <a class="btn-floating red"
-						href="${pagesParking}/${parking.id}/delete"><i
-							class="material-icons">delete</i></a></sec:authorize></td>
-				
+							class="material-icons">edit</i></a>
+						<a class="btn-floating red"
+							href="${pagesParking}/${parking.id}/delete"><i
+							class="material-icons">delete</i></a>
+					</sec:authorize></td>
+
 			</tr>
 		</c:forEach>
 	</tbody>

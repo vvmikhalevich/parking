@@ -3,18 +3,18 @@
 <%@ taglib prefix="mytaglib" uri="my-custom-tags-uri"%>
 <%@ taglib prefix="jspFragments" tagdir="/WEB-INF/tags"%>
 
-<h4 class="header">Transactions</h4>
+<h4 class="header"><mytaglib:i18n key="table.column.Transactions" /></h4>
 <table class="bordered highlight">
 	<tbody>
 		<tr>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
-					column="id">id</mytaglib:sort-link></th>
+					column="id"><mytaglib:i18n key="table.column.id" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
-					column="user_account">userAccount</mytaglib:sort-link></th>
+					column="user_account"><mytaglib:i18n key="table.column.UserAccount" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
-					column="value">value</mytaglib:sort-link></th>
+					column="value"><mytaglib:i18n key="table.column.Value" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
-					column="description">description</mytaglib:sort-link></th>
+					column="description"><mytaglib:i18n key="table.column.Description" /></mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesTransaction}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />

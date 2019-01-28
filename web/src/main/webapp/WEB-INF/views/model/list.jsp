@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <h4 class="header">
-	<mytaglib:i18n key="table.column.models" />
+	<mytaglib:i18n key="table.column.Models" />
 </h4>
 <table class="bordered highlight">
 	<tbody>
@@ -17,7 +17,7 @@
 					<mytaglib:i18n key="table.column.name" />
 				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesModel}" column="brand">
-					<mytaglib:i18n key="table.column.brand" />
+					<mytaglib:i18n key="table.column.Brand" />
 				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesModel}" column="created">
 					<mytaglib:i18n key="table.column.created" />

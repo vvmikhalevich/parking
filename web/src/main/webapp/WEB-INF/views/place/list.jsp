@@ -5,7 +5,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h4 class="header">Places</h4>
+<h4 class="header">
+	<mytaglib:i18n key="table.column.Places" />
+</h4>
 <div class="row">
 	<div class="col s12 m12">
 		<div class="card-panel blue lighten-5">
@@ -14,14 +16,23 @@
 					enctype="multipart/form-data" modelAttribute="searchFormModel">
 					<div class="input-field col s4">
 						<form:input path="number" type="text" />
-						<label for="number">Number of car</label>
+						<label for="number"><mytaglib:i18n
+								key="table.column.Number" /></label>
 					</div>
+					<div class="input-field col s1">
+						<mytaglib:i18n key="table.column.orAnd" />
+					</div>
+
 					<div class="input-field col s4">
+						
 						<form:input path="userAccountLastName" type="text" />
-						<label for="userAccountLastName">Last name</label>
+						<label for="userAccountLastName"><mytaglib:i18n
+								key="table.column.LastName" /></label>
 					</div>
-					<div class="col s4">
-						<button class="btn waves-effect waves-light right" type="submit">search</button>
+					<div class="col s3">
+						<button class="btn waves-effect waves-light right" type="submit">
+							<mytaglib:i18n key="table.column.SEARCH" />
+						</button>
 					</div>
 				</form:form>
 			</div>
@@ -31,12 +42,22 @@
 <table class="bordered highlight">
 	<tbody>
 		<tr>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="id">id</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="name">name</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="parking">parking</mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">car</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="id">
+					<mytaglib:i18n key="table.column.id" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="name">
+					<mytaglib:i18n key="table.column.name" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="parking">
+					<mytaglib:i18n key="table.column.Parkingg" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="car">
+					<mytaglib:i18n key="table.column.Car" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}"
-					column="userAccount">userAccount</mytaglib:sort-link></th>
+					column="userAccount">
+					<mytaglib:i18n key="table.column.UserAccount" />
+				</mytaglib:sort-link></th>
 
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -44,7 +65,7 @@
 			<th><mytaglib:sort-link pageUrl="${pagesPlace}" column="updated">
 					<mytaglib:i18n key="table.column.updated" />
 				</mytaglib:sort-link></th>
-			<th>Out from place</th>
+			<th><mytaglib:i18n key="table.column.RemoveCar" /></th>
 			<th></th>
 		</tr>
 		<c:forEach var="place" items="${gridItems}" varStatus="loopCounter">

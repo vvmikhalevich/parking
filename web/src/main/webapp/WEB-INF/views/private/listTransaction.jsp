@@ -17,13 +17,14 @@
 
 			<div class="leftmenu hidden-xs">
 				<div class="selecteditem">
-					<a class="left-menu-href" href="${pagesPrivate}">Профиль</a>
+					<a class="left-menu-href" href="${pagesPrivate}"><mytaglib:i18n
+							key="table.column.Private" /></a>
 				</div>
 
 				<br />
 				<div class="menuitem">
-					<a class="" href="${pagesPrivate}/transaction/${userAccountId}">История
-						расходов</a>
+					<a class="" href="${pagesPrivate}/transaction/${userAccountId}"><mytaglib:i18n
+							key="table.column.HistoryBalance" /></a>
 				</div>
 
 				<br />
@@ -40,23 +41,23 @@
 			<div class="row">
 
 				<table>
-					<th>Your balance</th>
+					<th><mytaglib:i18n key="table.column.YourBalance" /></th>
 					<tbody>
 
 
-						<td>Your balance</td>
+						<td><mytaglib:i18n key="table.column.YourBalance" /></td>
 						<td>${balance}</td>
 
 					</tbody>
 
-					<th>Your transaction</th>
+					<th><mytaglib:i18n key="table.column.YourTransaction" /></th>
 
 					<tbody>
 						<tr>
-							<th>id</th>
-							<th>userAccount</th>
-							<th>value</th>
-							<th>description</th>
+							<th><mytaglib:i18n key="table.column.id" /></th>
+							<th><mytaglib:i18n key="table.column.UserAccount" /></th>
+							<th><mytaglib:i18n key="table.column.Value" /></th>
+							<th><mytaglib:i18n key="table.column.Description" /></th>
 							<th><mytaglib:i18n key="table.column.created" /></th>
 							<th><mytaglib:i18n key="table.column.updated" /></th>
 							<th></th>
@@ -66,8 +67,7 @@
 							<tr>
 								<td><c:out value="${transaction.id}" /></td>
 
-								<td><a
-									href="${pagesUserAccount}/${transaction.userAccountId}">${transaction.userAccountLastName}</a></td>
+								<td>${transaction.userAccountLastName}</a></td>
 								<td><c:out value="${transaction.value}" /></td>
 								<td><c:out value="${transaction.description}" /></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
