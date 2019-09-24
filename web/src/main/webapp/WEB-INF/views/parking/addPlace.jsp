@@ -57,11 +57,11 @@
 						test="${ containsValue}">
 
 						<sec:authorize access="hasAnyRole('admin', 'manager')">
-						<mytaglib:i18n key="table.column.place" /> :${place.name} <br>
+							<mytaglib:i18n key="table.column.place" /> :${place.name} <br>
 						</sec:authorize>
 						<c:if test="${place.userAccountId!='0'}">
-						<mytaglib:i18n key="table.column.full" /> 
-					<c:if test="${place.carId!='0'}">
+							<mytaglib:i18n key="table.column.full" />
+							<c:if test="${place.carId!='0'}">
 								<sec:authorize access="hasAnyRole('admin', 'manager')">
 									<br>${place.carNumber}
 					</sec:authorize>
@@ -70,10 +70,10 @@
 
 						</c:if>
 						<c:if test="${place.userAccountId=='0'}">
-					<mytaglib:i18n key="table.column.free" /> 
-					
-					
-					</c:if>
+							<mytaglib:i18n key="table.column.free" />
+
+
+						</c:if>
 
 					</c:if></td>
 			</c:forEach>
@@ -86,12 +86,14 @@
 <div class="row">
 	<div class="col s6"></div>
 	<div class="col s3">
-		<c:if test="${!readonly}">
-			<button class="btn waves-effect waves-light right" type="button"
-				id="save-button">
-				<mytaglib:i18n key="table.column.save" />
-			</button>
-		</c:if>
+		<sec:authorize access="hasAnyRole('admin')">
+			<c:if test="${!readonly}">
+				<button class="btn waves-effect waves-light right" type="button"
+					id="save-button">
+					<mytaglib:i18n key="table.column.save" />
+				</button>
+			</c:if>
+		</sec:authorize>
 	</div>
 	<div class="col s3">
 		<a class="btn waves-effect waves-light right" href="${pagesParking}"><mytaglib:i18n

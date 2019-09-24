@@ -40,7 +40,7 @@
 						value="${tariff.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${tariff.updated}" /></td>
-				<sec:authorize access="hasAnyRole('admin', 'manager')">
+				<sec:authorize access="hasAnyRole('admin')">
 					<td class="right"><a class="btn-floating"
 						href="${pagesTariff}/${tariff.id}"><i class="material-icons">info</i></a>
 						<a class="btn-floating" href="${pagesTariff}/${tariff.id}/edit"><i

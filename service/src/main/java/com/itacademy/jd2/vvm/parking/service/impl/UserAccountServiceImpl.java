@@ -56,7 +56,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
 
 			dao.insert(entity);
 
-			// SendMailTLS.main(email);
+			SendMailTLS.main(email);
 
 		} else {
 			String password = entity.getPassword();

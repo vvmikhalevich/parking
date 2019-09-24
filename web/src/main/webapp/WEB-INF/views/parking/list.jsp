@@ -18,13 +18,21 @@
 					<mytaglib:i18n key="table.column.name" />
 				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="adress"><mytaglib:i18n key="table.column.Adress" /></mytaglib:sort-link></th>
-			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="width"><mytaglib:i18n key="table.column.Width" /></mytaglib:sort-link></th>
+					column="adress">
+					<mytaglib:i18n key="table.column.Adress" />
+				</mytaglib:sort-link></th>
+			<th><mytaglib:sort-link pageUrl="${pagesParking}" column="width">
+					<mytaglib:i18n key="table.column.Width" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="length"><mytaglib:i18n key="table.column.Length" /></mytaglib:sort-link></th>
+					column="length">
+					<mytaglib:i18n key="table.column.Length" />
+				</mytaglib:sort-link></th>
 
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
-					column="status"><mytaglib:i18n key="table.column.Status" /></mytaglib:sort-link></th>
+					column="status">
+					<mytaglib:i18n key="table.column.Status" />
+				</mytaglib:sort-link></th>
 			<th><mytaglib:sort-link pageUrl="${pagesParking}"
 					column="created">
 					<mytaglib:i18n key="table.column.created" />
@@ -47,16 +55,18 @@
 						value="${parking.created}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${parking.updated}" /></td>
-
-				<c:if test="${parking.status=='created'}">
-					<td><a class="waves-effect waves-light btn right"
-						href="${pagesParking}/addPlaces/${parking.id}"><i
-							class="material-icons">add places</i></a></td>
-				</c:if>
-
+				
+				<sec:authorize access="hasAnyRole('admin')">
+					<c:if test="${parking.status=='created'}">
+						<td><a class="waves-effect waves-light btn right"
+							href="${pagesParking}/addPlaces/${parking.id}"><i
+								class="material-icons">add places</i></a></td>
+					</c:if>
+				</sec:authorize>
+				
 				<td class="right"><a class="btn-floating"
 					href="${pagesParking}/${parking.id}"><i class="material-icons">info</i></a>
-					<sec:authorize access="hasAnyRole('admin', 'manager')">
+					<sec:authorize access="hasAnyRole('admin')">
 						<a class="btn-floating" href="${pagesParking}/${parking.id}/edit"><i
 							class="material-icons">edit</i></a>
 						<a class="btn-floating red"

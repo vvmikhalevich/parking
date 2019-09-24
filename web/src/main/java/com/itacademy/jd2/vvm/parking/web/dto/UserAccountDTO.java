@@ -20,7 +20,7 @@ public class UserAccountDTO {
 
 	private String role;
 
-	// @Email
+	@Email
 	private String email;
 
 	private String password;
