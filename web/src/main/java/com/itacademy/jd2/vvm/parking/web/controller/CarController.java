@@ -1,5 +1,25 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.*;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
+import com.itacademy.jd2.vvm.parking.service.*;
+import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.converter.CarPutFromDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.search.CarSearchDTO;
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,50 +28,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.GeneralSecurityException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IEvent;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IModel;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IPlace;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.PlaceFilter;
-import com.itacademy.jd2.vvm.parking.service.ICarService;
-import com.itacademy.jd2.vvm.parking.service.IEventService;
-import com.itacademy.jd2.vvm.parking.service.IFotoService;
-import com.itacademy.jd2.vvm.parking.service.IModelService;
-import com.itacademy.jd2.vvm.parking.service.IPlaceService;
-import com.itacademy.jd2.vvm.parking.service.ITariffService;
-import com.itacademy.jd2.vvm.parking.service.IUserAccountService;
-import com.itacademy.jd2.vvm.parking.web.converter.CarFromDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.converter.CarPutFromDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.converter.CarToDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.dto.CarDTO;
-import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
-import com.itacademy.jd2.vvm.parking.web.dto.search.CarSearchDTO;
-import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 
 @Controller
 @RequestMapping(value = "/car")
@@ -60,7 +38,7 @@ public class CarController extends AbstractController {
 	private static final String SEARCH_FORM_MODEL = "searchFormModel";
 	private static final String SEARCH_DTO = CarController.class.getSimpleName() + "_SEACH_DTO";
 
-	public static final String FILE_FOLDER = "d:\\";
+	public static final String FILE_FOLDER = "C:\\Users\\Viktar_Mikhalevich\\Pictures\\";
 
 	@Autowired
 	private IEventService eventService;

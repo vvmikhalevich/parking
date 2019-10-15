@@ -27,7 +27,7 @@
 		<intercept-url pattern="/event**"
 			access="hasAnyRole('admin', 'manager')" />
 
-		<intercept-url pattern="/userAccount**"
+		<intercept-url pattern="/userAccount" method="GET"
 			access="hasAnyRole('admin', 'manager')" />
 
 		<!-- <intercept-url pattern="/tariff/**"

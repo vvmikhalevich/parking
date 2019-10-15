@@ -1,24 +1,5 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.itacademy.jd2.vvm.parking.dao.api.entity.enums.RoleType;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
@@ -29,6 +10,19 @@ import com.itacademy.jd2.vvm.parking.web.converter.UserAccountToDTOConverter;
 import com.itacademy.jd2.vvm.parking.web.dto.UserAccountDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/userAccount")
@@ -103,7 +97,7 @@ public class UserAccountController extends AbstractController {
 			final IUserAccount entity = fromDtoConverter.apply(formModel);
 			userAccountService.save(entity);
 
-			return "redirect:/userAccount"; // generates 302 response with Location="/parking/userAccount"
+			return "redirect:/"; // generates 302 response with Location="/parking/userAccount"
 		}
 	}
 
@@ -147,7 +141,7 @@ public class UserAccountController extends AbstractController {
 			hashMap.put("rolesChoices", roleTypesMap);
 
 		} else {
-			final List<RoleType> roleTypesList = Arrays.asList(RoleType.valueOf("user"));
+			final List<RoleType> roleTypesList = Arrays.asList(RoleType.valueOf(role));
 			final Map<String, String> roleTypesMap = roleTypesList.stream()
 					.collect(Collectors.toMap(RoleType::name, RoleType::name));
 
