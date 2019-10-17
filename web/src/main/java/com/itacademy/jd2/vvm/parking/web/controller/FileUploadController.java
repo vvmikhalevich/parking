@@ -1,14 +1,5 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.security.GeneralSecurityException;
-import java.util.UUID;
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +9,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.security.GeneralSecurityException;
+import java.util.UUID;
+
 @Controller
 @RequestMapping(value = "/file")
 public class FileUploadController {
 
-	public static final String FILE_FOLDER = "d:\\";
+	public static final String FILE_FOLDER = "C:\\Users\\Viktar_Mikhalevich\\Pictures\\";
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String handleFileUpload(@RequestParam("file") final MultipartFile file,
