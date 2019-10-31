@@ -1,11 +1,12 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.itacademy.jd2.vvm.parking.dao.api.filter.AbstractFilter;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 import com.itacademy.jd2.vvm.parking.web.dto.grid.SortDTO;
 
+import javax.servlet.http.HttpServletRequest;
+
+// New
 public abstract class AbstractController {
 	protected GridStateDTO getListDTO(final HttpServletRequest req) {
 		final String sessionModelName = getClass().getSimpleName() + "_GRID_STATE";
