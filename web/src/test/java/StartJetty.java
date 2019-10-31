@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Parking
+ * Parking(Spring)
  *
  * Separate startup class for people that want to run the examples directly. Use
  * parameter -Dcom.sun.management.jmxremote to startup JMX (and e.g. connect
