@@ -1,8 +1,18 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+@EnableAutoConfiguration
+
 public class Application {
 
     public static void main(String[] args) {
-//add some code
+
+        SpringApplication.run(Application.class, args);
+
     }
 }
