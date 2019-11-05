@@ -33,6 +33,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- Project modules -->
+
 			<dependency>
 				<groupId>com.itacademy.jd2.vvm.parking</groupId>
 				<artifactId>dao-api</artifactId>
