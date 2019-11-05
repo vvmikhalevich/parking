@@ -25,9 +25,9 @@
 	<modules>
 		<module>dao-api</module>
 		<module>dao-jdbc-impl</module>
+		<module>dao-orm-impl</module>
 		<module>service</module>
 		<module>web</module>
-		<module>dao-orm-impl</module>
 	</modules>
 
 	<dependencyManagement>
