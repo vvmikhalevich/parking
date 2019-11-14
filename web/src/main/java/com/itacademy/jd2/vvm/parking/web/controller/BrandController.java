@@ -1,13 +1,12 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.BrandFilter;
+import com.itacademy.jd2.vvm.parking.service.IBrandService;
+import com.itacademy.jd2.vvm.parking.web.converter.BrandFromDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.converter.BrandToDTOConverter;
+import com.itacademy.jd2.vvm.parking.web.dto.BrandDTO;
+import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,21 +17,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itacademy.jd2.vvm.parking.web.converter.BrandFromDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IBrand;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.BrandFilter;
-import com.itacademy.jd2.vvm.parking.service.IBrandService;
-import com.itacademy.jd2.vvm.parking.web.converter.BrandToDTOConverter;
-import com.itacademy.jd2.vvm.parking.web.dto.BrandDTO;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/brand")
 public class BrandController extends AbstractController {
-
+	@Autowired
 	private IBrandService brandService;
-
+	@Autowired
 	private BrandToDTOConverter toDtoConverter;
+	@Autowired
 	private BrandFromDTOConverter fromDtoConverter;
 
 	@Autowired
