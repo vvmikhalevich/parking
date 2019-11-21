@@ -1,8 +1,15 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
+import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
+import org.hibernate.jpa.criteria.OrderImpl;
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -10,19 +17,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.hibernate.jpa.criteria.OrderImpl;
-import org.springframework.stereotype.Repository;
-
-import com.itacademy.jd2.vvm.parking.dao.api.IUserAccountDao;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.EventFilter;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Event;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Event_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 
 @Repository
 public class UserAccountDaoImpl extends AbstractDaoImpl<IUserAccount, Integer> implements IUserAccountDao {

@@ -12,6 +12,7 @@
 
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<springboot.version>2.2.0.RELEASE</springboot.version>
 	</properties>
 
 	<packaging>war</packaging>
@@ -147,20 +148,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<version>2.1.8.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>2.1.8.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>2.1.8.RELEASE</version>
+			<version>${springboot.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.itacademy.jd2.vvm.parking</groupId>
