@@ -91,3 +91,4 @@ web/.settings/
 /web/target/classes/com/itacademy/jd2/vvm/parking/web/util/XMLResourceBundleControl$XMLResourceBundle.class
 /web/target/classes/com/itacademy/jd2/vvm/parking/web/util/XMLResourceBundleControl.class
 /web/target/classes/com/itacademy/jd2/vvm/parking/web/controller/Application.class
+/target/classes/META-INF/parent-project.kotlin_module
