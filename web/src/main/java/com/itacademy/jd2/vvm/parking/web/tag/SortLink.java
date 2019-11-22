@@ -1,16 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.tag;
 
-import java.io.IOException;
-import java.io.StringWriter;
-
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
-
-import com.itacademy.jd2.vvm.parking.web.dto.grid.GridStateDTO;
-import com.itacademy.jd2.vvm.parking.web.dto.grid.SortDTO;
-
-public class SortLink extends SimpleTagSupport {
+public class SortLink {/* extends SimpleTagSupport {
 
 	private String column;
 
@@ -57,5 +47,5 @@ public class SortLink extends SimpleTagSupport {
 	public void setPageUrl(final String pageUrl) {
 		this.pageUrl = pageUrl;
 	}
-
+*/
 }

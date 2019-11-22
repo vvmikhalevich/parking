@@ -1,9 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.controller;
 
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.itacademy.jd2.vvm.parking.web.security.AuthHelper;
-import com.itacademy.jd2.vvm.parking.web.tag.I18N;
+import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = "/")
@@ -35,7 +32,7 @@ public class DefaultController {
 				locale = LOCALE_EN;
 			}
 
-			req.getSession().setAttribute(I18N.SESSION_LOCALE_KEY, locale);
+			//req.getSession().setAttribute(I18N.SESSION_LOCALE_KEY, locale);
 			LOGGER.info("switch to locale:" + locale);
 		}
 

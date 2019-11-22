@@ -2,7 +2,6 @@ package com.itacademy.jd2.vvm.parking.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;

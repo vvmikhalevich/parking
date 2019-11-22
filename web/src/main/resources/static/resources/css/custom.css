@@ -1,0 +1,64 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+	padding-bottom: 10px;
+}
+
+table {
+	margin-bottom: 10px;
+}
+
+.input-field label.multiselect-label, .input-field label.switch-label {
+	position: absolute;
+	top: -26px;
+	font-size: .8rem;
+}
+
+.switch label input[type=checkbox]:checked ~.lever {
+	background-color: #84c7c1;
+}
+
+.switch label input[type=checkbox]:checked ~.lever:before, .switch label input[type=checkbox]:checked
+    ~.lever:after {
+	left: 18px;
+}
+
+.switch label input[type=checkbox]:checked ~.lever:after {
+	background-color: #26a69a;
+}
+
+.switch label input[type=checkbox]:checked ~.lever:before, .switch label input[type=checkbox]:checked
+    ~.lever:after {
+	left: 18px;
+}
+
+nav {
+	background-color: #0886A1;
+}
+
+.page-footer {
+	background-color: #0886A1;
+	padding-top: 0px;
+}
+
+.parking-table{
+	width: auto;
+}
+.parking-table td {
+	border: 2px solid black;
+	padding: 0px 0px;
+	display: table-cell;
+	border-radius: 0px;
+	padding: 0px 0px;
+	height: 100px;
+	width: 100px;
+}
+
+.parking-table td.selected {
+	background-color: red;
+}

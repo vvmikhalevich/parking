@@ -1,16 +1,6 @@
 package com.itacademy.jd2.vvm.parking.web.tag;
 
-import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import javax.servlet.jsp.JspContext;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
-
-import com.itacademy.jd2.vvm.parking.web.util.XMLResourceBundleControl;
-
-public class I18N extends SimpleTagSupport {
+public class I18N { /*extends SimpleTagSupport {
 	public static final String SESSION_LOCALE_KEY = "current-locale";
 
 	private final Locale DEFAULT_LOCALE = new Locale("en");
@@ -40,6 +30,6 @@ public class I18N extends SimpleTagSupport {
 
 	public void setKey(final String key) {
 		this.key = key;
-	}
+	}*/
 
 }
