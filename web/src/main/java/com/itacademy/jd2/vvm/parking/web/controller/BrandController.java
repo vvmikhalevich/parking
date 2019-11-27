@@ -27,7 +27,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(value = "/brand")
 public class BrandController extends AbstractController {
-	@Autowired
+
 	private IBrandService brandService;
 	@Autowired
 	private BrandToDTOConverter toDtoConverter;

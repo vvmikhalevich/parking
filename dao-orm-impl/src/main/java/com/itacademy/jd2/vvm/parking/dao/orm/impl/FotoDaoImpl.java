@@ -1,22 +1,20 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
-import java.util.List;
+import com.itacademy.jd2.vvm.parking.dao.api.IFotoDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.FotoFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto_;
+import org.hibernate.query.criteria.internal.OrderImpl;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-
-import org.hibernate.jpa.criteria.OrderImpl;
-import org.springframework.stereotype.Repository;
-
-import com.itacademy.jd2.vvm.parking.dao.api.IFotoDao;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IFoto;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.FotoFilter;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto_;
 
 @Repository
 public class FotoDaoImpl extends AbstractDaoImpl<IFoto, Integer> implements IFotoDao {

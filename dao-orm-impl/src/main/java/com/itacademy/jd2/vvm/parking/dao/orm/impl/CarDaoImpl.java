@@ -1,21 +1,5 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import org.hibernate.jpa.criteria.OrderImpl;
-import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
-
 import com.itacademy.jd2.vvm.parking.dao.api.ICarDao;
 import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ICar;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.CarFilter;
@@ -25,6 +9,20 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Foto_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Model_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
+import org.hibernate.query.criteria.internal.OrderImpl;
+import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 @Repository
 public class CarDaoImpl extends AbstractDaoImpl<ICar, Integer> implements ICarDao {

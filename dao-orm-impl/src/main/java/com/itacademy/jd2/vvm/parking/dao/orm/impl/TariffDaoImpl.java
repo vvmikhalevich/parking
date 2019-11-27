@@ -1,22 +1,20 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
-import java.util.List;
+import com.itacademy.jd2.vvm.parking.dao.api.ITariffDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
+import org.hibernate.query.criteria.internal.OrderImpl;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-
-import org.hibernate.jpa.criteria.OrderImpl;
-import org.springframework.stereotype.Repository;
-
-import com.itacademy.jd2.vvm.parking.dao.api.ITariffDao;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.ITariff;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.TariffFilter;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Tariff_;
 
 @Repository
 public class TariffDaoImpl extends AbstractDaoImpl<ITariff, Integer> implements ITariffDao {

@@ -5,7 +5,7 @@ import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IUserAccount;
 import com.itacademy.jd2.vvm.parking.dao.api.filter.UserAccountFilter;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
-import org.hibernate.jpa.criteria.OrderImpl;
+import org.hibernate.query.criteria.internal.OrderImpl;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

@@ -1,22 +1,20 @@
 package com.itacademy.jd2.vvm.parking.dao.orm.impl;
 
-import java.util.List;
+import com.itacademy.jd2.vvm.parking.dao.api.IParkingDao;
+import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
+import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking;
+import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking_;
+import org.hibernate.query.criteria.internal.OrderImpl;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-
-import org.hibernate.jpa.criteria.OrderImpl;
-import org.springframework.stereotype.Repository;
-
-import com.itacademy.jd2.vvm.parking.dao.api.IParkingDao;
-import com.itacademy.jd2.vvm.parking.dao.api.entity.table.IParking;
-import com.itacademy.jd2.vvm.parking.dao.api.filter.ParkingFilter;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking_;
 
 @Repository
 public class ParkingDaoImpl extends AbstractDaoImpl<IParking, Integer> implements IParkingDao {
