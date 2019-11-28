@@ -9,8 +9,6 @@
 
 	<import resource="dao-context.xml" />
 
-
-
 	<context:component-scan
 		base-package="com.itacademy.jd2.vvm.parking.service.impl" />
 

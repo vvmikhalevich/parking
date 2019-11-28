@@ -7,7 +7,6 @@ import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Car_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Parking_;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place;
 import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.Place_;
-import com.itacademy.jd2.vvm.parking.dao.orm.impl.entity.UserAccount_;
 import org.hibernate.query.criteria.internal.OrderImpl;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
