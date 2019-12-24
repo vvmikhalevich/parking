@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="DefaultTemplate"
+		template="/WEB-INF/views/main-template.jsp">
+		<put-attribute name="title" value="Парковка" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/footer.jsp" />
+	</definition>
+
+	<definition name="home" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/home.jsp" />
+	</definition>
+
+	<definition name="brand.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/brand/list.jsp" />
+	</definition>
+
+	<definition name="brand.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/brand/form.jsp" />
+	</definition>
+
+	<definition name="model.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/model/list.jsp" />
+	</definition>
+
+	<definition name="model.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/model/form.jsp" />
+	</definition>
+
+	<definition name="login" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<definition name="car.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/list.jsp" />
+	</definition>
+
+	<definition name="car.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/form.jsp" />
+	</definition>
+
+	<definition name="car.put" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/car/putForm.jsp" />
+	</definition>
+
+	<definition name="tariff.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/tariff/list.jsp" />
+	</definition>
+
+	<definition name="tariff.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/tariff/form.jsp" />
+	</definition>
+
+	<definition name="userAccount.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/userAccount/list.jsp" />
+	</definition>
+
+	<definition name="userAccount.edit"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/userAccount/form.jsp" />
+	</definition>
+
+	<definition name="foto.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/foto/list.jsp" />
+	</definition>
+
+	<definition name="foto.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/foto/form.jsp" />
+	</definition>
+
+	<definition name="parking.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/parking/list.jsp" />
+	</definition>
+
+	<definition name="parking.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/parking/form.jsp" />
+	</definition>
+
+
+	<definition name="addPlace.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/parking/addPlace.jsp" />
+	</definition>
+
+	<definition name="client.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/client/list.jsp" />
+	</definition>
+
+	<definition name="client.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/client/form.jsp" />
+	</definition>
+
+	<definition name="transaction.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/transaction/list.jsp" />
+	</definition>
+
+	<definition name="transaction.edit"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/transaction/form.jsp" />
+	</definition>
+	<definition name="place.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/place/list.jsp" />
+	</definition>
+
+	<definition name="place.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/place/form.jsp" />
+	</definition>
+	<definition name="event.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/event/list.jsp" />
+	</definition>
+
+	<definition name="event.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/event/form.jsp" />
+	</definition>
+
+	<definition name="placeOwner.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/placeOwner/list.jsp" />
+	</definition>
+
+	<definition name="placeOwner.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/placeOwner/form.jsp" />
+	</definition>
+
+	<definition name="private.list" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/list.jsp" />
+	</definition>
+
+	<definition name="private.edit" extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/form.jsp" />
+	</definition>
+
+	<definition name="privateTransaction.list"
+		extends="DefaultTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/views/private/listTransaction.jsp" />
+	</definition>
+
+</tiles-definitions>
