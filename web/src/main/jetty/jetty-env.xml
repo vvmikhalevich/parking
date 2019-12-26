@@ -17,7 +17,7 @@
 	</New>
 
 	<!-- <New id="smtpProps" class="org.eclipse.jetty.plus.jndi.Resource"> <Arg></Arg> 
-		<Arg>smtp</Arg> <Arg> <New class="com.itacademy.jd2.dz.cardealer.service.jndi.SmtpProperties"> 
+		<Arg>smtp</Arg> <Arg> <New class="com.itacademy.jd2.vvm.parking.service.jndi.SmtpProperties">
 		<Set name="from">**********</Set> <Set name="host">**********</Set> <Set 
 		name="port">25</Set> <Set name="user">**********</Set> <Set name="password">**********</Set> 
 		</New> </Arg> </New> -->
